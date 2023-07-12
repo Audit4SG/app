@@ -1,7 +1,7 @@
 {
-  "name": "app-server",
+  "name": "audit4sg-demos-server",
   "version": "0.0.1",
-  "description": "Serves the app frontend",
+  "description": "Serves Audit4SG demos",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon",

@@ -1,6 +1,6 @@
 {
-  "name": "Webapp Starter Frontend",
-  "short_name": "webapp_starter",
+  "name": "Audit4SG Demos",
+  "short_name": "audit4sg_demos",
   "start_url": "/",
   "display": "standalone",
   "icons": [

@@ -1,8 +1,8 @@
 {
-  "name": "app-frontend",
+  "name": "audit4sg-demos",
   "private": true,
   "version": "0.0.1",
-  "description": "App frontend",
+  "description": "Audit4SG Demos",
   "scripts": {
     "build": "stencil build",
     "start": "stencil build --dev --watch --serve",
@@ -22,6 +22,8 @@
   "license": "MIT",
   "dependencies": {
     "@stripe/stripe-js": "^1.53.0",
+    "@types/d3": "^7.4.0",
+    "d3": "^7.8.5",
     "joi": "^17.8.3",
     "socket.io-client": "^4.6.2",
     "stripe": "^12.5.0"
