@@ -6,4 +6,5 @@ body {
   color: var(--grey-dark);
   font-family: 'Roboto', sans-serif;
   line-height: var(--site-line-height);
+  background: #F7F9FA;
 }

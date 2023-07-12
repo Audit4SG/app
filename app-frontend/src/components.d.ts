@@ -19,6 +19,12 @@ export namespace Components {
     }
     interface CSidebar {
     }
+    interface Demo1 {
+    }
+    interface Demo2 {
+    }
+    interface Demo3 {
+    }
     interface EButton {
         "action": string;
         "active": boolean;
@@ -104,6 +110,24 @@ declare global {
         prototype: HTMLCSidebarElement;
         new (): HTMLCSidebarElement;
     };
+    interface HTMLDemo1Element extends Components.Demo1, HTMLStencilElement {
+    }
+    var HTMLDemo1Element: {
+        prototype: HTMLDemo1Element;
+        new (): HTMLDemo1Element;
+    };
+    interface HTMLDemo2Element extends Components.Demo2, HTMLStencilElement {
+    }
+    var HTMLDemo2Element: {
+        prototype: HTMLDemo2Element;
+        new (): HTMLDemo2Element;
+    };
+    interface HTMLDemo3Element extends Components.Demo3, HTMLStencilElement {
+    }
+    var HTMLDemo3Element: {
+        prototype: HTMLDemo3Element;
+        new (): HTMLDemo3Element;
+    };
     interface HTMLEButtonElement extends Components.EButton, HTMLStencilElement {
     }
     var HTMLEButtonElement: {
@@ -182,6 +206,9 @@ declare global {
         "c-card": HTMLCCardElement;
         "c-page": HTMLCPageElement;
         "c-sidebar": HTMLCSidebarElement;
+        "demo-1": HTMLDemo1Element;
+        "demo-2": HTMLDemo2Element;
+        "demo-3": HTMLDemo3Element;
         "e-button": HTMLEButtonElement;
         "e-input": HTMLEInputElement;
         "e-link": HTMLELinkElement;
@@ -208,6 +235,12 @@ declare namespace LocalJSX {
     interface CPage {
     }
     interface CSidebar {
+    }
+    interface Demo1 {
+    }
+    interface Demo2 {
+    }
+    interface Demo3 {
     }
     interface EButton {
         "action"?: string;
@@ -272,6 +305,9 @@ declare namespace LocalJSX {
         "c-card": CCard;
         "c-page": CPage;
         "c-sidebar": CSidebar;
+        "demo-1": Demo1;
+        "demo-2": Demo2;
+        "demo-3": Demo3;
         "e-button": EButton;
         "e-input": EInput;
         "e-link": ELink;
@@ -295,6 +331,9 @@ declare module "@stencil/core" {
             "c-card": LocalJSX.CCard & JSXBase.HTMLAttributes<HTMLCCardElement>;
             "c-page": LocalJSX.CPage & JSXBase.HTMLAttributes<HTMLCPageElement>;
             "c-sidebar": LocalJSX.CSidebar & JSXBase.HTMLAttributes<HTMLCSidebarElement>;
+            "demo-1": LocalJSX.Demo1 & JSXBase.HTMLAttributes<HTMLDemo1Element>;
+            "demo-2": LocalJSX.Demo2 & JSXBase.HTMLAttributes<HTMLDemo2Element>;
+            "demo-3": LocalJSX.Demo3 & JSXBase.HTMLAttributes<HTMLDemo3Element>;
             "e-button": LocalJSX.EButton & JSXBase.HTMLAttributes<HTMLEButtonElement>;
             "e-input": LocalJSX.EInput & JSXBase.HTMLAttributes<HTMLEInputElement>;
             "e-link": LocalJSX.ELink & JSXBase.HTMLAttributes<HTMLELinkElement>;
