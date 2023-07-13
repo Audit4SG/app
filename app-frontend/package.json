@@ -23,8 +23,10 @@
   "dependencies": {
     "@stripe/stripe-js": "^1.53.0",
     "@types/d3": "^7.4.0",
+    "@types/jsonld": "^1.5.9",
     "d3": "^7.8.5",
     "joi": "^17.8.3",
+    "jsonld": "^8.2.0",
     "socket.io-client": "^4.6.2",
     "stripe": "^12.5.0"
   }
