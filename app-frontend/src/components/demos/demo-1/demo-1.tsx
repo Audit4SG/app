@@ -1,4 +1,9 @@
 import { Component, Host, h } from '@stencil/core';
+import { gsap } from 'gsap';
+import { ScrollToPlugin } from 'gsap/all';
+gsap.registerPlugin(ScrollToPlugin);
+
+import * as jsonld from 'jsonld';
 import * as d3 from 'd3';
 
 @Component({
@@ -10,56 +15,128 @@ export class Demo1 {
   el_Svg!: SVGElement;
 
   private svg: any;
-  private width = window.innerWidth;
-  private height = window.innerHeight;
+  private width = window.innerWidth * 3;
+  private height = window.innerHeight * 3;
   private nodeElements: any;
   private linkElements: any;
   private textElements: any;
-  // private nodes: any = [
-  //   { id: 'mammal', group: 0, label: 'Mammals', level: 1 },
-  //   { id: 'dog', group: 0, label: 'Dogs', level: 2 },
-  //   { id: 'cat', group: 0, label: 'Cats', level: 2 },
-  //   { id: 'fox', group: 0, label: 'Foxes', level: 2 },
-  //   { id: 'elk', group: 0, label: 'Elk', level: 2 },
-  //   { id: 'insect', group: 1, label: 'Insects', level: 1 },
-  //   { id: 'ant', group: 1, label: 'Ants', level: 2 },
-  //   { id: 'bee', group: 1, label: 'Bees', level: 2 },
-  //   { id: 'fish', group: 2, label: 'Fish', level: 1 },
-  //   { id: 'carp', group: 2, label: 'Carp', level: 2 },
-  //   { id: 'pike', group: 2, label: 'Pikes', level: 2 },
-  // ];
-  private nodes: any = [
-    { id: 'mammal', label: 'Mammals' },
-    { id: 'dog', label: 'Dogs' },
-    { id: 'cat', label: 'Cats' },
-    { id: 'fox', label: 'Foxes' },
-    { id: 'elk', label: 'Elk' },
-    { id: 'insect', label: 'Insects' },
-    { id: 'ant', label: 'Ants' },
-    { id: 'bee', label: 'Bees' },
-    { id: 'fish', label: 'Fish' },
-    { id: 'carp', label: 'Carp' },
-    { id: 'pike', label: 'Pikes' },
-  ];
 
-  private links = [
-    { target: 'mammal', source: 'dog', strength: 0.1 },
-    { target: 'mammal', source: 'cat', strength: 0.1 },
-    { target: 'mammal', source: 'fox', strength: 0.1 },
-    { target: 'mammal', source: 'elk', strength: 0.1 },
-    { target: 'insect', source: 'ant', strength: 0.1 },
-    { target: 'insect', source: 'bee', strength: 0.1 },
-    { target: 'fish', source: 'carp', strength: 0.1 },
-    { target: 'fish', source: 'pike', strength: 0.1 },
-    { target: 'cat', source: 'elk', strength: 0.1 },
-    { target: 'carp', source: 'ant', strength: 0.1 },
-    { target: 'elk', source: 'bee', strength: 0.1 },
-    { target: 'dog', source: 'cat', strength: 0.1 },
-    { target: 'fox', source: 'ant', strength: 0.1 },
-    { target: 'pike', source: 'dog', strength: 0.1 },
-  ];
+  private class_Pure: any = [];
+  private class_Blank: any = [];
+  private nodes: any = [];
+  private links: any = [];
+
+  private jsonld_Flattened: any;
+
+  componentWillLoad() {}
 
   componentDidLoad() {
+    gsap.to(window, { duration: 0.1, scrollTo: { y: this.height / 3, x: this.width / 3 } });
+    this.fetch_ViewData();
+  }
+
+  async fetch_ViewData() {
+    let url: string = `http://localhost:4444`;
+    let options: any = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    await fetch(url, options)
+      .then(response => response.json())
+      .then(async data => {
+        this.process_Jsonld(JSON.parse(data.payload));
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
+  async process_Jsonld(data_JSONLD: any) {
+    this.jsonld_Flattened = await jsonld.flatten(data_JSONLD);
+    this.get_Classes();
+    this.generate_Nodes();
+    this.generate_Links();
+    this.generate_Graph();
+  }
+
+  get_Classes() {
+    //Extract the Class Objects
+    let class_Pure_Raw: any = [];
+    let class_Blank_Raw: any = [];
+
+    this.jsonld_Flattened.map((item: any) => {
+      let array_Type = item['@type'];
+      let id = item['@id'];
+      if (array_Type.length === 1) {
+        let str_Type = array_Type[0].split('#')[1];
+        if (str_Type === 'Class') {
+          if (id.includes('_:b')) {
+            class_Blank_Raw.push(item);
+          } else {
+            class_Pure_Raw.push(item);
+          }
+        }
+      }
+    });
+
+    class_Pure_Raw.map((item: any) => {
+      let id = '';
+      let label = '';
+      let label_Pref = '';
+      let subClassOf = '';
+
+      id = item['@id'];
+      let array_Label = item['http://www.w3.org/2000/01/rdf-schema#label'];
+      array_Label.map((item: any) => {
+        if (item['@language'] === 'en') {
+          label = item['@value'];
+        }
+      });
+      subClassOf = '';
+
+      if (item['http://www.w3.org/2000/01/rdf-schema#subClassOf']) {
+        subClassOf = item['http://www.w3.org/2000/01/rdf-schema#subClassOf'][0]['@id'];
+      }
+
+      let obj = {
+        id: id,
+        label: label,
+        label_Pref: label_Pref,
+        subClassOf: subClassOf,
+      };
+
+      this.class_Pure.push(obj);
+    });
+  }
+
+  generate_Nodes() {
+    this.class_Pure.map((item: any) => {
+      let obj = {
+        id: item.id,
+        label: item.label,
+      };
+      this.nodes.push(obj);
+    });
+  }
+
+  generate_Links() {
+    this.class_Pure.map((x: any) => {
+      this.class_Pure.map((y: any) => {
+        if (x.id === y.subClassOf) {
+          let obj = {
+            target: y.id,
+            source: x.id,
+            strength: 0.1,
+          };
+          this.links.push(obj);
+        }
+      });
+    });
+  }
+
+  generate_Graph() {
     this.svg = d3.select(this.el_Svg);
 
     var linkForce = d3
@@ -74,7 +151,7 @@ export class Demo1 {
     var simulation: any = d3
       .forceSimulation()
       .force('link', linkForce)
-      .force('charge', d3.forceManyBody().strength(-120))
+      .force('charge', d3.forceManyBody().strength(-100))
       .force('center', d3.forceCenter(this.width / 2, this.height / 2));
 
     var dragDrop = d3
@@ -84,7 +161,7 @@ export class Demo1 {
         node.fy = node.y;
       })
       .on('drag', function (event, node: any) {
-        simulation.alphaTarget(0.7).restart();
+        simulation.alphaTarget(0.8).restart();
         node.fx = event.x;
         node.fy = event.y;
       })
@@ -128,7 +205,7 @@ export class Demo1 {
       .text(function (node) {
         return node.label;
       })
-      .attr('font-size', 15)
+      .attr('font-size', 12)
       .attr('dx', 15)
       .attr('dy', 4);
 

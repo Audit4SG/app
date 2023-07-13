@@ -13,12 +13,21 @@ export class VHome {
         <h1>Demos</h1>
         <ul>
           <li>
-            <e-text>2. Implements pizza ontology as force-directed graph</e-text>
+            <e-text>
+              <strong>D02. Interaction with graph nodes (data extraction)</strong>
+              <br />
+              Double-clicking on the nodes of D01 extracts information about that node
+            </e-text>
             <l-spacer value={0.5}></l-spacer>
             <stencil-route-link url="/demo-2">View Demo</stencil-route-link>
           </li>
           <li>
-            <e-text>1. Implements a basic force-directed graph</e-text>
+            <e-text>
+              <strong>D01. Basic graph visualization</strong>
+              <br />
+              The <em>class hierarchy</em> of <a href="https://protege.stanford.edu/ontologies/pizza/pizza.owl">pizza ontology</a> is visualised as a force-directed graph (Nodes
+              are non-interactive)
+            </e-text>
             <l-spacer value={0.5}></l-spacer>
             <stencil-route-link url="/demo-1">View Demo</stencil-route-link>
           </li>

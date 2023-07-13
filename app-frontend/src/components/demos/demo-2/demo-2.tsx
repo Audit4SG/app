@@ -1,4 +1,8 @@
 import { Component, Host, h } from '@stencil/core';
+import { gsap } from 'gsap';
+import { ScrollToPlugin } from 'gsap/all';
+gsap.registerPlugin(ScrollToPlugin);
+
 import * as jsonld from 'jsonld';
 import * as d3 from 'd3';
 
@@ -27,7 +31,7 @@ export class Demo2 {
   componentWillLoad() {}
 
   componentDidLoad() {
-    window.scrollTo(this.width / 3, this.height / 3);
+    gsap.to(window, { duration: 0.1, scrollTo: { y: this.height / 3, x: this.width / 3 } });
     this.fetch_ViewData();
   }
 
@@ -105,8 +109,6 @@ export class Demo2 {
 
       this.class_Pure.push(obj);
     });
-
-    console.log(class_Pure_Raw);
   }
 
   generate_Nodes() {
@@ -159,7 +161,7 @@ export class Demo2 {
         node.fy = node.y;
       })
       .on('drag', function (event, node: any) {
-        simulation.alphaTarget(0.7).restart();
+        simulation.alphaTarget(0.8).restart();
         node.fx = event.x;
         node.fy = event.y;
       })
@@ -181,7 +183,9 @@ export class Demo2 {
       .attr('r', 10)
       .attr('fill', this.getNodeColor)
       .call(dragDrop)
-      .on('click', this.selectNode);
+      .on('click', (event, data) => {
+        this.get_NodeData(event, data);
+      });
 
     this.linkElements = this.svg
       .append('g')
@@ -203,7 +207,7 @@ export class Demo2 {
       .text(function (node) {
         return node.label;
       })
-      .attr('font-size', 15)
+      .attr('font-size', 12)
       .attr('dx', 15)
       .attr('dy', 4);
 
@@ -272,6 +276,21 @@ export class Demo2 {
 
   getTextColor(node, neighbors) {
     return Array.isArray(neighbors) && neighbors.indexOf(node.id) > -1 ? 'green' : 'black';
+  }
+
+  get_NodeData(event, data) {
+    let obj_ClickedItem: any;
+    this.jsonld_Flattened.map((item: any) => {
+      if (item['@id'] === data.id) {
+        obj_ClickedItem = item;
+      }
+    });
+
+    alert(JSON.stringify(obj_ClickedItem, null, 4));
+
+    // Object.keys(obj_ClickedItem).forEach(function (key, index) {
+    //   console.log(key);
+    // });
   }
 
   selectNode(selectedNode) {
