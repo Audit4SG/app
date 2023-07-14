@@ -22,7 +22,7 @@ export class Demo3 {
   private textElements: any;
 
   private class_Pure: any = [];
-  private class_Blank: any = [];
+  // private class_Blank: any = [];
   private nodes: any = [];
   private links: any = [];
 
@@ -279,6 +279,7 @@ export class Demo3 {
   }
 
   get_NodeData(event, data) {
+    console.log(event);
     console.log(data.id);
   }
 

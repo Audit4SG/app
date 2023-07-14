@@ -22,7 +22,7 @@ export class Demo1 {
   private textElements: any;
 
   private class_Pure: any = [];
-  private class_Blank: any = [];
+  // private class_Blank: any = [];
   private nodes: any = [];
   private links: any = [];
 

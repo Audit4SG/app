@@ -22,7 +22,7 @@ export class Demo2 {
   private textElements: any;
 
   private class_Pure: any = [];
-  private class_Blank: any = [];
+  // private class_Blank: any = [];
   private nodes: any = [];
   private links: any = [];
 
@@ -279,6 +279,7 @@ export class Demo2 {
   }
 
   get_NodeData(event, data) {
+    console.log(event);
     let obj_ClickedItem: any;
     this.jsonld_Flattened.map((item: any) => {
       if (item['@id'] === data.id) {
@@ -287,10 +288,6 @@ export class Demo2 {
     });
 
     alert(JSON.stringify(obj_ClickedItem, null, 4));
-
-    // Object.keys(obj_ClickedItem).forEach(function (key, index) {
-    //   console.log(key);
-    // });
   }
 
   selectNode(selectedNode) {
