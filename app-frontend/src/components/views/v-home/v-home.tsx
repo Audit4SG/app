@@ -16,7 +16,7 @@ export class VHome {
             <e-text>
               <strong>D02. Interaction with graph nodes (data extraction)</strong>
               <br />
-              Double-clicking on the nodes of D01 extracts information about that node
+              Clicking on the nodes extracts information about that node, which can then be processed further
             </e-text>
             <l-spacer value={0.5}></l-spacer>
             <stencil-route-link url="/demo-2">View Demo</stencil-route-link>

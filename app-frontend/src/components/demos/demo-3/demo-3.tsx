@@ -36,7 +36,7 @@ export class Demo3 {
   }
 
   async fetch_ViewData() {
-    let url: string = `http://localhost:4444`;
+    let url: string = document.domain === 'localhost' ? 'http://localhost:4444' : 'https://demos-api.audit4sg.org';
     let options: any = {
       method: 'GET',
       headers: {
