@@ -3,6 +3,8 @@
 }
 
 .left-panel {
+  display: flex;
+  flex-direction: column-reverse;
   position: fixed;
   width: 25%;
   max-height: 90vh;
