@@ -16,13 +16,9 @@ export class VHome {
         <ul>
           <li>
             <e-text>
-              <strong>D04. Graph node selection</strong>
+              <strong>D04. Graph node selection + information display</strong>
               <br />
-              i. Selected/deselected graph nodes by <u>double clicking</u>
-              <br />
-              ii. Selected nodes are highlighted in red
-              <br />
-              iii. Information about selected nodes is displayed in a (left) panel
+              Select/deselect graph nodes by <u>double clicking</u>. Selected nodes are highlighted in red. Information about selected nodes is displayed in a panel (on the left)
             </e-text>
             <l-spacer value={0.5}></l-spacer>
             <stencil-route-link url="/demo-4">View Demo</stencil-route-link>
