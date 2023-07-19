@@ -1,0 +1,19 @@
+.container {
+  display: block;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 1em;
+  border-radius: 0.5em;
+  margin-bottom: 1em;
+  font-size: 0.8em;
+  overflow-wrap: break-word;
+}
+
+.data-container {
+  margin: 0.5em 0 1em 0;
+}
+
+.collapsed {
+  height: 100px;
+  overflow: hidden;
+}

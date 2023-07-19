@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, State, Host, h } from '@stencil/core';
 import { gsap } from 'gsap';
 import { ScrollToPlugin } from 'gsap/all';
 gsap.registerPlugin(ScrollToPlugin);
@@ -7,11 +7,13 @@ import * as jsonld from 'jsonld';
 import * as d3 from 'd3';
 
 @Component({
-  tag: 'demo-3',
-  styleUrl: 'demo-3.css',
+  tag: 'demo-4',
+  styleUrl: 'demo-4.css',
   shadow: true,
 })
-export class Demo3 {
+export class Demo4 {
+  @State() infoList = [];
+
   el_Svg!: SVGElement;
 
   private svg: any;
@@ -27,8 +29,6 @@ export class Demo3 {
   private links: any = [];
 
   private jsonld_Flattened: any;
-
-  componentWillLoad() {}
 
   componentDidLoad() {
     gsap.to(window, { duration: 0.1, scrollTo: { y: this.height / 3, x: this.width / 3 } });
@@ -128,7 +128,7 @@ export class Demo3 {
           let obj = {
             target: y.id,
             source: x.id,
-            strength: 0.075,
+            strength: 0.1,
           };
           this.links.push(obj);
         }
@@ -151,7 +151,7 @@ export class Demo3 {
     var simulation: any = d3
       .forceSimulation()
       .force('link', linkForce)
-      .force('charge', d3.forceManyBody().strength(-150))
+      .force('charge', d3.forceManyBody().strength(-100))
       .force('center', d3.forceCenter(this.width / 2, this.height / 2));
 
     var dragDrop = d3
@@ -173,6 +173,31 @@ export class Demo3 {
         node.fy = null;
       });
 
+    this.nodeElements = this.svg
+      .append('g')
+      .attr('class', 'nodes')
+      .selectAll('circle')
+      .data(this.nodes)
+      .enter()
+      .append('circle')
+      .attr('id', node => {
+        return node.id.split('#')[1];
+      })
+      .attr('r', 10)
+      .attr('fill', 'gray')
+      .call(dragDrop)
+      .on('dblclick', (event, data) => {
+        console.log(event);
+        let selected_Node = this.svg.select(`#${data.id.split('#')[1]}`);
+        if (selected_Node.attr('fill') === 'gray') {
+          selected_Node.attr('fill', 'red');
+          this.add_Node_To_InfoList(data);
+        } else if (selected_Node.attr('fill') === 'red') {
+          selected_Node.attr('fill', 'gray');
+          this.remove_Node_From_InfoList(data);
+        }
+      });
+
     this.linkElements = this.svg
       .append('g')
       .attr('class', 'links')
@@ -182,26 +207,6 @@ export class Demo3 {
       .append('line')
       .attr('stroke-width', 1)
       .attr('stroke', 'rgba(50, 50, 50, 0.2)');
-
-    this.nodeElements = this.svg
-      .append('g')
-      .attr('class', 'nodes')
-      .selectAll('rect')
-      .data(this.nodes)
-      .enter()
-      .append('rect')
-      .attr('width', (n: any) => {
-        return n.label.length * 10;
-      })
-      .attr('height', 25)
-      .attr('rx', 5)
-      .attr('ry', 5)
-      .style('fill', '#d3d3d3')
-      .attr('stroke', 'rgba(50, 50, 50, 0.2)')
-      .call(dragDrop)
-      .on('click', (event, data) => {
-        this.get_NodeData(event, data);
-      });
 
     this.textElements = this.svg
       .append('g')
@@ -214,15 +219,15 @@ export class Demo3 {
         return node.label;
       })
       .attr('font-size', 12)
-      .attr('dx', 10)
-      .attr('dy', 17);
+      .attr('dx', 15)
+      .attr('dy', 4);
 
     simulation.nodes(this.nodes).on('tick', () => {
       this.nodeElements
-        .attr('x', function (node) {
+        .attr('cx', function (node) {
           return node.x;
         })
-        .attr('y', function (node) {
+        .attr('cy', function (node) {
           return node.y;
         });
       this.linkElements
@@ -250,63 +255,43 @@ export class Demo3 {
     simulation.force('link').links(this.links);
   }
 
-  getNeighbors(node) {
-    return this.links.reduce(
-      function (neighbors: any, link: any) {
-        if (link.target.id === node.id) {
-          neighbors.push(link.source.id);
-        } else if (link.source.id === node.id) {
-          neighbors.push(link.target.id);
-        }
-        return neighbors;
-      },
-      [node.id],
-    );
-  }
-
-  isNeighborLink(node, link) {
-    return link.target.id === node.id || link.source.id === node.id;
-  }
-
-  getNodeColor(node, neighbors) {
-    if (Array.isArray(neighbors) && neighbors.indexOf(node.id) > -1) {
-      return node.level === 1 ? 'blue' : 'green';
-    }
-
-    return node.level === 1 ? 'red' : 'gray';
-  }
-
-  getLinkColor(node, link) {
-    return this.isNeighborLink(node, link) ? 'green' : '#E5E5E5';
-  }
-
-  getTextColor(node, neighbors) {
-    return Array.isArray(neighbors) && neighbors.indexOf(node.id) > -1 ? 'green' : 'black';
-  }
-
-  get_NodeData(event, data) {
-    console.log(event);
-    console.log(data.id);
-  }
-
-  selectNode(selectedNode) {
-    var neighbors = this.getNeighbors(selectedNode);
-
-    // we modify the styles to highlight selected nodes
-    this.nodeElements.attr('fill', function (node) {
-      return this.getNodeColor(node, neighbors);
+  add_Node_To_InfoList(data) {
+    let obj_Data: any;
+    this.jsonld_Flattened.map((item: any) => {
+      if (item['@id'] === data.id) {
+        obj_Data = item;
+      }
     });
-    this.textElements.attr('fill', function (node) {
-      return this.getTextColor(node, neighbors);
+    this.infoList.push({
+      id: data.id,
+      title: data.label,
+      data: JSON.stringify(obj_Data),
     });
-    this.linkElements.attr('stroke', function (link) {
-      return this.getLinkColor(selectedNode, link);
+
+    this.infoList = [...this.infoList];
+  }
+
+  remove_Node_From_InfoList(data) {
+    this.infoList = this.infoList.filter(obj => {
+      return obj.id !== data.id;
     });
+
+    this.infoList = [...this.infoList];
   }
 
   render() {
     return (
       <Host>
+        {this.infoList.length > 0 && (
+          <div class="left-panel">
+            {this.infoList.map(item => (
+              <p-info-item>
+                <e-text slot="title">{item.title}</e-text>
+                <e-text slot="data">{item.data}</e-text>
+              </p-info-item>
+            ))}
+          </div>
+        )}
         <svg width={this.width} height={this.height} ref={el => (this.el_Svg = el as SVGAElement)}></svg>
       </Host>
     );

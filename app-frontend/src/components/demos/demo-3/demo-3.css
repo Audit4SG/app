@@ -1,3 +1,8 @@
 :host {
   display: block;
 }
+
+.nodes {
+  position: relative;
+  right: 25px;
+}

@@ -25,6 +25,8 @@ export namespace Components {
     }
     interface Demo3 {
     }
+    interface Demo4 {
+    }
     interface EButton {
         "action": string;
         "active": boolean;
@@ -72,6 +74,8 @@ export namespace Components {
     interface LSpacer {
         "value": number;
         "variant": string;
+    }
+    interface PInfoItem {
     }
     interface VCatchAll {
         "history": RouterHistory;
@@ -127,6 +131,12 @@ declare global {
     var HTMLDemo3Element: {
         prototype: HTMLDemo3Element;
         new (): HTMLDemo3Element;
+    };
+    interface HTMLDemo4Element extends Components.Demo4, HTMLStencilElement {
+    }
+    var HTMLDemo4Element: {
+        prototype: HTMLDemo4Element;
+        new (): HTMLDemo4Element;
     };
     interface HTMLEButtonElement extends Components.EButton, HTMLStencilElement {
     }
@@ -188,6 +198,12 @@ declare global {
         prototype: HTMLLSpacerElement;
         new (): HTMLLSpacerElement;
     };
+    interface HTMLPInfoItemElement extends Components.PInfoItem, HTMLStencilElement {
+    }
+    var HTMLPInfoItemElement: {
+        prototype: HTMLPInfoItemElement;
+        new (): HTMLPInfoItemElement;
+    };
     interface HTMLVCatchAllElement extends Components.VCatchAll, HTMLStencilElement {
     }
     var HTMLVCatchAllElement: {
@@ -209,6 +225,7 @@ declare global {
         "demo-1": HTMLDemo1Element;
         "demo-2": HTMLDemo2Element;
         "demo-3": HTMLDemo3Element;
+        "demo-4": HTMLDemo4Element;
         "e-button": HTMLEButtonElement;
         "e-input": HTMLEInputElement;
         "e-link": HTMLELinkElement;
@@ -219,6 +236,7 @@ declare global {
         "l-row": HTMLLRowElement;
         "l-seperator": HTMLLSeperatorElement;
         "l-spacer": HTMLLSpacerElement;
+        "p-info-item": HTMLPInfoItemElement;
         "v-catch-all": HTMLVCatchAllElement;
         "v-home": HTMLVHomeElement;
     }
@@ -241,6 +259,8 @@ declare namespace LocalJSX {
     interface Demo2 {
     }
     interface Demo3 {
+    }
+    interface Demo4 {
     }
     interface EButton {
         "action"?: string;
@@ -294,6 +314,8 @@ declare namespace LocalJSX {
         "value"?: number;
         "variant"?: string;
     }
+    interface PInfoItem {
+    }
     interface VCatchAll {
         "history"?: RouterHistory;
     }
@@ -308,6 +330,7 @@ declare namespace LocalJSX {
         "demo-1": Demo1;
         "demo-2": Demo2;
         "demo-3": Demo3;
+        "demo-4": Demo4;
         "e-button": EButton;
         "e-input": EInput;
         "e-link": ELink;
@@ -318,6 +341,7 @@ declare namespace LocalJSX {
         "l-row": LRow;
         "l-seperator": LSeperator;
         "l-spacer": LSpacer;
+        "p-info-item": PInfoItem;
         "v-catch-all": VCatchAll;
         "v-home": VHome;
     }
@@ -334,6 +358,7 @@ declare module "@stencil/core" {
             "demo-1": LocalJSX.Demo1 & JSXBase.HTMLAttributes<HTMLDemo1Element>;
             "demo-2": LocalJSX.Demo2 & JSXBase.HTMLAttributes<HTMLDemo2Element>;
             "demo-3": LocalJSX.Demo3 & JSXBase.HTMLAttributes<HTMLDemo3Element>;
+            "demo-4": LocalJSX.Demo4 & JSXBase.HTMLAttributes<HTMLDemo4Element>;
             "e-button": LocalJSX.EButton & JSXBase.HTMLAttributes<HTMLEButtonElement>;
             "e-input": LocalJSX.EInput & JSXBase.HTMLAttributes<HTMLEInputElement>;
             "e-link": LocalJSX.ELink & JSXBase.HTMLAttributes<HTMLELinkElement>;
@@ -344,6 +369,7 @@ declare module "@stencil/core" {
             "l-row": LocalJSX.LRow & JSXBase.HTMLAttributes<HTMLLRowElement>;
             "l-seperator": LocalJSX.LSeperator & JSXBase.HTMLAttributes<HTMLLSeperatorElement>;
             "l-spacer": LocalJSX.LSpacer & JSXBase.HTMLAttributes<HTMLLSpacerElement>;
+            "p-info-item": LocalJSX.PInfoItem & JSXBase.HTMLAttributes<HTMLPInfoItemElement>;
             "v-catch-all": LocalJSX.VCatchAll & JSXBase.HTMLAttributes<HTMLVCatchAllElement>;
             "v-home": LocalJSX.VHome & JSXBase.HTMLAttributes<HTMLVHomeElement>;
         }

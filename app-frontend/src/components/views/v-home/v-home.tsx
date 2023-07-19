@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, Host, State, h } from '@stencil/core';
 
 @Component({
   tag: 'v-home',
@@ -6,6 +6,8 @@ import { Component, Host, h } from '@stencil/core';
   shadow: true,
 })
 export class VHome {
+  @State() list: any = [];
+
   render() {
     return (
       <Host>
@@ -14,9 +16,31 @@ export class VHome {
         <ul>
           <li>
             <e-text>
-              <strong>D02. Interaction with graph nodes (data extraction)</strong>
+              <strong>D04. Graph node selection</strong>
               <br />
-              Clicking on the nodes extracts information about that node, which can then be processed further
+              i. Selected/deselected graph nodes by <u>double clicking</u>
+              <br />
+              ii. Selected nodes are highlighted in red
+              <br />
+              iii. Information about selected nodes is displayed in a (left) panel
+            </e-text>
+            <l-spacer value={0.5}></l-spacer>
+            <stencil-route-link url="/demo-4">View Demo</stencil-route-link>
+          </li>
+          <li>
+            <e-text>
+              <strong>D03. Graph labels inside nodes</strong>
+              <br />
+              Node labels are displayed inside flexible-width rectangular nodes
+            </e-text>
+            <l-spacer value={0.5}></l-spacer>
+            <stencil-route-link url="/demo-3">View Demo</stencil-route-link>
+          </li>
+          <li>
+            <e-text>
+              <strong>D02. Interaction with graph nodes</strong>
+              <br />
+              Clicking on graph nodes extracts information about the node and is displayed in an <em>alert</em> modal
             </e-text>
             <l-spacer value={0.5}></l-spacer>
             <stencil-route-link url="/demo-2">View Demo</stencil-route-link>
