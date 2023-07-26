@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { MatchResults, RouterHistory } from "@stencil/router";
+import { RouterHistory } from "@stencil/router";
 export namespace Components {
     interface AppRoot {
         "history": RouterHistory;
@@ -69,28 +69,14 @@ export namespace Components {
     }
     interface PGallery {
     }
-    interface PUserControl {
+    interface VAudit {
     }
     interface VCatchAll {
         "history": RouterHistory;
     }
-    interface VCheckout {
-        "history": RouterHistory;
-        "match": MatchResults;
-    }
-    interface VForgotPassword {
-    }
     interface VHome {
     }
-    interface VLogin {
-    }
     interface VPaymentCancel {
-    }
-    interface VPaymentHandle {
-        "history": RouterHistory;
-        "match": MatchResults;
-    }
-    interface VSignup {
     }
 }
 declare global {
@@ -190,11 +176,11 @@ declare global {
         prototype: HTMLPGalleryElement;
         new (): HTMLPGalleryElement;
     };
-    interface HTMLPUserControlElement extends Components.PUserControl, HTMLStencilElement {
+    interface HTMLVAuditElement extends Components.VAudit, HTMLStencilElement {
     }
-    var HTMLPUserControlElement: {
-        prototype: HTMLPUserControlElement;
-        new (): HTMLPUserControlElement;
+    var HTMLVAuditElement: {
+        prototype: HTMLVAuditElement;
+        new (): HTMLVAuditElement;
     };
     interface HTMLVCatchAllElement extends Components.VCatchAll, HTMLStencilElement {
     }
@@ -202,47 +188,17 @@ declare global {
         prototype: HTMLVCatchAllElement;
         new (): HTMLVCatchAllElement;
     };
-    interface HTMLVCheckoutElement extends Components.VCheckout, HTMLStencilElement {
-    }
-    var HTMLVCheckoutElement: {
-        prototype: HTMLVCheckoutElement;
-        new (): HTMLVCheckoutElement;
-    };
-    interface HTMLVForgotPasswordElement extends Components.VForgotPassword, HTMLStencilElement {
-    }
-    var HTMLVForgotPasswordElement: {
-        prototype: HTMLVForgotPasswordElement;
-        new (): HTMLVForgotPasswordElement;
-    };
     interface HTMLVHomeElement extends Components.VHome, HTMLStencilElement {
     }
     var HTMLVHomeElement: {
         prototype: HTMLVHomeElement;
         new (): HTMLVHomeElement;
     };
-    interface HTMLVLoginElement extends Components.VLogin, HTMLStencilElement {
-    }
-    var HTMLVLoginElement: {
-        prototype: HTMLVLoginElement;
-        new (): HTMLVLoginElement;
-    };
     interface HTMLVPaymentCancelElement extends Components.VPaymentCancel, HTMLStencilElement {
     }
     var HTMLVPaymentCancelElement: {
         prototype: HTMLVPaymentCancelElement;
         new (): HTMLVPaymentCancelElement;
-    };
-    interface HTMLVPaymentHandleElement extends Components.VPaymentHandle, HTMLStencilElement {
-    }
-    var HTMLVPaymentHandleElement: {
-        prototype: HTMLVPaymentHandleElement;
-        new (): HTMLVPaymentHandleElement;
-    };
-    interface HTMLVSignupElement extends Components.VSignup, HTMLStencilElement {
-    }
-    var HTMLVSignupElement: {
-        prototype: HTMLVSignupElement;
-        new (): HTMLVSignupElement;
     };
     interface HTMLElementTagNameMap {
         "app-root": HTMLAppRootElement;
@@ -261,15 +217,10 @@ declare global {
         "l-seperator": HTMLLSeperatorElement;
         "l-spacer": HTMLLSpacerElement;
         "p-gallery": HTMLPGalleryElement;
-        "p-user-control": HTMLPUserControlElement;
+        "v-audit": HTMLVAuditElement;
         "v-catch-all": HTMLVCatchAllElement;
-        "v-checkout": HTMLVCheckoutElement;
-        "v-forgot-password": HTMLVForgotPasswordElement;
         "v-home": HTMLVHomeElement;
-        "v-login": HTMLVLoginElement;
         "v-payment-cancel": HTMLVPaymentCancelElement;
-        "v-payment-handle": HTMLVPaymentHandleElement;
-        "v-signup": HTMLVSignupElement;
     }
 }
 declare namespace LocalJSX {
@@ -339,37 +290,15 @@ declare namespace LocalJSX {
     }
     interface PGallery {
     }
-    interface PUserControl {
-        "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
+    interface VAudit {
     }
     interface VCatchAll {
         "history"?: RouterHistory;
     }
-    interface VCheckout {
-        "history"?: RouterHistory;
-        "match"?: MatchResults;
-        "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
-    }
-    interface VForgotPassword {
-        "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
-    }
     interface VHome {
-    }
-    interface VLogin {
-        "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
-        "onSuccess_Auth"?: (event: CustomEvent<any>) => void;
     }
     interface VPaymentCancel {
         "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
-    }
-    interface VPaymentHandle {
-        "history"?: RouterHistory;
-        "match"?: MatchResults;
-        "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
-    }
-    interface VSignup {
-        "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
-        "onSuccess_Auth"?: (event: CustomEvent<any>) => void;
     }
     interface IntrinsicElements {
         "app-root": AppRoot;
@@ -388,15 +317,10 @@ declare namespace LocalJSX {
         "l-seperator": LSeperator;
         "l-spacer": LSpacer;
         "p-gallery": PGallery;
-        "p-user-control": PUserControl;
+        "v-audit": VAudit;
         "v-catch-all": VCatchAll;
-        "v-checkout": VCheckout;
-        "v-forgot-password": VForgotPassword;
         "v-home": VHome;
-        "v-login": VLogin;
         "v-payment-cancel": VPaymentCancel;
-        "v-payment-handle": VPaymentHandle;
-        "v-signup": VSignup;
     }
 }
 export { LocalJSX as JSX };
@@ -419,15 +343,10 @@ declare module "@stencil/core" {
             "l-seperator": LocalJSX.LSeperator & JSXBase.HTMLAttributes<HTMLLSeperatorElement>;
             "l-spacer": LocalJSX.LSpacer & JSXBase.HTMLAttributes<HTMLLSpacerElement>;
             "p-gallery": LocalJSX.PGallery & JSXBase.HTMLAttributes<HTMLPGalleryElement>;
-            "p-user-control": LocalJSX.PUserControl & JSXBase.HTMLAttributes<HTMLPUserControlElement>;
+            "v-audit": LocalJSX.VAudit & JSXBase.HTMLAttributes<HTMLVAuditElement>;
             "v-catch-all": LocalJSX.VCatchAll & JSXBase.HTMLAttributes<HTMLVCatchAllElement>;
-            "v-checkout": LocalJSX.VCheckout & JSXBase.HTMLAttributes<HTMLVCheckoutElement>;
-            "v-forgot-password": LocalJSX.VForgotPassword & JSXBase.HTMLAttributes<HTMLVForgotPasswordElement>;
             "v-home": LocalJSX.VHome & JSXBase.HTMLAttributes<HTMLVHomeElement>;
-            "v-login": LocalJSX.VLogin & JSXBase.HTMLAttributes<HTMLVLoginElement>;
             "v-payment-cancel": LocalJSX.VPaymentCancel & JSXBase.HTMLAttributes<HTMLVPaymentCancelElement>;
-            "v-payment-handle": LocalJSX.VPaymentHandle & JSXBase.HTMLAttributes<HTMLVPaymentHandleElement>;
-            "v-signup": LocalJSX.VSignup & JSXBase.HTMLAttributes<HTMLVSignupElement>;
         }
     }
 }

@@ -1,18 +1,18 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { VForgotPassword } from '../v-forgot-password';
+import { VAudit } from '../v-audit';
 
-describe('v-forgot-password', () => {
+describe('v-audit', () => {
   it('renders', async () => {
     const page = await newSpecPage({
-      components: [VForgotPassword],
-      html: `<v-forgot-password></v-forgot-password>`,
+      components: [VAudit],
+      html: `<v-audit></v-audit>`,
     });
     expect(page.root).toEqualHtml(`
-      <v-forgot-password>
+      <v-audit>
         <mock:shadow-root>
           <slot></slot>
         </mock:shadow-root>
-      </v-forgot-password>
+      </v-audit>
     `);
   });
 });

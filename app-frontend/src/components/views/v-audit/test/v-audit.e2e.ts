@@ -1,11 +1,11 @@
 import { newE2EPage } from '@stencil/core/testing';
 
-describe('v-payment-handle', () => {
+describe('v-audit', () => {
   it('renders', async () => {
     const page = await newE2EPage();
-    await page.setContent('<v-payment-handle></v-payment-handle>');
+    await page.setContent('<v-audit></v-audit>');
 
-    const element = await page.find('v-payment-handle');
+    const element = await page.find('v-audit');
     expect(element).toHaveClass('hydrated');
   });
 });
