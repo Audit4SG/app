@@ -1,6 +1,6 @@
 {
-  "name": "Webapp Starter Frontend",
-  "short_name": "webapp_starter",
+  "name": "Auditing app for RelAiO",
+  "short_name": "relaio_auditing_app",
   "start_url": "/",
   "display": "standalone",
   "icons": [

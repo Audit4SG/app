@@ -1,8 +1,8 @@
 {
-  "name": "app-frontend",
+  "name": "relaio_auditing_app",
   "private": true,
   "version": "0.0.1",
-  "description": "App frontend",
+  "description": "Auditing app for RelAiO",
   "scripts": {
     "build": "stencil build",
     "start": "stencil build --dev --watch --serve",

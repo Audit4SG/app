@@ -1,7 +1,7 @@
 {
-  "name": "app-server",
+  "name": "relaio_auditing_app-api",
   "version": "0.0.1",
-  "description": "Serves the app frontend",
+  "description": "Auditing app api for RelAiO",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon",
