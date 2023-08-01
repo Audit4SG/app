@@ -1,8 +1,5 @@
 import { Component, Prop, Listen, h } from '@stencil/core';
 import { RouterHistory, injectHistory } from '@stencil/router';
-import { state, IO } from '../../global/script';
-import { helper_Set_State, helper_Set_Session_In_LocalStorage, helper_Check_Session_In_LocalStorage } from './helpers';
-import { Helper_ApiCall_GetAccountDetails_BySession } from '../../global/script/helpers';
 
 @Component({
   tag: 'app-root',
@@ -20,38 +17,6 @@ export class AppRoot {
     }
   }
 
-  @Listen('success_Auth') handle_success_Auth(e) {
-    helper_Set_State(e.detail.payload);
-    helper_Set_Session_In_LocalStorage();
-  }
-
-  componentWillLoad() {
-    let { payload } = helper_Check_Session_In_LocalStorage();
-    if (payload.isLogged) {
-      state.isActive_Session = payload.isLogged;
-    }
-  }
-
-  componentDidLoad() {
-    if (state.isActive_Session) {
-      this.fetch_AccountData();
-    }
-  }
-
-  disconnectedCallback() {
-    IO.disconnect();
-  }
-
-  async fetch_AccountData() {
-    let { success, message, payload } = await Helper_ApiCall_GetAccountDetails_BySession();
-    if (!success) {
-      this.history.push('/login', {});
-      return console.log(message);
-    }
-    helper_Set_State(payload);
-    helper_Set_Session_In_LocalStorage();
-  }
-
   render() {
     return (
       <stencil-router>
@@ -61,6 +26,7 @@ export class AppRoot {
           <stencil-route url="/demo-2" component="demo-2" exact={true} />
           <stencil-route url="/demo-3" component="demo-3" exact={true} />
           <stencil-route url="/demo-4" component="demo-4" exact={true} />
+          <stencil-route url="/demo-5" component="demo-5" exact={true} />
           <stencil-route component="v-catch-all" />
         </stencil-route-switch>
       </stencil-router>

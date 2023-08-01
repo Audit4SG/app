@@ -27,6 +27,8 @@ export namespace Components {
     }
     interface Demo4 {
     }
+    interface Demo5 {
+    }
     interface EButton {
         "action": string;
         "active": boolean;
@@ -76,6 +78,9 @@ export namespace Components {
         "variant": string;
     }
     interface PInfoItem {
+    }
+    interface PNodeItem {
+        "variant": string;
     }
     interface VCatchAll {
         "history": RouterHistory;
@@ -137,6 +142,12 @@ declare global {
     var HTMLDemo4Element: {
         prototype: HTMLDemo4Element;
         new (): HTMLDemo4Element;
+    };
+    interface HTMLDemo5Element extends Components.Demo5, HTMLStencilElement {
+    }
+    var HTMLDemo5Element: {
+        prototype: HTMLDemo5Element;
+        new (): HTMLDemo5Element;
     };
     interface HTMLEButtonElement extends Components.EButton, HTMLStencilElement {
     }
@@ -204,6 +215,12 @@ declare global {
         prototype: HTMLPInfoItemElement;
         new (): HTMLPInfoItemElement;
     };
+    interface HTMLPNodeItemElement extends Components.PNodeItem, HTMLStencilElement {
+    }
+    var HTMLPNodeItemElement: {
+        prototype: HTMLPNodeItemElement;
+        new (): HTMLPNodeItemElement;
+    };
     interface HTMLVCatchAllElement extends Components.VCatchAll, HTMLStencilElement {
     }
     var HTMLVCatchAllElement: {
@@ -226,6 +243,7 @@ declare global {
         "demo-2": HTMLDemo2Element;
         "demo-3": HTMLDemo3Element;
         "demo-4": HTMLDemo4Element;
+        "demo-5": HTMLDemo5Element;
         "e-button": HTMLEButtonElement;
         "e-input": HTMLEInputElement;
         "e-link": HTMLELinkElement;
@@ -237,6 +255,7 @@ declare global {
         "l-seperator": HTMLLSeperatorElement;
         "l-spacer": HTMLLSpacerElement;
         "p-info-item": HTMLPInfoItemElement;
+        "p-node-item": HTMLPNodeItemElement;
         "v-catch-all": HTMLVCatchAllElement;
         "v-home": HTMLVHomeElement;
     }
@@ -261,6 +280,8 @@ declare namespace LocalJSX {
     interface Demo3 {
     }
     interface Demo4 {
+    }
+    interface Demo5 {
     }
     interface EButton {
         "action"?: string;
@@ -316,6 +337,9 @@ declare namespace LocalJSX {
     }
     interface PInfoItem {
     }
+    interface PNodeItem {
+        "variant"?: string;
+    }
     interface VCatchAll {
         "history"?: RouterHistory;
     }
@@ -331,6 +355,7 @@ declare namespace LocalJSX {
         "demo-2": Demo2;
         "demo-3": Demo3;
         "demo-4": Demo4;
+        "demo-5": Demo5;
         "e-button": EButton;
         "e-input": EInput;
         "e-link": ELink;
@@ -342,6 +367,7 @@ declare namespace LocalJSX {
         "l-seperator": LSeperator;
         "l-spacer": LSpacer;
         "p-info-item": PInfoItem;
+        "p-node-item": PNodeItem;
         "v-catch-all": VCatchAll;
         "v-home": VHome;
     }
@@ -359,6 +385,7 @@ declare module "@stencil/core" {
             "demo-2": LocalJSX.Demo2 & JSXBase.HTMLAttributes<HTMLDemo2Element>;
             "demo-3": LocalJSX.Demo3 & JSXBase.HTMLAttributes<HTMLDemo3Element>;
             "demo-4": LocalJSX.Demo4 & JSXBase.HTMLAttributes<HTMLDemo4Element>;
+            "demo-5": LocalJSX.Demo5 & JSXBase.HTMLAttributes<HTMLDemo5Element>;
             "e-button": LocalJSX.EButton & JSXBase.HTMLAttributes<HTMLEButtonElement>;
             "e-input": LocalJSX.EInput & JSXBase.HTMLAttributes<HTMLEInputElement>;
             "e-link": LocalJSX.ELink & JSXBase.HTMLAttributes<HTMLELinkElement>;
@@ -370,6 +397,7 @@ declare module "@stencil/core" {
             "l-seperator": LocalJSX.LSeperator & JSXBase.HTMLAttributes<HTMLLSeperatorElement>;
             "l-spacer": LocalJSX.LSpacer & JSXBase.HTMLAttributes<HTMLLSpacerElement>;
             "p-info-item": LocalJSX.PInfoItem & JSXBase.HTMLAttributes<HTMLPInfoItemElement>;
+            "p-node-item": LocalJSX.PNodeItem & JSXBase.HTMLAttributes<HTMLPNodeItemElement>;
             "v-catch-all": LocalJSX.VCatchAll & JSXBase.HTMLAttributes<HTMLVCatchAllElement>;
             "v-home": LocalJSX.VHome & JSXBase.HTMLAttributes<HTMLVHomeElement>;
         }

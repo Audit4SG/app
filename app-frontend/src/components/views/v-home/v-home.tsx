@@ -16,7 +16,16 @@ export class VHome {
         <ul>
           <li>
             <e-text>
-              <strong>D04. Graph node selection + information display</strong>
+              <strong>D05. Graph node selection + information display (Part-2)</strong>
+              <br />
+              Everything in D04 + List item collapses when more than 5 nodes are selected + Includes an expanded view
+            </e-text>
+            <l-spacer value={0.5}></l-spacer>
+            <stencil-route-link url="/demo-5">View Demo</stencil-route-link>
+          </li>
+          <li>
+            <e-text>
+              <strong>D04. Graph node selection + information display (Part-1)</strong>
               <br />
               Select/deselect graph nodes by <u>double clicking</u>. Selected nodes are highlighted in red. Information about selected nodes is displayed in a panel (on the left)
             </e-text>
