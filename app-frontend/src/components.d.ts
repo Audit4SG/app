@@ -79,6 +79,9 @@ export namespace Components {
     }
     interface PInfoItem {
     }
+    interface PNodeCard {
+        "isExpanded": boolean;
+    }
     interface PNodeItem {
         "variant": string;
     }
@@ -215,6 +218,12 @@ declare global {
         prototype: HTMLPInfoItemElement;
         new (): HTMLPInfoItemElement;
     };
+    interface HTMLPNodeCardElement extends Components.PNodeCard, HTMLStencilElement {
+    }
+    var HTMLPNodeCardElement: {
+        prototype: HTMLPNodeCardElement;
+        new (): HTMLPNodeCardElement;
+    };
     interface HTMLPNodeItemElement extends Components.PNodeItem, HTMLStencilElement {
     }
     var HTMLPNodeItemElement: {
@@ -255,6 +264,7 @@ declare global {
         "l-seperator": HTMLLSeperatorElement;
         "l-spacer": HTMLLSpacerElement;
         "p-info-item": HTMLPInfoItemElement;
+        "p-node-card": HTMLPNodeCardElement;
         "p-node-item": HTMLPNodeItemElement;
         "v-catch-all": HTMLVCatchAllElement;
         "v-home": HTMLVHomeElement;
@@ -337,6 +347,9 @@ declare namespace LocalJSX {
     }
     interface PInfoItem {
     }
+    interface PNodeCard {
+        "isExpanded"?: boolean;
+    }
     interface PNodeItem {
         "variant"?: string;
     }
@@ -367,6 +380,7 @@ declare namespace LocalJSX {
         "l-seperator": LSeperator;
         "l-spacer": LSpacer;
         "p-info-item": PInfoItem;
+        "p-node-card": PNodeCard;
         "p-node-item": PNodeItem;
         "v-catch-all": VCatchAll;
         "v-home": VHome;
@@ -397,6 +411,7 @@ declare module "@stencil/core" {
             "l-seperator": LocalJSX.LSeperator & JSXBase.HTMLAttributes<HTMLLSeperatorElement>;
             "l-spacer": LocalJSX.LSpacer & JSXBase.HTMLAttributes<HTMLLSpacerElement>;
             "p-info-item": LocalJSX.PInfoItem & JSXBase.HTMLAttributes<HTMLPInfoItemElement>;
+            "p-node-card": LocalJSX.PNodeCard & JSXBase.HTMLAttributes<HTMLPNodeCardElement>;
             "p-node-item": LocalJSX.PNodeItem & JSXBase.HTMLAttributes<HTMLPNodeItemElement>;
             "v-catch-all": LocalJSX.VCatchAll & JSXBase.HTMLAttributes<HTMLVCatchAllElement>;
             "v-home": LocalJSX.VHome & JSXBase.HTMLAttributes<HTMLVHomeElement>;

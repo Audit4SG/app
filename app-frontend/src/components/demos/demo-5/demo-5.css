@@ -21,3 +21,26 @@
 .show-panel {
   display: block;
 }
+
+.expanded-view {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: white;
+  padding: 2em;
+  z-index: 99999;
+}
+
+.expanded-view main {
+  width: 90%;
+  overflow: auto;
+  height: 90vh;
+}
+
+.node-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}

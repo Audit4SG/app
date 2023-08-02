@@ -279,6 +279,20 @@ export class Demo5 {
     this.infoList = [...this.infoList];
   }
 
+  @State() isExpandedViewOpen: boolean = false;
+  closeExpandedView() {
+    this.isExpandedViewOpen = false;
+  }
+  openExpandedView() {
+    console.log(this.infoList);
+    this.isExpandedViewOpen = true;
+  }
+
+  @State() isCardExpanded: boolean = false;
+  toogleCardExpansion() {
+    this.isCardExpanded = !this.isCardExpanded;
+  }
+
   render() {
     return (
       <Host>
@@ -296,12 +310,39 @@ export class Demo5 {
             <div>
               <l-spacer value={1}></l-spacer>
               <l-row justifyContent="space-around">
-                <button>Expand all</button>
+                <button onClick={() => this.openExpandedView()}>View all</button>
               </l-row>
               <l-spacer value={1}></l-spacer>
             </div>
           )}
         </div>
+        {this.isExpandedViewOpen && (
+          <div class={`expanded-view`}>
+            <main>
+              <l-row justifyContent="space-between">
+                <e-text>Selected Nodes</e-text>
+                <button onClick={() => this.toogleCardExpansion()}>{this.isCardExpanded ? 'Collapse all' : 'Expand all'}</button>
+                <button onClick={() => this.closeExpandedView()}>
+                  <ion-icon name="close-outline"></ion-icon>
+                  Close
+                </button>
+              </l-row>
+              <l-spacer value={1}></l-spacer>
+              <l-seperator></l-seperator>
+              <l-spacer value={3}></l-spacer>
+              <div class="node-card-container">
+                {this.infoList.map(item => (
+                  <p-node-card isExpanded={this.isCardExpanded}>
+                    <e-text slot="title">
+                      <strong>{item.title}</strong>
+                    </e-text>
+                    <e-text slot="data">{item.data}</e-text>
+                  </p-node-card>
+                ))}
+              </div>
+            </main>
+          </div>
+        )}
         <svg width={this.width} height={this.height} ref={el => (this.el_Svg = el as SVGAElement)}></svg>
       </Host>
     );
