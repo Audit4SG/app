@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, State, Host, h } from '@stencil/core';
 import { gsap } from 'gsap';
 import { ScrollToPlugin } from 'gsap/all';
 gsap.registerPlugin(ScrollToPlugin);
@@ -7,12 +7,14 @@ import * as jsonld from 'jsonld';
 import * as d3 from 'd3';
 
 @Component({
-  tag: 'demo-1',
-  styleUrl: 'demo-1.css',
+  tag: 'demo-6',
+  styleUrl: 'demo-6.css',
   shadow: true,
 })
-export class Demo1 {
+export class Demo6 {
   el_Svg!: SVGElement;
+
+  @State() activeView: string = 'tree';
 
   private svg: any;
   private width = window.innerWidth * 3;
@@ -25,10 +27,7 @@ export class Demo1 {
   // private class_Blank: any = [];
   private nodes: any = [];
   private links: any = [];
-
   private jsonld_Flattened: any;
-
-  componentWillLoad() {}
 
   componentDidLoad() {
     gsap.to(window, { duration: 0.1, scrollTo: { y: this.height / 3, x: this.width / 3 } });
@@ -55,13 +54,17 @@ export class Demo1 {
 
   async process_Jsonld(data_JSONLD: any) {
     this.jsonld_Flattened = await jsonld.flatten(data_JSONLD);
-    this.get_Classes();
-    this.generate_Nodes();
-    this.generate_Links();
-    this.generate_Graph();
+    this.prepare_Classes();
+
+    if (this.activeView === 'graph') {
+      this.prepare_Graph_Nodes();
+      this.prepare_Graph_Links();
+      this.generate_Graph();
+    } else if (this.activeView === 'tree') {
+    }
   }
 
-  get_Classes() {
+  prepare_Classes() {
     //Extract the Class Objects
     let class_Pure_Raw: any = [];
     let class_Blank_Raw: any = [];
@@ -111,7 +114,8 @@ export class Demo1 {
     });
   }
 
-  generate_Nodes() {
+  // Graph
+  prepare_Graph_Nodes() {
     this.class_Pure.map((item: any) => {
       let obj = {
         id: item.id,
@@ -121,7 +125,7 @@ export class Demo1 {
     });
   }
 
-  generate_Links() {
+  prepare_Graph_Links() {
     this.class_Pure.map((x: any) => {
       this.class_Pure.map((y: any) => {
         if (x.id === y.subClassOf) {
@@ -232,9 +236,36 @@ export class Demo1 {
     simulation.force('link').links(this.links);
   }
 
+  // Tree
+  // Enter code here after isolated testing
+
+  // Controls
+  handleViewChange(selectedView: string) {
+    this.clearViz();
+    this.activeView = selectedView;
+    if (this.activeView === 'graph') {
+      this.generate_Graph();
+    } else if (this.activeView === 'tree') {
+      console.log('Generate Tree View');
+    }
+  }
+
+  clearViz() {
+    this.svg.selectAll('*').remove();
+  }
+
   render() {
     return (
       <Host>
+        <div class="view-control-container">
+          <button class={this.activeView === 'graph' && 'active'} onClick={() => this.handleViewChange('graph')}>
+            Graph view
+          </button>
+          <l-spacer variant="horizontal" value={0.5}></l-spacer>
+          <button class={this.activeView === 'tree' && 'active'} onClick={() => this.handleViewChange('tree')}>
+            Tree view
+          </button>
+        </div>
         <svg width={this.width} height={this.height} ref={el => (this.el_Svg = el as SVGAElement)}></svg>
       </Host>
     );

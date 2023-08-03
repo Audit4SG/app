@@ -19,6 +19,8 @@ export namespace Components {
     }
     interface CSidebar {
     }
+    interface CollapsibleTree {
+    }
     interface Demo1 {
     }
     interface Demo2 {
@@ -28,6 +30,8 @@ export namespace Components {
     interface Demo4 {
     }
     interface Demo5 {
+    }
+    interface Demo6 {
     }
     interface EButton {
         "action": string;
@@ -122,6 +126,12 @@ declare global {
         prototype: HTMLCSidebarElement;
         new (): HTMLCSidebarElement;
     };
+    interface HTMLCollapsibleTreeElement extends Components.CollapsibleTree, HTMLStencilElement {
+    }
+    var HTMLCollapsibleTreeElement: {
+        prototype: HTMLCollapsibleTreeElement;
+        new (): HTMLCollapsibleTreeElement;
+    };
     interface HTMLDemo1Element extends Components.Demo1, HTMLStencilElement {
     }
     var HTMLDemo1Element: {
@@ -151,6 +161,12 @@ declare global {
     var HTMLDemo5Element: {
         prototype: HTMLDemo5Element;
         new (): HTMLDemo5Element;
+    };
+    interface HTMLDemo6Element extends Components.Demo6, HTMLStencilElement {
+    }
+    var HTMLDemo6Element: {
+        prototype: HTMLDemo6Element;
+        new (): HTMLDemo6Element;
     };
     interface HTMLEButtonElement extends Components.EButton, HTMLStencilElement {
     }
@@ -248,11 +264,13 @@ declare global {
         "c-card": HTMLCCardElement;
         "c-page": HTMLCPageElement;
         "c-sidebar": HTMLCSidebarElement;
+        "collapsible-tree": HTMLCollapsibleTreeElement;
         "demo-1": HTMLDemo1Element;
         "demo-2": HTMLDemo2Element;
         "demo-3": HTMLDemo3Element;
         "demo-4": HTMLDemo4Element;
         "demo-5": HTMLDemo5Element;
+        "demo-6": HTMLDemo6Element;
         "e-button": HTMLEButtonElement;
         "e-input": HTMLEInputElement;
         "e-link": HTMLELinkElement;
@@ -283,6 +301,8 @@ declare namespace LocalJSX {
     }
     interface CSidebar {
     }
+    interface CollapsibleTree {
+    }
     interface Demo1 {
     }
     interface Demo2 {
@@ -292,6 +312,8 @@ declare namespace LocalJSX {
     interface Demo4 {
     }
     interface Demo5 {
+    }
+    interface Demo6 {
     }
     interface EButton {
         "action"?: string;
@@ -364,11 +386,13 @@ declare namespace LocalJSX {
         "c-card": CCard;
         "c-page": CPage;
         "c-sidebar": CSidebar;
+        "collapsible-tree": CollapsibleTree;
         "demo-1": Demo1;
         "demo-2": Demo2;
         "demo-3": Demo3;
         "demo-4": Demo4;
         "demo-5": Demo5;
+        "demo-6": Demo6;
         "e-button": EButton;
         "e-input": EInput;
         "e-link": ELink;
@@ -395,11 +419,13 @@ declare module "@stencil/core" {
             "c-card": LocalJSX.CCard & JSXBase.HTMLAttributes<HTMLCCardElement>;
             "c-page": LocalJSX.CPage & JSXBase.HTMLAttributes<HTMLCPageElement>;
             "c-sidebar": LocalJSX.CSidebar & JSXBase.HTMLAttributes<HTMLCSidebarElement>;
+            "collapsible-tree": LocalJSX.CollapsibleTree & JSXBase.HTMLAttributes<HTMLCollapsibleTreeElement>;
             "demo-1": LocalJSX.Demo1 & JSXBase.HTMLAttributes<HTMLDemo1Element>;
             "demo-2": LocalJSX.Demo2 & JSXBase.HTMLAttributes<HTMLDemo2Element>;
             "demo-3": LocalJSX.Demo3 & JSXBase.HTMLAttributes<HTMLDemo3Element>;
             "demo-4": LocalJSX.Demo4 & JSXBase.HTMLAttributes<HTMLDemo4Element>;
             "demo-5": LocalJSX.Demo5 & JSXBase.HTMLAttributes<HTMLDemo5Element>;
+            "demo-6": LocalJSX.Demo6 & JSXBase.HTMLAttributes<HTMLDemo6Element>;
             "e-button": LocalJSX.EButton & JSXBase.HTMLAttributes<HTMLEButtonElement>;
             "e-input": LocalJSX.EInput & JSXBase.HTMLAttributes<HTMLEInputElement>;
             "e-link": LocalJSX.ELink & JSXBase.HTMLAttributes<HTMLELinkElement>;
