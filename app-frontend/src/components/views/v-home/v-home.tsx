@@ -14,11 +14,11 @@ export class VHome {
         <br />
         <h1>Demos</h1>
         <ul>
-          <li>
+          {/* <li>
             <e-text>
-              {/* <strong>D06. Graph node selection + information display (Part-2)</strong>
+              <strong>D06. Graph node selection + information display (Part-2)</strong>
               <br />
-              Everything in D04 + List item collapses when more than 5 nodes are selected + Includes an expanded view */}
+              Everything in D04 + List item collapses when more than 5 nodes are selected + Includes an expanded view
               <strong>D06. Graph & Tree</strong>
               <br />
               Switch between Graph view and Tree view to explore the ontology. It is based on D01, and is meant to experience the "view switching". This demo does not include any
@@ -26,7 +26,7 @@ export class VHome {
             </e-text>
             <l-spacer value={0.5}></l-spacer>
             <stencil-route-link url="/demo-6">View Demo</stencil-route-link>
-          </li>
+          </li> */}
           <li>
             <e-text>
               <strong>D05. Graph node selection + information display (Part-2)</strong>
