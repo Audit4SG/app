@@ -187,6 +187,7 @@ export class Demo5 {
       .attr('fill', 'gray')
       .call(dragDrop)
       .on('dblclick', (event, data) => {
+        console.log(event);
         let selected_Node = this.svg.select(`#${data.id.split('#')[1]}`);
         if (selected_Node.attr('fill') === 'gray') {
           selected_Node.attr('fill', 'red');
