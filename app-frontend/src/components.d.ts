@@ -19,8 +19,6 @@ export namespace Components {
     }
     interface CSidebar {
     }
-    interface CollapsibleTree {
-    }
     interface Demo1 {
     }
     interface Demo2 {
@@ -125,12 +123,6 @@ declare global {
     var HTMLCSidebarElement: {
         prototype: HTMLCSidebarElement;
         new (): HTMLCSidebarElement;
-    };
-    interface HTMLCollapsibleTreeElement extends Components.CollapsibleTree, HTMLStencilElement {
-    }
-    var HTMLCollapsibleTreeElement: {
-        prototype: HTMLCollapsibleTreeElement;
-        new (): HTMLCollapsibleTreeElement;
     };
     interface HTMLDemo1Element extends Components.Demo1, HTMLStencilElement {
     }
@@ -264,7 +256,6 @@ declare global {
         "c-card": HTMLCCardElement;
         "c-page": HTMLCPageElement;
         "c-sidebar": HTMLCSidebarElement;
-        "collapsible-tree": HTMLCollapsibleTreeElement;
         "demo-1": HTMLDemo1Element;
         "demo-2": HTMLDemo2Element;
         "demo-3": HTMLDemo3Element;
@@ -300,8 +291,6 @@ declare namespace LocalJSX {
     interface CPage {
     }
     interface CSidebar {
-    }
-    interface CollapsibleTree {
     }
     interface Demo1 {
     }
@@ -386,7 +375,6 @@ declare namespace LocalJSX {
         "c-card": CCard;
         "c-page": CPage;
         "c-sidebar": CSidebar;
-        "collapsible-tree": CollapsibleTree;
         "demo-1": Demo1;
         "demo-2": Demo2;
         "demo-3": Demo3;
@@ -419,7 +407,6 @@ declare module "@stencil/core" {
             "c-card": LocalJSX.CCard & JSXBase.HTMLAttributes<HTMLCCardElement>;
             "c-page": LocalJSX.CPage & JSXBase.HTMLAttributes<HTMLCPageElement>;
             "c-sidebar": LocalJSX.CSidebar & JSXBase.HTMLAttributes<HTMLCSidebarElement>;
-            "collapsible-tree": LocalJSX.CollapsibleTree & JSXBase.HTMLAttributes<HTMLCollapsibleTreeElement>;
             "demo-1": LocalJSX.Demo1 & JSXBase.HTMLAttributes<HTMLDemo1Element>;
             "demo-2": LocalJSX.Demo2 & JSXBase.HTMLAttributes<HTMLDemo2Element>;
             "demo-3": LocalJSX.Demo3 & JSXBase.HTMLAttributes<HTMLDemo3Element>;

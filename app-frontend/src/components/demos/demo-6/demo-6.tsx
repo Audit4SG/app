@@ -1,4 +1,4 @@
-import { Component, State, Host, h } from '@stencil/core';
+import { Component, Host, h } from '@stencil/core';
 import { gsap } from 'gsap';
 import { ScrollToPlugin } from 'gsap/all';
 gsap.registerPlugin(ScrollToPlugin);
@@ -14,8 +14,6 @@ import * as d3 from 'd3';
 export class Demo6 {
   el_Svg!: SVGElement;
 
-  @State() activeView: string = 'tree';
-
   private svg: any;
   private width = window.innerWidth * 3;
   private height = window.innerHeight * 3;
@@ -27,7 +25,10 @@ export class Demo6 {
   // private class_Blank: any = [];
   private nodes: any = [];
   private links: any = [];
+
   private jsonld_Flattened: any;
+
+  componentWillLoad() {}
 
   componentDidLoad() {
     gsap.to(window, { duration: 0.1, scrollTo: { y: this.height / 3, x: this.width / 3 } });
@@ -54,17 +55,13 @@ export class Demo6 {
 
   async process_Jsonld(data_JSONLD: any) {
     this.jsonld_Flattened = await jsonld.flatten(data_JSONLD);
-    this.prepare_Classes();
-
-    if (this.activeView === 'graph') {
-      this.prepare_Graph_Nodes();
-      this.prepare_Graph_Links();
-      this.generate_Graph();
-    } else if (this.activeView === 'tree') {
-    }
+    this.get_Classes();
+    this.generate_Nodes();
+    this.generate_Links();
+    this.generate_Graph();
   }
 
-  prepare_Classes() {
+  get_Classes() {
     //Extract the Class Objects
     let class_Pure_Raw: any = [];
     let class_Blank_Raw: any = [];
@@ -114,8 +111,7 @@ export class Demo6 {
     });
   }
 
-  // Graph
-  prepare_Graph_Nodes() {
+  generate_Nodes() {
     this.class_Pure.map((item: any) => {
       let obj = {
         id: item.id,
@@ -125,14 +121,14 @@ export class Demo6 {
     });
   }
 
-  prepare_Graph_Links() {
+  generate_Links() {
     this.class_Pure.map((x: any) => {
       this.class_Pure.map((y: any) => {
         if (x.id === y.subClassOf) {
           let obj = {
             target: y.id,
             source: x.id,
-            strength: 0.1,
+            strength: 0.075,
           };
           this.links.push(obj);
         }
@@ -177,7 +173,29 @@ export class Demo6 {
         node.fy = null;
       });
 
-    this.nodeElements = this.svg.append('g').attr('class', 'nodes').selectAll('circle').data(this.nodes).enter().append('circle').attr('r', 10).attr('fill', 'gray').call(dragDrop);
+    this.nodeElements = this.svg
+      .append('g')
+      .attr('class', 'nodes')
+      .selectAll('circle')
+      .data(this.nodes)
+      .enter()
+      .append('circle')
+      .attr('id', node => {
+        return node.id.split('#')[1];
+      })
+      .attr('r', 10)
+      .attr('fill', 'gray')
+      .call(dragDrop)
+      .on('mouseenter', (event, data) => {
+        console.log(event);
+        this.highlightNode(data);
+        this.highlightLink(data);
+      })
+      .on('mouseout', (event, data) => {
+        console.log(event);
+        this.unHighlightNode(data);
+        this.unHighlightLink();
+      });
 
     this.linkElements = this.svg
       .append('g')
@@ -186,6 +204,9 @@ export class Demo6 {
       .data(this.links)
       .enter()
       .append('line')
+      .attr('id', link => {
+        return `${link.source.split('#')[1]}-${link.target.split('#')[1]}`;
+      })
       .attr('stroke-width', 1)
       .attr('stroke', 'rgba(50, 50, 50, 0.2)');
 
@@ -236,36 +257,56 @@ export class Demo6 {
     simulation.force('link').links(this.links);
   }
 
-  // Tree
-  // Enter code here after isolated testing
+  highlightNode(data) {
+    let selected_Node = this.svg.select(`#${data.id.split('#')[1]}`);
+    selected_Node.attr('fill', 'black');
+  }
 
-  // Controls
-  handleViewChange(selectedView: string) {
-    this.clearViz();
-    this.activeView = selectedView;
-    if (this.activeView === 'graph') {
-      this.generate_Graph();
-    } else if (this.activeView === 'tree') {
-      console.log('Generate Tree View');
+  unHighlightNode(data) {
+    let selected_Node = this.svg.select(`#${data.id.split('#')[1]}`);
+    selected_Node.attr('fill', 'gray');
+  }
+
+  highlightLink(node) {
+    let parents = this.getParents(node.id, []);
+    let nodesForLinkHighlight = [];
+    nodesForLinkHighlight.push(node.id);
+    parents.map(parent => {
+      nodesForLinkHighlight.push(parent);
+    });
+    let linkIdsForHighlight = [];
+    for (let i = 0; i < nodesForLinkHighlight.length - 1; i++) {
+      let link = `${nodesForLinkHighlight[i + 1].split('#')[1]}-${nodesForLinkHighlight[i].split('#')[1]}`;
+      console.log(link);
+      linkIdsForHighlight.push(link);
+    }
+    linkIdsForHighlight.map((linkId: any) => {
+      this.svg.select(`#${linkId}`).attr('stroke-width', 3).attr('stroke', 'rgba(50, 50, 50, 0.2)');
+    });
+  }
+
+  getParents(nodeId, parents) {
+    if (nodeId) {
+      let sourceId = '';
+      this.links.map((link: any) => {
+        if (link.target.id === nodeId) {
+          sourceId = link.source.id;
+          parents.push(sourceId);
+        }
+      });
+      return this.getParents(sourceId, parents);
+    } else {
+      return parents;
     }
   }
 
-  clearViz() {
-    this.svg.selectAll('*').remove();
+  unHighlightLink() {
+    this.svg.selectAll('line').attr('stroke-width', 1).attr('stroke', 'rgba(50, 50, 50, 0.2)');
   }
 
   render() {
     return (
       <Host>
-        <div class="view-control-container">
-          <button class={this.activeView === 'graph' && 'active'} onClick={() => this.handleViewChange('graph')}>
-            Graph view
-          </button>
-          <l-spacer variant="horizontal" value={0.5}></l-spacer>
-          <button class={this.activeView === 'tree' && 'active'} onClick={() => this.handleViewChange('tree')}>
-            Tree view
-          </button>
-        </div>
         <svg width={this.width} height={this.height} ref={el => (this.el_Svg = el as SVGAElement)}></svg>
       </Host>
     );
