@@ -16,9 +16,10 @@ export class VHome {
         <ul>
           <li>
             <e-text>
-              <strong>D07. Edge highlight + Node tooltip + edge label</strong>
+              <strong>D07. Edge highlight + Node tooltip</strong>
               <br />
-              Hovering on a node highlights the path from the "hovered node" to the root, the edge relationships upto the root node and description of the node (as tooltip)
+              Hovering on a node enlarges it, highlights the path from the "hovered node" to the root and displays the node URI as tooltip (the URI is a placeholder for the node
+              description)
             </e-text>
             <l-spacer value={0.5}></l-spacer>
             <stencil-route-link url="/demo-7">View Demo</stencil-route-link>
