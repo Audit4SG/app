@@ -22,7 +22,8 @@ export class Demo8 {
   private height = window.innerHeight * 3;
   private nodeElements: any;
   private linkElements: any;
-  private textElements: any;
+  private nodeLabels: any;
+  private linkLabels: any;
 
   private class_Pure: any = [];
   // private class_Blank: any = [];
@@ -201,20 +202,7 @@ export class Demo8 {
         this.hideToolTip();
       });
 
-    this.linkElements = this.svg
-      .append('g')
-      .attr('class', 'links')
-      .selectAll('line')
-      .data(this.links)
-      .enter()
-      .append('line')
-      .attr('id', link => {
-        return `${link.source.split('#')[1]}-${link.target.split('#')[1]}`;
-      })
-      .attr('stroke-width', 1)
-      .attr('stroke', 'rgba(50, 50, 50, 0.2)');
-
-    this.textElements = this.svg
+    this.nodeLabels = this.svg
       .append('g')
       .attr('class', 'texts')
       .selectAll('text')
@@ -228,12 +216,44 @@ export class Demo8 {
       .attr('dx', 15)
       .attr('dy', 4);
 
+    this.linkElements = this.svg
+      .append('g')
+      .attr('class', 'links')
+      .selectAll('line')
+      .data(this.links)
+      .enter()
+      .append('line')
+      .attr('id', link => {
+        return `${link.source.split('#')[1]}-${link.target.split('#')[1]}`;
+      })
+      .attr('stroke-width', 1)
+      .attr('stroke', 'rgba(50, 50, 50, 0.2)');
+
+    this.linkLabels = this.svg
+      .append('g')
+      .attr('class', 'edge-texts')
+      .selectAll('text')
+      .data(this.links)
+      .enter()
+      .append('text')
+      .text('is-a')
+      .attr('font-size', 12)
+      .attr('dx', 5)
+      .attr('dy', 5);
+
     simulation.nodes(this.nodes).on('tick', () => {
       this.nodeElements
         .attr('cx', function (node) {
           return node.x;
         })
         .attr('cy', function (node) {
+          return node.y;
+        });
+      this.nodeLabels
+        .attr('x', function (node) {
+          return node.x;
+        })
+        .attr('y', function (node) {
           return node.y;
         });
       this.linkElements
@@ -249,12 +269,20 @@ export class Demo8 {
         .attr('y2', function (link) {
           return link.target.y;
         });
-      this.textElements
-        .attr('x', function (node) {
-          return node.x;
+      this.linkLabels
+        .attr('x', function (link) {
+          if (link.target.x > link.source.x) {
+            return link.source.x + (link.target.x - link.source.x) / 2;
+          } else {
+            return link.target.x + (link.source.x - link.target.x) / 2;
+          }
         })
-        .attr('y', function (node) {
-          return node.y;
+        .attr('y', function (link) {
+          if (link.target.y > link.source.y) {
+            return link.source.y + (link.target.y - link.source.y) / 2;
+          } else {
+            return link.target.y + (link.source.y - link.target.y) / 2;
+          }
         });
     });
 
@@ -271,24 +299,6 @@ export class Demo8 {
     selected_Node.transition().duration(150).attr('fill', 'gray').attr('r', 10);
   }
 
-  highlightLink(node) {
-    let parents = this.getParents(node.id, []);
-    let nodesForLinkHighlight = [];
-    nodesForLinkHighlight.push(node.id);
-    parents.map(parent => {
-      nodesForLinkHighlight.push(parent);
-    });
-    let linkIdsForHighlight = [];
-    for (let i = 0; i < nodesForLinkHighlight.length - 1; i++) {
-      let link = `${nodesForLinkHighlight[i + 1].split('#')[1]}-${nodesForLinkHighlight[i].split('#')[1]}`;
-      console.log(link);
-      linkIdsForHighlight.push(link);
-    }
-    linkIdsForHighlight.map((linkId: any) => {
-      this.svg.select(`#${linkId}`).attr('stroke-width', 3).attr('stroke', 'rgba(50, 50, 50, 0.2)');
-    });
-  }
-
   getParents(nodeId, parents) {
     if (nodeId) {
       let sourceId = '';
@@ -302,6 +312,23 @@ export class Demo8 {
     } else {
       return parents;
     }
+  }
+
+  highlightLink(node) {
+    let parents = this.getParents(node.id, []);
+    let nodesForLinkHighlight = [];
+    nodesForLinkHighlight.push(node.id);
+    parents.map(parent => {
+      nodesForLinkHighlight.push(parent);
+    });
+    let linkIdsForHighlight = [];
+    for (let i = 0; i < nodesForLinkHighlight.length - 1; i++) {
+      let link = `${nodesForLinkHighlight[i + 1].split('#')[1]}-${nodesForLinkHighlight[i].split('#')[1]}`;
+      linkIdsForHighlight.push(link);
+    }
+    linkIdsForHighlight.map((linkId: any) => {
+      this.svg.select(`#${linkId}`).attr('stroke-width', 3).attr('stroke', 'rgba(50, 50, 50, 0.2)');
+    });
   }
 
   unHighlightLink() {
