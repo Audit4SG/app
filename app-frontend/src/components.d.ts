@@ -35,6 +35,8 @@ export namespace Components {
     }
     interface Demo8 {
     }
+    interface Demo9 {
+    }
     interface EButton {
         "action": string;
         "active": boolean;
@@ -176,6 +178,12 @@ declare global {
         prototype: HTMLDemo8Element;
         new (): HTMLDemo8Element;
     };
+    interface HTMLDemo9Element extends Components.Demo9, HTMLStencilElement {
+    }
+    var HTMLDemo9Element: {
+        prototype: HTMLDemo9Element;
+        new (): HTMLDemo9Element;
+    };
     interface HTMLEButtonElement extends Components.EButton, HTMLStencilElement {
     }
     var HTMLEButtonElement: {
@@ -280,6 +288,7 @@ declare global {
         "demo-6": HTMLDemo6Element;
         "demo-7": HTMLDemo7Element;
         "demo-8": HTMLDemo8Element;
+        "demo-9": HTMLDemo9Element;
         "e-button": HTMLEButtonElement;
         "e-input": HTMLEInputElement;
         "e-link": HTMLELinkElement;
@@ -325,6 +334,8 @@ declare namespace LocalJSX {
     interface Demo7 {
     }
     interface Demo8 {
+    }
+    interface Demo9 {
     }
     interface EButton {
         "action"?: string;
@@ -405,6 +416,7 @@ declare namespace LocalJSX {
         "demo-6": Demo6;
         "demo-7": Demo7;
         "demo-8": Demo8;
+        "demo-9": Demo9;
         "e-button": EButton;
         "e-input": EInput;
         "e-link": ELink;
@@ -439,6 +451,7 @@ declare module "@stencil/core" {
             "demo-6": LocalJSX.Demo6 & JSXBase.HTMLAttributes<HTMLDemo6Element>;
             "demo-7": LocalJSX.Demo7 & JSXBase.HTMLAttributes<HTMLDemo7Element>;
             "demo-8": LocalJSX.Demo8 & JSXBase.HTMLAttributes<HTMLDemo8Element>;
+            "demo-9": LocalJSX.Demo9 & JSXBase.HTMLAttributes<HTMLDemo9Element>;
             "e-button": LocalJSX.EButton & JSXBase.HTMLAttributes<HTMLEButtonElement>;
             "e-input": LocalJSX.EInput & JSXBase.HTMLAttributes<HTMLEInputElement>;
             "e-link": LocalJSX.ELink & JSXBase.HTMLAttributes<HTMLELinkElement>;

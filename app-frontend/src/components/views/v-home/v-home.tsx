@@ -16,6 +16,15 @@ export class VHome {
         <ul>
           <li>
             <e-text>
+              <strong>D09. RelAIEO static visualisation </strong>
+              <br />
+              Visualizes RelAIEO as a static graph, without physics and drag feature
+            </e-text>
+            <l-spacer value={0.5}></l-spacer>
+            <stencil-route-link url="/demo-9">View Demo</stencil-route-link>
+          </li>
+          <li>
+            <e-text>
               <strong>D08. subClass relationship on edges + D07</strong>
               <br />
               subClass (is-a) relationship added to edges + everything in D08
