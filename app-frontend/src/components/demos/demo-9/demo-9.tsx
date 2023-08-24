@@ -15,8 +15,11 @@ export class Demo9 {
   el_Svg!: SVGElement;
 
   private svg: any;
-  private width = window.innerWidth * 3;
-  private height = window.innerHeight * 3;
+  private svgContent: any;
+  private svgGraph: any;
+
+  private width = window.innerWidth;
+  private height = window.innerHeight;
   private nodeElements: any;
   private linkElements: any;
   private textElements: any;
@@ -27,10 +30,8 @@ export class Demo9 {
 
   private jsonld_Flattened: any;
 
-  componentWillLoad() {}
-
   componentDidLoad() {
-    gsap.to(window, { duration: 0.1, scrollTo: { y: this.height / 3, x: this.width / 3 } });
+    gsap.to(window, { duration: 0.1, scrollTo: { y: this.height / 2, x: this.width / 2 } });
     this.fetch_ViewData();
   }
 
@@ -127,7 +128,15 @@ export class Demo9 {
   }
 
   generate_Graph() {
-    this.svg = d3.select(this.el_Svg);
+    this.svg = d3.select(this.el_Svg).call(
+      d3.zoom().on('zoom', (event: any) => {
+        console.log(event.transform.k);
+        this.svgContent.attr('transform', event.transform);
+      }),
+    );
+
+    this.svgContent = this.svg.append('g');
+    this.svgGraph = this.svgContent.append('g');
 
     var linkForce = d3
       .forceLink()
@@ -141,31 +150,42 @@ export class Demo9 {
     var simulation: any = d3
       .forceSimulation()
       .force('link', linkForce)
-      .force('charge', d3.forceManyBody().strength(-75))
+      .force('charge', d3.forceManyBody().strength(-500))
       .force('center', d3.forceCenter(this.width / 2, this.height / 2));
 
-    var dragDrop = d3
-      .drag()
-      .on('start', function (node) {
-        node.fx = node.x;
-        node.fy = node.y;
-      })
-      .on('drag', function (event, node: any) {
-        simulation.alphaTarget(0.8).restart();
-        node.fx = event.x;
-        node.fy = event.y;
-      })
-      .on('end', function (event, node: any) {
-        if (!event.active) {
-          simulation.alphaTarget(0);
-        }
-        node.fx = null;
-        node.fy = null;
-      });
+    // var dragDrop = d3
+    //   .drag()
+    //   .on('start', function (node) {
+    //     node.fx = node.x;
+    //     node.fy = node.y;
+    //   })
+    //   .on('drag', function (event, node: any) {
+    //     simulation.alphaTarget(0.8).restart();
+    //     node.fx = event.x;
+    //     node.fy = event.y;
+    //   })
+    //   .on('end', function (event, node: any) {
+    //     if (!event.active) {
+    //       simulation.alphaTarget(0);
+    //     }
+    //     node.fx = null;
+    //     node.fy = null;
+    //   });
 
-    this.nodeElements = this.svg.append('g').attr('class', 'nodes').selectAll('circle').data(this.nodes).enter().append('circle').attr('r', 10).attr('fill', 'gray').call(dragDrop);
+    // this.nodeElements = this.svgContent
+    //   .append('g')
+    //   .attr('class', 'nodes')
+    //   .selectAll('circle')
+    //   .data(this.nodes)
+    //   .enter()
+    //   .append('circle')
+    //   .attr('r', 10)
+    //   .attr('fill', 'gray')
+    //   .call(dragDrop);
 
-    this.linkElements = this.svg
+    this.nodeElements = this.svgGraph.append('g').attr('class', 'nodes').selectAll('circle').data(this.nodes).enter().append('circle').attr('r', 10).attr('fill', 'gray');
+
+    this.linkElements = this.svgGraph
       .append('g')
       .attr('class', 'links')
       .selectAll('line')
@@ -175,14 +195,14 @@ export class Demo9 {
       .attr('stroke-width', 1)
       .attr('stroke', 'rgba(50, 50, 50, 0.2)');
 
-    this.textElements = this.svg
+    this.textElements = this.svgGraph
       .append('g')
       .attr('class', 'texts')
       .selectAll('text')
       .data(this.nodes)
       .enter()
       .append('text')
-      .text(function (node) {
+      .text(node => {
         return node.label;
       })
       .attr('font-size', 12)
