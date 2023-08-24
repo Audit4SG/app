@@ -7,11 +7,11 @@ import * as jsonld from 'jsonld';
 import * as d3 from 'd3';
 
 @Component({
-  tag: 'demo-9',
-  styleUrl: 'demo-9.css',
+  tag: 'demo-10',
+  styleUrl: 'demo-10.css',
   shadow: true,
 })
-export class Demo9 {
+export class Demo10 {
   el_Svg!: SVGElement;
 
   private svg: any;
@@ -153,24 +153,24 @@ export class Demo9 {
       .force('charge', d3.forceManyBody().strength(-500))
       .force('center', d3.forceCenter(this.width / 2, this.height / 2));
 
-    // var dragDrop = d3
-    //   .drag()
-    //   .on('start', function (node) {
-    //     node.fx = node.x;
-    //     node.fy = node.y;
-    //   })
-    //   .on('drag', function (event, node: any) {
-    //     simulation.alphaTarget(0.8).restart();
-    //     node.fx = event.x;
-    //     node.fy = event.y;
-    //   })
-    //   .on('end', function (event, node: any) {
-    //     if (!event.active) {
-    //       simulation.alphaTarget(0);
-    //     }
-    //     node.fx = null;
-    //     node.fy = null;
-    //   });
+    var dragDrop = d3
+      .drag()
+      .on('start', function (node) {
+        node.fx = node.x;
+        node.fy = node.y;
+      })
+      .on('drag', function (event, node: any) {
+        simulation.alphaTarget(0.8).restart();
+        node.fx = event.x;
+        node.fy = event.y;
+      })
+      .on('end', function (event, node: any) {
+        if (!event.active) {
+          simulation.alphaTarget(0);
+        }
+        node.fx = null;
+        node.fy = null;
+      });
 
     // this.nodeElements = this.svgContent
     //   .append('g')
@@ -195,6 +195,7 @@ export class Demo9 {
       })
       .attr('r', 15)
       .attr('fill', 'gray')
+      .call(dragDrop)
       .on('mouseenter', (event, data) => {
         this.highlightNode(data);
       })
@@ -224,7 +225,7 @@ export class Demo9 {
         return node.label;
       })
       .attr('font-size', 12)
-      .attr('dx', 15)
+      .attr('dx', 25)
       .attr('dy', 4);
 
     simulation.nodes(this.nodes).on('tick', () => {

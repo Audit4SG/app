@@ -16,7 +16,16 @@ export class VHome {
         <ul>
           <li>
             <e-text>
-              <strong>D09. Static graph, Zoom and Pan </strong>
+              <strong>D10. Force-directed graph, Zoom and Pan</strong>
+              <br />
+              Visualizes RelAIEO as force-directed graph. Zoom in & zoom out using mouse wheel/trackpad. Pan across the ontology by clicking and dragging the background.
+            </e-text>
+            <l-spacer value={0.5}></l-spacer>
+            <stencil-route-link url="/demo-10">View Demo</stencil-route-link>
+          </li>
+          <li>
+            <e-text>
+              <strong>D09. Static graph, Zoom and Pan</strong>
               <br />
               Visualizes RelAIEO as a static graph, without physics and drag feature on nodes. Zoom in & zoom out using mouse wheel/trackpad. Pan across the ontology by clicking
               and dragging the background.
