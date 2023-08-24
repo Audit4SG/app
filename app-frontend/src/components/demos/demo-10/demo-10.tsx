@@ -197,6 +197,7 @@ export class Demo10 {
       .attr('fill', 'gray')
       .call(dragDrop)
       .on('mouseenter', (event, data) => {
+        console.log(event);
         this.highlightNode(data);
       })
       .on('mouseout', (event, data) => {

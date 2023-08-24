@@ -196,6 +196,7 @@ export class Demo9 {
       .attr('r', 15)
       .attr('fill', 'gray')
       .on('mouseenter', (event, data) => {
+        console.log(event);
         this.highlightNode(data);
       })
       .on('mouseout', (event, data) => {
