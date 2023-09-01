@@ -25,6 +25,8 @@ export namespace Components {
     }
     interface Demo11 {
     }
+    interface Demo12 {
+    }
     interface Demo2 {
     }
     interface Demo3 {
@@ -151,6 +153,12 @@ declare global {
     var HTMLDemo11Element: {
         prototype: HTMLDemo11Element;
         new (): HTMLDemo11Element;
+    };
+    interface HTMLDemo12Element extends Components.Demo12, HTMLStencilElement {
+    }
+    var HTMLDemo12Element: {
+        prototype: HTMLDemo12Element;
+        new (): HTMLDemo12Element;
     };
     interface HTMLDemo2Element extends Components.Demo2, HTMLStencilElement {
     }
@@ -299,6 +307,7 @@ declare global {
         "demo-1": HTMLDemo1Element;
         "demo-10": HTMLDemo10Element;
         "demo-11": HTMLDemo11Element;
+        "demo-12": HTMLDemo12Element;
         "demo-2": HTMLDemo2Element;
         "demo-3": HTMLDemo3Element;
         "demo-4": HTMLDemo4Element;
@@ -342,6 +351,8 @@ declare namespace LocalJSX {
     interface Demo10 {
     }
     interface Demo11 {
+    }
+    interface Demo12 {
     }
     interface Demo2 {
     }
@@ -433,6 +444,7 @@ declare namespace LocalJSX {
         "demo-1": Demo1;
         "demo-10": Demo10;
         "demo-11": Demo11;
+        "demo-12": Demo12;
         "demo-2": Demo2;
         "demo-3": Demo3;
         "demo-4": Demo4;
@@ -470,6 +482,7 @@ declare module "@stencil/core" {
             "demo-1": LocalJSX.Demo1 & JSXBase.HTMLAttributes<HTMLDemo1Element>;
             "demo-10": LocalJSX.Demo10 & JSXBase.HTMLAttributes<HTMLDemo10Element>;
             "demo-11": LocalJSX.Demo11 & JSXBase.HTMLAttributes<HTMLDemo11Element>;
+            "demo-12": LocalJSX.Demo12 & JSXBase.HTMLAttributes<HTMLDemo12Element>;
             "demo-2": LocalJSX.Demo2 & JSXBase.HTMLAttributes<HTMLDemo2Element>;
             "demo-3": LocalJSX.Demo3 & JSXBase.HTMLAttributes<HTMLDemo3Element>;
             "demo-4": LocalJSX.Demo4 & JSXBase.HTMLAttributes<HTMLDemo4Element>;

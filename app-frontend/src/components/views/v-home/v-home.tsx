@@ -16,9 +16,18 @@ export class VHome {
         <ul>
           <li>
             <e-text>
-              <strong>D11. Force-directed graph, Zoom and Pan</strong>
+              <strong>D12. Exploratory vs Class selection</strong>
               <br />
-              Visualizes RelAIEO as force-directed graph. Zoom in & zoom out using mouse wheel/trackpad. Pan across the ontology by clicking and dragging the background.
+              Introduces an option for users to choose their auditing journey i.e. exploratory or if they want to select a few classes to begin with
+            </e-text>
+            <l-spacer value={0.5}></l-spacer>
+            <stencil-route-link url="/demo-12">View Demo</stencil-route-link>
+          </li>
+          <li>
+            <e-text>
+              <strong>D11. Minimal repulsion graph + reduces overlaps</strong>
+              <br />
+              Visualizes RelAIEO as a force-directed graph with minimal repulsive force (almost static). Reduces overlaps among nodes, edges and labels
             </e-text>
             <l-spacer value={0.5}></l-spacer>
             <stencil-route-link url="/demo-11">View Demo</stencil-route-link>

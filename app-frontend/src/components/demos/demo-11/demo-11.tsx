@@ -140,19 +140,33 @@ export class Demo11 {
     this.svgContent = this.svg.append('g');
     this.svgGraph = this.svgContent.append('g');
 
+    // var linkForce = d3
+    //   .forceLink()
+    //   .id(function (link: any) {
+    //     return link.id;
+    //   })
+    //   .strength(function (link: any) {
+    //     return link.strength;
+    //   });
+
+    // var simulation: any = d3
+    //   .forceSimulation()
+    //   .force('link', linkForce)
+    //   .force('charge', d3.forceManyBody().strength(-2000))
+    //   .force('center', d3.forceCenter(this.width / 2, this.height / 2));
+
     var linkForce = d3
       .forceLink()
       .id(function (link: any) {
         return link.id;
       })
-      .strength(function (link: any) {
-        return link.strength;
-      });
+      .distance(1000)
+      .strength(1);
 
     var simulation: any = d3
       .forceSimulation()
       .force('link', linkForce)
-      .force('charge', d3.forceManyBody().strength(-500))
+      .force('charge', d3.forceManyBody().strength(-5000))
       .force('center', d3.forceCenter(this.width / 2, this.height / 2));
 
     var dragDrop = d3
@@ -162,7 +176,7 @@ export class Demo11 {
         node.fy = node.y;
       })
       .on('drag', function (event, node: any) {
-        simulation.alphaTarget(0.8).restart();
+        simulation.alphaTarget(0.01).restart();
         node.fx = event.x;
         node.fy = event.y;
       })
@@ -195,27 +209,24 @@ export class Demo11 {
       .attr('id', node => {
         return node.id.split('#')[1];
       })
-      .attr('r', 15)
+      .attr('r', 50)
       .attr('fill', 'gray')
       .call(dragDrop);
-    // .on('mouseenter', (event, data) => {
-    //   console.log(event);
-    //   this.highlightNode(data);
-    // })
-    // .on('mouseout', (event, data) => {
-    //   console.log(event);
-    //   this.unHighlightNode(data);
-    // });
 
-    this.linkElements = this.svgGraph
-      .append('g')
-      .attr('class', 'links')
-      .selectAll('line')
-      .data(this.links)
-      .enter()
-      .append('line')
-      .attr('stroke-width', 0.75)
-      .attr('stroke', 'gray');
+    // this.nodeElements = this.svgGraph
+    //   .append('g')
+    //   .attr('class', 'nodes')
+    //   .selectAll('circle')
+    //   .data(this.nodes)
+    //   .enter()
+    //   .append('circle')
+    //   .attr('id', node => {
+    //     return node.id.split('#')[1];
+    //   })
+    //   .attr('r', 50)
+    //   .attr('fill', 'gray');
+
+    this.linkElements = this.svgGraph.append('g').attr('class', 'links').selectAll('line').data(this.links).enter().append('line').attr('stroke-width', 5).attr('stroke', 'gray');
 
     this.textElements = this.svgGraph
       .append('g')
@@ -227,8 +238,8 @@ export class Demo11 {
       .text(node => {
         return node.label;
       })
-      .attr('font-size', 12)
-      .attr('dx', 25)
+      .attr('font-size', 18)
+      .attr('dx', 60)
       .attr('dy', 4);
 
     this.descriptionElements = this.svgGraph
