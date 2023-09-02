@@ -383,6 +383,8 @@ declare namespace LocalJSX {
         "checked"?: boolean;
         "label"?: string;
         "name"?: string;
+        "onCheckboxInput"?: (event: CustomEvent<any>) => void;
+        "onRadioInput"?: (event: CustomEvent<any>) => void;
         "onTextInput"?: (event: CustomEvent<any>) => void;
         "placeholder"?: string;
         "type"?: string;

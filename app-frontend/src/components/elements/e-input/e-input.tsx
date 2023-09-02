@@ -16,6 +16,18 @@ export class EInput {
   })
   event_TextInput: EventEmitter;
 
+  @Event({
+    eventName: 'radioInput',
+    bubbles: true,
+  })
+  event_RadioInput: EventEmitter;
+
+  @Event({
+    eventName: 'checkboxInput',
+    bubbles: true,
+  })
+  event_CheckboxInput: EventEmitter;
+
   @Prop() label: string;
   @Prop() type: string;
   @Prop() name: string;
@@ -47,13 +59,35 @@ export class EInput {
     });
   }
 
+  handle_RadioChange(e) {
+    this.event_RadioInput.emit({
+      name: this.name,
+      value: e.target.value,
+    });
+  }
+
+  handle_CheckboxChange(e) {
+    this.event_CheckboxInput.emit({
+      name: this.name,
+      value: e.target.value,
+    });
+  }
+
   render() {
     if (this.type === 'email' || this.type === 'number' || this.type === 'password' || this.type === 'text') {
       return <input style={this.styleObject_Textbox} type={this.type} placeholder={this.placeholder} onInput={e => this.handle_AlphanumericInput(e)} />;
+    } else if (this.type === 'checkbox') {
+      return (
+        <l-row>
+          <input id={this.name} type={this.type} name={this.name} value={this.value} checked={this.checked} onChange={e => this.handle_CheckboxChange(e)} />
+          <l-spacer variant="horizontal" value={0.15}></l-spacer>
+          <label htmlFor={this.name}>{this.label}</label>
+        </l-row>
+      );
     } else if (this.type === 'radio') {
       return (
         <l-row>
-          <input id={this.name} type={this.type} name={this.name} value={this.value} checked={this.checked} />
+          <input id={this.name} type={this.type} name={this.name} value={this.value} checked={this.checked} onChange={e => this.handle_RadioChange(e)} />
           <l-spacer variant="horizontal" value={0.15}></l-spacer>
           <label htmlFor={this.name}>{this.label}</label>
         </l-row>
