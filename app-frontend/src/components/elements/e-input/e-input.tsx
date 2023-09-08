@@ -35,11 +35,27 @@ export class EInput {
   @Prop() value: string;
   @Prop() checked: boolean = false;
 
+  // @Watch('checked')
+  // checkedWatcher(newVal: boolean, oldVal: boolean) {
+  //   if (newVal != oldVal) {
+  //     if (this.checked) {
+  //       this.action = 'remove';
+  //     } else {
+  //       this.action = 'add';
+  //     }
+  //   }
+  // }
+
   private styleObject_Textbox: LooseObject = {};
+  private action: string = 'add';
 
   componentWillLoad() {
     if (this.type === 'email' || this.type === 'number' || this.type === 'password' || this.type === 'text') {
       this.generate_StyleObject_Textbox();
+    }
+
+    if (this.type === 'checkbox' && this.checked) {
+      this.action = 'remove';
     }
   }
 
@@ -70,7 +86,14 @@ export class EInput {
     this.event_CheckboxInput.emit({
       name: this.name,
       value: e.target.value,
+      action: this.action,
     });
+
+    if (this.action === 'add') {
+      this.action = 'remove';
+    } else if (this.action === 'remove') {
+      this.action = 'add';
+    }
   }
 
   render() {

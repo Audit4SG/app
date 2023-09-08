@@ -24,7 +24,7 @@ export class Demo12 {
   @State() isModalVisible: boolean = false;
   @State() journey: string = 'selection';
   @State() modalStep: number = 0;
-  @State() isStarted: boolean = false;
+  @State() isDemoStarted: boolean = false;
   @State() isStartButtonDisabled: boolean = false;
 
   @Listen('buttonClick') buttonClick(e) {
@@ -35,7 +35,7 @@ export class Demo12 {
       this.modalStep = this.modalStep - 1;
       this.isStartButtonDisabled = false;
     } else if (e.detail.action === 'Start') {
-      this.isStarted = true;
+      this.isDemoStarted = true;
       this.isModalVisible = false;
       this.generate_Graph();
     }
@@ -49,11 +49,32 @@ export class Demo12 {
 
   @Listen('checkboxInput') handle_CheckboxInput(e) {
     if (e.detail.name === 'topics') {
-      this.selectedTopics.push(e.detail.value);
-
-      if (this.selectedTopics.length > 0) {
-        this.isStartButtonDisabled = false;
+      if (e.detail.action === 'add') {
+        if (this.isDemoStarted) {
+          this.highlightNode(e.detail.value);
+        }
+        this.selectedTopics.push(e.detail.value);
+      } else if (e.detail.action === 'remove') {
+        if (this.isDemoStarted) {
+          this.unhilightNode(e.detail.value);
+        }
+        this.selectedTopics = this.selectedTopics.filter(topic => topic !== e.detail.value);
       }
+      this.checkStartButtonState();
+    }
+  }
+
+  @Listen('event_LinkClick') handle_LinkClick(e) {
+    if (e.detail.action === 'flyTo') {
+      this.flyTo(e.detail.value);
+    }
+  }
+
+  checkStartButtonState() {
+    if (this.selectedTopics.length > 0) {
+      this.isStartButtonDisabled = false;
+    } else {
+      this.isStartButtonDisabled = true;
     }
   }
 
@@ -171,14 +192,15 @@ export class Demo12 {
     });
   }
 
+  private zoom: any;
+
   generate_Graph() {
     gsap.to(window, { duration: 0.1, scrollTo: { y: this.height / 2, x: this.width / 2 } });
 
-    this.svg = d3.select(this.el_Svg).call(
-      d3.zoom().on('zoom', (event: any) => {
-        this.svgContent.attr('transform', event.transform);
-      }),
-    );
+    this.zoom = d3.zoom().on('zoom', (event: any) => {
+      this.svgContent.attr('transform', event.transform);
+    });
+    this.svg = d3.select(this.el_Svg).call(this.zoom);
 
     this.svgContent = this.svg.append('g');
     this.svgGraph = this.svgContent.append('g');
@@ -231,16 +253,15 @@ export class Demo12 {
         node.fy = null;
       });
 
-    // this.nodeElements = this.svgContent
-    //   .append('g')
-    //   .attr('class', 'nodes')
-    //   .selectAll('circle')
-    //   .data(this.nodes)
-    //   .enter()
-    //   .append('circle')
-    //   .attr('r', 10)
-    //   .attr('fill', 'gray')
-    //   .call(dragDrop);
+    this.linkElements = this.svgGraph
+      .append('g')
+      .attr('class', 'links')
+      .selectAll('line')
+      .data(this.links)
+      .enter()
+      .append('line')
+      .attr('stroke-width', 5)
+      .attr('stroke', 'rgb(1, 30, 43)');
 
     this.nodeElements = this.svgGraph
       .append('g')
@@ -253,121 +274,38 @@ export class Demo12 {
         return node.id.split('#')[1];
       })
       .attr('r', 50)
-      .attr('fill', 'gray')
+      .attr('stroke-width', 10)
+      .style('stroke', 'rgb(1, 30, 43)')
+      .attr('fill', 'white')
+      .style('filter', 'drop-shadow(0px 15px 8px rgb(0 0 0 / 0.4))')
       .call(dragDrop);
 
-    if (this.selectedTopics.length > 0) {
-      this.nodeElements = this.svgGraph
-        .append('g')
-        .attr('class', 'nodes')
-        .selectAll('circle')
-        .data(this.nodes)
-        .enter()
-        .append('circle')
-        .attr('id', node => {
-          return node.id.split('#')[1];
-        })
-        .attr('r', 50)
-        .attr('fill', '#d9d9d9')
-        .call(dragDrop);
-      this.linkElements = this.svgGraph
-        .append('g')
-        .attr('class', 'links')
-        .selectAll('line')
-        .data(this.links)
-        .enter()
-        .append('line')
-        .attr('stroke-width', 5)
-        .attr('id', link => {
-          return `${link.source.split('#')[1]}-${link.target.split('#')[1]}`;
-        })
-        .attr('stroke', '#d9d9d9');
+    this.textElements = this.svgGraph
+      .append('g')
+      .attr('class', 'texts')
+      .selectAll('text')
+      .data(this.nodes)
+      .enter()
+      .append('text')
+      .text(node => {
+        return node.label;
+      })
+      .attr('font-size', 42)
+      .style('stroke', 'rgb(1, 30, 43)')
+      .attr('dx', 75)
+      .attr('dy', 10);
 
-      this.textElements = this.svgGraph
-        .append('g')
-        .attr('class', 'texts')
-        .selectAll('text')
-        .data(this.nodes)
-        .enter()
-        .append('text')
-        .text(node => {
-          return node.label;
-        })
-        .attr('font-size', 18)
-        .style('fill', '#d9d9d9')
-        .attr('dx', 60)
-        .attr('dy', 4);
-
-      this.descriptionElements = this.svgGraph
-        .append('g')
-        .attr('class', 'texts')
-        .selectAll('text')
-        .data(this.nodes)
-        .enter()
-        .append('text')
-        .text('Lorem Ipsum is simply dummy text')
-        .attr('font-size', 1)
-        .style('fill', '#d9d9d9')
-        .attr('dx', -7.5)
-        .attr('dy', 0);
-
-      this.colorNodesAndEdges(this.selectedTopics);
-    } else {
-      this.nodeElements = this.svgGraph
-        .append('g')
-        .attr('class', 'nodes')
-        .selectAll('circle')
-        .data(this.nodes)
-        .enter()
-        .append('circle')
-        .attr('id', node => {
-          return node.id.split('#')[1];
-        })
-        .attr('r', 50)
-        .attr('fill', 'gray')
-        .call(dragDrop);
-
-      this.linkElements = this.svgGraph.append('g').attr('class', 'links').selectAll('line').data(this.links).enter().append('line').attr('stroke-width', 5).attr('stroke', 'gray');
-
-      this.textElements = this.svgGraph
-        .append('g')
-        .attr('class', 'texts')
-        .selectAll('text')
-        .data(this.nodes)
-        .enter()
-        .append('text')
-        .text(node => {
-          return node.label;
-        })
-        .attr('font-size', 18)
-        .attr('dx', 60)
-        .attr('dy', 4);
-
-      this.descriptionElements = this.svgGraph
-        .append('g')
-        .attr('class', 'texts')
-        .selectAll('text')
-        .data(this.nodes)
-        .enter()
-        .append('text')
-        .text('Lorem Ipsum is simply dummy text')
-        .attr('font-size', 1)
-        .attr('dx', -7.5)
-        .attr('dy', 0);
-    }
-
-    // this.nodeElements = this.svgGraph
-    //   .append('g')
-    //   .attr('class', 'nodes')
-    //   .selectAll('circle')
-    //   .data(this.nodes)
-    //   .enter()
-    //   .append('circle')
-    //   .attr('id', node => {
-    //     return node.id.split('#')[1];
-    //   })
-    //   .attr('r', 50)
-    //   .attr('fill', 'gray');
+    this.descriptionElements = this.svgGraph
+      .append('g')
+      .attr('class', 'texts')
+      .selectAll('text')
+      .data(this.nodes)
+      .enter()
+      .append('text')
+      .text('Lorem Ipsum is simply dummy text')
+      .attr('font-size', 1)
+      .attr('dx', -7.5)
+      .attr('dy', 0);
 
     simulation.nodes(this.nodes).on('tick', () => {
       this.nodeElements
@@ -407,36 +345,27 @@ export class Demo12 {
     });
 
     simulation.force('link').links(this.links);
+    this.highlightNodes();
+
+    let t = d3.zoomIdentity.translate(this.width / 2, this.height / 2).scale(0.075);
+    d3.select(this.el_Svg).transition().duration(2000).call(this.zoom.transform, t);
   }
 
-  colorNodesAndEdges(topics: any) {
-    topics.map((topic: any) => {
-      this.svg.select(`#actor`).attr('fill', 'black').attr('class', 'selectedNodes');
-      this.svg
-        .select(`#${topic.split('#')[1]}`)
-        .attr('fill', 'black')
-        .attr('class', 'selectedNodes');
+  highlightNodes() {
+    this.selectedTopics.map((selectedTopic: any) => {
+      let selected_Node = this.svg.select(`#${selectedTopic.split('#')[1]}`);
+      selected_Node.attr('fill', 'rgba(8, 242, 110, 1)');
     });
+  }
 
-    let links = [];
-    topics.map((topic: any) => {
-      let simpleTopic = topic.split('#')[1];
-      this.links.map((link: any) => {
-        let simpleTarget = link.target.split('#')[1];
-        let simpleSource = link.source.split('#')[1];
+  highlightNode(topic: string) {
+    let selected_Node = this.svg.select(`#${topic.split('#')[1]}`);
+    selected_Node.attr('fill', 'rgba(8, 242, 110, 1)');
+  }
 
-        if (simpleTopic === simpleTarget || simpleTopic === simpleSource) {
-          links.push(link);
-        }
-      });
-    });
-
-    links.map((link: any) => {
-      this.svg
-        .select(`#${link.source.split('#')[1]}-${link.target.split('#')[1]}`)
-        .attr('stroke-width', 10)
-        .attr('stroke', 'black');
-    });
+  unhilightNode(topic: string) {
+    let selected_Node = this.svg.select(`#${topic.split('#')[1]}`);
+    selected_Node.attr('fill', 'white');
   }
 
   generate_TopNodes() {
@@ -470,6 +399,28 @@ export class Demo12 {
     });
   }
 
+  flyTo(topic: string) {
+    const selected_Node = this.svg.select(`#${topic.split('#')[1]}`);
+    const x = selected_Node._groups[0][0].getAttribute('cx');
+    const y = selected_Node._groups[0][0].getAttribute('cy');
+
+    this.zoom.scaleTo(d3.select(this.el_Svg), 0.25);
+    this.zoom.translateTo(d3.select(this.el_Svg), x, y);
+
+    let count = 0;
+    let timeout = setInterval(() => {
+      if (count % 2 === 0) {
+        selected_Node.attr('fill', 'yellow');
+      } else {
+        selected_Node.attr('fill', 'white');
+      }
+      count = count + 1;
+      if (count > 3) {
+        clearTimeout(timeout);
+      }
+    }, 500);
+  }
+
   Modal: FunctionalComponent = () => (
     <div id="modal__container">
       <div id="modal__content">
@@ -478,7 +429,7 @@ export class Demo12 {
             <e-text variant="heading">Choose your auditing journey</e-text>
             <br />
             <e-input type="radio" name="journey" value="selection" checked={this.journey === 'selection' ? true : false} label="I will audit certain topics"></e-input>
-            <e-input type="radio" name="journey" value="exploration" checked={this.journey === 'exploration' ? true : false} label="I will explore"></e-input>
+            <e-input type="radio" name="journey" value="exploration" checked={this.journey === 'exploration' ? true : false} label="I will explore all the topics"></e-input>
             <br />
             <l-row justifyContent="space-between">
               <div></div>
@@ -491,12 +442,10 @@ export class Demo12 {
         {this.modalStep === 1 && (
           <div>
             <e-text variant="heading">Choose topics</e-text>
-            <br />
 
             {this.topicOptions.map((topic: any) => (
               <e-input type="checkbox" name="topics" value={topic.value} checked={false} label={topic.label}></e-input>
             ))}
-
             <br />
             <l-row justifyContent="space-between">
               <e-button action="Back">Back</e-button>
@@ -511,10 +460,35 @@ export class Demo12 {
     </div>
   );
 
+  FilterContainer: FunctionalComponent = () => (
+    <div class="filter-container">
+      {' '}
+      {this.topicOptions.map((topic: any) => (
+        <l-row justifyContent="space-between">
+          <e-input type="checkbox" name="topics" value={topic.value} checked={this.isSelected(topic.value)} label={topic.label}></e-input>
+          <e-link event={true} action="flyTo" value={topic.value}>
+            <ion-icon name="location-outline"></ion-icon>
+          </e-link>
+        </l-row>
+      ))}
+    </div>
+  );
+
+  isSelected(topicToCheck) {
+    let isSelected: boolean = false;
+    this.selectedTopics.map(topic => {
+      if (topic === topicToCheck) {
+        isSelected = true;
+      }
+    });
+    return isSelected;
+  }
+
   render() {
     return (
       <Host>
         {this.isModalVisible && <this.Modal></this.Modal>}
+        {this.journey === 'selection' && this.isDemoStarted && <this.FilterContainer></this.FilterContainer>}
         <svg width={this.width} height={this.height} ref={el => (this.el_Svg = el as SVGAElement)}></svg>
       </Host>
     );
