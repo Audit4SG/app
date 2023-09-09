@@ -18,7 +18,8 @@ export class VHome {
             <e-text>
               <strong>D12. Exploratory vs Class selection</strong>
               <br />
-              Introduces an option for users to choose their auditing journey i.e. exploratory or if they want to select a few classes to begin with
+              Introduces an option for users to choose their auditing journey i.e. exploratory or if they want to select a few classes to begin with. Includes node highlighting,
+              edge highlighting (for object props) in Selection mode
             </e-text>
             <l-spacer value={0.5}></l-spacer>
             <stencil-route-link url="/demo-12">View Demo</stencil-route-link>
