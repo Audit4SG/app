@@ -52,11 +52,13 @@ export class Demo12 {
       if (e.detail.action === 'add') {
         if (this.isDemoStarted) {
           this.highlightNode(e.detail.value);
+          this.highlightEdge(e.detail.value);
         }
         this.selectedTopics.push(e.detail.value);
       } else if (e.detail.action === 'remove') {
         if (this.isDemoStarted) {
           this.unhilightNode(e.detail.value);
+          this.unhighlightEdge(e.detail.value);
         }
         this.selectedTopics = this.selectedTopics.filter(topic => topic !== e.detail.value);
       }
@@ -82,6 +84,7 @@ export class Demo12 {
   private linkElements: any;
   private textElements: any;
   private descriptionElements: any;
+  private linkLabels: any;
 
   private selectedTopics: any = [];
   private topicOptions: any = [];
@@ -124,6 +127,7 @@ export class Demo12 {
     this.generate_Nodes();
     this.generate_Links();
     this.generate_TopNodes();
+    this.generate_ObjectLinks();
   }
 
   get_Classes() {
@@ -184,11 +188,42 @@ export class Demo12 {
           let obj = {
             target: y.id,
             source: x.id,
-            strength: 0.1,
+            strength: 0.01,
           };
           this.links.push(obj);
         }
       });
+    });
+  }
+
+  generate_ObjectLinks() {
+    this.jsonld_Flattened.map((item: any) => {
+      let type = item['@type'][0];
+      let objectProperty: string = '';
+      let domain: string = '';
+      let range: string = '';
+
+      if (type.split('#')[1] === 'ObjectProperty') {
+        objectProperty = item['@id'].split('#')[1];
+        if (item['http://www.w3.org/2000/01/rdf-schema#domain']) {
+          domain = item['http://www.w3.org/2000/01/rdf-schema#domain'][0]['@id'];
+        }
+
+        if (item['http://www.w3.org/2000/01/rdf-schema#range']) {
+          range = item['http://www.w3.org/2000/01/rdf-schema#range'][0]['@id'];
+        }
+
+        if (domain.length > 0 && range.length > 0) {
+          let obj = {
+            target: range,
+            source: domain,
+            strength: 0.1,
+            label: objectProperty,
+          };
+          // console.log(`${obj.source} - ${obj.label} - ${obj.target} `);
+          this.links.push(obj);
+        }
+      }
     });
   }
 
@@ -204,15 +239,6 @@ export class Demo12 {
 
     this.svgContent = this.svg.append('g');
     this.svgGraph = this.svgContent.append('g');
-
-    // var linkForce = d3
-    //   .forceLink()
-    //   .id(function (link: any) {
-    //     return link.id;
-    //   })
-    //   .strength(function (link: any) {
-    //     return link.strength;
-    //   });
 
     // var simulation: any = d3
     //   .forceSimulation()
@@ -260,6 +286,9 @@ export class Demo12 {
       .data(this.links)
       .enter()
       .append('line')
+      .attr('id', link => {
+        return `${link.source.split('#')[1]}-${link.target.split('#')[1]}`;
+      })
       .attr('stroke-width', 5)
       .attr('stroke', 'rgb(1, 30, 43)');
 
@@ -307,6 +336,39 @@ export class Demo12 {
       .attr('dx', -7.5)
       .attr('dy', 0);
 
+    // this.linkLabels = this.svg
+    //   .append('g')
+    //   .attr('class', 'edge-texts')
+    //   .selectAll('text')
+    //   .data(this.links)
+    //   .enter()
+    //   .append('text')
+    //   .text(link => {
+    //     console.log(link.label);
+    //     return link.label;
+    //   })
+    //   .attr('font-size', 12)
+    //   .attr('dx', 5)
+    //   .attr('dy', 5);
+
+    this.linkLabels = this.svgGraph
+      .append('g')
+      .attr('class', 'edge-texts')
+      .selectAll('text')
+      .data(this.links)
+      .enter()
+      .append('text')
+      .text(link => {
+        if (link.label) {
+          return link.label;
+        } else {
+          return '';
+        }
+      })
+      .attr('font-size', 42)
+      .attr('dx', 5)
+      .attr('dy', 5);
+
     simulation.nodes(this.nodes).on('tick', () => {
       this.nodeElements
         .attr('cx', function (node) {
@@ -328,6 +390,7 @@ export class Demo12 {
         .attr('y2', function (link) {
           return link.target.y;
         });
+
       this.textElements
         .attr('x', function (node) {
           return node.x;
@@ -342,10 +405,34 @@ export class Demo12 {
         .attr('y', function (node) {
           return node.y;
         });
+      this.linkLabels
+        .attr('x', function (link) {
+          let x: any;
+          if (link.label) {
+            if (link.target.x > link.source.x) {
+              x = link.source.x + (link.target.x - link.source.x) / 2;
+            } else {
+              x = link.target.x + (link.source.x - link.target.x) / 2;
+            }
+            return x;
+          }
+        })
+        .attr('y', function (link) {
+          let y: any;
+          if (link.label) {
+            if (link.target.y > link.source.y) {
+              y = link.source.y + (link.target.y - link.source.y) / 2;
+            } else {
+              y = link.target.y + (link.source.y - link.target.y) / 2;
+            }
+            return y;
+          }
+        });
     });
 
     simulation.force('link').links(this.links);
     this.highlightNodes();
+    this.highlightEdges();
 
     let t = d3.zoomIdentity.translate(this.width / 2, this.height / 2).scale(0.075);
     d3.select(this.el_Svg).transition().duration(2000).call(this.zoom.transform, t);
@@ -358,14 +445,64 @@ export class Demo12 {
     });
   }
 
+  highlightEdges() {
+    let linkIdsForHighlight = [];
+    this.selectedTopics.map((selectedTopic: any) => {
+      this.links.map((link: any) => {
+        if (selectedTopic === link.source.id || selectedTopic === link.target.id) {
+          if (link.label) {
+            let linkId = `${link.source.id.split('#')[1]}-${link.target.id.split('#')[1]}`;
+            linkIdsForHighlight.push(linkId);
+          }
+        }
+      });
+    });
+    linkIdsForHighlight.map((linkId: any) => {
+      let highlightLink = this.svg.select(`#${linkId}`);
+      highlightLink.style('filter', 'drop-shadow(0px 15px 15px rgb(8, 242, 110))');
+    });
+  }
+
   highlightNode(topic: string) {
     let selected_Node = this.svg.select(`#${topic.split('#')[1]}`);
     selected_Node.attr('fill', 'rgba(8, 242, 110, 1)');
   }
 
+  highlightEdge(selectedTopic: string) {
+    let linkIdsForHighlight = [];
+    this.links.map((link: any) => {
+      if (selectedTopic === link.source.id || selectedTopic === link.target.id) {
+        if (link.label) {
+          let linkId = `${link.source.id.split('#')[1]}-${link.target.id.split('#')[1]}`;
+          linkIdsForHighlight.push(linkId);
+        }
+      }
+    });
+    linkIdsForHighlight.map((linkId: any) => {
+      let highlightLink = this.svg.select(`#${linkId}`);
+      highlightLink.style('filter', 'drop-shadow(0px 15px 15px rgb(8, 242, 110))');
+    });
+  }
+
   unhilightNode(topic: string) {
     let selected_Node = this.svg.select(`#${topic.split('#')[1]}`);
     selected_Node.attr('fill', 'white');
+  }
+
+  unhighlightEdge(selectedTopic: string) {
+    let linkIdsForUnhighlight = [];
+    this.links.map((link: any) => {
+      if (selectedTopic === link.source.id || selectedTopic === link.target.id) {
+        if (link.label) {
+          let linkId = `${link.source.id.split('#')[1]}-${link.target.id.split('#')[1]}`;
+          linkIdsForUnhighlight.push(linkId);
+        }
+      }
+    });
+    linkIdsForUnhighlight.map((linkId: any) => {
+      let highlightLink = this.svg.select(`#${linkId}`);
+      highlightLink.style('filter', 'drop-shadow(0px 0px 0px rgb(0, 0, 0))');
+    });
   }
 
   generate_TopNodes() {
@@ -419,6 +556,15 @@ export class Demo12 {
         clearTimeout(timeout);
       }
     }, 500);
+
+    setTimeout(() => {
+      this.selectedTopics.map(selectedTopic => {
+        if (selectedTopic === topic) {
+          let selectedTopicNode = this.svg.select(`#${topic.split('#')[1]}`);
+          selectedTopicNode.attr('fill', 'rgba(8, 242, 110, 1)');
+        }
+      });
+    }, 2000);
   }
 
   Modal: FunctionalComponent = () => (
