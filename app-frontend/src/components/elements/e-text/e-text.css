@@ -5,6 +5,11 @@ p {
   margin: 0;
   padding: 0;
   line-height: 1.6;
+  font-weight: 400;
+}
+
+h2 {
+  font-size: 1.25em;
 }
 
 .display {

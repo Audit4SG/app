@@ -77,6 +77,18 @@ button:disabled {
   animation-delay: -0.15s;
 }
 
+/* LINK */
+.link {
+  padding: 0.5em 1em;
+  background: none;
+  color: #059142;
+}
+
+.link:hover {
+  background: #e6fef1;
+  border-radius: 1.5em;
+}
+
 @keyframes lds-ring {
   0% {
     transform: rotate(0deg);

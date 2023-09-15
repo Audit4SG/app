@@ -256,6 +256,7 @@ export class Demo5 {
   }
 
   @State() isNodeListReady: boolean = false;
+
   add_Node_To_InfoList(data) {
     let obj_Data: any;
     this.jsonld_Flattened.map((item: any) => {

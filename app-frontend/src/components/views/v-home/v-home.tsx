@@ -16,6 +16,15 @@ export class VHome {
         <ul>
           <li>
             <e-text>
+              <strong>D13. Card selection stack</strong>
+              <br />
+              Everything in D12 + node hover card + card selection stack
+            </e-text>
+            <l-spacer value={0.5}></l-spacer>
+            <stencil-route-link url="/demo-13">View Demo</stencil-route-link>
+          </li>
+          <li>
+            <e-text>
               <strong>D12. Exploratory vs Class selection</strong>
               <br />
               Introduces an option for users to choose their auditing journey i.e. exploratory or if they want to select a few classes to begin with. Includes node highlighting,

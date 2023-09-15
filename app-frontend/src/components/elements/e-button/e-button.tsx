@@ -3,7 +3,6 @@ import { Component, Event, EventEmitter, FunctionalComponent, Watch, Prop, State
 @Component({
   tag: 'e-button',
   styleUrl: 'e-button.css',
-  shadow: true,
 })
 export class EButton {
   @Prop() action: string;
