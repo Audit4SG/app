@@ -30,10 +30,10 @@ export class PCompactList {
   @State() cardStack: any;
 
   @Watch('stack')
-  watchHandler(newValue: boolean, _oldValue: boolean) {
+  watchHandler(newValue: string, _oldValue: string) {
     if (newValue != _oldValue) {
       this.cardStack = [];
-      this.cardStack = newValue;
+      this.cardStack = JSON.parse(newValue);
       this.cardStack = [...this.cardStack];
     }
   }
