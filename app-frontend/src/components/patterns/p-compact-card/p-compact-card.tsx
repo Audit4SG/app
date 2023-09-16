@@ -12,7 +12,9 @@ export class PCompactCard {
   @Prop() explanation: string;
   @Prop() question: string;
 
-  handleButtonClick(name: string) {}
+  handleButtonClick(name: string) {
+    console.log(name);
+  }
 
   render() {
     return (

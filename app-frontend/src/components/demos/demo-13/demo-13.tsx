@@ -53,6 +53,7 @@ export class Demo13 {
 
   @Listen('deleteAllCardsEvent') deleteAllCardsHandler(e) {
     console.log(e);
+    this.unhilightNodes();
     this.cardStack = [];
     this.cardStack = [...this.cardStack];
   }
@@ -508,6 +509,13 @@ export class Demo13 {
   unhilightNode(topic: string) {
     let selected_Node = this.svg.select(`#${topic.split('#')[1]}`);
     selected_Node.attr('fill', 'white');
+  }
+
+  unhilightNodes() {
+    this.cardStack.map(node => {
+      let selected_Node = this.svg.select(`#${node.id.split('#')[1]}`);
+      selected_Node.attr('fill', 'white');
+    });
   }
 
   unhighlightEdge(selectedTopic: string) {
