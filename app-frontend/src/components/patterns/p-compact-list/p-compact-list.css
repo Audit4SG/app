@@ -1,0 +1,28 @@
+.compact-list-container {
+  display: block;
+  background: white;
+  padding: 0.25em 1em;
+  border: 2px solid black;
+  border-radius: 2em;
+  width: 250px;
+}
+
+.control-button {
+  background: none;
+  outline: none;
+  font-size: 0.8em;
+  border: 1px solid black;
+  padding: 0em;
+  display: flex;
+  border-radius: 100%;
+}
+
+.control-button:hover {
+  cursor: pointer;
+}
+
+.highlight {
+  background: #cefce2;
+  padding: 0.1em 0.5em;
+  border-radius: 0.5em;
+}

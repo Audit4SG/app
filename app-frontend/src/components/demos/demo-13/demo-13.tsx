@@ -51,6 +51,12 @@ export class Demo13 {
     }
   }
 
+  @Listen('deleteAllCardsEvent') deleteAllCardsHandler(e) {
+    console.log(e);
+    this.cardStack = [];
+    this.cardStack = [...this.cardStack];
+  }
+
   @Listen('checkboxInput') handle_CheckboxInput(e) {
     if (e.detail.name === 'topics') {
       if (e.detail.action === 'add') {
@@ -74,6 +80,10 @@ export class Demo13 {
     if (e.detail.action === 'flyTo') {
       this.flyTo(e.detail.value);
     }
+  }
+
+  @Listen('deleteCardEvent') deleteCardEventHandler(e) {
+    this.removeFromCardStack(e.detail);
   }
 
   checkStartButtonState() {
@@ -314,15 +324,20 @@ export class Demo13 {
         this.showTooltip(data.id, event);
       })
       .on('mouseout', (event, data) => {
+        event.preventDefault();
+        console.log(data);
         this.hideTooltip();
       })
       .on('click', (event, data) => {
+        event.preventDefault();
         let selected_Node = this.svg.select(`#${data.id.split('#')[1]}`);
         if (selected_Node.attr('fill') === 'white') {
-          selected_Node.attr('fill', 'rgba(8, 242, 110, 1)');
+          // selected_Node.attr('fill', 'rgba(8, 242, 110, 1)');
+          this.highlightNode(data.id);
           this.addToCardStack(data);
         } else if (selected_Node.attr('fill') === 'rgba(8, 242, 110, 1)') {
-          selected_Node.attr('fill', 'white');
+          // selected_Node.attr('fill', 'white');
+          this.unhilightNode(data.id);
           this.removeFromCardStack(data);
         }
       });
@@ -658,9 +673,10 @@ export class Demo13 {
   addToCardStack = (data: any) => {
     let obj = {
       id: data.id,
-      title: data.label,
+      label: data.label,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      questions: this.cardStack.length === 0 ? 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum' : '',
+      explanation: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      question: this.cardStack.length === 0 ? 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum' : '',
     };
     this.cardStack.push(obj);
     this.cardStack = [...this.cardStack];
@@ -671,11 +687,26 @@ export class Demo13 {
       return obj.id !== data.id;
     });
     this.cardStack = [...this.cardStack];
+    console.log(data.id);
+    this.unhilightNode(data.id);
   };
 
-  LeftBar: FunctionalComponent = () => <div id="left-sidebar">{this.cardStack.length < 3 ? <this.BasicList></this.BasicList> : <this.CompactList></this.CompactList>}</div>;
-  BasicList: FunctionalComponent = () => <div>Basic List</div>;
-  CompactList: FunctionalComponent = () => <div>Compact List</div>;
+  LeftBar: FunctionalComponent = () => <div id="left-sidebar">{this.cardStack.length < 7 ? <this.BasicList></this.BasicList> : <this.CompactList></this.CompactList>}</div>;
+  BasicList: FunctionalComponent = () => (
+    <div>
+      {this.cardStack.map(card => (
+        <p-basic-card
+          id={card.id}
+          label={card.label}
+          description={card.description}
+          explanation={card.explanation}
+          question={card.question}
+          isExpanded={this.cardStack.length > 2 ? false : true}
+        ></p-basic-card>
+      ))}
+    </div>
+  );
+  CompactList: FunctionalComponent = () => <p-compact-list stack={JSON.stringify(this.cardStack)}></p-compact-list>;
 
   render() {
     return (
@@ -693,7 +724,6 @@ export class Demo13 {
         {this.isModalVisible && <this.Modal></this.Modal>}
         {this.journey === 'selection' && this.isDemoStarted && <this.FilterContainer></this.FilterContainer>}
         {this.cardStack.length > 0 && <this.LeftBar></this.LeftBar>}
-
         <svg width={this.width} height={this.height} ref={el => (this.el_Svg = el as SVGAElement)}></svg>
       </Host>
     );
