@@ -1,0 +1,28 @@
+:host {
+  display: block;
+  background: white;
+  border: 2px solid black;
+  border-radius: 1em;
+  padding: 0.5em 1em 1.5em 1em;
+  margin-top: -1em;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.control-button {
+  background: none;
+  outline: none;
+  font-size: 0.8em;
+  border: 1px solid black;
+  padding: 0em;
+  display: flex;
+  border-radius: 100%;
+}
+
+.control-button:hover {
+  cursor: pointer;
+}

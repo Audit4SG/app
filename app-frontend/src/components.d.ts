@@ -101,6 +101,13 @@ export namespace Components {
         "label": string;
         "question": string;
     }
+    interface PCompactCard {
+        "description": string;
+        "explanation": string;
+        "id": string;
+        "label": string;
+        "question": string;
+    }
     interface PCompactList {
         "stack": string;
     }
@@ -293,6 +300,12 @@ declare global {
         prototype: HTMLPBasicCardElement;
         new (): HTMLPBasicCardElement;
     };
+    interface HTMLPCompactCardElement extends Components.PCompactCard, HTMLStencilElement {
+    }
+    var HTMLPCompactCardElement: {
+        prototype: HTMLPCompactCardElement;
+        new (): HTMLPCompactCardElement;
+    };
     interface HTMLPCompactListElement extends Components.PCompactList, HTMLStencilElement {
     }
     var HTMLPCompactListElement: {
@@ -359,6 +372,7 @@ declare global {
         "l-seperator": HTMLLSeperatorElement;
         "l-spacer": HTMLLSpacerElement;
         "p-basic-card": HTMLPBasicCardElement;
+        "p-compact-card": HTMLPCompactCardElement;
         "p-compact-list": HTMLPCompactListElement;
         "p-info-item": HTMLPInfoItemElement;
         "p-node-card": HTMLPNodeCardElement;
@@ -469,6 +483,13 @@ declare namespace LocalJSX {
         "onDeleteCardEvent"?: (event: CustomEvent<any>) => void;
         "question"?: string;
     }
+    interface PCompactCard {
+        "description"?: string;
+        "explanation"?: string;
+        "id"?: string;
+        "label"?: string;
+        "question"?: string;
+    }
     interface PCompactList {
         "onDeleteAllCardsEvent"?: (event: CustomEvent<any>) => void;
         "stack"?: string;
@@ -516,6 +537,7 @@ declare namespace LocalJSX {
         "l-seperator": LSeperator;
         "l-spacer": LSpacer;
         "p-basic-card": PBasicCard;
+        "p-compact-card": PCompactCard;
         "p-compact-list": PCompactList;
         "p-info-item": PInfoItem;
         "p-node-card": PNodeCard;
@@ -557,6 +579,7 @@ declare module "@stencil/core" {
             "l-seperator": LocalJSX.LSeperator & JSXBase.HTMLAttributes<HTMLLSeperatorElement>;
             "l-spacer": LocalJSX.LSpacer & JSXBase.HTMLAttributes<HTMLLSpacerElement>;
             "p-basic-card": LocalJSX.PBasicCard & JSXBase.HTMLAttributes<HTMLPBasicCardElement>;
+            "p-compact-card": LocalJSX.PCompactCard & JSXBase.HTMLAttributes<HTMLPCompactCardElement>;
             "p-compact-list": LocalJSX.PCompactList & JSXBase.HTMLAttributes<HTMLPCompactListElement>;
             "p-info-item": LocalJSX.PInfoItem & JSXBase.HTMLAttributes<HTMLPInfoItemElement>;
             "p-node-card": LocalJSX.PNodeCard & JSXBase.HTMLAttributes<HTMLPNodeCardElement>;

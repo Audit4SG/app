@@ -5,6 +5,9 @@
   border: 2px solid black;
   border-radius: 2em;
   width: 250px;
+  /* width: 500px; */
+  height: 32px;
+  overflow: hidden;
 }
 
 .control-button {
@@ -22,7 +25,39 @@
 }
 
 .highlight {
+  font-size: 0.8em;
   background: #cefce2;
   padding: 0.1em 0.5em;
   border-radius: 0.5em;
+}
+
+.download-pdf-button {
+  border: 0;
+  outline: none;
+  background: none;
+  background: #08f26e;
+  padding: 0.5em 1em;
+  border-radius: 2em;
+}
+
+main {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
+  margin-top: 0.5em;
+  overflow-y: auto;
+  padding-top: 1em;
+}
+
+.column {
+  width: 48%;
+}
+
+main {
+  opacity: 0;
+}
+
+.download-button-container {
+  display: none;
+  opacity: 0;
 }
