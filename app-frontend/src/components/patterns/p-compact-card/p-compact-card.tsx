@@ -1,4 +1,4 @@
-import { Component, Prop, Host, h } from '@stencil/core';
+import { Component, Event, EventEmitter, Prop, State, h } from '@stencil/core';
 
 @Component({
   tag: 'p-compact-card',
@@ -6,38 +6,64 @@ import { Component, Prop, Host, h } from '@stencil/core';
   shadow: true,
 })
 export class PCompactCard {
+  @Event({
+    eventName: 'deleteCardEvent',
+    bubbles: true,
+  })
+  deleteCardEventEmitter: EventEmitter;
+
   @Prop() id: string;
   @Prop() label: string;
   @Prop() description: string;
   @Prop() explanation: string;
   @Prop() question: string;
 
+  @State() isInfoVisible: boolean = false;
+  @State() isDescriptionVisible: boolean = false;
+
   handleButtonClick(name: string) {
-    console.log(name);
+    if (name === 'deleteCard') {
+      this.deleteCardEventEmitter.emit({
+        id: this.id,
+      });
+    } else if (name === 'toggleInformation') {
+      this.isInfoVisible = !this.isInfoVisible;
+    } else if (name === 'toggleDescription') {
+      this.isDescriptionVisible = !this.isDescriptionVisible;
+    }
   }
 
   render() {
     return (
-      <Host>
+      <div class={`compact-card__container ${this.isInfoVisible || this.isDescriptionVisible ? 'highlighted' : ''}`}>
         <header>
           <div class="header-item-1">
             <e-text>{this.label}</e-text>
           </div>
-          <l-row>
-            <button onClick={() => this.handleButtonClick('deleteAllCards')} class="control-button">
-              <ion-icon name="information-outline"></ion-icon>{' '}
-            </button>
-            &nbsp;
-            <button onClick={() => this.handleButtonClick('deleteAllCards')} class="control-button">
-              <ion-icon name="add-outline"></ion-icon>{' '}
-            </button>
-            &nbsp;
-            <button onClick={() => this.handleButtonClick('deleteAllCards')} class="control-button">
-              <ion-icon name="close-outline"></ion-icon>{' '}
-            </button>
-          </l-row>
+          <div class="header-item-2">
+            <l-row>
+              <button onClick={() => this.handleButtonClick('toggleInformation')} class="control-button">
+                {this.isInfoVisible ? <ion-icon name="information-circle"></ion-icon> : <ion-icon name="information-outline"></ion-icon>}
+              </button>
+              &nbsp;
+              <button onClick={() => this.handleButtonClick('toggleDescription')} class="control-button">
+                {this.isDescriptionVisible ? <ion-icon name="remove-circle-outline"></ion-icon> : <ion-icon name="add-outline"></ion-icon>}
+              </button>
+              &nbsp;
+              <button onClick={() => this.handleButtonClick('deleteCard')} class="control-button">
+                <ion-icon name="close-outline"></ion-icon>{' '}
+              </button>
+            </l-row>
+          </div>
         </header>
-      </Host>
+        {this.isDescriptionVisible && (
+          <main>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+          </main>
+        )}
+        {this.isInfoVisible && <footer>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</footer>}
+      </div>
     );
   }
 }

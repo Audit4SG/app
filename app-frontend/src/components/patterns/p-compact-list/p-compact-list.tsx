@@ -57,7 +57,7 @@ export class PCompactList {
   private tl: any = gsap.timeline();
 
   animateExpansion() {
-    this.tl.to(this.compactListDivElement, { width: '500px', height: 'auto', duration: 0.25 });
+    this.tl.to(this.compactListDivElement, { width: '600px', height: 'auto', duration: 0.25 });
     this.tl.to(this.downloadButtonContainer, { display: 'block', duration: 0 });
     this.tl.to(this.downloadButtonContainer, { opacity: 1, duration: 0.25 });
     this.tl.to(this.mainListElement, { opacity: 1, duration: 0.25 });

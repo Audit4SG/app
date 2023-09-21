@@ -488,6 +488,7 @@ declare namespace LocalJSX {
         "explanation"?: string;
         "id"?: string;
         "label"?: string;
+        "onDeleteCardEvent"?: (event: CustomEvent<any>) => void;
         "question"?: string;
     }
     interface PCompactList {
