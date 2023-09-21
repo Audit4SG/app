@@ -51,6 +51,7 @@ main {
 
 .column {
   width: 48%;
+  max-height: 75vh;
 }
 
 main {

@@ -73,6 +73,10 @@ export class Demo13 {
         }
         this.selectedTopics = this.selectedTopics.filter(topic => topic !== e.detail.value);
       }
+      if (this.isDemoStarted) {
+        this.generateCardStack();
+      }
+
       this.checkStartButtonState();
     }
   }
@@ -358,21 +362,6 @@ export class Demo13 {
       .attr('dx', 75)
       .attr('dy', 10);
 
-    // this.linkLabels = this.svg
-    //   .append('g')
-    //   .attr('class', 'edge-texts')
-    //   .selectAll('text')
-    //   .data(this.links)
-    //   .enter()
-    //   .append('text')
-    //   .text(link => {
-    //     console.log(link.label);
-    //     return link.label;
-    //   })
-    //   .attr('font-size', 12)
-    //   .attr('dx', 5)
-    //   .attr('dy', 5);
-
     this.linkLabels = this.svgGraph
       .append('g')
       .attr('class', 'edge-texts')
@@ -455,6 +444,7 @@ export class Demo13 {
     simulation.force('link').links(this.links);
     this.highlightNodes();
     this.highlightEdges();
+    this.generateCardStack();
 
     let t = d3.zoomIdentity.translate(this.width / 2, this.height / 2).scale(0.075);
     d3.select(this.el_Svg).transition().duration(2000).call(this.zoom.transform, t);
@@ -488,6 +478,21 @@ export class Demo13 {
   highlightNode(topic: string) {
     let selected_Node = this.svg.select(`#${topic.split('#')[1]}`);
     selected_Node.attr('fill', 'rgba(8, 242, 110, 1)');
+  }
+
+  generateCardStack() {
+    this.cardStack = [];
+    this.selectedTopics.map((topic: any) => {
+      let obj = {
+        id: topic,
+        label: topic.split('#')[1],
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        explanation: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        question: this.cardStack.length === 0 ? 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum' : '',
+      };
+      this.cardStack.push(obj);
+    });
+    this.cardStack = [...this.cardStack];
   }
 
   highlightEdge(selectedTopic: string) {
@@ -695,7 +700,6 @@ export class Demo13 {
       return obj.id !== data.id;
     });
     this.cardStack = [...this.cardStack];
-    console.log(data.id);
     this.unhilightNode(data.id);
   };
 
