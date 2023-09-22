@@ -7,11 +7,11 @@ import * as jsonld from 'jsonld';
 import * as d3 from 'd3';
 
 @Component({
-  tag: 'demo-13',
-  styleUrl: 'demo-13.css',
+  tag: 'demo-13b',
+  styleUrl: 'demo-13b.css',
   shadow: true,
 })
-export class Demo13 {
+export class Demo13b {
   el_Svg!: SVGElement;
   el_ToolTip!: HTMLDivElement;
 
@@ -327,7 +327,10 @@ export class Demo13 {
       .on('mouseout', (event, data) => {
         event.preventDefault();
         console.log(data);
-        this.hideTooltip();
+        clearTimeout(this.timeout);
+        this.timeout = setTimeout(() => {
+          this.hideTooltip();
+        }, this.timeoutInMS);
       })
       .on('click', (event, data) => {
         event.preventDefault();
@@ -600,6 +603,22 @@ export class Demo13 {
     }, 2000);
   }
 
+  private timeout: any;
+  private timeoutInMS: number = 10000;
+
+  handleDropDownChange(e: any) {
+    this.timeoutInMS = e.target.value;
+  }
+
+  handleButtonClick(name: string) {
+    if (name === 'hideTooltip') {
+      if (this.timeout) {
+        clearTimeout(this.timeout);
+      }
+      this.hideTooltip();
+    }
+  }
+
   Modal: FunctionalComponent = () => (
     <div id="modal__container">
       <div id="modal__content">
@@ -640,6 +659,18 @@ export class Demo13 {
             </l-row>
           </div>
         )}
+      </div>
+
+      <div class="selection-container">
+        <l-row>
+          <c-text>Choose tooltip timeout: </c-text>
+          &nbsp;
+          <select onChange={e => this.handleDropDownChange(e)}>
+            <option value="10000">10 seconds</option>
+            <option value="20000">20 seconds</option>
+            <option value="30000">30 seconds</option>
+          </select>
+        </l-row>
       </div>
       <div id="modal__background"></div>
     </div>
@@ -723,9 +754,12 @@ export class Demo13 {
     return (
       <Host>
         <div id="tooltip" ref={el => (this.el_ToolTip = el as HTMLDivElement)}>
-          <l-row>
+          <l-row justifyContent="space-between" align="center">
             {/* <div id="tooltip-node"></div> */}
             <e-text variant="heading">{this.tooltipTitle}</e-text>
+            <button onClick={() => this.handleButtonClick('hideTooltip')} class="control-button">
+              <ion-icon name="close-circle-outline"></ion-icon>{' '}
+            </button>
           </l-row>
           <l-spacer value={0.5}></l-spacer>
           <e-text>{this.tooltipContent}</e-text>

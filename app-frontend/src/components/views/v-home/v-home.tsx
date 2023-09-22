@@ -16,6 +16,15 @@ export class VHome {
         <ul>
           <li>
             <e-text>
+              <strong>D13 (b). Tooltip has a timeout before disappearing</strong>
+              <br />
+              Everything in D13 but tooltip has a certain timeout
+            </e-text>
+            <l-spacer value={0.5}></l-spacer>
+            <stencil-route-link url="/demo-13b">View Demo</stencil-route-link>
+          </li>
+          <li>
+            <e-text>
               <strong>D13 (a). Card selection stack</strong>
               <br />
               Everything in D12 + node hover card + card selection stack
