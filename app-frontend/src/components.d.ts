@@ -33,6 +33,10 @@ export namespace Components {
     }
     interface Demo13c {
     }
+    interface Demo13d {
+    }
+    interface Demo14 {
+    }
     interface Demo2 {
     }
     interface Demo3 {
@@ -201,6 +205,18 @@ declare global {
     var HTMLDemo13cElement: {
         prototype: HTMLDemo13cElement;
         new (): HTMLDemo13cElement;
+    };
+    interface HTMLDemo13dElement extends Components.Demo13d, HTMLStencilElement {
+    }
+    var HTMLDemo13dElement: {
+        prototype: HTMLDemo13dElement;
+        new (): HTMLDemo13dElement;
+    };
+    interface HTMLDemo14Element extends Components.Demo14, HTMLStencilElement {
+    }
+    var HTMLDemo14Element: {
+        prototype: HTMLDemo14Element;
+        new (): HTMLDemo14Element;
     };
     interface HTMLDemo2Element extends Components.Demo2, HTMLStencilElement {
     }
@@ -371,6 +387,8 @@ declare global {
         "demo-13": HTMLDemo13Element;
         "demo-13b": HTMLDemo13bElement;
         "demo-13c": HTMLDemo13cElement;
+        "demo-13d": HTMLDemo13dElement;
+        "demo-14": HTMLDemo14Element;
         "demo-2": HTMLDemo2Element;
         "demo-3": HTMLDemo3Element;
         "demo-4": HTMLDemo4Element;
@@ -425,6 +443,10 @@ declare namespace LocalJSX {
     interface Demo13b {
     }
     interface Demo13c {
+    }
+    interface Demo13d {
+    }
+    interface Demo14 {
     }
     interface Demo2 {
     }
@@ -543,6 +565,8 @@ declare namespace LocalJSX {
         "demo-13": Demo13;
         "demo-13b": Demo13b;
         "demo-13c": Demo13c;
+        "demo-13d": Demo13d;
+        "demo-14": Demo14;
         "demo-2": Demo2;
         "demo-3": Demo3;
         "demo-4": Demo4;
@@ -587,6 +611,8 @@ declare module "@stencil/core" {
             "demo-13": LocalJSX.Demo13 & JSXBase.HTMLAttributes<HTMLDemo13Element>;
             "demo-13b": LocalJSX.Demo13b & JSXBase.HTMLAttributes<HTMLDemo13bElement>;
             "demo-13c": LocalJSX.Demo13c & JSXBase.HTMLAttributes<HTMLDemo13cElement>;
+            "demo-13d": LocalJSX.Demo13d & JSXBase.HTMLAttributes<HTMLDemo13dElement>;
+            "demo-14": LocalJSX.Demo14 & JSXBase.HTMLAttributes<HTMLDemo14Element>;
             "demo-2": LocalJSX.Demo2 & JSXBase.HTMLAttributes<HTMLDemo2Element>;
             "demo-3": LocalJSX.Demo3 & JSXBase.HTMLAttributes<HTMLDemo3Element>;
             "demo-4": LocalJSX.Demo4 & JSXBase.HTMLAttributes<HTMLDemo4Element>;

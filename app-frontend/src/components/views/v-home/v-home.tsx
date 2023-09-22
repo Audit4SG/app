@@ -16,6 +16,24 @@ export class VHome {
         <ul>
           <li>
             <e-text>
+              <strong>D14. Menu</strong>
+              <br />
+              Everything in D13 and also includes menu
+            </e-text>
+            <l-spacer value={0.5}></l-spacer>
+            <stencil-route-link url="/demo-14">View Demo</stencil-route-link>
+          </li>
+          <li>
+            <e-text>
+              <strong>D13 (d). Tooltip on hover + click anywhere or on "x" to close</strong>
+              <br />
+              Everything in D13 but tooltip appears on hover and closes if clicked anywhere on the document/or on the "x" button
+            </e-text>
+            <l-spacer value={0.5}></l-spacer>
+            <stencil-route-link url="/demo-13d">View Demo</stencil-route-link>
+          </li>
+          <li>
+            <e-text>
               <strong>D13 (c). Tooltip on click + card pin button in tooltip</strong>
               <br />
               Everything in D13 but tooltip appears on click and has a button to pin the card

@@ -7,11 +7,11 @@ import * as jsonld from 'jsonld';
 import * as d3 from 'd3';
 
 @Component({
-  tag: 'demo-13c',
-  styleUrl: 'demo-13c.css',
+  tag: 'demo-14',
+  styleUrl: 'demo-14.css',
   shadow: true,
 })
-export class Demo13c {
+export class Demo14 {
   el_Svg!: SVGElement;
   el_ToolTip!: HTMLDivElement;
 
