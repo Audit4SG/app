@@ -65,16 +65,13 @@ export class Demo13 {
           this.highlightNode(e.detail.value);
           this.highlightEdge(e.detail.value);
         }
-        this.selectedTopics.push(e.detail.value);
+        this.pushIntoCardStack(e.detail.value);
       } else if (e.detail.action === 'remove') {
         if (this.isDemoStarted) {
           this.unhilightNode(e.detail.value);
           this.unhighlightEdge(e.detail.value);
         }
-        this.selectedTopics = this.selectedTopics.filter(topic => topic !== e.detail.value);
-      }
-      if (this.isDemoStarted) {
-        this.generateCardStack();
+        this.popFromCardStack(e.detail.value);
       }
 
       this.checkStartButtonState();
@@ -92,7 +89,7 @@ export class Demo13 {
   }
 
   checkStartButtonState() {
-    if (this.selectedTopics.length > 0) {
+    if (this.cardStack.length > 0) {
       this.isStartButtonDisabled = false;
     } else {
       this.isStartButtonDisabled = true;
@@ -444,24 +441,25 @@ export class Demo13 {
     simulation.force('link').links(this.links);
     this.highlightNodes();
     this.highlightEdges();
-    this.generateCardStack();
 
     let t = d3.zoomIdentity.translate(this.width / 2, this.height / 2).scale(0.075);
     d3.select(this.el_Svg).transition().duration(2000).call(this.zoom.transform, t);
+
+    console.log(this.cardStack);
   }
 
   highlightNodes() {
-    this.selectedTopics.map((selectedTopic: any) => {
-      let selected_Node = this.svg.select(`#${selectedTopic.split('#')[1]}`);
+    this.cardStack.map((item: any) => {
+      let selected_Node = this.svg.select(`#${item.label}`);
       selected_Node.attr('fill', 'rgba(8, 242, 110, 1)');
     });
   }
 
   highlightEdges() {
     let linkIdsForHighlight = [];
-    this.selectedTopics.map((selectedTopic: any) => {
+    this.cardStack.map((item: any) => {
       this.links.map((link: any) => {
-        if (selectedTopic === link.source.id || selectedTopic === link.target.id) {
+        if (item.id === link.source.id || item.id === link.target.id) {
           if (link.label) {
             let linkId = `${link.source.id.split('#')[1]}-${link.target.id.split('#')[1]}`;
             linkIdsForHighlight.push(linkId);
@@ -480,18 +478,20 @@ export class Demo13 {
     selected_Node.attr('fill', 'rgba(8, 242, 110, 1)');
   }
 
-  generateCardStack() {
-    this.cardStack = [];
-    this.selectedTopics.map((topic: any) => {
-      let obj = {
-        id: topic,
-        label: topic.split('#')[1],
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        explanation: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        question: this.cardStack.length === 0 ? 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum' : '',
-      };
-      this.cardStack.push(obj);
-    });
+  pushIntoCardStack(topic: string) {
+    let obj = {
+      id: topic,
+      label: topic.split('#')[1],
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      explanation: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      question: this.cardStack.length === 0 ? 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum' : '',
+    };
+    this.cardStack.push(obj);
+    this.cardStack = [...this.cardStack];
+  }
+
+  popFromCardStack(topic: string) {
+    this.cardStack = this.cardStack.filter(obj => obj.id !== topic);
     this.cardStack = [...this.cardStack];
   }
 
@@ -592,8 +592,8 @@ export class Demo13 {
     }, 500);
 
     setTimeout(() => {
-      this.selectedTopics.map(selectedTopic => {
-        if (selectedTopic === topic) {
+      this.cardStack.map(item => {
+        if (item.id === topic) {
           let selectedTopicNode = this.svg.select(`#${topic.split('#')[1]}`);
           selectedTopicNode.attr('fill', 'rgba(8, 242, 110, 1)');
         }
@@ -664,8 +664,8 @@ export class Demo13 {
 
   isSelected(topicToCheck) {
     let isSelected: boolean = false;
-    this.selectedTopics.map(topic => {
-      if (topic === topicToCheck) {
+    this.cardStack.map(item => {
+      if (item.id === topicToCheck) {
         isSelected = true;
       }
     });
@@ -735,7 +735,7 @@ export class Demo13 {
         </div>
         {this.isModalVisible && <this.Modal></this.Modal>}
         {this.journey === 'selection' && this.isDemoStarted && <this.FilterContainer></this.FilterContainer>}
-        {this.cardStack.length > 0 && <this.LeftBar></this.LeftBar>}
+        {this.cardStack.length > 0 && this.isDemoStarted ? <this.LeftBar></this.LeftBar> : ''}
         <svg width={this.width} height={this.height} ref={el => (this.el_Svg = el as SVGAElement)}></svg>
       </Host>
     );

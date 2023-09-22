@@ -16,7 +16,7 @@ export class VHome {
         <ul>
           <li>
             <e-text>
-              <strong>D13. Card selection stack</strong>
+              <strong>D13 (a). Card selection stack</strong>
               <br />
               Everything in D12 + node hover card + card selection stack
             </e-text>
