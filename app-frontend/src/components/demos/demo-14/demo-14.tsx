@@ -322,32 +322,33 @@ export class Demo14 {
       .style('filter', 'drop-shadow(0px 15px 8px rgb(0 0 0 / 0.4))')
       .call(dragDrop)
       .on('mouseenter', (event, data) => {
-        event.preventDefault();
-        let selected_Node = this.svg.select(`#${data.id.split('#')[1]}`);
-        if (selected_Node.attr('fill') === 'white') {
-          selected_Node.attr('fill', '#cefce2');
-        }
+        this.timeout = setTimeout(() => {
+          this.showTooltip(data.id, event);
+        }, this.timeoutInMS);
       })
       .on('mouseout', (event, data) => {
         event.preventDefault();
-        let selected_Node = this.svg.select(`#${data.id.split('#')[1]}`);
-        if (selected_Node.attr('fill') === '#cefce2') {
-          selected_Node.attr('fill', 'white');
-        }
+        console.log(data);
+        clearTimeout(this.timeout);
+      })
+      .on('dragstart', (event, data) => {
+        event.preventDefault();
+        console.log(data);
+        clearTimeout(this.timeout);
       })
       .on('click', (event, data) => {
         event.preventDefault();
-        this.showTooltip(data.id, event);
-        // let selected_Node = this.svg.select(`#${data.id.split('#')[1]}`);
-        // if (selected_Node.attr('fill') === 'white') {
-        //   // selected_Node.attr('fill', 'rgba(8, 242, 110, 1)');
-        //   this.highlightNode(data.id);
-        //   this.addToCardStack(data);
-        // } else if (selected_Node.attr('fill') === 'rgba(8, 242, 110, 1)') {
-        //   // selected_Node.attr('fill', 'white');
-        //   this.unhilightNode(data.id);
-        //   this.removeFromCardStack(data);
-        // }
+        clearTimeout(this.timeout);
+        let selected_Node = this.svg.select(`#${data.id.split('#')[1]}`);
+        if (selected_Node.attr('fill') === 'white') {
+          // selected_Node.attr('fill', 'rgba(8, 242, 110, 1)');
+          this.highlightNode(data.id);
+          this.addToCardStack(data);
+        } else if (selected_Node.attr('fill') === 'rgba(8, 242, 110, 1)') {
+          // selected_Node.attr('fill', 'white');
+          this.unhilightNode(data.id);
+          this.removeFromCardStack(data);
+        }
       });
 
     this.textElements = this.svgGraph
@@ -608,12 +609,14 @@ export class Demo14 {
   }
 
   private timeout: any;
+  private timeoutInMS: number = 1000;
+
+  handleDropDownChange(e: any) {
+    this.timeoutInMS = e.target.value;
+  }
 
   handleButtonClick(name: string) {
     if (name === 'hideTooltip') {
-      if (this.timeout) {
-        clearTimeout(this.timeout);
-      }
       this.hideTooltip();
     }
   }
@@ -737,6 +740,12 @@ export class Demo14 {
   );
   CompactList: FunctionalComponent = () => <p-compact-list stack={JSON.stringify(this.cardStack)}></p-compact-list>;
 
+  handleBodyClick() {
+    if (this.el_ToolTip.style.display === 'block') {
+      this.hideTooltip();
+    }
+  }
+
   render() {
     return (
       <Host>
@@ -751,19 +760,12 @@ export class Demo14 {
           <l-spacer value={0.5}></l-spacer>
           <e-text>{this.tooltipContent}</e-text>
           <l-spacer value={0.5}></l-spacer>
-          <l-row justifyContent="space-between" align="center">
-            <e-button variant="link" action="">
-              Read more
-            </e-button>
-            <e-button action="pinCard">
-              <ion-icon name="pin-outline"></ion-icon>Pin
-            </e-button>
-          </l-row>
+          <e-button>Read More</e-button>
         </div>
         {this.isModalVisible && <this.Modal></this.Modal>}
         {this.journey === 'selection' && this.isDemoStarted && <this.FilterContainer></this.FilterContainer>}
         {this.cardStack.length > 0 && this.isDemoStarted ? <this.LeftBar></this.LeftBar> : ''}
-        <svg width={this.width} height={this.height} ref={el => (this.el_Svg = el as SVGAElement)}></svg>
+        <svg onClick={() => this.handleBodyClick()} width={this.width} height={this.height} ref={el => (this.el_Svg = el as SVGAElement)}></svg>
       </Host>
     );
   }
