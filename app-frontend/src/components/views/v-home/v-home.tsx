@@ -14,7 +14,7 @@ export class VHome {
         <br />
         <h1>Demos</h1>
         <ul>
-          <li>
+          {/* <li>
             <e-text>
               <strong>D14. Menu</strong>
               <br />
@@ -22,7 +22,7 @@ export class VHome {
             </e-text>
             <l-spacer value={0.5}></l-spacer>
             <stencil-route-link url="/demo-14">View Demo</stencil-route-link>
-          </li>
+          </li> */}
           <li>
             <e-text>
               <strong>D13 (d). Tooltip on hover + click anywhere or on "x" to close</strong>
