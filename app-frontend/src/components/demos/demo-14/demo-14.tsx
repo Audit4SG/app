@@ -773,14 +773,14 @@ export class Demo14 {
   BasicList: FunctionalComponent = () => (
     <div>
       {this.cardStack.map(card => (
-        <p-basic-card
+        <p-basic-card-2
           id={card.id}
           label={card.label}
           description={card.description}
           explanation={card.explanation}
           question={card.question}
           isExpanded={this.cardStack.length > 2 ? false : true}
-        ></p-basic-card>
+        ></p-basic-card-2>
       ))}
     </div>
   );
