@@ -109,6 +109,8 @@ export namespace Components {
         "label": string;
         "question": string;
     }
+    interface PBasicCard2 {
+    }
     interface PCompactCard {
         "description": string;
         "explanation": string;
@@ -332,6 +334,12 @@ declare global {
         prototype: HTMLPBasicCardElement;
         new (): HTMLPBasicCardElement;
     };
+    interface HTMLPBasicCard2Element extends Components.PBasicCard2, HTMLStencilElement {
+    }
+    var HTMLPBasicCard2Element: {
+        prototype: HTMLPBasicCard2Element;
+        new (): HTMLPBasicCard2Element;
+    };
     interface HTMLPCompactCardElement extends Components.PCompactCard, HTMLStencilElement {
     }
     var HTMLPCompactCardElement: {
@@ -408,6 +416,7 @@ declare global {
         "l-seperator": HTMLLSeperatorElement;
         "l-spacer": HTMLLSpacerElement;
         "p-basic-card": HTMLPBasicCardElement;
+        "p-basic-card-2": HTMLPBasicCard2Element;
         "p-compact-card": HTMLPCompactCardElement;
         "p-compact-list": HTMLPCompactListElement;
         "p-info-item": HTMLPInfoItemElement;
@@ -527,6 +536,8 @@ declare namespace LocalJSX {
         "onDeleteCardEvent"?: (event: CustomEvent<any>) => void;
         "question"?: string;
     }
+    interface PBasicCard2 {
+    }
     interface PCompactCard {
         "description"?: string;
         "explanation"?: string;
@@ -586,6 +597,7 @@ declare namespace LocalJSX {
         "l-seperator": LSeperator;
         "l-spacer": LSpacer;
         "p-basic-card": PBasicCard;
+        "p-basic-card-2": PBasicCard2;
         "p-compact-card": PCompactCard;
         "p-compact-list": PCompactList;
         "p-info-item": PInfoItem;
@@ -632,6 +644,7 @@ declare module "@stencil/core" {
             "l-seperator": LocalJSX.LSeperator & JSXBase.HTMLAttributes<HTMLLSeperatorElement>;
             "l-spacer": LocalJSX.LSpacer & JSXBase.HTMLAttributes<HTMLLSpacerElement>;
             "p-basic-card": LocalJSX.PBasicCard & JSXBase.HTMLAttributes<HTMLPBasicCardElement>;
+            "p-basic-card-2": LocalJSX.PBasicCard2 & JSXBase.HTMLAttributes<HTMLPBasicCard2Element>;
             "p-compact-card": LocalJSX.PCompactCard & JSXBase.HTMLAttributes<HTMLPCompactCardElement>;
             "p-compact-list": LocalJSX.PCompactList & JSXBase.HTMLAttributes<HTMLPCompactListElement>;
             "p-info-item": LocalJSX.PInfoItem & JSXBase.HTMLAttributes<HTMLPInfoItemElement>;
