@@ -14,6 +14,7 @@ import * as d3 from 'd3';
 export class Demo14 {
   el_Svg!: SVGElement;
   el_ToolTip!: HTMLDivElement;
+  filterContainerEl!: HTMLDivElement;
 
   private svg: any;
   private svgContent: any;
@@ -83,6 +84,13 @@ export class Demo14 {
   @Listen('event_LinkClick') handle_LinkClick(e) {
     if (e.detail.action === 'flyTo') {
       this.flyTo(e.detail.value);
+    } else if (e.detail.action === 'toggleTopicFilter') {
+      this.isFilterContainerCollapsed = !this.isFilterContainerCollapsed;
+      if (this.isFilterContainerCollapsed) {
+        this.animateFilterContainerContraction();
+      } else {
+        this.animateFilterContainerExpansion();
+      }
     }
   }
 
@@ -454,7 +462,11 @@ export class Demo14 {
     let t = d3.zoomIdentity.translate(this.width / 2, this.height / 2).scale(0.075);
     d3.select(this.el_Svg).transition().duration(2000).call(this.zoom.transform, t);
 
-    console.log(this.cardStack);
+    if (this.journey === 'selection') {
+      this.isFilterContainerCollapsed = false;
+    } else if (this.journey === 'exploration') {
+      this.isFilterContainerCollapsed = true;
+    }
   }
 
   highlightNodes() {
@@ -670,16 +682,35 @@ export class Demo14 {
     </div>
   );
 
+  private iconSize: string = '1.25em';
+  @State() isFilterContainerCollapsed: boolean = true;
+
+  private tl: any = gsap.timeline();
+  animateFilterContainerExpansion() {
+    this.tl.to(this.filterContainerEl, { height: 'auto', duration: 0.25 });
+  }
+  animateFilterContainerContraction() {
+    this.tl.to(this.filterContainerEl, { overflow: 'hidden', duration: 0 });
+    this.tl.to(this.filterContainerEl, { height: '30px', duration: 0.25 });
+  }
+
   FilterContainer: FunctionalComponent = () => (
-    <div class="filter-container">
-      {' '}
+    <div
+      class={`filter-container ${this.journey === 'exploration' ? 'filter-container--exploration' : 'filter-container--selection'}`}
+      ref={el => (this.filterContainerEl = el as HTMLDivElement)}
+    >
+      <l-row justifyContent="space-between" align="center">
+        <e-text variant="heading">Topics</e-text>
+        <e-link event={true} action="toggleTopicFilter">
+          {this.isFilterContainerCollapsed ? <ph-caret-circle-down size={this.iconSize} /> : <ph-minus-circle size={this.iconSize} />}
+        </e-link>
+      </l-row>
+      <l-spacer value={0.5}></l-spacer>
       {this.topicOptions.map((topic: any) => (
         <l-row justifyContent="space-between">
           <e-input type="checkbox" name="topics" value={topic.value} checked={this.isSelected(topic.value)} label={topic.label}></e-input>
           <e-link event={true} action="flyTo" value={topic.value}>
-            <div class="icon-container">
-              <ion-icon name="location-outline"></ion-icon>
-            </div>
+            <ph-map-pin color="#06c258"></ph-map-pin>
           </e-link>
         </l-row>
       ))}
@@ -711,9 +742,20 @@ export class Demo14 {
     let obj = {
       id: data.id,
       label: data.label,
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      explanation: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      question: this.cardStack.length === 0 ? 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum' : '',
+      description:
+        this.cardStack.length === 1
+          ? 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+          : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      explanation:
+        this.cardStack.length === 1
+          ? 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+          : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      question:
+        this.cardStack.length === 0 || this.cardStack.length === 1
+          ? this.cardStack.length === 0
+            ? 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'
+            : 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'
+          : '',
     };
     this.cardStack.push(obj);
     this.cardStack = [...this.cardStack];
@@ -758,7 +800,7 @@ export class Demo14 {
             {/* <div id="tooltip-node"></div> */}
             <e-text variant="heading">{this.tooltipTitle}</e-text>
             <button onClick={() => this.handleButtonClick('hideTooltip')} class="control-button">
-              <ion-icon name="close-circle-outline"></ion-icon>{' '}
+              <ph-x-circle size={this.iconSize} />
             </button>
           </l-row>
           <l-spacer value={0.5}></l-spacer>
@@ -767,7 +809,8 @@ export class Demo14 {
           <e-button>Read More</e-button>
         </div>
         {this.isModalVisible && <this.Modal></this.Modal>}
-        {this.journey === 'selection' && this.isDemoStarted && <this.FilterContainer></this.FilterContainer>}
+        {/* {this.journey === 'selection' && this.isDemoStarted && <this.FilterContainer></this.FilterContainer>} */}
+        {this.isDemoStarted && <this.FilterContainer></this.FilterContainer>}
         {this.cardStack.length > 0 && this.isDemoStarted ? <this.LeftBar></this.LeftBar> : ''}
         <svg onClick={() => this.handleBodyClick()} width={this.width} height={this.height} ref={el => (this.el_Svg = el as SVGAElement)}></svg>
       </Host>

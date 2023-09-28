@@ -70,6 +70,8 @@ export class PCompactList {
     this.tl.to(this.compactListDivElement, { width: '250px', height: '32px', duration: 0.25 });
   }
 
+  private iconSize: string = '1.25em';
+
   render() {
     return (
       <div class="compact-list-container" ref={el => (this.compactListDivElement = el as HTMLDivElement)}>

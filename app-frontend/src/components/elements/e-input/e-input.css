@@ -125,7 +125,7 @@ label:hover {
 
 /* Style the checkmark/indicator */
 .container .checkmark:after {
-  left: 3px;
+  left: 4px;
   top: 0px;
   width: 3px;
   height: 7px;

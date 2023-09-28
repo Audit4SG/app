@@ -33,6 +33,8 @@ export class PCompactCard {
     }
   }
 
+  private iconSize: string = '1.25em';
+
   render() {
     return (
       <div class={`compact-card__container ${this.isInfoVisible || this.isDescriptionVisible ? 'highlighted' : ''}`}>

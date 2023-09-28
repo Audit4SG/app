@@ -19,70 +19,90 @@ export class PBasicCard {
   @Prop() question: string;
   @Prop() isExpanded: boolean = true;
 
-  @State() isCardExpanded: boolean = true;
-  @State() isQuestionExpanded: boolean = false;
+  @State() isQuestionExpanded: boolean = true;
+  @State() isReferenceExpanded: boolean = false;
+  @State() isDescriptionExpanded: boolean = false;
 
   @Watch('isExpanded')
   watchHandler(newValue: boolean, _oldValue: boolean) {
     if (newValue != _oldValue) {
-      this.isCardExpanded = newValue;
+      this.isQuestionExpanded = newValue;
     }
   }
 
   componentWillLoad() {
-    this.isCardExpanded = this.isExpanded;
+    this.isQuestionExpanded = this.isExpanded;
   }
 
   handleButtonClick(name: string) {
-    if (name === 'toggleCardExpansion') {
-      this.isCardExpanded = !this.isCardExpanded;
+    if (name === 'toggleQuestion') {
+      this.isQuestionExpanded = !this.isQuestionExpanded;
     } else if (name === 'deleteCard') {
       this.deleteCardEventEmitter.emit({
         id: this.id,
       });
-    } else if (name === 'toggleQuestion') {
-      this.isQuestionExpanded = !this.isQuestionExpanded;
+    } else if (name === 'toggleReference') {
+      this.isReferenceExpanded = !this.isReferenceExpanded;
+    } else if (name === 'toggleDefinition') {
+      this.isDescriptionExpanded = !this.isDescriptionExpanded;
     }
   }
+
+  private iconSize: string = '1.3em';
 
   render() {
     return (
       <Host>
         <l-row justifyContent="space-between">
-          <div></div>
+          <div class="card-label">
+            <e-text variant="heading">{this.label}</e-text>
+          </div>
           <l-row>
-            <button onClick={() => this.handleButtonClick('toggleCardExpansion')} class="control-button">
-              {this.isCardExpanded ? <ion-icon name="remove-outline"></ion-icon> : <ion-icon name="add-outline"></ion-icon>}
+            <button onClick={() => this.handleButtonClick('toggleDefinition')} class="control-button">
+              {this.isDescriptionExpanded ? <ph-info size={this.iconSize} weight="fill" /> : <ph-info size={this.iconSize} weight="regular" />}
+            </button>
+            &nbsp;
+            <button onClick={() => this.handleButtonClick('toggleQuestion')} class="control-button">
+              {this.isQuestionExpanded ? <ph-minus-circle size={this.iconSize} /> : <ph-caret-circle-down size={this.iconSize} />}
             </button>
             &nbsp;
             <button onClick={() => this.handleButtonClick('deleteCard')} class="control-button">
-              <ion-icon name="close-outline"></ion-icon>{' '}
+              <ph-x-circle size={this.iconSize} />
             </button>
           </l-row>
         </l-row>
-        <e-text variant="heading">{this.label}</e-text>
-        {this.isCardExpanded && (
-          <div class="expanded-container">
-            <e-text>{this.description}</e-text>
-            <div class="seperator"></div>
-            <e-text>{this.explanation}</e-text>
-            <l-spacer value={0.5}></l-spacer>
-            {this.question && (
-              <div class="question-container">
-                {this.isQuestionExpanded && (
-                  <div>
-                    <div class="seperator"></div>
-                    <e-text>{this.question}</e-text>
-                    <l-spacer value={0.5}></l-spacer>
-                  </div>
-                )}
-                <button class={this.isQuestionExpanded ? 'toggle-button hide-button' : 'toggle-button expand-button'} onClick={() => this.handleButtonClick('toggleQuestion')}>
-                  {this.isQuestionExpanded ? 'Hide questions' : 'Click here for questions'}
-                </button>
-              </div>
-            )}
-          </div>
-        )}
+
+        <div class="expanded-container">
+          {this.isDescriptionExpanded && (
+            <div>
+              {' '}
+              <e-text>
+                <em>{this.description}</em>
+              </e-text>
+              {this.isQuestionExpanded && <div class="seperator"></div>}
+            </div>
+          )}
+          {this.isQuestionExpanded && (
+            <div>
+              <e-text>{this.explanation}</e-text>
+              <l-spacer value={0.5}></l-spacer>
+              {this.question && (
+                <div class="question-container">
+                  {this.isReferenceExpanded && (
+                    <div>
+                      <div class="seperator"></div>
+                      <e-text>{this.question}</e-text>
+                      <l-spacer value={0.5}></l-spacer>
+                    </div>
+                  )}
+                  <button class={this.isReferenceExpanded ? 'toggle-button hide-button' : 'toggle-button expand-button'} onClick={() => this.handleButtonClick('toggleReference')}>
+                    {this.isReferenceExpanded ? 'Hide references' : 'Show references'}
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
       </Host>
     );
   }
