@@ -101,11 +101,20 @@ export class EInput {
       return <input style={this.styleObject_Textbox} type={this.type} placeholder={this.placeholder} onInput={e => this.handle_AlphanumericInput(e)} />;
     } else if (this.type === 'checkbox') {
       return (
-        <l-row>
-          <input id={this.name} type={this.type} name={this.name} value={this.value} checked={this.checked} onChange={e => this.handle_CheckboxChange(e)} />
-          <l-spacer variant="horizontal" value={0.15}></l-spacer>
-          <label htmlFor={this.name}>{this.label}</label>
-        </l-row>
+        // <l-row>
+        //   <input id={this.name} type={this.type} name={this.name} value={this.value} checked={this.checked} onChange={e => this.handle_CheckboxChange(e)} />
+        //   <l-spacer variant="horizontal" value={0.15}></l-spacer>
+        //   <label class="checkbox-label" htmlFor={this.name}>
+        //     {this.label}
+        //   </label>
+        // </l-row>
+        <div>
+          <label class="container">
+            {this.label}
+            <input id={this.name} type={this.type} name={this.name} value={this.value} checked={this.checked} onChange={e => this.handle_CheckboxChange(e)} />
+            <span class="checkmark"></span>
+          </label>
+        </div>
       );
     } else if (this.type === 'radio') {
       return (

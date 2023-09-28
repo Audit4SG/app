@@ -79,14 +79,15 @@ button:disabled {
 
 /* LINK */
 .link {
-  padding: 0.5em 1em;
+  padding: 0.25em 1.25em;
   background: none;
-  color: #059142;
+  color: rgba(1, 30, 43, 1);
+  border: 1px solid rgba(1, 30, 43, 1);
+  border-radius: 1.5em;
 }
 
 .link:hover {
-  background: #e6fef1;
-  border-radius: 1.5em;
+  background: rgba(0, 0, 0, 0.05);
 }
 
 @keyframes lds-ring {

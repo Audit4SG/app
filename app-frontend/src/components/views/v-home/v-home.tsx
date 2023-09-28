@@ -14,15 +14,15 @@ export class VHome {
         <br />
         <h1>Demos</h1>
         <ul>
-          {/* <li>
+          <li>
             <e-text>
-              <strong>D14. Menu</strong>
+              <strong>D14. Improvements added to D13</strong>
               <br />
-              Everything in D13 and also includes menu
+              Implements visual and interaction refinements derived from all the versions of D13
             </e-text>
             <l-spacer value={0.5}></l-spacer>
             <stencil-route-link url="/demo-14">View Demo</stencil-route-link>
-          </li> */}
+          </li>
           <li>
             <e-text>
               <strong>D13 (d). Tooltip on hover + click anywhere or on "x" to close</strong>

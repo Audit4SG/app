@@ -19,8 +19,8 @@ export class Demo14 {
   private svgContent: any;
   private svgGraph: any;
 
-  private width = window.innerWidth;
-  private height = window.innerHeight;
+  @State() width = 0;
+  @State() height = 0;
 
   @State() isModalVisible: boolean = false;
   @State() journey: string = 'selection';
@@ -39,6 +39,8 @@ export class Demo14 {
       this.modalStep = this.modalStep - 1;
       this.isStartButtonDisabled = false;
     } else if (e.detail.action === 'Start') {
+      this.width = window.innerWidth;
+      this.height = window.innerHeight;
       this.isDemoStarted = true;
       this.isModalVisible = false;
       this.generate_Graph();
@@ -627,11 +629,11 @@ export class Demo14 {
         {this.modalStep === 0 && (
           <div>
             <e-text variant="heading">Choose your auditing journey</e-text>
-            <l-spacer value={1}></l-spacer>
+            <l-spacer value={0.6}></l-spacer>
             <e-input type="radio" name="journey" value="selection" checked={this.journey === 'selection' ? true : false} label="I will audit certain topics"></e-input>
-            <l-spacer value={0.5}></l-spacer>
+            <l-spacer value={0}></l-spacer>
             <e-input type="radio" name="journey" value="exploration" checked={this.journey === 'exploration' ? true : false} label="I will explore all the topics"></e-input>
-            <br />
+            <l-spacer value={1}></l-spacer>
             <l-row justifyContent="space-between">
               <div></div>
               <e-button action={this.journey === 'selection' ? 'Next' : 'Start'} disabled={this.isStartButtonDisabled}>
@@ -643,14 +645,16 @@ export class Demo14 {
         {this.modalStep === 1 && (
           <div>
             <e-text variant="heading">Choose topics</e-text>
+            <l-spacer value={1.5}></l-spacer>
+            <div id="topic-list">
+              {this.topicOptions.map((topic: any) => (
+                <div>
+                  <e-input type="checkbox" name="topics" value={topic.value} checked={false} label={topic.label}></e-input>
+                  <l-spacer value={0}></l-spacer>
+                </div>
+              ))}
+            </div>
             <l-spacer value={1}></l-spacer>
-            {this.topicOptions.map((topic: any) => (
-              <div>
-                <e-input type="checkbox" name="topics" value={topic.value} checked={false} label={topic.label}></e-input>
-                <l-spacer value={0.5}></l-spacer>
-              </div>
-            ))}
-            <br />
             <l-row justifyContent="space-between">
               <e-button variant="link" action="Back">
                 Back
