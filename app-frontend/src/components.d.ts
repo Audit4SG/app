@@ -110,12 +110,12 @@ export namespace Components {
         "question": string;
     }
     interface PBasicCard2 {
-        "description": string;
-        "explanation": string;
+        "definition": string;
         "id": string;
         "isExpanded": boolean;
         "label": string;
         "question": string;
+        "reference": string;
     }
     interface PCompactCard {
         "description": string;
@@ -543,13 +543,13 @@ declare namespace LocalJSX {
         "question"?: string;
     }
     interface PBasicCard2 {
-        "description"?: string;
-        "explanation"?: string;
+        "definition"?: string;
         "id"?: string;
         "isExpanded"?: boolean;
         "label"?: string;
         "onDeleteCardEvent"?: (event: CustomEvent<any>) => void;
         "question"?: string;
+        "reference"?: string;
     }
     interface PCompactCard {
         "description"?: string;

@@ -70,7 +70,7 @@ export class PCompactList {
     this.tl.to(this.compactListDivElement, { width: '250px', height: '32px', duration: 0.25 });
   }
 
-  private iconSize: string = '1.25em';
+  private iconSize: string = '1.5em';
 
   render() {
     return (
@@ -86,11 +86,11 @@ export class PCompactList {
             </div>
             <l-row>
               <button onClick={() => this.handleButtonClick('deleteAllCards')} class="control-button">
-                <ion-icon name="close-outline"></ion-icon>{' '}
+                <ph-x-circle size={this.iconSize} />
               </button>
               &nbsp;
               <button onClick={() => this.handleButtonClick('toggleExpansion')} class="control-button">
-                {this.isExpanded ? <ion-icon name="remove-outline"></ion-icon> : <ion-icon name="add-outline"></ion-icon>}
+                {this.isExpanded ? <ph-minus-circle size={this.iconSize} /> : <ph-caret-circle-down size={this.iconSize} />}
               </button>
             </l-row>
           </l-row>{' '}

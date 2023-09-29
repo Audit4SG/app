@@ -1,4 +1,4 @@
-:host {
+.basic-card-container {
   width: 280px;
   display: block;
   background: white;
@@ -13,6 +13,10 @@
   word-wrap: break-word;
 }
 
+.basic-card-container header {
+  max-width: 280px;
+}
+
 .control-button {
   background: none;
   outline: none;
@@ -25,10 +29,6 @@
 
 .control-button:hover {
   cursor: pointer;
-}
-
-.expanded-container {
-  margin-top: 1em;
 }
 
 .seperator {
@@ -68,4 +68,10 @@
 .hide-button {
   background: rgba(0, 0, 0, 0.05);
   color: red;
+}
+
+.truncate {
+  max-height: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

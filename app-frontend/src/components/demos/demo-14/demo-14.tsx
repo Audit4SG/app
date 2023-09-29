@@ -54,8 +54,7 @@ export class Demo14 {
     }
   }
 
-  @Listen('deleteAllCardsEvent') deleteAllCardsHandler(e) {
-    console.log(e);
+  @Listen('deleteAllCardsEvent') deleteAllCardsHandler() {
     this.unhilightNodes();
     this.cardStack = [];
     this.cardStack = [...this.cardStack];
@@ -336,14 +335,12 @@ export class Demo14 {
           this.showTooltip(data.id, event);
         }, this.timeoutInMS);
       })
-      .on('mouseout', (event, data) => {
+      .on('mouseout', event => {
         event.preventDefault();
-        console.log(data);
         clearTimeout(this.timeout);
       })
-      .on('dragstart', (event, data) => {
+      .on('dragstart', event => {
         event.preventDefault();
-        console.log(data);
         clearTimeout(this.timeout);
       })
       .on('click', (event, data) => {
@@ -776,9 +773,9 @@ export class Demo14 {
         <p-basic-card-2
           id={card.id}
           label={card.label}
-          description={card.description}
-          explanation={card.explanation}
-          question={card.question}
+          definition={card.description}
+          question={card.explanation}
+          reference={card.question}
           isExpanded={this.cardStack.length > 2 ? false : true}
         ></p-basic-card-2>
       ))}
