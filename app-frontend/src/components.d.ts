@@ -578,6 +578,7 @@ declare namespace LocalJSX {
         "id"?: string;
         "label"?: string;
         "onDeleteCardEvent"?: (event: CustomEvent<any>) => void;
+        "onShowModal"?: (event: CustomEvent<any>) => void;
         "question"?: string;
         "reference"?: string;
     }

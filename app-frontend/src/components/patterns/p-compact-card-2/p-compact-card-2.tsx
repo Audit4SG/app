@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Prop, State, h } from '@stencil/core';
+import { Component, Event, Listen, EventEmitter, Prop, State, h } from '@stencil/core';
 import { gsap } from 'gsap';
 
 @Component({
@@ -19,6 +19,12 @@ export class PCompactCard2 {
   })
   deleteCardEventEmitter: EventEmitter;
 
+  @Event({
+    eventName: 'showModal',
+    bubbles: true,
+  })
+  event_showModal: EventEmitter;
+
   @Prop() id: string;
   @Prop() label: string;
 
@@ -29,7 +35,17 @@ export class PCompactCard2 {
   @State() isDefinitionExpanded: boolean = false;
   @State() isQuestionExpanded: boolean = false;
   @State() isReferenceExpanded: boolean = false;
-  @State() expansionLabel: string = 'Read more';
+
+  @Listen('event_LinkClick') handle_LinkClick(e) {
+    if (e.detail.action === 'showModal') {
+      this.event_showModal.emit({
+        label: this.label,
+        definition: this.definition,
+        question: this.question,
+        reference: this.reference,
+      });
+    }
+  }
 
   private tl: any = gsap.timeline();
 
@@ -54,7 +70,6 @@ export class PCompactCard2 {
       }
     } else if (name === 'toggleReference') {
       this.isReferenceExpanded = !this.isReferenceExpanded;
-      console.log(`this.isReferenceExpanded: ${this.isReferenceExpanded}`);
       if (this.isReferenceExpanded) {
         this.animateReferenceExpansion();
       } else {
@@ -94,10 +109,7 @@ export class PCompactCard2 {
   }
 
   private iconSize: string = '1.5em';
-
-  componentWillLoad() {
-    console.log(this.reference);
-  }
+  private thresholdLength: number = 140;
 
   render() {
     return (
@@ -124,17 +136,47 @@ export class PCompactCard2 {
         </header>
         <l-spacer value={0.5}></l-spacer>
         <div class="content-container" ref={el => (this.definitionContainerEl = el as HTMLDivElement)}>
-          <e-text>
-            <em>{this.definition}</em>
-          </e-text>
+          {this.definition.length > this.thresholdLength ? (
+            <e-text>
+              <em>{this.definition.substring(0, this.thresholdLength)}</em>
+              ...
+              <e-link event={true} action="showModal">
+                Read more
+              </e-link>
+            </e-text>
+          ) : (
+            <e-text>
+              <em>{this.definition}</em>
+            </e-text>
+          )}
           {this.isQuestionExpanded && <div class="seperator"></div>}
         </div>
         <div class="content-container" ref={el => (this.questionContainerEl = el as HTMLDivElement)}>
-          <e-text>{this.question}</e-text>
+          {this.question.length > this.thresholdLength ? (
+            <e-text>
+              {this.question.substring(0, this.thresholdLength)}
+              ...
+              <e-link event={true} action="showModal">
+                Read more
+              </e-link>
+            </e-text>
+          ) : (
+            <e-text>{this.question}</e-text>
+          )}
           {this.isReferenceExpanded && <div class="seperator"></div>}
         </div>
         <div class="content-container" ref={el => (this.referenceContainerEl = el as HTMLDivElement)}>
-          <e-text>{this.reference}</e-text>
+          {this.reference.length > this.thresholdLength ? (
+            <e-text>
+              {this.reference.substring(0, this.thresholdLength)}
+              ...
+              <e-link event={true} action="showModal">
+                Read more
+              </e-link>
+            </e-text>
+          ) : (
+            <e-text>{this.reference}</e-text>
+          )}
         </div>
         {this.reference.length > 0 && <l-spacer value={1}></l-spacer>}
         <div class="content-container" ref={el => (this.referenceButtonContainerEl = el as HTMLDivElement)}>

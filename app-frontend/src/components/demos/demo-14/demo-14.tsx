@@ -93,6 +93,14 @@ export class Demo14 {
     }
   }
 
+  @Listen('showModal') showModalHandler(e) {
+    this.modalLabel = e.detail.label;
+    this.modalDefinition = e.detail.definition;
+    this.modalQuestion = e.detail.question;
+    this.modalReference = e.detail.reference;
+    this.showModal();
+  }
+
   @Listen('deleteCardEvent') deleteCardEventHandler(e) {
     this.removeFromCardStack(e.detail);
   }
@@ -796,9 +804,106 @@ export class Demo14 {
     }
   }
 
+  handleModalButtonClick(name: string) {
+    if (name === 'toggleModalDefinition') {
+      this.isModalDefinitionExpanded = !this.isModalDefinitionExpanded;
+    } else if (name === 'toggleModalQuestion') {
+      this.isModalQuestionExpanded = !this.isModalQuestionExpanded;
+    } else if (name === 'toggleModalReference') {
+      this.isModalReferenceExpanded = !this.isModalReferenceExpanded;
+    } else if (name === 'closeModal') {
+      this.closeModal();
+    }
+  }
+
+  @State() isModalDefinitionExpanded: boolean = false;
+  @State() isModalQuestionExpanded: boolean = true;
+  @State() isModalReferenceExpanded: boolean = false;
+
+  @State() modalLabel: string = '';
+  @State() modalDefinition: string = '';
+  @State() modalQuestion: string = '';
+  @State() modalReference: string = '';
+
+  modalBackground!: HTMLDivElement;
+  modalContent!: HTMLDivElement;
+
+  showModal() {
+    this.tl.to(this.modalBackground, { display: 'block', duration: 0 });
+    this.tl.to(this.modalBackground, { opacity: 1, duration: 0.25 });
+    this.tl.to(this.modalContent, { display: 'block', duration: 0 });
+    this.tl.to(this.modalContent, { opacity: 1, duration: 0.25 });
+  }
+
+  closeModal() {
+    this.tl.to(this.modalContent, { opacity: 0, duration: 0.25 });
+    this.tl.to(this.modalContent, { display: 'none', duration: 0 });
+    this.tl.to(this.modalBackground, { opacity: 0, duration: 0.25 });
+    this.tl.to(this.modalBackground, { display: 'none', duration: 0 });
+    this.isModalQuestionExpanded = true;
+  }
+
   render() {
     return (
       <Host>
+        <div class="modal-content" ref={el => (this.modalContent = el as HTMLDivElement)}>
+          <header>
+            <l-row justifyContent="space-between" align="center">
+              <div class="header-item-1">
+                {/* <e-text>{this.label}</e-text> */}
+                <e-text>This is a label</e-text>
+              </div>
+              <div class="header-item-2">
+                <l-row>
+                  <button onClick={() => this.handleModalButtonClick('toggleModalDefinition')} class="control-button">
+                    {this.isModalDefinitionExpanded ? <ph-info size={this.iconSize} weight="fill" /> : <ph-info size={this.iconSize} weight="regular" />}
+                  </button>
+                  &nbsp;
+                  <button onClick={() => this.handleModalButtonClick('toggleModalQuestion')} class="control-button">
+                    {this.isModalQuestionExpanded ? <ph-minus-circle size={this.iconSize} /> : <ph-caret-circle-down size={this.iconSize} />}
+                  </button>
+                  &nbsp;
+                  <button onClick={() => this.handleModalButtonClick('closeModal')} class="control-button">
+                    <ph-x-circle size={this.iconSize} />
+                  </button>
+                </l-row>
+              </div>
+            </l-row>
+          </header>
+          <l-spacer value={0.5}></l-spacer>
+          {this.isModalDefinitionExpanded && (
+            <div>
+              <em>
+                <e-text>{this.modalDefinition}</e-text>
+              </em>
+              {this.isModalQuestionExpanded && <div class="seperator"></div>}
+            </div>
+          )}
+          {this.isModalQuestionExpanded && (
+            <div>
+              <e-text>{this.modalQuestion}</e-text>
+              {this.isModalReferenceExpanded && <div class="seperator"></div>}
+            </div>
+          )}
+          {this.isModalReferenceExpanded && (
+            <div>
+              <e-text>{this.modalReference}</e-text>
+            </div>
+          )}
+          {this.modalReference.length > 0 && (
+            <div>
+              <l-spacer value={1}></l-spacer>
+              <button
+                class={this.isModalReferenceExpanded ? 'toggle-button hide-button' : 'toggle-button expand-button'}
+                onClick={() => this.handleModalButtonClick('toggleModalReference')}
+              >
+                {this.isModalReferenceExpanded ? 'Hide references' : 'Show references'}
+              </button>
+            </div>
+          )}
+        </div>
+        <div class="modal-bg" ref={el => (this.modalBackground = el as HTMLDivElement)}></div>
+
         <div id="tooltip" ref={el => (this.el_ToolTip = el as HTMLDivElement)}>
           <l-row justifyContent="space-between" align="center">
             <e-text variant="heading">{this.tooltipTitle}</e-text>

@@ -181,7 +181,7 @@ export class PBasicCard2 {
               ) : (
                 <span>
                   {' '}
-                  {this.definition.substring(0, this.thresholdLength)}
+                  <em>{this.definition.substring(0, this.thresholdLength)}</em>
                   ...
                 </span>
               )}{' '}
