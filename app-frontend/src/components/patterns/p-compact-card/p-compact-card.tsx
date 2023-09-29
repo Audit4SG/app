@@ -33,7 +33,7 @@ export class PCompactCard {
     }
   }
 
-  private iconSize: string = '1.25em';
+  private iconSize: string = '1.5em';
 
   render() {
     return (

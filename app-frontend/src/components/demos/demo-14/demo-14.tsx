@@ -262,12 +262,6 @@ export class Demo14 {
     this.svgContent = this.svg.append('g');
     this.svgGraph = this.svgContent.append('g');
 
-    // var simulation: any = d3
-    //   .forceSimulation()
-    //   .force('link', linkForce)
-    //   .force('charge', d3.forceManyBody().strength(-2000))
-    //   .force('center', d3.forceCenter(this.width / 2, this.height / 2));
-
     var linkForce = d3
       .forceLink()
       .id(function (link: any) {
@@ -331,12 +325,14 @@ export class Demo14 {
       .style('filter', 'drop-shadow(0px 15px 8px rgb(0 0 0 / 0.4))')
       .call(dragDrop)
       .on('mouseenter', (event, data) => {
+        this.nodeHoverHighlight(data);
         this.timeout = setTimeout(() => {
           this.showTooltip(data.id, event);
         }, this.timeoutInMS);
       })
-      .on('mouseout', event => {
+      .on('mouseout', (event, data) => {
         event.preventDefault();
+        this.nodeHoverUnhighlight(data);
         clearTimeout(this.timeout);
       })
       .on('dragstart', event => {
@@ -730,9 +726,18 @@ export class Demo14 {
     this.el_ToolTip.style.top = `${event.pageY + 20}px`;
     this.el_ToolTip.style.left = `${event.pageX - 100}px`;
   }
-
   hideTooltip() {
     this.el_ToolTip.style.display = 'none';
+  }
+
+  nodeHoverHighlight(data) {
+    let selected_Node = this.svg.select(`#${data.id.split('#')[1]}`);
+    selected_Node.transition().duration(1000).style('filter', 'drop-shadow(0px 0px 50px rgb(8, 242, 110))').attr('r', 75);
+  }
+  nodeHoverUnhighlight(data) {
+    let selected_Node = this.svg.select(`#${data.id.split('#')[1]}`);
+    selected_Node.transition().duration(250).attr('r', 50);
+    selected_Node.transition().duration(0).style('filter', 'drop-shadow(0px 15px 8px rgb(0 0 0 / 0.4))').attr('r', 50);
   }
 
   addToCardStack = (data: any) => {
@@ -767,6 +772,7 @@ export class Demo14 {
   };
 
   LeftBar: FunctionalComponent = () => <div id="left-sidebar">{this.cardStack.length < 7 ? <this.BasicList></this.BasicList> : <this.CompactList></this.CompactList>}</div>;
+
   BasicList: FunctionalComponent = () => (
     <div>
       {this.cardStack.map(card => (
@@ -781,6 +787,7 @@ export class Demo14 {
       ))}
     </div>
   );
+
   CompactList: FunctionalComponent = () => <p-compact-list stack={JSON.stringify(this.cardStack)}></p-compact-list>;
 
   handleBodyClick() {
@@ -794,7 +801,6 @@ export class Demo14 {
       <Host>
         <div id="tooltip" ref={el => (this.el_ToolTip = el as HTMLDivElement)}>
           <l-row justifyContent="space-between" align="center">
-            {/* <div id="tooltip-node"></div> */}
             <e-text variant="heading">{this.tooltipTitle}</e-text>
             <button onClick={() => this.handleButtonClick('hideTooltip')} class="control-button">
               <ph-x-circle size={this.iconSize} />
@@ -806,7 +812,6 @@ export class Demo14 {
           <e-button>Read More</e-button>
         </div>
         {this.isModalVisible && <this.Modal></this.Modal>}
-        {/* {this.journey === 'selection' && this.isDemoStarted && <this.FilterContainer></this.FilterContainer>} */}
         {this.isDemoStarted && <this.FilterContainer></this.FilterContainer>}
         {this.cardStack.length > 0 && this.isDemoStarted ? <this.LeftBar></this.LeftBar> : ''}
         <svg onClick={() => this.handleBodyClick()} width={this.width} height={this.height} ref={el => (this.el_Svg = el as SVGAElement)}></svg>

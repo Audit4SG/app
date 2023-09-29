@@ -111,7 +111,7 @@ e-button .primary:hover {
   position: fixed;
   top: 1em;
   left: 1em;
-  height: 90vh;
+  max-height: 90vh;
   overflow: auto;
 }
 
