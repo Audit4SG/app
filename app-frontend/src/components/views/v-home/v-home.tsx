@@ -16,6 +16,15 @@ export class VHome {
         <ul>
           <li>
             <e-text>
+              <strong>D15. Adds menu</strong>
+              <br />
+              Adds the menu system to D14
+            </e-text>
+            <l-spacer value={0.5}></l-spacer>
+            <stencil-route-link url="/demo-15">View Demo</stencil-route-link>
+          </li>
+          <li>
+            <e-text>
               <strong>D14. Improvements added to D13</strong>
               <br />
               Implements visual and interaction refinements derived from all the versions of D13

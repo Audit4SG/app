@@ -39,6 +39,7 @@ export class AppRoot {
           <stencil-route url="/demo-13c" component="demo-13c" exact={true} />
           <stencil-route url="/demo-13d" component="demo-13d" exact={true} />
           <stencil-route url="/demo-14" component="demo-14" exact={true} />
+          <stencil-route url="/demo-15" component="demo-15" exact={true} />
           <stencil-route component="v-catch-all" />
         </stencil-route-switch>
       </stencil-router>
