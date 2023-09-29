@@ -40,34 +40,62 @@ export class PCompactCard2 {
     } else if (name === 'toggleDefinition') {
       this.isDefinitionExpanded = !this.isDefinitionExpanded;
       if (this.isDefinitionExpanded) {
-        // this.animateDefinitionExpansion();
+        this.animateDefinitionExpansion();
       } else {
-        // this.animateDefinitionCollapse();
+        this.animateDefinitionCollapse();
       }
     } else if (name === 'toggleQuestion') {
       this.isQuestionExpanded = !this.isQuestionExpanded;
       if (this.isQuestionExpanded) {
-        // this.animateQuestionExpansion();
+        this.animateQuestionExpansion();
       } else {
-        // this.animateQuestionCollapse();
+        this.animateQuestionCollapse();
       }
     } else if (name === 'toggleReference') {
       this.isReferenceExpanded = !this.isReferenceExpanded;
       if (this.isReferenceExpanded) {
-        // this.animateReferenceExpansion();
+        this.animateReferenceExpansion();
       } else {
-        // this.animateReferenceCollapse();
+        this.animateReferenceCollapse();
       }
     }
 
     if (this.isDefinitionExpanded || this.isQuestionExpanded || this.isReferenceExpanded) {
-      this.tl.to(this.compactCardContainerEl, { background: '#eee', duration: 0.25 });
+      this.tl.to(this.compactCardContainerEl, { position: 'relative', zIndex: 999, background: '#eee', duration: 0.25 });
     } else {
-      this.tl.to(this.compactCardContainerEl, { background: 'white', duration: 0.25 });
+      this.tl.to(this.compactCardContainerEl, { position: 'static', zIndex: 0, background: 'white', duration: 0.25 });
     }
   }
 
+  animateDefinitionExpansion() {
+    this.tl.to(this.definitionContainerEl, { height: 'auto', duration: 0.25 });
+  }
+  animateDefinitionCollapse() {
+    this.tl.to(this.definitionContainerEl, { overflow: 'hidden', duration: 0 });
+    this.tl.to(this.definitionContainerEl, { height: '0px', duration: 0.25 });
+  }
+
+  animateQuestionExpansion() {
+    this.tl.to(this.questionContainerEl, { height: 'auto', duration: 0.25 });
+  }
+  animateQuestionCollapse() {
+    this.tl.to(this.questionContainerEl, { overflow: 'hidden', duration: 0 });
+    this.tl.to(this.questionContainerEl, { height: '0px', duration: 0.25 });
+  }
+
+  animateReferenceExpansion() {
+    this.tl.to(this.referenceContainerEl, { height: 'auto', duration: 0.25 });
+  }
+  animateReferenceCollapse() {
+    this.tl.to(this.referenceContainerEl, { overflow: 'hidden', duration: 0 });
+    this.tl.to(this.referenceContainerEl, { height: '0px', duration: 0.25 });
+  }
+
   private iconSize: string = '1.5em';
+
+  componentWillLoad() {
+    console.log(this.reference);
+  }
 
   render() {
     return (
@@ -93,18 +121,37 @@ export class PCompactCard2 {
           </div>
         </header>
         <l-spacer value={0.5}></l-spacer>
-        <div class="content-container">
-          <e-text>{this.definition}</e-text>
+        <div class="content-container" ref={el => (this.definitionContainerEl = el as HTMLDivElement)}>
+          <e-text>
+            <em>{this.definition}</em>
+          </e-text>
+          {this.isQuestionExpanded && (
+            <div>
+              <l-spacer value={1}></l-spacer>
+              <div class="seperator"></div>
+              <l-spacer value={1}></l-spacer>
+            </div>
+          )}
         </div>
-        <div class="content-container">
+        <div class="content-container" ref={el => (this.questionContainerEl = el as HTMLDivElement)}>
           <e-text>{this.question}</e-text>
-        </div>
-        <div class="content-container">
-          <e-text>{this.reference}</e-text>
+          {this.isReferenceExpanded && (
+            <div>
+              <l-spacer value={1}></l-spacer>
+              <div class="seperator"></div>
+              <l-spacer value={1}></l-spacer>
+            </div>
+          )}
+          <div class="content-container" ref={el => (this.referenceContainerEl = el as HTMLDivElement)}>
+            <e-text>{this.reference}</e-text>
+          </div>
           {this.reference.length > 0 && (
-            <button class={this.isReferenceExpanded ? 'toggle-button hide-button' : 'toggle-button expand-button'} onClick={() => this.handleButtonClick('toggleReference')}>
-              {this.isReferenceExpanded ? 'Hide references' : 'Show references'}
-            </button>
+            <div>
+              <l-spacer value={1}></l-spacer>
+              <button class={this.isReferenceExpanded ? 'toggle-button hide-button' : 'toggle-button expand-button'} onClick={() => this.handleButtonClick('toggleReference')}>
+                {this.isReferenceExpanded ? 'Hide references' : 'Show references'}
+              </button>
+            </div>
           )}
         </div>
       </div>

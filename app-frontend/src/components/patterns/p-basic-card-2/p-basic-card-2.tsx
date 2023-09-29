@@ -118,7 +118,6 @@ export class PBasicCard2 {
   animateBasicCardExpansion() {
     this.tl.to(this.basicCardContainerEl, { width: '600px', duration: 0.25 });
   }
-
   animateBasicCardContraction() {
     this.tl.to(this.basicCardContainerEl, { width: '280px', duration: 0.25 });
   }
