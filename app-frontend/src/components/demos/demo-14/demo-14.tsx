@@ -850,8 +850,7 @@ export class Demo14 {
           <header>
             <l-row justifyContent="space-between" align="center">
               <div class="header-item-1">
-                {/* <e-text>{this.label}</e-text> */}
-                <e-text>This is a label</e-text>
+                <e-text>{this.modalLabel}</e-text>
               </div>
               <div class="header-item-2">
                 <l-row>
@@ -902,7 +901,7 @@ export class Demo14 {
             </div>
           )}
         </div>
-        <div class="modal-bg" ref={el => (this.modalBackground = el as HTMLDivElement)}></div>
+        <div class="modal-bg" ref={el => (this.modalBackground = el as HTMLDivElement)} onClick={() => this.closeModal()}></div>
 
         <div id="tooltip" ref={el => (this.el_ToolTip = el as HTMLDivElement)}>
           <l-row justifyContent="space-between" align="center">
