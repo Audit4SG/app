@@ -11,6 +11,7 @@ export class PCompactCard2 {
   definitionContainerEl!: HTMLDivElement;
   questionContainerEl!: HTMLDivElement;
   referenceContainerEl!: HTMLDivElement;
+  referenceButtonContainerEl!: HTMLDivElement;
 
   @Event({
     eventName: 'deleteCardEvent',
@@ -53,6 +54,7 @@ export class PCompactCard2 {
       }
     } else if (name === 'toggleReference') {
       this.isReferenceExpanded = !this.isReferenceExpanded;
+      console.log(`this.isReferenceExpanded: ${this.isReferenceExpanded}`);
       if (this.isReferenceExpanded) {
         this.animateReferenceExpansion();
       } else {
@@ -76,11 +78,11 @@ export class PCompactCard2 {
   }
 
   animateQuestionExpansion() {
-    this.tl.to(this.questionContainerEl, { height: 'auto', duration: 0.25 });
+    this.tl.to([this.questionContainerEl, this.referenceButtonContainerEl], { height: 'auto', duration: 0.25 });
   }
   animateQuestionCollapse() {
-    this.tl.to(this.questionContainerEl, { overflow: 'hidden', duration: 0 });
-    this.tl.to(this.questionContainerEl, { height: '0px', duration: 0.25 });
+    this.tl.to([this.questionContainerEl, this.referenceButtonContainerEl], { overflow: 'hidden', duration: 0 });
+    this.tl.to([this.referenceButtonContainerEl, this.questionContainerEl], { height: '0px', duration: 0.25 });
   }
 
   animateReferenceExpansion() {
@@ -125,33 +127,21 @@ export class PCompactCard2 {
           <e-text>
             <em>{this.definition}</em>
           </e-text>
-          {this.isQuestionExpanded && (
-            <div>
-              <l-spacer value={1}></l-spacer>
-              <div class="seperator"></div>
-              <l-spacer value={1}></l-spacer>
-            </div>
-          )}
+          {this.isQuestionExpanded && <div class="seperator"></div>}
         </div>
         <div class="content-container" ref={el => (this.questionContainerEl = el as HTMLDivElement)}>
           <e-text>{this.question}</e-text>
-          {this.isReferenceExpanded && (
-            <div>
-              <l-spacer value={1}></l-spacer>
-              <div class="seperator"></div>
-              <l-spacer value={1}></l-spacer>
-            </div>
-          )}
-          <div class="content-container" ref={el => (this.referenceContainerEl = el as HTMLDivElement)}>
-            <e-text>{this.reference}</e-text>
-          </div>
-          {this.reference.length > 0 && (
-            <div>
-              <l-spacer value={1}></l-spacer>
-              <button class={this.isReferenceExpanded ? 'toggle-button hide-button' : 'toggle-button expand-button'} onClick={() => this.handleButtonClick('toggleReference')}>
-                {this.isReferenceExpanded ? 'Hide references' : 'Show references'}
-              </button>
-            </div>
+          {this.isReferenceExpanded && <div class="seperator"></div>}
+        </div>
+        <div class="content-container" ref={el => (this.referenceContainerEl = el as HTMLDivElement)}>
+          <e-text>{this.reference}</e-text>
+        </div>
+        {this.reference.length > 0 && <l-spacer value={1}></l-spacer>}
+        <div class="content-container" ref={el => (this.referenceButtonContainerEl = el as HTMLDivElement)}>
+          {this.reference.length > 0 && this.isQuestionExpanded && (
+            <button class={this.isReferenceExpanded ? 'toggle-button hide-button' : 'toggle-button expand-button'} onClick={() => this.handleButtonClick('toggleReference')}>
+              {this.isReferenceExpanded ? 'Hide references' : 'Show references'}
+            </button>
           )}
         </div>
       </div>

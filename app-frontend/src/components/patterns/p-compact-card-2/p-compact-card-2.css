@@ -61,7 +61,7 @@ footer {
 }
 
 .hide-button {
-  background: rgba(0, 0, 0, 0.05);
+  background: none;
   color: red;
 }
 

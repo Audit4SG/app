@@ -215,7 +215,6 @@ export class PBasicCard2 {
           ) : (
             <e-text>{this.question}</e-text>
           )}
-
           <l-spacer value={0.5}></l-spacer>
           <div ref={el => (this.referenceContainerEl = el as HTMLDivElement)}>
             <div class="seperator"></div>
