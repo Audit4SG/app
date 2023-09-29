@@ -4,7 +4,7 @@
   border: 2px solid black;
   border-radius: 1em;
   padding: 0.5em 1em 1.5em 1em;
-  margin-top: -1em;
+  margin-top: -1.5em;
 }
 
 header {
@@ -17,7 +17,6 @@ header {
 .control-button {
   background: none;
   outline: none;
-  font-size: 0.8em;
   border: 1px solid black;
   padding: 0em;
   display: flex;
@@ -43,4 +42,39 @@ footer {
   margin-top: 1em;
   padding-top: 1em;
   border-top: 2px solid #ccc;
+}
+
+.toggle-button {
+  width: 100%;
+  border: 0;
+  outline: none;
+  background: none;
+  padding: 0.25em 0em;
+  border-radius: 0.25em;
+  cursor: pointer;
+}
+
+.expand-button {
+  background: rgba(1, 30, 43, 1);
+  color: white;
+  border-radius: 1.5em;
+}
+
+.hide-button {
+  background: rgba(0, 0, 0, 0.05);
+  color: red;
+}
+
+.header-item-1 {
+  width: 60%;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
+.content-container {
+  height: 0px;
+  overflow: hidden;
 }

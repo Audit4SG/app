@@ -45,15 +45,15 @@ export class PCompactCard {
           <div class="header-item-2">
             <l-row>
               <button onClick={() => this.handleButtonClick('toggleInformation')} class="control-button">
-                {this.isInfoVisible ? <ion-icon name="information-circle"></ion-icon> : <ion-icon name="information-outline"></ion-icon>}
+                {this.isInfoVisible ? <ph-info size={this.iconSize} weight="fill" /> : <ph-info size={this.iconSize} weight="regular" />}
               </button>
               &nbsp;
               <button onClick={() => this.handleButtonClick('toggleDescription')} class="control-button">
-                {this.isDescriptionVisible ? <ion-icon name="remove-circle-outline"></ion-icon> : <ion-icon name="add-outline"></ion-icon>}
+                {this.isDescriptionVisible ? <ph-minus-circle size={this.iconSize} /> : <ph-caret-circle-down size={this.iconSize} />}
               </button>
               &nbsp;
               <button onClick={() => this.handleButtonClick('deleteCard')} class="control-button">
-                <ion-icon name="close-outline"></ion-icon>{' '}
+                <ph-x-circle size={this.iconSize} />
               </button>
             </l-row>
           </div>

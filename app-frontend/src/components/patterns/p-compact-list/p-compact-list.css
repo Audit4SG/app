@@ -1,13 +1,18 @@
 .compact-list-container {
   display: block;
   background: white;
-  padding: 0.25em 1em;
+  padding: 0.5em 1em;
   border: 2px solid black;
   border-radius: 2em;
   width: 250px;
   /* width: 500px; */
   height: 32px;
   overflow: hidden;
+}
+
+.compact-list-container header {
+  padding-top: 0.25em;
+  margin-bottom: 1em;
 }
 
 .control-button {
@@ -47,7 +52,7 @@ main {
   margin-bottom: 1em;
   margin-top: 0.5em;
   overflow-y: auto;
-  padding-top: 1em;
+  padding-top: 1.5em;
 }
 
 .column {

@@ -124,6 +124,13 @@ export namespace Components {
         "label": string;
         "question": string;
     }
+    interface PCompactCard2 {
+        "definition": string;
+        "id": string;
+        "label": string;
+        "question": string;
+        "reference": string;
+    }
     interface PCompactList {
         "stack": string;
     }
@@ -352,6 +359,12 @@ declare global {
         prototype: HTMLPCompactCardElement;
         new (): HTMLPCompactCardElement;
     };
+    interface HTMLPCompactCard2Element extends Components.PCompactCard2, HTMLStencilElement {
+    }
+    var HTMLPCompactCard2Element: {
+        prototype: HTMLPCompactCard2Element;
+        new (): HTMLPCompactCard2Element;
+    };
     interface HTMLPCompactListElement extends Components.PCompactList, HTMLStencilElement {
     }
     var HTMLPCompactListElement: {
@@ -424,6 +437,7 @@ declare global {
         "p-basic-card": HTMLPBasicCardElement;
         "p-basic-card-2": HTMLPBasicCard2Element;
         "p-compact-card": HTMLPCompactCardElement;
+        "p-compact-card-2": HTMLPCompactCard2Element;
         "p-compact-list": HTMLPCompactListElement;
         "p-info-item": HTMLPInfoItemElement;
         "p-node-card": HTMLPNodeCardElement;
@@ -559,6 +573,14 @@ declare namespace LocalJSX {
         "onDeleteCardEvent"?: (event: CustomEvent<any>) => void;
         "question"?: string;
     }
+    interface PCompactCard2 {
+        "definition"?: string;
+        "id"?: string;
+        "label"?: string;
+        "onDeleteCardEvent"?: (event: CustomEvent<any>) => void;
+        "question"?: string;
+        "reference"?: string;
+    }
     interface PCompactList {
         "onDeleteAllCardsEvent"?: (event: CustomEvent<any>) => void;
         "stack"?: string;
@@ -612,6 +634,7 @@ declare namespace LocalJSX {
         "p-basic-card": PBasicCard;
         "p-basic-card-2": PBasicCard2;
         "p-compact-card": PCompactCard;
+        "p-compact-card-2": PCompactCard2;
         "p-compact-list": PCompactList;
         "p-info-item": PInfoItem;
         "p-node-card": PNodeCard;
@@ -659,6 +682,7 @@ declare module "@stencil/core" {
             "p-basic-card": LocalJSX.PBasicCard & JSXBase.HTMLAttributes<HTMLPBasicCardElement>;
             "p-basic-card-2": LocalJSX.PBasicCard2 & JSXBase.HTMLAttributes<HTMLPBasicCard2Element>;
             "p-compact-card": LocalJSX.PCompactCard & JSXBase.HTMLAttributes<HTMLPCompactCardElement>;
+            "p-compact-card-2": LocalJSX.PCompactCard2 & JSXBase.HTMLAttributes<HTMLPCompactCard2Element>;
             "p-compact-list": LocalJSX.PCompactList & JSXBase.HTMLAttributes<HTMLPCompactListElement>;
             "p-info-item": LocalJSX.PInfoItem & JSXBase.HTMLAttributes<HTMLPInfoItemElement>;
             "p-node-card": LocalJSX.PNodeCard & JSXBase.HTMLAttributes<HTMLPNodeCardElement>;
