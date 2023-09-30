@@ -848,6 +848,39 @@ export class Demo15 {
 
   handleMenuButtonClick() {
     this.isMenuOpen = !this.isMenuOpen;
+    this.activeMenuButton = '';
+
+    if (!this.isMenuOpen) {
+      this.closeMenuContent();
+    }
+  }
+
+  searchBox!: HTMLInputElement;
+
+  onSearchBoxFocus() {
+    this.tl.to(this.searchBox, { width: '30%', duration: 0.25 });
+  }
+
+  onSearchBoxBlur() {
+    this.tl.to(this.searchBox, { width: 'auto', duration: 0.25 });
+  }
+
+  @State() activeMenuButton: string = '';
+  @State() isMenuContentVisible: boolean = false;
+  @State() menuContent: string = '';
+
+  menuButtonClickHandler(activeMenuButton: string) {
+    this.activeMenuButton = activeMenuButton;
+    if (this.activeMenuButton.length > 0) {
+      this.isMenuContentVisible = true;
+    } else {
+      this.isMenuContentVisible = false;
+    }
+  }
+
+  closeMenuContent() {
+    this.activeMenuButton = '';
+    this.isMenuContentVisible = false;
   }
 
   render() {
@@ -863,19 +896,60 @@ export class Demo15 {
                 {this.isMenuOpen && (
                   <div>
                     &nbsp; &nbsp;
-                    <button class="pill">How to</button>
+                    <button class={`pill ${this.activeMenuButton === 'How to' && 'pill--highlight'}`} onClick={() => this.menuButtonClickHandler('How to')}>
+                      How to
+                    </button>
                     &nbsp; &nbsp;
-                    <button class="pill">Export</button>
+                    <button class={`pill ${this.activeMenuButton === 'Export' && 'pill--highlight'}`} onClick={() => this.menuButtonClickHandler('Export')}>
+                      Export
+                    </button>
                     &nbsp; &nbsp;
-                    <button class="pill">About</button>
+                    <button class={`pill ${this.activeMenuButton === 'About' && 'pill--highlight'}`} onClick={() => this.menuButtonClickHandler('About')}>
+                      About
+                    </button>
                     &nbsp; &nbsp;
-                    <button class="pill">Credits</button>
+                    <button class={`pill ${this.activeMenuButton === 'Credits' && 'pill--highlight'}`} onClick={() => this.menuButtonClickHandler('Credits')}>
+                      Credits
+                    </button>
                   </div>
                 )}
               </l-row>
             </div>
-            {this.isMenuOpen && <input id="search" placeholder="Search"></input>}
+            {this.isMenuOpen && (
+              <input
+                id="search"
+                placeholder="Search"
+                onFocus={() => this.onSearchBoxFocus()}
+                onBlur={() => this.onSearchBoxBlur()}
+                ref={el => (this.searchBox = el as HTMLInputElement)}
+              ></input>
+            )}
           </l-row>
+          <l-spacer value={1}></l-spacer>
+          {this.isMenuContentVisible ? (
+            this.activeMenuButton === 'Export' ? (
+              <div class="menu__content menu__content--green">
+                <e-text>Your selection has been downloaded as a pdf</e-text>
+              </div>
+            ) : (
+              <div class="menu__content">
+                <l-row justifyContent="space-between" align="center">
+                  <e-text variant="heading">{this.activeMenuButton}</e-text>
+                  <button onClick={() => this.closeMenuContent()} class="control-button">
+                    <ph-x-circle size={this.iconSize} />
+                  </button>
+                </l-row>
+                <l-spacer value={1}></l-spacer>
+                <e-text>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                  pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                </e-text>
+              </div>
+            )
+          ) : (
+            ''
+          )}
         </nav>
         <div class="modal-content" ref={el => (this.modalContent = el as HTMLDivElement)}>
           <header>

@@ -239,6 +239,11 @@ nav {
   background: white;
 }
 
+.pill--highlight {
+  background: black;
+  color: white;
+}
+
 #search {
   padding: 0.5em 1em;
   border: 1px solid black;
@@ -251,4 +256,16 @@ nav {
 
 .menu-close {
   background: black;
+}
+
+.menu__content {
+  width: 33vw;
+  padding: 1em 2em;
+  background: white;
+  border-radius: 2em;
+  border: 2px solid black;
+}
+
+.menu__content--green {
+  background: rgba(8, 242, 110, 1);
 }

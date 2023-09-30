@@ -80,17 +80,16 @@ export class PCompactList {
             <e-text variant="heading">
               Selected <span class="highlight">{this.cardStack.length} nodes</span>
             </e-text>
-
             <div class="download-button-container" ref={el => (this.downloadButtonContainer = el as HTMLDivElement)}>
               <button class="download-pdf-button">Download PDF</button>
             </div>
             <l-row>
-              <button onClick={() => this.handleButtonClick('deleteAllCards')} class="control-button">
-                <ph-x-circle size={this.iconSize} />
-              </button>
-              &nbsp;
               <button onClick={() => this.handleButtonClick('toggleExpansion')} class="control-button">
                 {this.isExpanded ? <ph-minus-circle size={this.iconSize} /> : <ph-caret-circle-down size={this.iconSize} />}
+              </button>
+              &nbsp;
+              <button onClick={() => this.handleButtonClick('deleteAllCards')} class="control-button">
+                <ph-x-circle size={this.iconSize} />
               </button>
             </l-row>
           </l-row>{' '}
