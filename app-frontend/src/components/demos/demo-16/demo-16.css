@@ -1,8 +1,9 @@
 :host {
-  display: flex;
-  justify-content: space-between;
+  display: block;
   box-sizing: border-box;
-  padding: 3em;
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 3em;
 }
 
 .ais-Hits-list {
@@ -15,10 +16,4 @@
   margin-top: 2em;
   padding-bottom: 2em;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.search__container {
-  box-sizing: border-box;
-  width: 50%;
-  margin: 0 auto;
 }

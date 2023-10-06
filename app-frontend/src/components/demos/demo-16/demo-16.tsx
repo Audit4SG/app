@@ -38,11 +38,9 @@ export class Demo16 {
   render() {
     return (
       <Host>
-        <div class="search__container">
-          <span>Algolia</span>
-          <div class="algolia__ui-element" ref={el => (this.searchBoxEl = el as HTMLDivElement)}></div>
-          <div class="algolia__ui-element" ref={el => (this.hitsEl = el as HTMLDivElement)}></div>
-        </div>
+        <span>Algolia</span>
+        <div ref={el => (this.searchBoxEl = el as HTMLDivElement)}></div>
+        <div ref={el => (this.hitsEl = el as HTMLDivElement)}></div>
       </Host>
     );
   }
