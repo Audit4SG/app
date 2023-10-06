@@ -16,6 +16,15 @@ export class VHome {
         <ul>
           <li>
             <e-text>
+              <strong>D16. Ontology Search</strong>
+              <br />
+              Comparison between Algolia and TypeSense{' '}
+            </e-text>
+            <l-spacer value={0.5}></l-spacer>
+            <stencil-route-link url="/demo-16">View Demo</stencil-route-link>
+          </li>
+          <li>
+            <e-text>
               <strong>D15. Adds menu</strong>
               <br />
               Adds the menu system to D14
