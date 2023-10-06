@@ -14,11 +14,20 @@ export class VHome {
         <br />
         <h1>Demos</h1>
         <ul>
+          {/* <li>
+            <e-text>
+              <strong>D17. Typesense Search</strong>
+              <br />
+              Implements Typesense to search the ontology data{' '}
+            </e-text>
+            <l-spacer value={0.5}></l-spacer>
+            <stencil-route-link url="/demo-17">View Demo</stencil-route-link>
+          </li> */}
           <li>
             <e-text>
-              <strong>D16. Ontology Search</strong>
+              <strong>D16. Algolia Search</strong>
               <br />
-              Comparison between Algolia and TypeSense{' '}
+              Implements Algolia to search the ontology data{' '}
             </e-text>
             <l-spacer value={0.5}></l-spacer>
             <stencil-route-link url="/demo-16">View Demo</stencil-route-link>
