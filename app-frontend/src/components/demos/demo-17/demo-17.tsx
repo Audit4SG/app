@@ -2,7 +2,7 @@ import { Component, Host, h } from '@stencil/core';
 import instantsearch from 'instantsearch.js';
 import { searchBox, hits } from 'instantsearch.js/es/widgets';
 import TypesenseInstantSearchAdapter from 'typesense-instantsearch-adapter';
-// import * as jsonld from 'jsonld';
+import * as jsonld from 'jsonld';
 
 const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
   server: {
@@ -40,68 +40,107 @@ export class Demo17 {
   });
 
   componentDidLoad() {
-    // this.fetch_ViewData();
+    this.fetch_ViewData();
   }
 
-  // private jsonld_Flattened: any;
-  // private class_Pure: any = [];
-  // async fetch_ViewData() {
-  //   let url: string = document.domain === 'localhost' ? 'http://localhost:3334' : 'https://app-api.audit4sg.org';
-  //   let options: any = {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //   };
-  //   await fetch(url, options)
-  //     .then(response => response.json())
-  //     .then(async data => {
-  //       this.process_Jsonld(JSON.parse(data.payload));
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // }
+  private jsonld_Flattened: any;
+  async fetch_ViewData() {
+    let url: string = document.domain === 'localhost' ? 'http://localhost:3334' : 'https://app-api.audit4sg.org';
+    let options: any = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    await fetch(url, options)
+      .then(response => response.json())
+      .then(async data => {
+        this.process_Jsonld(JSON.parse(data.payload));
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
 
-  // async process_Jsonld(data_JSONLD: any) {
-  //   this.jsonld_Flattened = await jsonld.flatten(data_JSONLD);
-  //   this.get_Classes();
-  // }
+  async process_Jsonld(data_JSONLD: any) {
+    this.jsonld_Flattened = await jsonld.flatten(data_JSONLD);
+    this.extractClasses();
+    this.extractRelation();
+    console.log(this.typesenseData);
+  }
 
-  // get_Classes() {
-  //   let class_Pure_Raw: any = [];
-  //   let class_Blank_Raw: any = [];
+  private typesenseData: any = [];
+  private index: number = 0;
 
-  //   this.jsonld_Flattened.map((item: any) => {
-  //     let array_Type = item['@type'];
-  //     let id = item['@id'];
-  //     if (array_Type.length === 1) {
-  //       let str_Type = array_Type[0].split('#')[1];
-  //       if (str_Type === 'Class') {
-  //         if (id.includes('_:b')) {
-  //           class_Blank_Raw.push(item);
-  //         } else {
-  //           class_Pure_Raw.push(item);
-  //         }
-  //       }
-  //     }
-  //   });
+  extractClasses() {
+    let class_Pure_Raw: any = [];
+    let class_Blank_Raw: any = [];
+    this.jsonld_Flattened.map((item: any) => {
+      let array_Type = item['@type'];
+      let id = item['@id'];
+      if (array_Type.length === 1) {
+        let str_Type = array_Type[0].split('#')[1];
+        if (str_Type === 'Class') {
+          if (id.includes('_:b')) {
+            class_Blank_Raw.push(item);
+          } else {
+            class_Pure_Raw.push(item);
+          }
+        }
+      }
+    });
+    class_Pure_Raw.map((item: any) => {
+      let id = '';
+      let label = '';
 
-  //   class_Pure_Raw.map((item: any) => {
-  //     let id = '';
-  //     let label = '';
+      id = item['@id'];
+      label = id.split('#')[1];
 
-  //     id = item['@id'];
-  //     label = id.split('#')[1];
+      let obj = {
+        id: this.index.toString(),
+        type: 'Class',
+        value: label,
+        definition: '',
+        question: '',
+        reference: '',
+      };
+      this.typesenseData.push(obj);
+      this.index = this.index + 1;
+    });
+  }
 
-  //     let obj = {
-  //       label: label,
-  //       type: 'Class',
-  //     };
-  //     this.class_Pure.push(obj);
-  //   });
-  //   console.log(this.class_Pure);
-  // }
+  extractRelation() {
+    this.jsonld_Flattened.map((item: any) => {
+      let type = item['@type'][0];
+      let objectProperty: string = '';
+      let domain: string = '';
+      let range: string = '';
+
+      if (type.split('#')[1] === 'ObjectProperty') {
+        objectProperty = item['@id'].split('#')[1];
+        if (item['http://www.w3.org/2000/01/rdf-schema#domain']) {
+          domain = item['http://www.w3.org/2000/01/rdf-schema#domain'][0]['@id'];
+        }
+
+        if (item['http://www.w3.org/2000/01/rdf-schema#range']) {
+          range = item['http://www.w3.org/2000/01/rdf-schema#range'][0]['@id'];
+        }
+
+        if (domain.length > 0 && range.length > 0) {
+          let obj = {
+            id: this.index.toString(),
+            type: 'Relation',
+            value: objectProperty,
+            definition: '',
+            question: '',
+            reference: '',
+          };
+          this.typesenseData.push(obj);
+        }
+      }
+      this.index = this.index + 1;
+    });
+  }
 
   initTypeSense() {
     this.search.addWidgets([

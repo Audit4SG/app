@@ -1,0 +1,2290 @@
+[
+  {
+    "id": "0",
+    "type": "Class",
+    "value": "aim_expected",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "1",
+    "type": "Class",
+    "value": "audience_expected",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "2",
+    "type": "Class",
+    "value": "expectation",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "3",
+    "type": "Class",
+    "value": "performance_in_societal_practices",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "4",
+    "type": "Class",
+    "value": "use_of_technology",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "5",
+    "type": "Class",
+    "value": "approach",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "6",
+    "type": "Class",
+    "value": "ethical_assessment",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "7",
+    "type": "Class",
+    "value": "reduced_capability",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "8",
+    "type": "Class",
+    "value": "academic_funding",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "9",
+    "type": "Class",
+    "value": "academic_institution",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "10",
+    "type": "Class",
+    "value": "accelerationist_ethic",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "11",
+    "type": "Class",
+    "value": "achieve_sdg_goals",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "12",
+    "type": "Class",
+    "value": "action_research",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "13",
+    "type": "Class",
+    "value": "activist",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "14",
+    "type": "Class",
+    "value": "actor",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "15",
+    "type": "Class",
+    "value": "affordance",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "16",
+    "type": "Class",
+    "value": "ai4sg",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "17",
+    "type": "Class",
+    "value": "ai_system",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "18",
+    "type": "Class",
+    "value": "angel_funding",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "19",
+    "type": "Class",
+    "value": "anonymized_data",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "20",
+    "type": "Class",
+    "value": "anthropomorphism",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "21",
+    "type": "Class",
+    "value": "appropriate_scale",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "22",
+    "type": "Class",
+    "value": "artistic",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "23",
+    "type": "Class",
+    "value": "assumption",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "24",
+    "type": "Class",
+    "value": "autonomous_self",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "25",
+    "type": "Class",
+    "value": "bias",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "26",
+    "type": "Class",
+    "value": "bigdata_analysis",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "27",
+    "type": "Class",
+    "value": "borrower",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "28",
+    "type": "Class",
+    "value": "care_ethic",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "29",
+    "type": "Class",
+    "value": "case_study",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "30",
+    "type": "Class",
+    "value": "caste",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "31",
+    "type": "Class",
+    "value": "censorship",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "32",
+    "type": "Class",
+    "value": "city",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "33",
+    "type": "Class",
+    "value": "co-design",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "34",
+    "type": "Class",
+    "value": "co-relating",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "35",
+    "type": "Class",
+    "value": "coaching_centre",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "36",
+    "type": "Class",
+    "value": "collective",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "37",
+    "type": "Class",
+    "value": "community",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "38",
+    "type": "Class",
+    "value": "community_driven",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "39",
+    "type": "Class",
+    "value": "consequence",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "40",
+    "type": "Class",
+    "value": "consumer",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "41",
+    "type": "Class",
+    "value": "content_developer_publisher",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "42",
+    "type": "Class",
+    "value": "corporate_funding",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "43",
+    "type": "Class",
+    "value": "critical_discourse_analysis",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "44",
+    "type": "Class",
+    "value": "critical_incident_analysis",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "45",
+    "type": "Class",
+    "value": "crowdfunding",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "46",
+    "type": "Class",
+    "value": "customer",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "47",
+    "type": "Class",
+    "value": "data_justice",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "48",
+    "type": "Class",
+    "value": "deep_ecology",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "49",
+    "type": "Class",
+    "value": "defamation",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "50",
+    "type": "Class",
+    "value": "deliberative_forums",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "51",
+    "type": "Class",
+    "value": "deontological_ethic",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "52",
+    "type": "Class",
+    "value": "deployment",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "53",
+    "type": "Class",
+    "value": "design",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "54",
+    "type": "Class",
+    "value": "design_motive",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "55",
+    "type": "Class",
+    "value": "deskilling",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "56",
+    "type": "Class",
+    "value": "developer",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "57",
+    "type": "Class",
+    "value": "developer_as_active_practitioner",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "58",
+    "type": "Class",
+    "value": "disruptive",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "59",
+    "type": "Class",
+    "value": "district",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "60",
+    "type": "Class",
+    "value": "domain",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "61",
+    "type": "Class",
+    "value": "economic_consumer",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "62",
+    "type": "Class",
+    "value": "economic_empowerement",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "63",
+    "type": "Class",
+    "value": "economic_end_user",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "64",
+    "type": "Class",
+    "value": "education",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "65",
+    "type": "Class",
+    "value": "education_consumer",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "66",
+    "type": "Class",
+    "value": "education_end_user",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "67",
+    "type": "Class",
+    "value": "employee",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "68",
+    "type": "Class",
+    "value": "end_user",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "69",
+    "type": "Class",
+    "value": "environmental_impact",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "70",
+    "type": "Class",
+    "value": "equality_and_inclusion",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "71",
+    "type": "Class",
+    "value": "equality_consumer",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "72",
+    "type": "Class",
+    "value": "equality_end_user",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "73",
+    "type": "Class",
+    "value": "equity",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "74",
+    "type": "Class",
+    "value": "ethic",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "75",
+    "type": "Class",
+    "value": "ethic_dumping",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "76",
+    "type": "Class",
+    "value": "ethic_lobbying",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "77",
+    "type": "Class",
+    "value": "ethic_shirking",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "78",
+    "type": "Class",
+    "value": "ethic_shopping",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "79",
+    "type": "Class",
+    "value": "ethic_washing",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "80",
+    "type": "Class",
+    "value": "ethical_dilemma",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "81",
+    "type": "Class",
+    "value": "ethical_framework",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "82",
+    "type": "Class",
+    "value": "ethical_parameter",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "83",
+    "type": "Class",
+    "value": "ethico_political_care",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "84",
+    "type": "Class",
+    "value": "ethics_as_political",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "85",
+    "type": "Class",
+    "value": "ethics_manipulation",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "86",
+    "type": "Class",
+    "value": "ethnographic_research",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "87",
+    "type": "Class",
+    "value": "exclusionary_norm",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "88",
+    "type": "Class",
+    "value": "experiment",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "89",
+    "type": "Class",
+    "value": "explainability",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "90",
+    "type": "Class",
+    "value": "extra-relating",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "91",
+    "type": "Class",
+    "value": "fairness",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "92",
+    "type": "Class",
+    "value": "farmer",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "93",
+    "type": "Class",
+    "value": "feminist_ethic",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "94",
+    "type": "Class",
+    "value": "financial_institutions",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "95",
+    "type": "Class",
+    "value": "focus_group",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "96",
+    "type": "Class",
+    "value": "for_profit",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "97",
+    "type": "Class",
+    "value": "for_whom?",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "98",
+    "type": "Class",
+    "value": "freelancer",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "99",
+    "type": "Class",
+    "value": "funder",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "100",
+    "type": "Class",
+    "value": "gender",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "101",
+    "type": "Class",
+    "value": "gig-worker",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "102",
+    "type": "Class",
+    "value": "global",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "103",
+    "type": "Class",
+    "value": "government_agency",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "104",
+    "type": "Class",
+    "value": "government_funding",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "105",
+    "type": "Class",
+    "value": "group",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "106",
+    "type": "Class",
+    "value": "harmony",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "107",
+    "type": "Class",
+    "value": "hate_speech",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "108",
+    "type": "Class",
+    "value": "how_to_care?",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "109",
+    "type": "Class",
+    "value": "human",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "110",
+    "type": "Class",
+    "value": "human_action",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "111",
+    "type": "Class",
+    "value": "human_machine_relation",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "112",
+    "type": "Class",
+    "value": "hype",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "113",
+    "type": "Class",
+    "value": "hyped",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "114",
+    "type": "Class",
+    "value": "identified_harm_risk",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "115",
+    "type": "Class",
+    "value": "immigrant",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "116",
+    "type": "Class",
+    "value": "in_on_or_out_of_the_decision-making_loop",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "117",
+    "type": "Class",
+    "value": "inaccuracy",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "118",
+    "type": "Class",
+    "value": "individual",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "119",
+    "type": "Class",
+    "value": "industry_association",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "120",
+    "type": "Class",
+    "value": "inequality",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "121",
+    "type": "Class",
+    "value": "information_disorder",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "122",
+    "type": "Class",
+    "value": "information_ethic",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "123",
+    "type": "Class",
+    "value": "intelligence_as_emergent",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "124",
+    "type": "Class",
+    "value": "intended",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "125",
+    "type": "Class",
+    "value": "inter-relating",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "126",
+    "type": "Class",
+    "value": "intergovernmental_organization",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "127",
+    "type": "Class",
+    "value": "interpretation",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "128",
+    "type": "Class",
+    "value": "interview",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "129",
+    "type": "Class",
+    "value": "intra-relating",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "130",
+    "type": "Class",
+    "value": "justice",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "131",
+    "type": "Class",
+    "value": "knowing-how",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "132",
+    "type": "Class",
+    "value": "knowing-what",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "133",
+    "type": "Class",
+    "value": "knowing-when",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "134",
+    "type": "Class",
+    "value": "legal_compliance",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "135",
+    "type": "Class",
+    "value": "lender",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "136",
+    "type": "Class",
+    "value": "local",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "137",
+    "type": "Class",
+    "value": "manipulation",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "138",
+    "type": "Class",
+    "value": "market_oriented",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "139",
+    "type": "Class",
+    "value": "material_psychological_harm",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "140",
+    "type": "Class",
+    "value": "material_semiotic_difference",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "141",
+    "type": "Class",
+    "value": "mathematical_criteria",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "142",
+    "type": "Class",
+    "value": "matter_of_concern",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "143",
+    "type": "Class",
+    "value": "matter_of_fact",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "144",
+    "type": "Class",
+    "value": "matter_of_interface",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "145",
+    "type": "Class",
+    "value": "method",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "146",
+    "type": "Class",
+    "value": "multi_stakeholder_engagement",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "147",
+    "type": "Class",
+    "value": "multiple_dimension",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "148",
+    "type": "Class",
+    "value": "multiple_use",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "149",
+    "type": "Class",
+    "value": "national",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "150",
+    "type": "Class",
+    "value": "neighbourhood",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "151",
+    "type": "Class",
+    "value": "new_risks",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "152",
+    "type": "Class",
+    "value": "new_scale",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "153",
+    "type": "Class",
+    "value": "ngo",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "154",
+    "type": "Class",
+    "value": "non-personal_data",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "155",
+    "type": "Class",
+    "value": "non_discrimination",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "156",
+    "type": "Class",
+    "value": "non_human",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "157",
+    "type": "Class",
+    "value": "non_human_autonomy",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "158",
+    "type": "Class",
+    "value": "non_relational_approach",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "159",
+    "type": "Class",
+    "value": "nongovernmental_organization",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "160",
+    "type": "Class",
+    "value": "nonprofit",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "161",
+    "type": "Class",
+    "value": "not_listed",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "162",
+    "type": "Class",
+    "value": "notice_and_consent",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "163",
+    "type": "Class",
+    "value": "online_platform",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "164",
+    "type": "Class",
+    "value": "other",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "165",
+    "type": "Class",
+    "value": "parent",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "166",
+    "type": "Class",
+    "value": "participatory_design",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "167",
+    "type": "Class",
+    "value": "paternalist",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "168",
+    "type": "Class",
+    "value": "permanent",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "169",
+    "type": "Class",
+    "value": "personal_data",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "170",
+    "type": "Class",
+    "value": "philanthropic_funding",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "171",
+    "type": "Class",
+    "value": "polarisation_and_radicalization",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "172",
+    "type": "Class",
+    "value": "policy_maker",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "173",
+    "type": "Class",
+    "value": "postcolonial_ethic",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "174",
+    "type": "Class",
+    "value": "proactive",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "175",
+    "type": "Class",
+    "value": "prospective_transparency",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "176",
+    "type": "Class",
+    "value": "qualitative",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "177",
+    "type": "Class",
+    "value": "quantiative",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "178",
+    "type": "Class",
+    "value": "question",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "179",
+    "type": "Class",
+    "value": "race",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "180",
+    "type": "Class",
+    "value": "reactive",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "181",
+    "type": "Class",
+    "value": "redefined_ethical_parameter",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "182",
+    "type": "Class",
+    "value": "reduced_accessbility",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "183",
+    "type": "Class",
+    "value": "relational_approach",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "184",
+    "type": "Class",
+    "value": "relational_ethic",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "185",
+    "type": "Class",
+    "value": "relational_ontology",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "186",
+    "type": "Class",
+    "value": "relationality",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "187",
+    "type": "Class",
+    "value": "relevance",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "188",
+    "type": "Class",
+    "value": "research_institute",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "189",
+    "type": "Class",
+    "value": "researcher",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "190",
+    "type": "Class",
+    "value": "respects_privacy",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "191",
+    "type": "Class",
+    "value": "responsibility",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "192",
+    "type": "Class",
+    "value": "responsiblity_as_responseability",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "193",
+    "type": "Class",
+    "value": "retrospective_tranparency",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "194",
+    "type": "Class",
+    "value": "rhetoric",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "195",
+    "type": "Class",
+    "value": "safety_and_security",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "196",
+    "type": "Class",
+    "value": "scalar",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "197",
+    "type": "Class",
+    "value": "school",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "198",
+    "type": "Class",
+    "value": "self-funding",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "199",
+    "type": "Class",
+    "value": "self_employed",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "200",
+    "type": "Class",
+    "value": "sensitive_data",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "201",
+    "type": "Class",
+    "value": "shared_fairness",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "202",
+    "type": "Class",
+    "value": "small_medium_enterprise",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "203",
+    "type": "Class",
+    "value": "social_good",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "204",
+    "type": "Class",
+    "value": "social_impact_assesment",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "205",
+    "type": "Class",
+    "value": "social_isolation",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "206",
+    "type": "Class",
+    "value": "social_worker",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "207",
+    "type": "Class",
+    "value": "socio_technical_system",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "208",
+    "type": "Class",
+    "value": "solutionist",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "209",
+    "type": "Class",
+    "value": "solve_social_problem",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "210",
+    "type": "Class",
+    "value": "spatial",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "211",
+    "type": "Class",
+    "value": "speculative_design",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "212",
+    "type": "Class",
+    "value": "speculative_ethic",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "213",
+    "type": "Class",
+    "value": "startup",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "214",
+    "type": "Class",
+    "value": "stock_trader",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "215",
+    "type": "Class",
+    "value": "structurally_disadvantaged",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "216",
+    "type": "Class",
+    "value": "student_and_learner",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "217",
+    "type": "Class",
+    "value": "surveillance",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "218",
+    "type": "Class",
+    "value": "survey",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "219",
+    "type": "Class",
+    "value": "teacher_and_educator",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "220",
+    "type": "Class",
+    "value": "tech-centric",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "221",
+    "type": "Class",
+    "value": "techno-human_ecology",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "222",
+    "type": "Class",
+    "value": "technology",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "223",
+    "type": "Class",
+    "value": "technology_company",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "224",
+    "type": "Class",
+    "value": "temporal",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "225",
+    "type": "Class",
+    "value": "temporary",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "226",
+    "type": "Class",
+    "value": "think_tank",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "227",
+    "type": "Class",
+    "value": "threat_to_privacy",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "228",
+    "type": "Class",
+    "value": "threat_to_safety",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "229",
+    "type": "Class",
+    "value": "town",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "230",
+    "type": "Class",
+    "value": "training_institute",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "231",
+    "type": "Class",
+    "value": "trans-relating",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "232",
+    "type": "Class",
+    "value": "transparency",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "233",
+    "type": "Class",
+    "value": "transparency_as_performativity",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "234",
+    "type": "Class",
+    "value": "transparency_as_verifiability",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "235",
+    "type": "Class",
+    "value": "trust",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "236",
+    "type": "Class",
+    "value": "type_of_data",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "237",
+    "type": "Class",
+    "value": "type_of_funding",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "238",
+    "type": "Class",
+    "value": "type_of_mattering",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "239",
+    "type": "Class",
+    "value": "type_of_organization",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "240",
+    "type": "Class",
+    "value": "type_of_relation",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "241",
+    "type": "Class",
+    "value": "unaccountability",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "242",
+    "type": "Class",
+    "value": "unemployed",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "243",
+    "type": "Class",
+    "value": "unemployment",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "244",
+    "type": "Class",
+    "value": "unfair",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "245",
+    "type": "Class",
+    "value": "unintended",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "246",
+    "type": "Class",
+    "value": "union",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "247",
+    "type": "Class",
+    "value": "university_and_college",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "248",
+    "type": "Class",
+    "value": "use",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "249",
+    "type": "Class",
+    "value": "user",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "250",
+    "type": "Class",
+    "value": "utilitarianism",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "251",
+    "type": "Class",
+    "value": "value",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "252",
+    "type": "Class",
+    "value": "value-sensitive_design",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "253",
+    "type": "Class",
+    "value": "venture_capital_firm",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "254",
+    "type": "Class",
+    "value": "venture_capital_funding",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "255",
+    "type": "Class",
+    "value": "virtue_ethic",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "256",
+    "type": "Class",
+    "value": "weakening_of_democracy",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "257",
+    "type": "Class",
+    "value": "what_for?",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "258",
+    "type": "Class",
+    "value": "who_cares?",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "259",
+    "type": "Class",
+    "value": "why_to_care?",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "260",
+    "type": "Class",
+    "value": "worker",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "286",
+    "type": "Relation",
+    "value": "studyOf",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "292",
+    "type": "Relation",
+    "value": "Ask",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "293",
+    "type": "Relation",
+    "value": "BasedOn",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "294",
+    "type": "Relation",
+    "value": "CriticalOf",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "295",
+    "type": "Relation",
+    "value": "CutAcross",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "296",
+    "type": "Relation",
+    "value": "ExperimentWith",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "297",
+    "type": "Relation",
+    "value": "FocusOn",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "298",
+    "type": "Relation",
+    "value": "GiveFunding",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "299",
+    "type": "Relation",
+    "value": "Has",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "300",
+    "type": "Relation",
+    "value": "HasActor",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "301",
+    "type": "Relation",
+    "value": "HasAffordance",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "302",
+    "type": "Relation",
+    "value": "HasApproach",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "303",
+    "type": "Relation",
+    "value": "HasDimension",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "304",
+    "type": "Relation",
+    "value": "HasDomain",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "305",
+    "type": "Relation",
+    "value": "HasExpectation",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "306",
+    "type": "Relation",
+    "value": "HasImpact",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "307",
+    "type": "Relation",
+    "value": "HasType",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "309",
+    "type": "Relation",
+    "value": "Include",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "310",
+    "type": "Relation",
+    "value": "InfluencedBy",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "312",
+    "type": "Relation",
+    "value": "IsA",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "313",
+    "type": "Relation",
+    "value": "IsAbout",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "314",
+    "type": "Relation",
+    "value": "Manipulate",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "315",
+    "type": "Relation",
+    "value": "Redefine",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "316",
+    "type": "Relation",
+    "value": "StudyOf",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  },
+  {
+    "id": "317",
+    "type": "Relation",
+    "value": "UsedIn",
+    "definition": "",
+    "question": "",
+    "reference": ""
+  }
+]
