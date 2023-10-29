@@ -16,7 +16,7 @@ export class VHome {
         <ul>
           <li>
             <e-text>
-              <strong>D17 (a). Typesense Search (Default)</strong>
+              <strong>D17 (a). Typesense Search (S-BERT)</strong>
               <br />
               Implements Typesense to search the ontology data using the built-in ML model (S-BERT)
             </e-text>
