@@ -6,7 +6,7 @@ import * as jsonld from 'jsonld';
 
 const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
   server: {
-    apiKey: 'xyz', // Be sure to use the search-only-api-key
+    apiKey: 'Y58xEcn6fuPXAbtYl7p9Nb7NeEXupfiI',
     nodes: [
       {
         host: 'localhost',
@@ -15,11 +15,8 @@ const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
       },
     ],
   },
-  // The following parameters are directly passed to Typesense's search API endpoint.
-  //  So you can pass any parameters supported by the search endpoint below.
-  //  queryBy is required.
   additionalSearchParameters: {
-    query_by: 'title,authors',
+    query_by: 'type,value,definition,question,reference',
   },
 });
 
@@ -36,7 +33,7 @@ export class Demo17 {
 
   private search = instantsearch({
     searchClient,
-    indexName: 'audit4sg_demo_search',
+    indexName: 'relaio',
   });
 
   componentDidLoad() {
@@ -44,6 +41,9 @@ export class Demo17 {
   }
 
   private jsonld_Flattened: any;
+  private typesenseData: any = [];
+  private index: number = 0;
+
   async fetch_ViewData() {
     let url: string = document.domain === 'localhost' ? 'http://localhost:3334' : 'https://app-api.audit4sg.org';
     let options: any = {
@@ -56,6 +56,7 @@ export class Demo17 {
       .then(response => response.json())
       .then(async data => {
         this.process_Jsonld(JSON.parse(data.payload));
+        this.initTypeSense();
       })
       .catch(error => {
         console.log(error);
@@ -66,11 +67,7 @@ export class Demo17 {
     this.jsonld_Flattened = await jsonld.flatten(data_JSONLD);
     this.extractClasses();
     this.extractRelation();
-    console.log(this.typesenseData);
   }
-
-  private typesenseData: any = [];
-  private index: number = 0;
 
   extractClasses() {
     let class_Pure_Raw: any = [];
@@ -158,7 +155,7 @@ export class Demo17 {
   render() {
     return (
       <Host>
-        <span>TypeSense</span>
+        <h1>TypeSense Demo</h1>
         <div ref={el => (this.searchBoxEl = el as HTMLDivElement)}></div>
         <div ref={el => (this.hitsEl = el as HTMLDivElement)}></div>
       </Host>
