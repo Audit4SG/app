@@ -16,9 +16,9 @@ export class VHome {
         <ul>
           <li>
             <e-text>
-              <strong>D17. Typesense Search</strong>
+              <strong>D17 (a). Typesense Search (Default)</strong>
               <br />
-              Implements Typesense to search the ontology data{' '}
+              Implements Typesense to search the ontology data using the built-in ML model (S-BERT)
             </e-text>
             <l-spacer value={0.5}></l-spacer>
             <stencil-route-link url="/demo-17">View Demo</stencil-route-link>

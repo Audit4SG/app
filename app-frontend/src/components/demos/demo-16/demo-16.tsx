@@ -38,7 +38,7 @@ export class Demo16 {
   render() {
     return (
       <Host>
-        <h1>Algolia Demo</h1>
+        <h1>Algolia Search</h1>
         <div ref={el => (this.searchBoxEl = el as HTMLDivElement)}></div>
         <div ref={el => (this.hitsEl = el as HTMLDivElement)}></div>
       </Host>

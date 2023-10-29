@@ -16,7 +16,7 @@ const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
     ],
   },
   additionalSearchParameters: {
-    query_by: 'type,value,definition,question,reference',
+    query_by: 'type,value,definition,question,reference,type_embedding,value_embedding,definition_embedding,question_embedding,reference_embedding',
   },
 });
 
@@ -33,7 +33,7 @@ export class Demo17 {
 
   private search = instantsearch({
     searchClient,
-    indexName: 'relaio',
+    indexName: 'relaio-sbert',
   });
 
   componentDidLoad() {
@@ -155,7 +155,7 @@ export class Demo17 {
   render() {
     return (
       <Host>
-        <h1>TypeSense Demo</h1>
+        <h1>Typesense Search (Default)</h1>
         <div ref={el => (this.searchBoxEl = el as HTMLDivElement)}></div>
         <div ref={el => (this.hitsEl = el as HTMLDivElement)}></div>
       </Host>
