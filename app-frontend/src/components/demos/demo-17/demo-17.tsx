@@ -16,7 +16,8 @@ const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
     ],
   },
   additionalSearchParameters: {
-    query_by: 'type,value,definition,question,reference,type_embedding,value_embedding,definition_embedding,question_embedding,reference_embedding',
+    // query_by: 'type,value,definition,question,reference,type_embedding,value_embedding,definition_embedding,question_embedding,reference_embedding',
+    query_by: 'embedding',
   },
 });
 
