@@ -2,11 +2,11 @@ import { Component, State, Host, h } from '@stencil/core';
 import { Client } from 'typesense';
 
 @Component({
-  tag: 'demo-17',
-  styleUrl: 'demo-17.css',
+  tag: 'demo-17c',
+  styleUrl: 'demo-17c.css',
   shadow: true,
 })
-export class Demo17 {
+export class Demo17c {
   inputBoxEl!: HTMLInputElement;
 
   componentWillLoad() {
@@ -29,7 +29,7 @@ export class Demo17 {
         },
       ],
       apiKey: 'Y58xEcn6fuPXAbtYl7p9Nb7NeEXupfiI',
-      connectionTimeoutSeconds: 2,
+      connectionTimeoutSeconds: 5,
     });
   }
 
@@ -49,11 +49,12 @@ export class Demo17 {
     let searchParams = {
       q: this.searchString,
       query_by: 'type,value,definition,question,reference,embedding',
+      prefix: false,
     };
 
     this.clearSearchResults();
     this.typesenseClient
-      .collections('relaio-sbert')
+      .collections('relaio-vertex')
       .documents()
       .search(searchParams)
       .then(results => {
@@ -78,7 +79,7 @@ export class Demo17 {
   render() {
     return (
       <Host>
-        <h1>Typesense Search (S-BERT)</h1>
+        <h1>Typesense Search (GCP Vertex API)</h1>
         <input onInput={e => this.handleInput(e)} ref={el => (this.inputBoxEl = el as HTMLInputElement)} placeholder="🔍 Search something.."></input>
         <main>
           {this.results.length > 0 ? (

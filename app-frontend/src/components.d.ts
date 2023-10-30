@@ -43,6 +43,10 @@ export namespace Components {
     }
     interface Demo17 {
     }
+    interface Demo17b {
+    }
+    interface Demo17c {
+    }
     interface Demo2 {
     }
     interface Demo3 {
@@ -257,6 +261,18 @@ declare global {
         prototype: HTMLDemo17Element;
         new (): HTMLDemo17Element;
     };
+    interface HTMLDemo17bElement extends Components.Demo17b, HTMLStencilElement {
+    }
+    var HTMLDemo17bElement: {
+        prototype: HTMLDemo17bElement;
+        new (): HTMLDemo17bElement;
+    };
+    interface HTMLDemo17cElement extends Components.Demo17c, HTMLStencilElement {
+    }
+    var HTMLDemo17cElement: {
+        prototype: HTMLDemo17cElement;
+        new (): HTMLDemo17cElement;
+    };
     interface HTMLDemo2Element extends Components.Demo2, HTMLStencilElement {
     }
     var HTMLDemo2Element: {
@@ -443,6 +459,8 @@ declare global {
         "demo-15": HTMLDemo15Element;
         "demo-16": HTMLDemo16Element;
         "demo-17": HTMLDemo17Element;
+        "demo-17b": HTMLDemo17bElement;
+        "demo-17c": HTMLDemo17cElement;
         "demo-2": HTMLDemo2Element;
         "demo-3": HTMLDemo3Element;
         "demo-4": HTMLDemo4Element;
@@ -509,6 +527,10 @@ declare namespace LocalJSX {
     interface Demo16 {
     }
     interface Demo17 {
+    }
+    interface Demo17b {
+    }
+    interface Demo17c {
     }
     interface Demo2 {
     }
@@ -650,6 +672,8 @@ declare namespace LocalJSX {
         "demo-15": Demo15;
         "demo-16": Demo16;
         "demo-17": Demo17;
+        "demo-17b": Demo17b;
+        "demo-17c": Demo17c;
         "demo-2": Demo2;
         "demo-3": Demo3;
         "demo-4": Demo4;
@@ -701,6 +725,8 @@ declare module "@stencil/core" {
             "demo-15": LocalJSX.Demo15 & JSXBase.HTMLAttributes<HTMLDemo15Element>;
             "demo-16": LocalJSX.Demo16 & JSXBase.HTMLAttributes<HTMLDemo16Element>;
             "demo-17": LocalJSX.Demo17 & JSXBase.HTMLAttributes<HTMLDemo17Element>;
+            "demo-17b": LocalJSX.Demo17b & JSXBase.HTMLAttributes<HTMLDemo17bElement>;
+            "demo-17c": LocalJSX.Demo17c & JSXBase.HTMLAttributes<HTMLDemo17cElement>;
             "demo-2": LocalJSX.Demo2 & JSXBase.HTMLAttributes<HTMLDemo2Element>;
             "demo-3": LocalJSX.Demo3 & JSXBase.HTMLAttributes<HTMLDemo3Element>;
             "demo-4": LocalJSX.Demo4 & JSXBase.HTMLAttributes<HTMLDemo4Element>;
