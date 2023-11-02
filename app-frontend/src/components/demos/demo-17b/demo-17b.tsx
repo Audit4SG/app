@@ -20,16 +20,17 @@ export class Demo17b {
   @State() results: any = [];
 
   initTypesenseClient() {
+    let host: string = document.domain === 'localhost' ? 'localhost' : '142.93.163.178';
     this.typesenseClient = new Client({
       nodes: [
         {
-          host: 'localhost',
+          host: host,
           port: 8108,
           protocol: 'http',
         },
       ],
       apiKey: 'Y58xEcn6fuPXAbtYl7p9Nb7NeEXupfiI',
-      connectionTimeoutSeconds: 5,
+      connectionTimeoutSeconds: 10,
     });
   }
 
