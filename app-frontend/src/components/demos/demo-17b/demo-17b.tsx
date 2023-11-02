@@ -20,7 +20,9 @@ export class Demo17b {
   @State() results: any = [];
 
   initTypesenseClient() {
-    let host: string = document.domain === 'localhost' ? 'localhost' : '142.93.163.178';
+    // let host: string = document.domain === 'localhost' ? 'localhost' : '142.93.163.178';
+    let host: string = 'localhost';
+
     this.typesenseClient = new Client({
       nodes: [
         {
