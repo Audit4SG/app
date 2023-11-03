@@ -22,13 +22,13 @@ export class Demo17c {
   initTypesenseClient() {
     let host: string = document.domain === 'localhost' ? 'localhost' : 'typesense-api.audit4sg.org';
     let protocol: string = document.domain === 'localhost' ? 'http' : 'https';
+    let port: number = document.domain === 'localhost' ? 8108 : 443;
 
-    // let host: string = 'localhost';
     this.typesenseClient = new Client({
       nodes: [
         {
           host: host,
-          port: 8108,
+          port: port,
           protocol: protocol,
         },
       ],
