@@ -20,15 +20,16 @@ export class Demo17b {
   @State() results: any = [];
 
   initTypesenseClient() {
-    // let host: string = document.domain === 'localhost' ? 'localhost' : '142.93.163.178';
-    let host: string = 'localhost';
+    let host: string = document.domain === 'localhost' ? 'localhost' : 'typesense-api.audit4sg.org';
+    let protocol: string = document.domain === 'localhost' ? 'http' : 'https';
 
+    // let host: string = 'localhost';
     this.typesenseClient = new Client({
       nodes: [
         {
           host: host,
           port: 8108,
-          protocol: 'http',
+          protocol: protocol,
         },
       ],
       apiKey: 'Y58xEcn6fuPXAbtYl7p9Nb7NeEXupfiI',
