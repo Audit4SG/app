@@ -33,12 +33,80 @@ export class CTest {
 
   async process_Jsonld(data_JSONLD: any) {
     this.jsonld_Flattened = await jsonld.flatten(data_JSONLD);
-    console.log(this.jsonld_Flattened);
-    // this.get_Classes();
-    // this.generate_Nodes();
-    // this.generate_Links();
-    // this.generate_TopNodes();
-    // this.generate_ObjectLinks();
+    this.get_Classes();
+    this.get_Relationships();
+  }
+
+  private typeSenseData: any = [];
+
+  get_Classes() {
+    let class_Pure_Raw: any = [];
+    let class_Blank_Raw: any = [];
+
+    this.jsonld_Flattened.map((item: any) => {
+      let array_Type = item['@type'];
+      let id = item['@id'];
+      if (array_Type.length === 1) {
+        let str_Type = array_Type[0].split('#')[1];
+        if (str_Type === 'Class') {
+          if (id.includes('_:b')) {
+            class_Blank_Raw.push(item);
+          } else {
+            class_Pure_Raw.push(item);
+          }
+        }
+      }
+    });
+
+    class_Pure_Raw.map((item: any) => {
+      let label = item['@id'].split('#')[1];
+      let description = '';
+      let provocations = '';
+      let references = '';
+
+      if (item['http://www.w3.org/2000/01/rdf-schema#description']) {
+        description = item['http://www.w3.org/2000/01/rdf-schema#description'][0]['@value'];
+      }
+
+      if (item['http://www.w3.org/2000/01/rdf-schema#provocation']) {
+        provocations = item['http://www.w3.org/2000/01/rdf-schema#provocation'][0]['@value'];
+      }
+
+      if (item['http://www.w3.org/2000/01/rdf-schema#references']) {
+        references = item['http://www.w3.org/2000/01/rdf-schema#references'][0]['@value'];
+      }
+
+      let obj = {
+        label: label,
+        type: 'Class',
+        description: description,
+        provocations: provocations,
+        references: references,
+      };
+
+      this.typeSenseData.push(obj);
+    });
+  }
+
+  get_Relationships() {
+    this.jsonld_Flattened.map((item: any) => {
+      let type = item['@type'][0];
+      let objectProperty: string = '';
+
+      if (type.split('#')[1] === 'ObjectProperty') {
+        objectProperty = item['@id'].split('#')[1];
+
+        let obj = {
+          label: objectProperty,
+          type: 'Relation',
+          description: '',
+          provocations: '',
+          references: '',
+        };
+
+        this.typeSenseData.push(obj);
+      }
+    });
   }
 
   render() {
