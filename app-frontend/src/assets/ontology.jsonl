@@ -8,13 +8,19 @@
             {
                 "@list": [
                     {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#ethico_political_care"
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#for_whom?"
                     },
                     {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#intelligence_as_emergent"
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#how_to_care?"
                     },
                     {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#transparency_as_performativity"
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#what_for?"
+                    },
+                    {
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#who_cares?"
+                    },
+                    {
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#why_to_care?"
                     }
                 ]
             }
@@ -22,138 +28,6 @@
     },
     {
         "@id": "_:b1",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#AllDisjointClasses"
-        ],
-        "http://www.w3.org/2002/07/owl#members": [
-            {
-                "@list": [
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#co-relating"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#extra-relating"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#inter-relating"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#intra-relating"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#trans-relating"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "@id": "_:b10",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#AllDisjointClasses"
-        ],
-        "http://www.w3.org/2002/07/owl#members": [
-            {
-                "@list": [
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#non-personal_data"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#personal_data"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#sensitive_data"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "@id": "_:b11",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#AllDisjointClasses"
-        ],
-        "http://www.w3.org/2002/07/owl#members": [
-            {
-                "@list": [
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#city"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#district"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#global"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#local"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#national"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#neighbourhood"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#other"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#town"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "@id": "_:b12",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#AllDisjointClasses"
-        ],
-        "http://www.w3.org/2002/07/owl#members": [
-            {
-                "@list": [
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#community"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#education_end_user"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#group"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#individual"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "@id": "_:b13",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#AllDisjointClasses"
-        ],
-        "http://www.w3.org/2002/07/owl#members": [
-            {
-                "@list": [
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#autonomous_self"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#mathematical_criteria"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#notice_and_consent"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#transparency_as_verifiability"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "@id": "_:b14",
         "@type": [
             "http://www.w3.org/2002/07/owl#AllDisjointClasses"
         ],
@@ -174,7 +48,7 @@
         ]
     },
     {
-        "@id": "_:b15",
+        "@id": "_:b10",
         "@type": [
             "http://www.w3.org/2002/07/owl#AllDisjointClasses"
         ],
@@ -222,7 +96,7 @@
         ]
     },
     {
-        "@id": "_:b16",
+        "@id": "_:b11",
         "@type": [
             "http://www.w3.org/2002/07/owl#AllDisjointClasses"
         ],
@@ -230,43 +104,79 @@
             {
                 "@list": [
                     {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#action_research"
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#achieve_sdg_goals"
                     },
                     {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#case_study"
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#data_justice"
                     },
                     {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#co-design"
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#disruptive"
                     },
                     {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#critical_discourse_analysis"
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#market_oriented"
                     },
                     {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#critical_incident_analysis"
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#paternalist"
                     },
                     {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#deliberative_forums"
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#proactive"
                     },
                     {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#ethnographic_research"
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#reactive"
                     },
                     {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#focus_group"
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#social_good"
                     },
                     {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#multi_stakeholder_engagement"
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#solve_social_problem"
                     },
                     {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#participatory_design"
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#tech-centric"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "@id": "_:b12",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#AllDisjointClasses"
+        ],
+        "http://www.w3.org/2002/07/owl#members": [
+            {
+                "@list": [
+                    {
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#non-personal_data"
                     },
                     {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#social_impact_assesment"
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#personal_data"
                     },
                     {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#speculative_design"
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#sensitive_data"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "@id": "_:b13",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#AllDisjointClasses"
+        ],
+        "http://www.w3.org/2002/07/owl#members": [
+            {
+                "@list": [
+                    {
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#autonomous_self"
                     },
                     {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#value-sensitive_design"
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#mathematical_criteria"
+                    },
+                    {
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#notice_and_consent"
+                    },
+                    {
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#transparency_as_verifiability"
                     }
                 ]
             }
@@ -274,42 +184,6 @@
     },
     {
         "@id": "_:b2",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#AllDisjointClasses"
-        ],
-        "http://www.w3.org/2002/07/owl#members": [
-            {
-                "@list": [
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#assumption"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#deployment"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#interpretation"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#scalar"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#spatial"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#temporal"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#use"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#value"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "@id": "_:b3",
         "@type": [
             "http://www.w3.org/2002/07/owl#AllDisjointClasses"
         ],
@@ -360,6 +234,27 @@
         ]
     },
     {
+        "@id": "_:b3",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#AllDisjointClasses"
+        ],
+        "http://www.w3.org/2002/07/owl#members": [
+            {
+                "@list": [
+                    {
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#ethico_political_care"
+                    },
+                    {
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#intelligence_as_emergent"
+                    },
+                    {
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#transparency_as_performativity"
+                    }
+                ]
+            }
+        ]
+    },
+    {
         "@id": "_:b4",
         "@type": [
             "http://www.w3.org/2002/07/owl#AllDisjointClasses"
@@ -392,6 +287,114 @@
             {
                 "@list": [
                     {
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#knowing-how"
+                    },
+                    {
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#knowing-that"
+                    },
+                    {
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#knowing-when"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "@id": "_:b6",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#AllDisjointClasses"
+        ],
+        "http://www.w3.org/2002/07/owl#members": [
+            {
+                "@list": [
+                    {
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#assumption"
+                    },
+                    {
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#deployment"
+                    },
+                    {
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#interpretation"
+                    },
+                    {
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#scalar"
+                    },
+                    {
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#spatial"
+                    },
+                    {
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#temporal"
+                    },
+                    {
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#use"
+                    },
+                    {
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#value"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "@id": "_:b7",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#AllDisjointClasses"
+        ],
+        "http://www.w3.org/2002/07/owl#members": [
+            {
+                "@list": [
+                    {
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#action_research"
+                    },
+                    {
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#case_study"
+                    },
+                    {
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#co-design"
+                    },
+                    {
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#critical_discourse_analysis"
+                    },
+                    {
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#critical_incident_analysis"
+                    },
+                    {
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#deliberative_forums"
+                    },
+                    {
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#ethnographic_research"
+                    },
+                    {
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#focus_group"
+                    },
+                    {
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#multi_stakeholder_engagement"
+                    },
+                    {
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#participatory_design"
+                    },
+                    {
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#social_impact_assesment"
+                    },
+                    {
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#speculative_design"
+                    },
+                    {
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#value-sensitive_design"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "@id": "_:b8",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#AllDisjointClasses"
+        ],
+        "http://www.w3.org/2002/07/owl#members": [
+            {
+                "@list": [
+                    {
                         "@id": "http://www.ontology.audit4sg.org/RelAIEO#ethic_dumping"
                     },
                     {
@@ -411,96 +414,6 @@
         ]
     },
     {
-        "@id": "_:b6",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#AllDisjointClasses"
-        ],
-        "http://www.w3.org/2002/07/owl#members": [
-            {
-                "@list": [
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#for_whom?"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#how_to_care?"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#what_for?"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#who_cares?"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#why_to_care?"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "@id": "_:b7",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#AllDisjointClasses"
-        ],
-        "http://www.w3.org/2002/07/owl#members": [
-            {
-                "@list": [
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#knowing-how"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#knowing-what"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#knowing-when"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "@id": "_:b8",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#AllDisjointClasses"
-        ],
-        "http://www.w3.org/2002/07/owl#members": [
-            {
-                "@list": [
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#achieve_sdg_goals"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#data_justice"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#disruptive"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#market_oriented"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#paternalist"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#proactive"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#reactive"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#social_good"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#solve_social_problem"
-                    },
-                    {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#tech-centric"
-                    }
-                ]
-            }
-        ]
-    },
-    {
         "@id": "_:b9",
         "@type": [
             "http://www.w3.org/2002/07/owl#AllDisjointClasses"
@@ -512,7 +425,7 @@
                         "@id": "http://www.ontology.audit4sg.org/RelAIEO#academic_funding"
                     },
                     {
-                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#angel_funding"
+                        "@id": "http://www.ontology.audit4sg.org/RelAIEO#angel_investment"
                     },
                     {
                         "@id": "http://www.ontology.audit4sg.org/RelAIEO#community_driven"
@@ -544,6 +457,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#provocation": [
+            {
+                "@value": "Is the expected aim relevant for the end user? \nWhat kind of presumptions concerning the user does the expected aim make?\nDo those presumptions align with the user?"
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://aexpectontology.protect.linkeddata.es/def/aexp#expectation"
@@ -555,6 +473,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#provocation": [
+            {
+                "@value": "Who all are included in the targetted audience? \nWho is excluded? \nIs that exclusion discriminatory?"
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://aexpectontology.protect.linkeddata.es/def/aexp#expectation"
@@ -565,12 +488,22 @@
         "@id": "http://aexpectontology.protect.linkeddata.es/def/aexp#expectation",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#provocation": [
+            {
+                "@value": "What kind of expectations does the developer, the funder or the user have from the AI system? \nAre these expectations alighned with each other?\nShould they be aligned with each other?"
+            }
         ]
     },
     {
         "@id": "http://aexpectontology.protect.linkeddata.es/def/aexp#performance_in_societal_practices",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#provocation": [
+            {
+                "@value": "Does the AI model intervene, or align with societal practices? \nIs the intervention or alignment ethical, healthy or regressive?"
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -582,6 +515,11 @@
         "@id": "http://aexpectontology.protect.linkeddata.es/def/aexp#use_of_technology",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#provocation": [
+            {
+                "@value": "What are the expected uses of the AI system. \nDoes it have known and unknown potential misuses?"
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -599,6 +537,11 @@
         "@id": "http://ateontology.protect.linkeddata.es/def/ateo#ethical_assessment",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#provocation": [
+            {
+                "@value": "Did the team conduct its own ethical assessment? \nAt what stage of ML development did they assess the societal or ethical impacts of the AI system?"
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -693,7 +636,7 @@
         ],
         "http://www.w3.org/2000/01/rdf-schema#domain": [
             {
-                "@id": "http://www.ontology.audit4sg.org/RelAIEO#relational_approach"
+                "@id": "http://www.ontology.audit4sg.org/RelAIEO#ethico_political_care"
             }
         ],
         "http://www.w3.org/2000/01/rdf-schema#range": [
@@ -1031,11 +974,6 @@
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#techno-human_ecology"
             }
         ],
-        "http://www.w3.org/2000/01/rdf-schema#range": [
-            {
-                "@id": "http://www.ontology.audit4sg.org/RelAIEO#type_of_relation"
-            }
-        ],
         "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
             {
                 "@id": "http://www.w3.org/2002/07/owl#topObjectProperty"
@@ -1056,18 +994,6 @@
         "http://www.w3.org/2000/01/rdf-schema#range": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#design_motive"
-            }
-        ]
-    },
-    {
-        "@id": "http://www.ontology.audit4sg.org/RelAIEO#Intersect",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#ObjectProperty",
-            "http://www.w3.org/2002/07/owl#ReflexiveProperty"
-        ],
-        "http://www.w3.org/2000/01/rdf-schema#domain": [
-            {
-                "@id": "http://www.ontology.audit4sg.org/RelAIEO#material_semiotic_difference"
             }
         ]
     },
@@ -1184,9 +1110,35 @@
         ]
     },
     {
+        "@id": "http://www.ontology.audit4sg.org/RelAIEO#Uses",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#ObjectProperty"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#domain": [
+            {
+                "@id": "http://www.ontology.audit4sg.org/RelAIEO#ai_system"
+            }
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#range": [
+            {
+                "@id": "http://www.ontology.audit4sg.org/RelAIEO#type_of_data"
+            }
+        ]
+    },
+    {
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#academic_funding",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Funding received from an institute of higher education. This type of funding often has a strong research component."
+            }
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#provocation": [
+            {
+                "@value": "What research problem does the project hope to explore? \nDoes the research question have larger social implications?\nWhat social justice framework is the research question grounded in?\nHow will the research framework influence the overall design of the AI system?"
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -1198,6 +1150,16 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#academic_institution",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Refers to Institutes of higher education such as universities, colleges, research institutes or schools."
+            }
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#provocation": [
+            {
+                "@value": "Is the academic institute inclusive and accessible or is it exclusionary and only caters to a certain elite? \nWho is set to gain the most from the research project? \nDid the culture of the academic institute influence the design of the AI system and the values encoded therein?"
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -1221,6 +1183,16 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "When the design of an AI system is explicitly driven by the motivation to contribute to the UN's sustainable development goals."
+            }
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#provocation": [
+            {
+                "@value": "Are the SDG goals adequately defined taking into account the actual needs of the community? \nIs the team critical of the SDG goals? \nIs the team aware of inequalities built into the design of the SDG goals? \nWhat motivated the team to rely on SDG goals rather than on anything else?"
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#design_motive"
@@ -1231,6 +1203,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#action_research",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Social science research approach that is conducted with the intention to transform or intervene."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -1243,6 +1220,16 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of user who is actively involved in mobilizing a community for a social or political cause."
+            }
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#provocation": [
+            {
+                "@value": "What values motivate an activist? \nAre they set to receive any tangible or intangible gains from their involvement in the AI system? \nWere they included as a relevant stakeholder in the design of the AI system?"
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#equality_end_user"
@@ -1253,24 +1240,74 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#actor",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Any human or nonhuman entity that is capable of action and influencing the network."
+            }
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#provocation": [
+            {
+                "@value": "How do different actors involved in the AI system influence its overall design?"
+            }
         ]
     },
     {
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#affordance",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "That aspect of a socio-technical system that offers possibilities for action. These are either intended or unintended possibilities."
+            }
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#provocation": [
+            {
+                "@value": "How does the AI system alter human perception (Döbler & Bartnik, 2022)? \nHow does it make us relate to the world in different ways? \nHow does it reflect our past, present and future?"
+            }
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#references": [
+            {
+                "@value": "“Technologies help to determine how people act, so that it is not only people but also things who give answers to the classical moral question, ‘How to live?’”"
+            }
         ]
     },
     {
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#ai4sg",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Refers to ideas/discourse that emphasise upon the use, development and deployment of AI systems for social good."
+            }
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#provocation": [
+            {
+                "@value": "What do the actors involved mean by social good? \nHow did they arrive at their definition? \nDid they consider the normative values underpinning the definition of social good? \nWho gets to define what is social good?"
+            }
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#references": [
+            {
+                "@value": "AI4SG is often conflated to mean “AI4SG = AI×SDGs” with  \"the assumption that “SDGs offer clear, well defined and shareable boundaries to identify positively what is socially good AI” and that “SDGs are internationally agreed on goals for development and have begun informing relevant policies worldwide, so they raise fewer questions about relativity and cultural dependency of values” [25:112]. Such framing has some glaring shortcomings that Cowls et al. choose to ignore. UN SDGs, like most United Nations consensus exercises, are not legally binding nor represent goals and principles that political groups intra-nationally or trans-nationally agree upon. Secondly, SDGs, as Telleria and Garcia-Arias [95:15] argue, is an “empty signifier that keeps disparate and even contradictory demands united”. It does this by constructing “a fantasmatic explanation of international development and sustainability issues that conceals the antagonistic dimension of social, political and economic issues” [95:15]. In a later special issue introduction edited by Cowls, Cowls notes contrary to such a straightforward and simple solution that “The contributions make clear that neither ‘AI’ nor ‘social good’ should be thought of as uncontested or incontestable terms, and we should remain wary of the twin dangers of unjustified hype and unseen harm arising from the continued growth of interest in, and application of, AI” [24:54].\" ( Arora & Sarkar, 2023)"
+            }
         ]
     },
     {
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#ai_system",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A socio-technical system that uses some aspect of artificial intelligence to complete a task or achieve a goal.."
+            }
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#provocation": [
+            {
+                "@value": "Does the problem need an AI system as a solution? \nDid the team consider the socio-technical aspects of an AI system? \nIs the team aware of its limitations? \nDo they have adequate expections concerning the AI system and its potential to achieve social good?"
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -1279,9 +1316,24 @@
         ]
     },
     {
-        "@id": "http://www.ontology.audit4sg.org/RelAIEO#angel_funding",
+        "@id": "http://www.ontology.audit4sg.org/RelAIEO#angel_investment",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Personal investment made by high-net-worth individuals or a group of individuals either informally or through social networks. These investors invest their own money to provide early-stage funding in exchange for financial and non-financial returns. They sometimes play an active role in the business either as advisors or members of the board of directors."
+            }
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#provocation": [
+            {
+                "@value": "What monetary or non-montary value did the investor see in the AI system. \nDid the investor gain directly from investing in the AI system? \nDid they incrue any indirect value from their investment? \nDoes the involvement impact the design of the AI system?"
+            }
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#references": [
+            {
+                "@value": "\"Grounded in agency theory, our findings suggest that strategic\nreadiness for funding and passion matter more to angel investors, that economic\npotential matters more to VCs, and that both investor types place similar weights on the\nspecific human capital of entrepreneurs.\" \"In addition, angel investors are concerned about the entrepreneur’s behavior once they decide to invest (Kelly and Hay 2003). In other words, they are likely to use behaviororiented mechanisms to control the entrepreneur after investing. Many angel investors, unlike VCs, want to be informed about the daily operation of the venture and to work with the entrepreneur closely,such as visiting the venture or conducting recurring meetings with entrepreneurs (Landstro¨m 1998; Prowse 1998; Van Osnabrugge and Robinson 2000; Wright and Robbie 1998). Many angel investors also consider themselves co-entrepreneurs of the invested ventures and act like an entrepreneur (Landstro¨m 1998). The concept of coentrepreneurs not only aligns the goals of the angel investors with the entrepreneur’s goal but also mitigates the issue of information asymmetries through closely working with the entrepreneur\" (Hsu et al., 2014)\""
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -1294,6 +1346,16 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Anonymized data is data that cannot be traced back to a particular person."
+            }
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#provocation": [
+            {
+                "@value": "Can the data be renonymized in future?"
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#type_of_data"
@@ -1304,6 +1366,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#anthropomorphism",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Anthropomorphism refers to a tendency to think of non-human agents and actors in human likeness, terms and/or forms."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -1316,6 +1383,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "An ethical parameter that is conscious of the constructed nature of the scales ie.e scales such as local, global, national etc are not given but constructed."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#ethical_parameter"
@@ -1326,6 +1398,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#artistic",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A design motive that foregrounds the aesthetic considerations over and above everything else in its design of an AI system."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -1338,6 +1415,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Any set of ethical and political values that are assumed in the design of a socio-technical system."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#multiple_dimension"
@@ -1348,6 +1430,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#autonomous_self",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A non-relational approach that defines an individual as an independent, rational agent who is set apart from the larger milieu."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -1360,6 +1447,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "When the results of an AI system are systemically prejudiced due to both accounted or unaccounted assumptions in the machine learning process."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#identified_harm_risk"
@@ -1370,6 +1462,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#bigdata_analysis",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A method of data analysis that detects trends, patterns, and correlations in large amounts of data."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -1382,6 +1479,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of user that receives money, assets, or services on credit from another individual, organization or the bank."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#economic_end_user"
@@ -1392,6 +1494,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#care_ethic",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of ethical framework that prioritizes the relationship of care especially with those who are vulnerable."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -1404,20 +1511,14 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
-        "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+        "http://www.w3.org/2000/01/rdf-schema#description": [
             {
-                "@id": "http://www.ontology.audit4sg.org/RelAIEO#qualitative"
+                "@value": "A type of qualitative and/or quantitative research method that engages in an indepth study of one or small number of individuals, groups or events."
             }
-        ]
-    },
-    {
-        "@id": "http://www.ontology.audit4sg.org/RelAIEO#caste",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#Class"
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
-                "@id": "http://www.ontology.audit4sg.org/RelAIEO#material_semiotic_difference"
+                "@id": "http://www.ontology.audit4sg.org/RelAIEO#qualitative"
             }
         ]
     },
@@ -1426,20 +1527,14 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
-        "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+        "http://www.w3.org/2000/01/rdf-schema#description": [
             {
-                "@id": "http://www.ontology.audit4sg.org/RelAIEO#identified_harm_risk"
+                "@value": "A type of risk where either an indiviual or a group is not allowed to express an opinion or share information."
             }
-        ]
-    },
-    {
-        "@id": "http://www.ontology.audit4sg.org/RelAIEO#city",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#Class"
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
-                "@id": "http://www.ontology.audit4sg.org/RelAIEO#appropriate_scale"
+                "@id": "http://www.ontology.audit4sg.org/RelAIEO#identified_harm_risk"
             }
         ]
     },
@@ -1448,6 +1543,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of research method where knowledge/or an artefact is coconstructed with the individual, group or community that has stakes in the knowledge/artefact being produced."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#qualitative"
@@ -1455,20 +1555,14 @@
         ]
     },
     {
-        "@id": "http://www.ontology.audit4sg.org/RelAIEO#co-relating",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#Class"
-        ],
-        "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-            {
-                "@id": "http://www.ontology.audit4sg.org/RelAIEO#type_of_relation"
-            }
-        ]
-    },
-    {
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#coaching_centre",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Private institutes that offer educational or training services outside of the schol system."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -1481,6 +1575,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Type of organization where individuals come together to work on shared interests. These groups often function on the premise of non-hierarchy and  collaboration among members."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#type_of_organization"
@@ -1491,6 +1590,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#community",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A group of individuals or groups who share common interests, values, goals and frequently interact with each other."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -1506,6 +1610,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of funding where members of the community pool their personal resources to fund an enterprise or a socio-technical system that is expected to provide mutual benefits."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#type_of_funding"
@@ -1516,12 +1625,22 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#consequence",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "An effect of an action or a decision."
+            }
         ]
     },
     {
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#consumer",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Those set of users who use the system either for their personal consumption or to deliver services to their customers."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -1539,6 +1658,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Type of consumer that develops or publishes textbooks, guidebooks or any other kind of content that is used to facilitate teaching and learning."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#education_consumer"
@@ -1549,6 +1673,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#corporate_funding",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of funding where a company funds an AI system in exchange of deriving future benefits from the system."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -1561,6 +1690,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "An interdisciplinary analytical approach that interrogates how texts, symbols, and language construct what's considered right and wrong, or how objects, bodies and relations are made sense of."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#qualitative"
@@ -1571,6 +1705,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#critical_incident_analysis",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of qualitative method where a significant event or incidents is studied to understand a particular phenomenon."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -1583,6 +1722,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of funding where an idea is pitched to a larger number of individuals who are asked to contribute small amounts to finance a project."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#type_of_funding"
@@ -1593,6 +1737,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#customer",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "An individual or a group whose purchase of goods and services is mediated by an AI system."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -1605,6 +1754,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A design intention with an aim to advance access or use of data to nurture egalitarian relations in the society."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#design_motive"
@@ -1615,6 +1769,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#deep_ecology",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of relational ontology that privileges a holistic and intrinsic relationship between humans and the natural environment."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -1627,6 +1786,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A form of text/speech that uses false information to injure a group or an individual's reputation."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#identified_harm_risk"
@@ -1637,6 +1801,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#deliberative_forums",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of research method that facilitates \"extended discussions taking place over two or three days, in which the participants are able to play the leading role in deciding the issues to be discussed and how they are approached\" (Taylor-Gooby et al., 2018)."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -1649,6 +1818,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A rule-based, normative ethical framework that insists upon actions as being morally right or wrong."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#ethical_framework"
@@ -1660,6 +1834,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "The manner in which an AI system is deployed. One of the dimensions that affects how the AI system will be perceived, used, and experienced."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#multiple_dimension"
@@ -1670,18 +1849,33 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#design",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A deliberate and systematic process of creating, structuring, and planning the system's architecture, functionality, user interfaces, and algorithms to achieve specific goals, optimize performance, enhance user experience, and ensure ethical and responsible behavior in accordance with user needs and intended applications. AI system design encompasses various aspects, including data collection, algorithm development, user interaction, and ethical considerations."
+            }
         ]
     },
     {
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#design_motive",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Design ideas, principles or claims that motivate the design of an AI system."
+            }
         ]
     },
     {
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#deskilling",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "One of the harms of AI whereby previous skills of workers are made redundant by introducing machine or technologies into the workplace."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -1694,6 +1888,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "An individual or a group that programs or codes the AI system."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#human"
@@ -1704,6 +1903,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#developer_as_active_practitioner",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "An ethical relation that redefines the role of a developer as active practitioner and sense-maker."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -1716,6 +1920,16 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A market intervention that disrupts existing business networks or creates a new market niche to generate value."
+            }
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#references": [
+            {
+                "@value": "\"The detached perspective of the moral philosopher and observer is thus replaced by that of the active practitioner and sense-maker: we find ourselves in the lifeworld, understood as a practical and relational space where the question of what to do for and with a plant matters\" (Coeckelbergh 2023)."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#design_motive"
@@ -1726,26 +1940,25 @@
         ]
     },
     {
-        "@id": "http://www.ontology.audit4sg.org/RelAIEO#district",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#Class"
-        ],
-        "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-            {
-                "@id": "http://www.ontology.audit4sg.org/RelAIEO#appropriate_scale"
-            }
-        ]
-    },
-    {
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#domain",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Broader areas such as healthcare, education, finance etc. within which AI systems are being used and deployed. Each domain has unique challenges and use-cases vis-à-vis AI systems."
+            }
         ]
     },
     {
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#economic_consumer",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A user of an AI system who is not negatively affected by the use of an AI system."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -1757,6 +1970,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#economic_empowerement",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "One of the AI4SG domains that aims to use AI to improve access to economic tools for social good."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -1780,6 +1998,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "One of the AI4SG domains that aims to use AI to improve access to education."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#domain"
@@ -1790,6 +2013,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#education_consumer",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of education consumer that uses AI system to deliver its services."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -1813,6 +2041,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of worker who is employed by an organization on a long-term basis and is often eligible to receive social benefits as part of their employment contract."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#economic_end_user"
@@ -1823,6 +2056,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#end_user",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Users who are affected by the system."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -1835,6 +2073,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of risk where the hardware and energy required to build and maintain AI system has negative impacts on the environment."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#identified_harm_risk"
@@ -1845,6 +2088,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#equality_and_inclusion",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "One of the domains of AI4SG that aims to use an AI system to improve social equality and cohesion."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -1868,6 +2116,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of user who is negatively affected by the use of an AI system."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#end_user"
@@ -1879,6 +2132,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "An ethical parameter that pivots upon the values of fairness and equality."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#ethical_parameter"
@@ -1889,12 +2147,22 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#ethic",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A set of moral principles that guide human behavior, that help distinguish between right and wrong based on personal values, societal norms, and political necessities."
+            }
         ]
     },
     {
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#ethic_dumping",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of unethical risk wherein researchers conduct prohibitive research in low-income countries or settings which have loose regulatory frameworks."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -1907,6 +2175,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of unethical risk wherein private actors (are at least suspected to) try to use self-regulation about the ethics of AI in order to lobby against the introduction of legal norms, or in favour of their watering down or weakening their enforcement, or in order to provide an excuse for limited compliance (Floridi 2019)."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#ethics_manipulation"
@@ -1917,6 +2190,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#ethic_shirking",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "An ethical malpractice of applying double standards in moral evaluations."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -1929,6 +2207,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "The malpractice of choosing, adapting, or revising (“mixing and matching”) ethical principles, guidelines, codes, frameworks, or other similar standards (especially but not only in the ethics of AI), from a variety of available offers, in order to retrofit some pre-existing behaviours (choices, processes, strategies, etc.), and hence justify them a posteriori, instead of implementing or improving new behaviours by benchmarking them against public, ethical standards (Floridi 2019)."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#ethics_manipulation"
@@ -1939,6 +2222,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#ethic_washing",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "The malpractice of making unsubstantiated or misleading claims about, or implementing superficial measures in favour of, the ethical values and benefits of digital processes, products, services, or other solutions in order to appear more digitally ethical than one is (Floridi 2019)."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -1951,6 +2239,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Risk where technological developments throw new ethical concerns and challenges."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#identified_harm_risk"
@@ -1961,6 +2254,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#ethical_framework",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A framework that helps decide the most just and ethical course of action."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -1973,6 +2271,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A single characteristic of a larger framework."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#ethic"
@@ -1983,6 +2286,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#ethico_political_care",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A redefinition of care ethics that asks how ethical aspirations to ‘do good’ are entangled in politically charged care practices that are ‘ambivalent, contextual, and relational’ (Martin et al. 2015: 631) and can be fraught with histories of sexism, racism, capitalism and colonialism (Murphy 2015)."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -1995,6 +2303,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "\"To rethink ethics in a broader manner via engaged epistemology in a way that puts the needs and welfare of the most impacted and marginalized at the center.” (Birhane 2021)."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#redefined_ethical_parameter"
@@ -2005,6 +2318,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#ethics_manipulation",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of malpractice that uses the vocabulary of ethics to achieve unfair, inequitable, unjust goals."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -2017,6 +2335,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of qualitative method that uses fieldwork to undertake an indepth study of a particular phenomenon, group or society."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#qualitative"
@@ -2027,6 +2350,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#exclusionary_norm",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of risk wherein the use of AI disproportionately excludes or discriminates against certain individuals or groups,"
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -2039,6 +2367,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A design principle that experiments with new ideas and concepts."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#design_motive"
@@ -2050,6 +2383,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "One of the ethical parameters that insist on the need to make the decision making of AI systems human-understandable."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#ethical_parameter"
@@ -2057,20 +2395,14 @@
         ]
     },
     {
-        "@id": "http://www.ontology.audit4sg.org/RelAIEO#extra-relating",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#Class"
-        ],
-        "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-            {
-                "@id": "http://www.ontology.audit4sg.org/RelAIEO#type_of_relation"
-            }
-        ]
-    },
-    {
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#fairness",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "An ethical parameter that aims to remedy or prevent wrongful harms resulting from biased algorithmic outputs."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -2083,6 +2415,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A person or a collective engaged in agriculture activities."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#economic_end_user"
@@ -2093,6 +2430,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#feminist_ethic",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "An ethical framework that seeks to address and rectify traditional ethical theories' historical androcentrism (male-centered focus) by promoting values such as equity, justice, and empathy, with a particular emphasis on the experiences and concerns of women and marginalized gender groups."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -2105,6 +2447,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Financial institutions are organizations that provide a wide range of financial services to individuals, businesses, and governments. These services typically include banking, lending, investment, and insurance activities."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#economic_consumer"
@@ -2115,6 +2462,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#focus_group",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of research method that brings together a small group of people to answer questions in a moderated setting."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -2127,6 +2479,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of organization that operates on for-profit basis."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#type_of_organization"
@@ -2137,6 +2494,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#for_whom?",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A question situated in the ethical-political practice of care that critically evaluates what it means to care and how the object that is to be taken care of is constructed, presented, and studied."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -2149,6 +2511,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of worker who is self-employed and performs task-based assignments with no fixed employer. They usually work on temporary contracts, and may or may not use an online intermediary to find assignments."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#worker"
@@ -2160,20 +2527,14 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
-        "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+        "http://www.w3.org/2000/01/rdf-schema#description": [
             {
-                "@id": "http://www.ontology.audit4sg.org/RelAIEO#human"
+                "@value": "A type of actor that provides financial support to the team developing the AI system."
             }
-        ]
-    },
-    {
-        "@id": "http://www.ontology.audit4sg.org/RelAIEO#gender",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#Class"
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
-                "@id": "http://www.ontology.audit4sg.org/RelAIEO#material_semiotic_difference"
+                "@id": "http://www.ontology.audit4sg.org/RelAIEO#human"
             }
         ]
     },
@@ -2182,6 +2543,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A gig worker, also known as a gig economy worker or independent contractor, is an individual who engages in short-term, freelance, or on-demand work arrangements, often through digital platforms or apps, where they provide services or complete tasks for clients or customers on a project-by-project basis."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#worker"
@@ -2189,20 +2555,14 @@
         ]
     },
     {
-        "@id": "http://www.ontology.audit4sg.org/RelAIEO#global",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#Class"
-        ],
-        "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-            {
-                "@id": "http://www.ontology.audit4sg.org/RelAIEO#appropriate_scale"
-            }
-        ]
-    },
-    {
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#government_agency",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A government agency is a specialized organization established and funded by a government to perform specific functions, tasks, or services, often related to regulation, administration, or public service delivery."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -2215,6 +2575,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of funding offered by state or national agency, ministry from the public funds."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#type_of_funding"
@@ -2225,6 +2590,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#group",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A collection of individuals who are members of a group based on their identity, ideas, beliefs or practices."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -2248,6 +2618,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of speech that aims to exacerbate polarization in the society."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#identified_harm_risk"
@@ -2258,6 +2633,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#how_to_care?",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "\"A question situated in the ethical-political practice of care that critically evaluates the practice of caring and start from an understanding that \"what care can mean in each situation cannot be resolved by ready-made formulas\".\""
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -2280,18 +2660,33 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#human_action",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Human action refers to intentional and purposeful behaviors or activities undertaken by individuals, driven by their thoughts, desires, and motivations, to achieve specific goals or outcomes."
+            }
         ]
     },
     {
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#human_machine_relation",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Refers to the ways in which humans and machines interrogate and coproduce each other."
+            }
         ]
     },
     {
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#hype",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "When the use of an AI system is over-promised by the developers resulting in unjustified deployment."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -2304,6 +2699,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of rhetoric that oversells the benefits or harms of a system to create value."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#rhetoric"
@@ -2314,12 +2714,22 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#identified_harm_risk",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Negative impacts of AI systems that have been recognized so far."
+            }
         ]
     },
     {
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#immigrant",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of user who lives in a foreign country to settle as permanent residents."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -2332,6 +2742,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A phrase that is often used to refer to the role that humans have in the decision making as part of the socvio-technical system."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#human_machine_relation"
@@ -2343,6 +2758,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of harm ensuing from  incorrect or misleading results, predictions, or information, potentially causing harm by leading to erroneous decisions, misinformation, or mistrust in the technology's reliability."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#identified_harm_risk"
@@ -2350,23 +2770,14 @@
         ]
     },
     {
-        "@id": "http://www.ontology.audit4sg.org/RelAIEO#individual",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#Class"
-        ],
-        "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-            {
-                "@id": "http://www.ontology.audit4sg.org/RelAIEO#equality_end_user"
-            },
-            {
-                "@id": "http://www.ontology.audit4sg.org/RelAIEO#type_of_organization"
-            }
-        ]
-    },
-    {
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#industry_association",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "An association that protects the interests of companies and employers part of the same industry."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -2379,6 +2790,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Exacerbation or perpetuation of existing social, economic, or opportunity disparities by artificial intelligence systems."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#identified_harm_risk"
@@ -2389,6 +2805,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#information_disorder",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Dissemination of false, misleading, or harmful information facilitated by artificial intelligence systems. It includes the generation, amplification, or manipulation of misleading content, leading to confusion, misinformation, and potentially harming individuals, society, or democratic processes."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -2401,6 +2822,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "\"Treats 'the world of data, information, and knowledge, with their relevant life-cycles, as a new environment, the infosphere, in which human beings, as informational organisms, may be flourishing.'\""
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#ethical_framework"
@@ -2412,6 +2838,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Refers to the idea that intelligence is not innate or unique to humans but emerges in relations and varies from actor to actor."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#redefined_ethical_parameter"
@@ -2422,6 +2853,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#intended",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of consequence that was accounted for and anticipated in the design of the AI system."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -2435,20 +2871,14 @@
         ]
     },
     {
-        "@id": "http://www.ontology.audit4sg.org/RelAIEO#inter-relating",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#Class"
-        ],
-        "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-            {
-                "@id": "http://www.ontology.audit4sg.org/RelAIEO#type_of_relation"
-            }
-        ]
-    },
-    {
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#intergovernmental_organization",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "An entity created by a treaty, involving two or more nations, to work in good faith, on issues of common interest."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -2461,6 +2891,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "It refers to the human imaginative and meaning making capacity and it affects how they interact  experience or relate to an AI system."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#multiple_dimension"
@@ -2472,6 +2907,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of qualitative method in which a researcher conducts structure, semi-structured or unstructured conversation with individuals which is then collected and  analysed."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#quantiative"
@@ -2479,20 +2919,14 @@
         ]
     },
     {
-        "@id": "http://www.ontology.audit4sg.org/RelAIEO#intra-relating",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#Class"
-        ],
-        "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-            {
-                "@id": "http://www.ontology.audit4sg.org/RelAIEO#type_of_relation"
-            }
-        ]
-    },
-    {
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#justice",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Fair and equitable treatment of individuals and groups in the development, deployment, and impact of artificial intelligence systems."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -2505,6 +2939,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A question that is critical of the normative stratgies of doing things in a situation."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#ethico_political_care"
@@ -2512,9 +2951,14 @@
         ]
     },
     {
-        "@id": "http://www.ontology.audit4sg.org/RelAIEO#knowing-what",
+        "@id": "http://www.ontology.audit4sg.org/RelAIEO#knowing-that",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A question that is critical of normative values and and principles in a given system."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -2527,6 +2971,16 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A question that insists on recognizing how pasts, presents and futures converge in a moment."
+            }
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#references": [
+            {
+                "@value": "\"Indeed, Michael points out the importance of recognizing how pasts, presents\nand futures, understood as ‘entities and occasions, discourses and practices, humans\nand non-humans’ (Michael 2014: 240), converge within the event of a disaster. He argues that while there may be a need to ‘slow down’ the repair of such\nruptures, this deceleration can be accompanied by an ‘acceleration in the processes\nof asking more inventive questions, of fnding better meanings, and of enabling fner\nresponses’ (Michael 2014: 244).\""
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#ethico_political_care"
@@ -2537,6 +2991,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#legal_compliance",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Adherence of artificial intelligence systems and their developers, users, or operators to relevant laws, regulations, and standards governing AI technology."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -2549,6 +3008,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of economic end user that gives money to a borrower."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#economic_end_user"
@@ -2556,20 +3020,14 @@
         ]
     },
     {
-        "@id": "http://www.ontology.audit4sg.org/RelAIEO#local",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#Class"
-        ],
-        "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-            {
-                "@id": "http://www.ontology.audit4sg.org/RelAIEO#appropriate_scale"
-            }
-        ]
-    },
-    {
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#manipulation",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "To influence, deceive, or control individuals, groups, or information. It involves the deliberate use of AI algorithms or systems to distort perceptions, emotions, or decision-making processes in ways that are typically harmful, exploitative, or contrary to the well-being and autonomy of individuals."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -2582,6 +3040,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Certain design motivations that rely on the market to asses needs and solutions."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#design_motive"
@@ -2592,6 +3055,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#material_psychological_harm",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Tangible, adverse psychological or emotional consequences experienced by individuals, such as stress, anxiety, or depression, due to the actions or decisions made by artificial intelligence systems, algorithms, or technology."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -2604,6 +3072,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Differences among humans that are weaved together in both language and matter."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#relational_ontology"
@@ -2614,6 +3087,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#mathematical_criteria",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "\"Mathematical translations of some ideals or principles for a local distribution of computational or material benefits or burdens among people.”"
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -2653,6 +3131,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "\"For questions regarding responsibility, forward-looking and backward-looking, it is important to clarify all these structural and temporal relations and interactions: not only the social interactions and roles of humans but also their interactions with things and the relations and interactions between things. In this sense, responsibility for technology is not only a matter of faces but also of interfaces.\" (Coeckelbergh, 2020)"
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#type_of_mattering"
@@ -2663,12 +3146,22 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#method",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Strategy employed to gather, analyze, and interpret data or information in order to answer specific questions or investigate phenomena."
+            }
         ]
     },
     {
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#multi_stakeholder_engagement",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of research method that involves multiple relevant parties or groups with diverse interests, perspectives, and expertise in the research process to ensure comprehensive and inclusive problem-solving and decision-making."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -2680,6 +3173,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#multiple_dimension",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Different aspects that affect how an AI system is perceived and experienced by the user."
+            }
         ]
     },
     {
@@ -2687,31 +3185,14 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "An AI system can have multiple use cases which weren't accounted for by the designers and negatively impact the users."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#identified_harm_risk"
-            }
-        ]
-    },
-    {
-        "@id": "http://www.ontology.audit4sg.org/RelAIEO#national",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#Class"
-        ],
-        "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-            {
-                "@id": "http://www.ontology.audit4sg.org/RelAIEO#appropriate_scale"
-            }
-        ]
-    },
-    {
-        "@id": "http://www.ontology.audit4sg.org/RelAIEO#neighbourhood",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#Class"
-        ],
-        "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-            {
-                "@id": "http://www.ontology.audit4sg.org/RelAIEO#appropriate_scale"
             }
         ]
     },
@@ -2720,20 +3201,14 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
-        "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+        "http://www.w3.org/2000/01/rdf-schema#description": [
             {
-                "@id": "http://www.ontology.audit4sg.org/RelAIEO#identified_harm_risk"
+                "@value": "Type of risk that is as yet unaacounted for and there are not social, legal or political safeguards against it."
             }
-        ]
-    },
-    {
-        "@id": "http://www.ontology.audit4sg.org/RelAIEO#new_scale",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#Class"
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
-                "@id": "http://www.ontology.audit4sg.org/RelAIEO#appropriate_scale"
+                "@id": "http://www.ontology.audit4sg.org/RelAIEO#identified_harm_risk"
             }
         ]
     },
@@ -2753,6 +3228,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Non-personal data refers to information that does not directly or indirectly identify specific individuals. This type of data is typically aggregated, anonymized, or stripped of any personally identifiable information (PII), such as names, addresses, or contact details. Non-personal data can include statistical data, trends, patterns, and other information that is useful for analysis, research, or business purposes without compromising individuals' privacy."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#type_of_data"
@@ -2763,6 +3243,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#non_discrimination",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "An ethical parameter that ensures that individuals or groups are not discriminated against by the AI system."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -2786,6 +3271,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Non-human autonomy as an ethical parameter refers to the capacity or degree of independence and decision-making authority granted to artificial intelligence, robots, or autonomous systems, while considering their potential impact, constraints, and responsibilities in relation to human society and values."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#ethical_parameter"
@@ -2796,6 +3286,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#non_relational_approach",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Type of approaches that see autonomy, objectivity, independence as core values."
+            }
         ]
     },
     {
@@ -2824,6 +3319,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#not_listed",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "An aspect of socio-technical system that is not part of this ontology."
+            }
         ]
     },
     {
@@ -2842,6 +3342,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "An online platform refers to a digital environment or software system designed to facilitate teaching, learning, and educational activities over the internet."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#education_consumer"
@@ -2849,20 +3354,14 @@
         ]
     },
     {
-        "@id": "http://www.ontology.audit4sg.org/RelAIEO#other",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#Class"
-        ],
-        "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-            {
-                "@id": "http://www.ontology.audit4sg.org/RelAIEO#appropriate_scale"
-            }
-        ]
-    },
-    {
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#parent",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A parent is an individual who has given birth to or legally adopted a child and is responsible for their upbringing, care, and well-being."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -2875,6 +3374,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of qualitative research method that includes research subjects as participants to shape and have stakes in the knowledge output."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#qualitative"
@@ -2885,6 +3389,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#paternalist",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A form of decision-making or governance in which an authority figure or organization makes choices or enforces policies on behalf of others, believing that it is for their own good. Paternalism often involves restricting individual autonomy or freedom to protect individuals from harm, even if they may not agree with or prefer those decisions."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -2908,6 +3417,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Personal data refers to any information that relates to an identifiable individual. It includes data that can directly identify a person, such as their name, address, phone number, email address, and government-issued identification numbers (e.g., social security number or passport number). Personal data can also encompass less obvious information like online identifiers (e.g., IP addresses or cookies), biometric data (e.g., fingerprints or facial recognition data), and details about a person's physical, physiological, genetic, economic, cultural, or social identity."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#type_of_data"
@@ -2918,6 +3432,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#philanthropic_funding",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Financial contributions or donations provided by individuals, organizations, foundations, or corporations to support charitable, social, educational, cultural, or humanitarian causes."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -2930,6 +3449,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Exacerbation or reinforcement of ideological divisions or extreme viewpoints within society by AI algorithms or platforms that unintentionally or intentionally promote content that amplifies existing differences, fosters echo chambers, and discourages constructive dialogue among individuals or groups with opposing views."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#identified_harm_risk"
@@ -2940,6 +3464,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#policy_maker",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "An individual or entity responsible for shaping, developing, and implementing educational policies, regulations, and initiatives that impact educational institutions, practices, and systems."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -2952,6 +3481,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Postcolonial ethics is a moral framework that addresses the ethical implications of colonial histories, emphasizing decolonization, cultural respect, and justice in the aftermath of colonialism."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#ethical_framework"
@@ -2963,6 +3497,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Proactive design is an approach to product or system design that anticipates and addresses potential issues, challenges, or needs before they arise, aiming to prevent problems and improve user experiences. It involves proactive problem-solving and a forward-thinking mindset to create solutions that are more robust, user-friendly, and efficient."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#design_motive"
@@ -2973,6 +3512,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#prospective_transparency",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Prospective transparency informs users about the data processing and the working of the system upfront. It describes how the AI system reaches decisions in general. Thus, prospective transparency can be seen as an accountability mechanism (Zerilli et al., 2018)."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -2990,6 +3534,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "An iterative process in which improved understanding to the scientific community is achieved by making new significant distinctions resulting from getting closer to the phenomenon studied. Qualitative research, as defined here, is consequently a combination of two criteria: (i) how to do things –namely, generating and analyzing empirical material, in an iterative process in which one gets closer by making distinctions, and (ii) the outcome –improved understanding novel to the scholarly community. (Aspers & Corte, 2019)"
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#method"
@@ -3006,6 +3555,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "\"Emphasize objective measurements and the statistical, mathematical, or numerical analysis of data collected through polls, questionnaires, and surveys, or by manipulating pre-existing statistical data using computational techniques. Quantitative research focuses on gathering numerical data and generalizing it across groups of people or to explain a particular phenomenon.\""
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#method"
@@ -3016,16 +3570,10 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#question",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
-        ]
-    },
-    {
-        "@id": "http://www.ontology.audit4sg.org/RelAIEO#race",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#Class"
         ],
-        "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+        "http://www.w3.org/2000/01/rdf-schema#description": [
             {
-                "@id": "http://www.ontology.audit4sg.org/RelAIEO#material_semiotic_difference"
+                "@value": "An inquiry presented to seek information, clarification, or a response from someone."
             }
         ]
     },
@@ -3033,6 +3581,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#reactive",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A design motive that aims to meet immediate needs or goals without reflecting on its long-term value or benefit to the user."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -3045,6 +3598,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Ethical parameters that have been redefined from relational perspectives."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#relational_approach"
@@ -3055,6 +3613,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#reduced_accessbility",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "When AI systems inadvertently or intentionally limit access to information, services, or opportunities for certain individuals or groups, particularly those with disabilities or marginalized communities. This harm can manifest as barriers to digital access, discrimination in automated systems, or the exclusion of people who rely on accessible technologies."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -3077,6 +3640,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#relational_ethic",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "An ethical framework that centres relations between actors as site of ethical contestation and deliberation."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -3106,6 +3674,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Consideration of the importance, significance, and appropriateness of information, decisions, or actions within a specific context. It ensures that ethical choices and actions are well-suited to address specific needs and concerns, promoting effectiveness and fairness."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#ethical_parameter"
@@ -3116,6 +3689,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#research_institute",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of organization that conducts research."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -3128,6 +3706,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "An individual who is engaged by an institute or an organization to conduct researh."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#education_end_user"
@@ -3139,6 +3722,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "An ethical parameter that refers to the extent to which AI systems safeguard individuals' personal information, uphold their confidentiality, and ensure that data handling and processing align with established privacy norms, laws, and user consent."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#ethical_parameter"
@@ -3149,6 +3737,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#responsibility",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "The obligation of individuals, organizations, and developers involved in AI technologies to act ethically, transparently, and accountably throughout the AI lifecycle."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -3172,6 +3765,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "\"Retrospective transparency, on the other hand, refers to post hoc explanations and rationales (Paal and Pauly, 2018). Retrospective transparency includes the notion of inspectability and explainability”"
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#transparency"
@@ -3188,6 +3786,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#safety_and_security",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Designed, deployed, and maintained in a way that protects against unintended harm, cyber threats, and breaches of privacy, thereby safeguarding individuals and society from potential risks and vulnerabilities."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -3211,6 +3814,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of educational institution that provide learning spaces and learning environments for the teaching of students under the direction of teachers."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#education_consumer"
@@ -3221,6 +3829,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#self-funding",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of funding where an individual or a group pools their own personal financial resources to develop an AI system."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -3233,6 +3846,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "An individual who doesn't have an employer, and often have their own buiseness or firm. Also used to refer to freelancers and gig workers."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#economic_end_user"
@@ -3243,6 +3861,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#sensitive_data",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Sensitive data refers to any information that, if disclosed or accessed by unauthorized parties, could result in harm, privacy violations, or other adverse consequences. This data category often includes personal, confidential, or proprietary information, such as financial records, medical records, Social Security numbers, trade secrets, or classified government data."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -3266,6 +3889,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A small and medium-sized enterprise (SME) is a business characterized by its relatively small workforce, revenue, and assets."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#economic_end_user"
@@ -3276,6 +3904,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#social_good",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of design motive where the designers intend to to contribute to a social good."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -3288,6 +3921,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of qualitative method that involves evaluating the potential effects of a project, policy, or program on society by gathering and analyzing non-numeric data, such as community perspectives and qualitative indicators."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#qualitative"
@@ -3298,6 +3936,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#social_isolation",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of risk that can have potential adverse effects on individuals' mental and emotional well-being caused by overreliance on or excessive use of artificial intelligence, which may reduce face-to-face human interactions and weaken social connections, leading to loneliness and social disconnection."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -3327,6 +3970,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of rhetoric that promises to offer simple technology solutions to complex social problems."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#rhetoric"
@@ -3337,6 +3985,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#solve_social_problem",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of design-motive that prioritizes soliving one particular social problem with the help of an AI system."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -3360,6 +4013,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of qualitaitve research method that prioritizes conceptualizing egalitarian, alternative futures."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#qualitative"
@@ -3370,6 +4028,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#speculative_ethic",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of ethical framework that moves away from 'if, then' ethical framing to 'what, if' focussing on how human-nonhuman relations are formed and contested in everyday."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -3426,6 +4089,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of harm that can result in extensive, invasive, or unwarranted monitoring, data collection, and tracking of individuals or groups, potentially leading to privacy violations, discrimination, and social control."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#identified_harm_risk"
@@ -3436,6 +4104,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#survey",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of quantitative method that involves systematically collecting structured data from a representative sample of individuals or entities through standardized questionnaires or interviews to gather numerical insights and analyze patterns or trends."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -3487,6 +4160,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A tech company, short for technology company, is an organization that primarily focuses on developing, manufacturing, or providing products, services, or solutions related to information technology, electronics, software, or other advanced technologies, often for commercial purposes and innovation-driven markets."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#type_of_organization"
@@ -3497,6 +4175,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#temporal",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of dimension that considers how an AI system is experienced overtime, or how a system affects our experience of time."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -3520,6 +4203,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A think tank is a policy institute undertaking research and advocacy on social policy, political strategy, economics, military, technology, and culture."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#type_of_organization"
@@ -3530,6 +4218,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#threat_to_privacy",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of harms that poses a threat to person's personal data."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -3542,20 +4235,14 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
-        "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+        "http://www.w3.org/2000/01/rdf-schema#description": [
             {
-                "@id": "http://www.ontology.audit4sg.org/RelAIEO#identified_harm_risk"
+                "@value": "A type of risk that could result in physical harm, injury, or adverse consequences to individuals, society, or the environment due to errors, biases, or malicious actions."
             }
-        ]
-    },
-    {
-        "@id": "http://www.ontology.audit4sg.org/RelAIEO#town",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#Class"
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
-                "@id": "http://www.ontology.audit4sg.org/RelAIEO#appropriate_scale"
+                "@id": "http://www.ontology.audit4sg.org/RelAIEO#identified_harm_risk"
             }
         ]
     },
@@ -3564,6 +4251,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "An institute of higher learning that offers vocational training."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#education_consumer"
@@ -3571,20 +4263,14 @@
         ]
     },
     {
-        "@id": "http://www.ontology.audit4sg.org/RelAIEO#trans-relating",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#Class"
-        ],
-        "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-            {
-                "@id": "http://www.ontology.audit4sg.org/RelAIEO#type_of_relation"
-            }
-        ]
-    },
-    {
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#transparency",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "One of the ethical parameters that insists that all stakeholders should understand how the system works."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -3597,6 +4283,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Reinterpretation of transparency that foregrounds the wider frame and contextual social factors that determine the meaning and effect of transparency practices."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#redefined_ethical_parameter"
@@ -3607,6 +4298,16 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#transparency_as_verifiability",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Transparency is understood simply as the disclosure of information. For instance, when organizations release  information about their internal practices."
+            }
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#references": [
+            {
+                "@value": "The second approach, however, looks at the tensions, struggles, and discourses inherent in transparency projects, and at unintended consequences and downsides of transparency. Following this approach, transparency should be understood more holistically, including the socio-material and ritualistic practices of organizations when they ‘‘perform’’ transparency. The performativity perspective understands transparency practices as social and organizational phenomena whose meaning goes substantially beyond the information conveyed. Similarly, technology compa nies such as Facebook or Google employ strong narra tives of openness, connectedness, and sharing on the user side while being highly secretive themselves.\n\n“In the information-based approach, the user is con ceptualized as an independent actor, who makes autonomous decisions on the basis of information made available to them through transparency. By contrast, the performativity account sees contextual social factors as considerably determining the meaning of transparency practices. We propose to bring insights from both perspectives together in a relational approach to transparency that draws on the concept of trustworthiness, where transparency is understood with regard to its relational function, as a signal of trustworthiness and willingness to be accountable to those affected by one’s actions or products.”\n\n“Trust is not a simple consequence of transparency”.\n\n“While the availability of information is important for trust, the relational context provides the wider frame within which the information itself may be valued in different ways.\n\n“Transparency is identifies as just one requirement among others, reinforcing the above interpretation that trustworthiness is a result of meeting a wider range of practical and normative requirements. \n\nFelzmann, Heike, Eduard Fosch Villaronga, Christoph Lutz, and Aurelia Tamò-Larrieux. “Transparency You Can Trust: Transparency Requirements for Artificial Intelligence between Legal Norms and Contextual Concerns.” Big Data & Society 6, no. 1 (January 2019): 205395171986054. https://doi.org/10.1177/2053951719860542."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -3619,6 +4320,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "One of the ethical parameters that aim to reduce human skepticism vis-à-vis AI systems and improve human-machine interaction."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#ethical_parameter"
@@ -3629,34 +4335,43 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#type_of_data",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Different types of data that are collected and could be used in development of AI systems."
+            }
         ]
     },
     {
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#type_of_funding",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Different ways in which projects, ideas, and AI systesm are financed."
+            }
         ]
     },
     {
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#type_of_mattering",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Different ways in which things relate to each other."
+            }
         ]
     },
     {
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#type_of_organization",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
-        ]
-    },
-    {
-        "@id": "http://www.ontology.audit4sg.org/RelAIEO#type_of_relation",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#Class"
         ],
-        "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+        "http://www.w3.org/2000/01/rdf-schema#description": [
             {
-                "@id": "http://www.ontology.audit4sg.org/RelAIEO#relationality"
+                "@value": "Different kinds of organizations."
             }
         ]
     },
@@ -3664,6 +4379,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#unaccountability",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of harm where a decision by an AI system cannot be explained or there's no one actor that can be held responsible for the damage."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -3676,6 +4396,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Individuals who are not currently employed."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#economic_end_user"
@@ -3686,6 +4411,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#unemployment",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "When a huge number of workers are retrenched due to the introduction of AI system."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -3698,6 +4428,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "When AI system's predictions or decisions result in or exacerbate harmful outcomes biased against vulnerable groups."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#identified_harm_risk"
@@ -3708,6 +4443,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#unintended",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "\"Those effects of an AI system which were unaccounted for in the design, deployment or use-case of the system.\""
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -3720,6 +4460,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "An organization of workers that works towards maintaining or improving the working conditions of their members."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#type_of_organization"
@@ -3730,6 +4475,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#university_and_college",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of education consumer that is involved in higher education, academic research, and authorized to grant academic degrees."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -3742,6 +4492,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "The real-world use-case of an AI system."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#multiple_dimension"
@@ -3752,6 +4507,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#user",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "An individual or a group that uses the AI system."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -3764,6 +4524,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of normative ethical framework that prescribes actions to be morally good if they maximize happiness for most people."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#ethical_framework"
@@ -3774,6 +4539,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#value",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "The personal meaning-making or larger system of meaning through which an AI system is being made sense of."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -3786,6 +4556,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "\"Value Sensitive Design is a theoretically grounded approach to the design of technology that accounts for (human) values in a principled and comprehensive manner\nthroughout the design process.\""
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#qualitative"
@@ -3796,6 +4571,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#venture_capital_firm",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of financial intermediary that manages and invest pooled capital into high-risk, potentially high-reward projects by buying equity or equity-linked stakes in the firm."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -3808,6 +4588,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Type of funding provided by venture capital firms or investors to startup companies and emerging businesses that are focused on developing and advancing artificial intelligence technologies, products, or services."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#type_of_funding"
@@ -3818,6 +4603,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#virtue_ethic",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A type of normative ethics that gives centrality to virtues or traits that are considered morally good. According to this framework, an action is ethical if it aligns with habits that are virtuous or morally good."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -3830,6 +4620,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Refers to a scenario where AI systems weaken democratic norms such as a equality, distribution of power, freedom of expression, autonomy etc."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#identified_harm_risk"
@@ -3840,6 +4635,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#what_for?",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A question situated in the ethical-political practice of care that critically evaluates the reasons for caring without assuming a moral stance."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -3852,6 +4652,11 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A question situated in the ethical-political practice of care that critically evaluates the body that is represented as being in the position of care."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#question"
@@ -3862,6 +4667,11 @@
         "@id": "http://www.ontology.audit4sg.org/RelAIEO#why_to_care?",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "A question situated in the ethical-political practice of care that critically evaluates the totalizing and normative effects of caring practices in favour of caring as provocation \"that remains speculative by not letting a situation or a position—or even the acute awareness of pervasive dominations—define in advance what is or could be\"."
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
@@ -3874,10 +4684,33 @@
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
+        "http://www.w3.org/2000/01/rdf-schema#description": [
+            {
+                "@value": "Any individual engaged in paid work."
+            }
+        ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.ontology.audit4sg.org/RelAIEO#economic_end_user"
             }
+        ]
+    },
+    {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#description",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#AnnotationProperty"
+        ]
+    },
+    {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#provocation",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#AnnotationProperty"
+        ]
+    },
+    {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#references",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#AnnotationProperty"
         ]
     },
     {
