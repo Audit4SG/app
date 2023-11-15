@@ -2,11 +2,11 @@ import { Component, State, Host, h } from '@stencil/core';
 import { Client } from 'typesense';
 
 @Component({
-  tag: 'demo-18a',
-  styleUrl: 'demo-18a.css',
+  tag: 'demo-18b',
+  styleUrl: 'demo-18b.css',
   shadow: true,
 })
-export class Demo18a {
+export class Demo18b {
   inputBoxEl!: HTMLInputElement;
 
   componentWillLoad() {
@@ -58,7 +58,7 @@ export class Demo18a {
 
     this.clearSearchResults();
     this.typesenseClient
-      .collections('relaio-sbert-v2')
+      .collections('relaio-openai-v2')
       .documents()
       .search(searchParams)
       .then(results => {
@@ -86,7 +86,7 @@ export class Demo18a {
   render() {
     return (
       <Host>
-        <h1>Typesense Search (S-BERT)</h1>
+        <h1>Typesense Search (OpenAI)</h1>
         <input onInput={e => this.handleInput(e)} ref={el => (this.inputBoxEl = el as HTMLInputElement)} placeholder="🔍 Search something.."></input>
         <main>
           {this.results.length > 0 ? (

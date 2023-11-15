@@ -82,7 +82,7 @@ export class Demo17 {
   render() {
     return (
       <Host>
-        <h1>Typesense Search (S-BERT)</h1>
+        <h1>Typesense Search for classes + relations (S-BERT)</h1>
         <input onInput={e => this.handleInput(e)} ref={el => (this.inputBoxEl = el as HTMLInputElement)} placeholder="🔍 Search something.."></input>
         <main>
           {this.results.length > 0 ? (

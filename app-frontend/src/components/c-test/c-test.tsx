@@ -35,6 +35,7 @@ export class CTest {
     this.jsonld_Flattened = await jsonld.flatten(data_JSONLD);
     this.get_Classes();
     this.get_Relationships();
+    this.displayTypesenseData();
   }
 
   private typeSenseData: any = [];
@@ -61,7 +62,7 @@ export class CTest {
     class_Pure_Raw.map((item: any) => {
       let label = item['@id'].split('#')[1];
       let description = '';
-      let provocations = '';
+      let provocation = '';
       let references = '';
 
       if (item['http://www.w3.org/2000/01/rdf-schema#description']) {
@@ -69,7 +70,7 @@ export class CTest {
       }
 
       if (item['http://www.w3.org/2000/01/rdf-schema#provocation']) {
-        provocations = item['http://www.w3.org/2000/01/rdf-schema#provocation'][0]['@value'];
+        provocation = item['http://www.w3.org/2000/01/rdf-schema#provocation'][0]['@value'];
       }
 
       if (item['http://www.w3.org/2000/01/rdf-schema#references']) {
@@ -80,7 +81,7 @@ export class CTest {
         label: label,
         type: 'Class',
         description: description,
-        provocations: provocations,
+        provocation: provocation,
         references: references,
       };
 
@@ -100,13 +101,17 @@ export class CTest {
           label: objectProperty,
           type: 'Relation',
           description: '',
-          provocations: '',
+          provocation: '',
           references: '',
         };
 
         this.typeSenseData.push(obj);
       }
     });
+  }
+
+  displayTypesenseData() {
+    console.log(this.typeSenseData);
   }
 
   render() {
