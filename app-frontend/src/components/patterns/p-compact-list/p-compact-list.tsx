@@ -99,7 +99,7 @@ export class PCompactList {
             {this.cardStack.map(
               (card: any, index: any) =>
                 index % 2 === 0 && (
-                  <p-compact-card-2 id={card.id} label={card.label} definition={card.description} question={card.explanation} reference={card.question}></p-compact-card-2>
+                  <p-compact-card-2 id={card.id} label={card.label} description={card.description} provocation={card.provocation} references={card.references}></p-compact-card-2>
                 ),
             )}
           </div>
@@ -107,7 +107,7 @@ export class PCompactList {
             {this.cardStack.map(
               (card: any, index: any) =>
                 index % 2 != 0 && (
-                  <p-compact-card-2 id={card.id} label={card.label} definition={card.description} question={card.explanation} reference={card.question}></p-compact-card-2>
+                  <p-compact-card-2 id={card.id} label={card.label} description={card.description} provocation={card.provocation} references={card.references}></p-compact-card-2>
                 ),
             )}
           </div>

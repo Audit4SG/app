@@ -28,9 +28,9 @@ export class PCompactCard2 {
   @Prop() id: string;
   @Prop() label: string;
 
-  @Prop() definition: string;
-  @Prop() question: string;
-  @Prop() reference: string;
+  @Prop() description: string;
+  @Prop() provocation: string;
+  @Prop() references: string;
 
   @State() isDefinitionExpanded: boolean = false;
   @State() isQuestionExpanded: boolean = false;
@@ -40,9 +40,9 @@ export class PCompactCard2 {
     if (e.detail.action === 'showModal') {
       this.event_showModal.emit({
         label: this.label,
-        definition: this.definition,
-        question: this.question,
-        reference: this.reference,
+        description: this.description,
+        provocation: this.provocation,
+        references: this.references,
       });
     }
   }
@@ -136,9 +136,9 @@ export class PCompactCard2 {
         </header>
         <l-spacer value={0.5}></l-spacer>
         <div class="content-container" ref={el => (this.definitionContainerEl = el as HTMLDivElement)}>
-          {this.definition.length > this.thresholdLength ? (
+          {this.description.length > this.thresholdLength ? (
             <e-text>
-              <em>{this.definition.substring(0, this.thresholdLength)}</em>
+              <em>{this.description.substring(0, this.thresholdLength)}</em>
               ...
               <e-link event={true} action="showModal">
                 Read more
@@ -146,41 +146,41 @@ export class PCompactCard2 {
             </e-text>
           ) : (
             <e-text>
-              <em>{this.definition}</em>
+              <em>{this.description}</em>
             </e-text>
           )}
           {this.isQuestionExpanded && <div class="seperator"></div>}
         </div>
         <div class="content-container" ref={el => (this.questionContainerEl = el as HTMLDivElement)}>
-          {this.question.length > this.thresholdLength ? (
+          {this.provocation.length > this.thresholdLength ? (
             <e-text>
-              {this.question.substring(0, this.thresholdLength)}
+              {this.provocation.substring(0, this.thresholdLength)}
               ...
               <e-link event={true} action="showModal">
                 Read more
               </e-link>
             </e-text>
           ) : (
-            <e-text>{this.question}</e-text>
+            <e-text>{this.provocation}</e-text>
           )}
           {this.isReferenceExpanded && <div class="seperator"></div>}
         </div>
         <div class="content-container" ref={el => (this.referenceContainerEl = el as HTMLDivElement)}>
-          {this.reference.length > this.thresholdLength ? (
+          {this.references.length > this.thresholdLength ? (
             <e-text>
-              {this.reference.substring(0, this.thresholdLength)}
+              {this.references.substring(0, this.thresholdLength)}
               ...
               <e-link event={true} action="showModal">
                 Read more
               </e-link>
             </e-text>
           ) : (
-            <e-text>{this.reference}</e-text>
+            <e-text>{this.references}</e-text>
           )}
         </div>
-        {this.reference.length > 0 && <l-spacer value={1}></l-spacer>}
+        {this.references.length > 0 && <l-spacer value={1}></l-spacer>}
         <div class="content-container" ref={el => (this.referenceButtonContainerEl = el as HTMLDivElement)}>
-          {this.reference.length > 0 && this.isQuestionExpanded && (
+          {this.references.length > 0 && this.isQuestionExpanded && (
             <button class={this.isReferenceExpanded ? 'toggle-button hide-button' : 'toggle-button expand-button'} onClick={() => this.handleButtonClick('toggleReference')}>
               {this.isReferenceExpanded ? 'Hide references' : 'Show references'}
             </button>

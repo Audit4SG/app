@@ -787,9 +787,9 @@ export class Demo14 {
         <p-basic-card-2
           id={card.id}
           label={card.label}
-          definition={card.description}
-          question={card.explanation}
-          reference={card.question}
+          description={card.description}
+          provocation={card.explanation}
+          references={card.question}
           isExpanded={this.cardStack.length > 2 ? false : true}
         ></p-basic-card-2>
       ))}

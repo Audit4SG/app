@@ -130,12 +130,12 @@ export namespace Components {
         "question": string;
     }
     interface PBasicCard2 {
-        "definition": string;
+        "description": string;
         "id": string;
         "isExpanded": boolean;
         "label": string;
-        "question": string;
-        "reference": string;
+        "provocation": string;
+        "references": string;
     }
     interface PCompactCard {
         "description": string;
@@ -145,11 +145,11 @@ export namespace Components {
         "question": string;
     }
     interface PCompactCard2 {
-        "definition": string;
+        "description": string;
         "id": string;
         "label": string;
-        "question": string;
-        "reference": string;
+        "provocation": string;
+        "references": string;
     }
     interface PCompactList {
         "stack": string;
@@ -667,13 +667,13 @@ declare namespace LocalJSX {
         "question"?: string;
     }
     interface PBasicCard2 {
-        "definition"?: string;
+        "description"?: string;
         "id"?: string;
         "isExpanded"?: boolean;
         "label"?: string;
         "onDeleteCardEvent"?: (event: CustomEvent<any>) => void;
-        "question"?: string;
-        "reference"?: string;
+        "provocation"?: string;
+        "references"?: string;
     }
     interface PCompactCard {
         "description"?: string;
@@ -684,13 +684,13 @@ declare namespace LocalJSX {
         "question"?: string;
     }
     interface PCompactCard2 {
-        "definition"?: string;
+        "description"?: string;
         "id"?: string;
         "label"?: string;
         "onDeleteCardEvent"?: (event: CustomEvent<any>) => void;
         "onShowModal"?: (event: CustomEvent<any>) => void;
-        "question"?: string;
-        "reference"?: string;
+        "provocation"?: string;
+        "references"?: string;
     }
     interface PCompactList {
         "onDeleteAllCardsEvent"?: (event: CustomEvent<any>) => void;

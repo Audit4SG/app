@@ -28,8 +28,8 @@ export class Demo19 {
   @State() modalStep: number = 0;
   @State() isDemoStarted: boolean = false;
   @State() isStartButtonDisabled: boolean = false;
-  @State() tooltipTitle: string = 'Tooltip title';
-  @State() tooltipContent: string = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+  @State() tooltipTitle: string = '';
+  @State() tooltipDescription: string = '';
   @State() cardStack: any = [];
 
   @Listen('buttonClick') buttonClick(e) {
@@ -95,9 +95,9 @@ export class Demo19 {
 
   @Listen('showModal') showModalHandler(e) {
     this.modalLabel = e.detail.label;
-    this.modalDefinition = e.detail.definition;
-    this.modalQuestion = e.detail.question;
-    this.modalReference = e.detail.reference;
+    this.modalDescription = e.detail.description;
+    this.modalProvocation = e.detail.provocation;
+    this.modalReferences = e.detail.references;
     this.showModal();
   }
 
@@ -117,14 +117,14 @@ export class Demo19 {
   private linkElements: any;
   private textElements: any;
   private linkLabels: any;
-
   private topicOptions: any = [];
-
   private class_Pure: any = [];
   private nodes: any = [];
   private links: any = [];
-
   private jsonld_Flattened: any;
+  private zoom: any;
+  private timeout: any;
+  private timeoutInMS: number = 1000;
 
   componentWillLoad() {
     this.isModalVisible = true;
@@ -193,10 +193,35 @@ export class Demo19 {
         subClassOf = item['http://www.w3.org/2000/01/rdf-schema#subClassOf'][0]['@id'];
       }
 
+      let description = '';
+      let provocation = '';
+      let references = '';
+
+      if (item['http://www.w3.org/2000/01/rdf-schema#description']) {
+        description = item['http://www.w3.org/2000/01/rdf-schema#description'][0]['@value'];
+      } else {
+        description = '(To be updated)';
+      }
+
+      if (item['http://www.w3.org/2000/01/rdf-schema#provocation']) {
+        provocation = item['http://www.w3.org/2000/01/rdf-schema#provocation'][0]['@value'];
+      } else {
+        provocation = '(To be updated)';
+      }
+
+      if (item['http://www.w3.org/2000/01/rdf-schema#references']) {
+        references = item['http://www.w3.org/2000/01/rdf-schema#references'][0]['@value'];
+      } else {
+        references = '(To be updated)';
+      }
+
       let obj = {
         id: id,
         label: label,
         subClassOf: subClassOf,
+        description: description,
+        provocation: provocation,
+        references: references,
       };
       this.class_Pure.push(obj);
     });
@@ -207,6 +232,9 @@ export class Demo19 {
       let obj = {
         id: item.id,
         label: item.label,
+        description: item.description,
+        provocation: item.provocation,
+        references: item.references,
       };
       this.nodes.push(obj);
     });
@@ -256,8 +284,6 @@ export class Demo19 {
       }
     });
   }
-
-  private zoom: any;
 
   generate_Graph() {
     gsap.to(window, { duration: 0.1, scrollTo: { y: this.height / 2, x: this.width / 2 } });
@@ -335,7 +361,7 @@ export class Demo19 {
       .on('mouseenter', (event, data) => {
         this.nodeHoverHighlight(data);
         this.timeout = setTimeout(() => {
-          this.showTooltip(data.id, event);
+          this.showTooltip(data.id.split('#')[1], data.description, event);
         }, this.timeoutInMS);
       })
       .on('mouseout', (event, data) => {
@@ -500,13 +526,13 @@ export class Demo19 {
     selected_Node.attr('fill', 'rgba(8, 242, 110, 1)');
   }
 
-  pushIntoCardStack(topic: string) {
+  pushIntoCardStack(topic: any) {
     let obj = {
       id: topic,
       label: topic.split('#')[1],
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      explanation: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      question: this.cardStack.length === 0 ? 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum' : '',
+      description: topic.description,
+      provocation: topic.provocation,
+      references: topic.references,
     };
     this.cardStack.push(obj);
     this.cardStack = [...this.cardStack];
@@ -623,9 +649,6 @@ export class Demo19 {
     }, 2000);
   }
 
-  private timeout: any;
-  private timeoutInMS: number = 1000;
-
   handleDropDownChange(e: any) {
     this.timeoutInMS = e.target.value;
   }
@@ -728,12 +751,14 @@ export class Demo19 {
     return isSelected;
   }
 
-  showTooltip(tooltipText: string, event: any) {
-    this.tooltipTitle = tooltipText.split('#')[1];
+  showTooltip(tooltipTitle: string, tooltipDescription: string, event: any) {
+    this.tooltipTitle = tooltipTitle;
+    this.tooltipDescription = tooltipDescription;
     this.el_ToolTip.style.display = 'block';
     this.el_ToolTip.style.top = `${event.pageY + 20}px`;
     this.el_ToolTip.style.left = `${event.pageX - 100}px`;
   }
+
   hideTooltip() {
     this.el_ToolTip.style.display = 'none';
   }
@@ -752,20 +777,9 @@ export class Demo19 {
     let obj = {
       id: data.id,
       label: data.label,
-      description:
-        this.cardStack.length === 1
-          ? 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-          : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      explanation:
-        this.cardStack.length === 1
-          ? 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-          : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      question:
-        this.cardStack.length === 0 || this.cardStack.length === 1
-          ? this.cardStack.length === 0
-            ? 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'
-            : 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'
-          : '',
+      description: data.description,
+      provocation: data.provocation,
+      references: data.references,
     };
     this.cardStack.push(obj);
     this.cardStack = [...this.cardStack];
@@ -787,9 +801,9 @@ export class Demo19 {
         <p-basic-card-2
           id={card.id}
           label={card.label}
-          definition={card.description}
-          question={card.explanation}
-          reference={card.question}
+          description={card.description}
+          provocation={card.provocation}
+          references={card.references}
           isExpanded={this.cardStack.length > 2 ? false : true}
         ></p-basic-card-2>
       ))}
@@ -821,9 +835,9 @@ export class Demo19 {
   @State() isModalReferenceExpanded: boolean = false;
 
   @State() modalLabel: string = '';
-  @State() modalDefinition: string = '';
-  @State() modalQuestion: string = '';
-  @State() modalReference: string = '';
+  @State() modalDescription: string = '';
+  @State() modalProvocation: string = '';
+  @State() modalReferences: string = '';
 
   modalBackground!: HTMLDivElement;
   modalContent!: HTMLDivElement;
@@ -978,23 +992,23 @@ export class Demo19 {
           {this.isModalDefinitionExpanded && (
             <div>
               <em>
-                <e-text>{this.modalDefinition}</e-text>
+                <e-text>{this.modalDescription}</e-text>
               </em>
               {this.isModalQuestionExpanded && <div class="seperator"></div>}
             </div>
           )}
           {this.isModalQuestionExpanded && (
             <div>
-              <e-text>{this.modalQuestion}</e-text>
+              <e-text>{this.modalProvocation}</e-text>
               {this.isModalReferenceExpanded && <div class="seperator"></div>}
             </div>
           )}
           {this.isModalReferenceExpanded && (
             <div>
-              <e-text>{this.modalReference}</e-text>
+              <e-text>{this.modalReferences}</e-text>
             </div>
           )}
-          {this.modalReference.length > 0 && (
+          {this.modalReferences.length > 0 && (
             <div>
               <l-spacer value={1}></l-spacer>
               <button
@@ -1015,7 +1029,7 @@ export class Demo19 {
             </button>
           </l-row>
           <l-spacer value={0.5}></l-spacer>
-          <e-text>{this.tooltipContent}</e-text>
+          <e-text>{this.tooltipDescription}</e-text>
           <l-spacer value={0.5}></l-spacer>
           <e-button>Read More</e-button>
         </div>

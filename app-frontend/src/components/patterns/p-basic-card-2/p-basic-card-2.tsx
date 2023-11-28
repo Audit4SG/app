@@ -34,9 +34,9 @@ export class PBasicCard2 {
   @Prop() id: string;
   @Prop() label: string;
 
-  @Prop() definition: string;
-  @Prop() question: string;
-  @Prop() reference: string;
+  @Prop() description: string;
+  @Prop() provocation: string;
+  @Prop() references: string;
 
   @Prop() isExpanded: boolean = true;
 
@@ -174,14 +174,14 @@ export class PBasicCard2 {
         <l-spacer value={1} />
         <div ref={el => (this.definitionContainerEl = el as HTMLDivElement)}>
           {' '}
-          {this.definition.length > this.thresholdLength ? (
+          {this.description.length > this.thresholdLength ? (
             <e-text>
               {this.isBasicCardExpanded ? (
-                this.definition
+                this.description
               ) : (
                 <span>
                   {' '}
-                  <em>{this.definition.substring(0, this.thresholdLength)}</em>
+                  <em>{this.description.substring(0, this.thresholdLength)}</em>
                   ...
                 </span>
               )}{' '}
@@ -191,20 +191,20 @@ export class PBasicCard2 {
             </e-text>
           ) : (
             <e-text>
-              <em>{this.definition}</em>
+              <em>{this.description}</em>
             </e-text>
           )}
           {this.isQuestionExpanded && <div class="seperator"></div>}
         </div>
         <div ref={el => (this.questionContainerEl = el as HTMLDivElement)}>
-          {this.question.length > this.thresholdLength ? (
+          {this.provocation.length > this.thresholdLength ? (
             <e-text>
               {this.isBasicCardExpanded ? (
-                this.question
+                this.provocation
               ) : (
                 <span>
                   {' '}
-                  {this.question.substring(0, this.thresholdLength)}
+                  {this.provocation.substring(0, this.thresholdLength)}
                   ...
                 </span>
               )}{' '}
@@ -213,19 +213,19 @@ export class PBasicCard2 {
               </e-link>
             </e-text>
           ) : (
-            <e-text>{this.question}</e-text>
+            <e-text>{this.provocation}</e-text>
           )}
           <l-spacer value={0.5}></l-spacer>
           <div ref={el => (this.referenceContainerEl = el as HTMLDivElement)}>
             <div class="seperator"></div>
-            {this.reference.length > this.thresholdLength ? (
+            {this.references.length > this.thresholdLength ? (
               <e-text>
                 {this.isBasicCardExpanded ? (
-                  this.reference
+                  this.references
                 ) : (
                   <span>
                     {' '}
-                    {this.reference.substring(0, this.thresholdLength)}
+                    {this.references.substring(0, this.thresholdLength)}
                     ...
                   </span>
                 )}{' '}
@@ -234,12 +234,12 @@ export class PBasicCard2 {
                 </e-link>
               </e-text>
             ) : (
-              <e-text>{this.reference}</e-text>
+              <e-text>{this.references}</e-text>
             )}
             <l-spacer value={0.5}></l-spacer>
           </div>
 
-          {this.reference.length > 0 && (
+          {this.references.length > 0 && (
             <button class={this.isReferenceExpanded ? 'toggle-button hide-button' : 'toggle-button expand-button'} onClick={() => this.handleButtonClick('toggleReference')}>
               {this.isReferenceExpanded ? 'Hide references' : 'Show references'}
             </button>
