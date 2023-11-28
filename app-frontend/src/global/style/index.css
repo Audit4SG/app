@@ -1,10 +1,27 @@
 @import 'reset/reset.css';
 @import 'vars/vars.css';
 
+@font-face {
+  font-family: KarlRegular;
+  src: url('../../assets/typeface/KarlST_Regular.woff2');
+}
+
+@font-face {
+  font-family: KarlMedium;
+  src: url('../../assets/typeface/KarlST_Medium.woff2');
+}
+
 body {
   font-size: var(--site-font-size--body);
   color: var(--grey-dark);
-  font-family: 'Roboto', sans-serif;
+  /* font-family: 'Roboto', sans-serif; */
+  font-family: KarlRegular, sans-serif;
   line-height: var(--site-line-height);
-  background: #F7F9FA;
+  background: #f7f9fa;
+}
+
+h1,
+h2,
+h3 {
+  font-family: KarlMedium, sans-serif;
 }
