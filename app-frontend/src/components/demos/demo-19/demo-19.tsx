@@ -75,7 +75,6 @@ export class Demo19 {
         }
         this.popFromCardStack(e.detail.value);
       }
-
       this.checkStartButtonState();
     }
   }
@@ -527,13 +526,12 @@ export class Demo19 {
   }
 
   pushIntoCardStack(topic: any) {
-    let obj = {
-      id: topic,
-      label: topic.split('#')[1],
-      description: topic.description,
-      provocation: topic.provocation,
-      references: topic.references,
-    };
+    let obj: any;
+    this.nodes.map((node: any) => {
+      if (node.id === topic) {
+        obj = node;
+      }
+    });
     this.cardStack.push(obj);
     this.cardStack = [...this.cardStack];
   }
@@ -713,6 +711,7 @@ export class Demo19 {
   animateFilterContainerExpansion() {
     this.tl.to(this.filterContainerEl, { height: 'auto', duration: 0.25 });
   }
+
   animateFilterContainerContraction() {
     this.tl.to(this.filterContainerEl, { overflow: 'hidden', duration: 0 });
     this.tl.to(this.filterContainerEl, { height: '30px', duration: 0.25 });
@@ -873,10 +872,12 @@ export class Demo19 {
 
   onSearchBoxFocus() {
     this.tl.to(this.searchBox, { width: '30%', duration: 0.25 });
+    this.tl.to(this.filterContainerEl, { opacity: 0, duration: 0.15 });
   }
 
   onSearchBoxBlur() {
     this.tl.to(this.searchBox, { width: 'auto', duration: 0.25 });
+    this.tl.to(this.filterContainerEl, { opacity: 1, duration: 0.25 });
   }
 
   @State() activeMenuButton: string = '';
