@@ -6,6 +6,12 @@ gsap.registerPlugin(ScrollToPlugin);
 import * as jsonld from 'jsonld';
 import * as d3 from 'd3';
 
+import { Client } from 'typesense';
+
+interface LooseObject {
+  [key: string]: any;
+}
+
 @Component({
   tag: 'demo-19',
   styleUrl: 'demo-19.css',
@@ -81,7 +87,7 @@ export class Demo19 {
 
   @Listen('event_LinkClick') handle_LinkClick(e) {
     if (e.detail.action === 'flyTo') {
-      this.flyTo(e.detail.value);
+      this.flyTo(e.detail.value.split('#')[1]);
     } else if (e.detail.action === 'toggleTopicFilter') {
       this.isFilterContainerCollapsed = !this.isFilterContainerCollapsed;
       if (this.isFilterContainerCollapsed) {
@@ -127,6 +133,7 @@ export class Demo19 {
 
   componentWillLoad() {
     this.isModalVisible = true;
+    this.initTypesenseClient();
   }
 
   componentDidLoad() {
@@ -526,6 +533,7 @@ export class Demo19 {
   }
 
   pushIntoCardStack(topic: any) {
+    console.log(topic);
     let obj: any;
     this.nodes.map((node: any) => {
       if (node.id === topic) {
@@ -617,7 +625,7 @@ export class Demo19 {
   }
 
   flyTo(topic: string) {
-    const selected_Node = this.svg.select(`#${topic.split('#')[1]}`);
+    const selected_Node = this.svg.select(`#${topic}`);
     const x = selected_Node._groups[0][0].getAttribute('cx');
     const y = selected_Node._groups[0][0].getAttribute('cy');
 
@@ -876,6 +884,9 @@ export class Demo19 {
   }
 
   onSearchBoxBlur() {
+    if (this.searchString.length > 0) {
+      return;
+    }
     this.tl.to(this.searchBox, { width: 'auto', duration: 0.25 });
     this.tl.to(this.filterContainerEl, { opacity: 1, duration: 0.25 });
   }
@@ -896,6 +907,139 @@ export class Demo19 {
   closeMenuContent() {
     this.activeMenuButton = '';
     this.isMenuContentVisible = false;
+  }
+
+  private searchString: string = '';
+  private inputTimeout: any;
+  private typesenseClient: any;
+
+  @State() results: any = [];
+
+  initTypesenseClient() {
+    let host: string = document.domain === 'localhost' ? 'localhost' : 'typesense-api.audit4sg.org';
+    let protocol: string = document.domain === 'localhost' ? 'http' : 'https';
+    let port: number = document.domain === 'localhost' ? 8108 : 443;
+
+    this.typesenseClient = new Client({
+      nodes: [
+        {
+          host: host,
+          port: port,
+          protocol: protocol,
+        },
+      ],
+      apiKey: 'Y58xEcn6fuPXAbtYl7p9Nb7NeEXupfiI',
+      connectionTimeoutSeconds: 10,
+    });
+  }
+
+  handleInput(e) {
+    clearTimeout(this.inputTimeout);
+    this.searchString = e.target.value.trim();
+    if (!this.searchString) {
+      this.clearSearchResults();
+      return;
+    }
+    this.inputTimeout = setTimeout(() => {
+      this.handleSearch();
+    }, 500);
+  }
+
+  handleSearch() {
+    let searchParams = {
+      q: this.searchString,
+      query_by: 'label,type,description,provocation,references,embedding',
+      prefix: false,
+    };
+    this.clearSearchResults();
+    this.typesenseClient
+      .collections('relaio-openai-v2')
+      .documents()
+      .search(searchParams)
+      .then(results => {
+        let resultsRaw = results.hits;
+        resultsRaw.map((result: any) => {
+          let obj: LooseObject = {
+            type: result.document.type,
+            label: result.document.label,
+            description: result.document.description,
+            provocation: result.document.provocation,
+            references: result.document.references,
+          };
+
+          if (result.document.type === 'Relation') {
+            let { source, target } = this.findRelationSourceTarget(result.document.label);
+            obj.source = source;
+            obj.target = target;
+          }
+
+          this.results.push(obj);
+        });
+        this.results = [...this.results];
+      });
+  }
+
+  findRelationSourceTarget(label: string) {
+    let source: string;
+    let target: string;
+    this.links.map((link: any) => {
+      if (link.label === label) {
+        source = link.source.label;
+        target = link.target.label;
+      }
+    });
+
+    return {
+      source: source,
+      target: target,
+    };
+  }
+
+  clearSearchResults() {
+    this.results = [];
+    this.results = [...this.results];
+  }
+
+  handlePostSearchClick() {
+    this.results = [];
+    this.results = [...this.results];
+    this.searchString = '';
+    this.searchBox.value = '';
+    this.onSearchBoxBlur();
+  }
+
+  handleSearchClick(label: string) {
+    let type: string = '';
+    let source: string = '';
+
+    this.results.map(item => {
+      if (label === item.label) {
+        type = item.type;
+        source = item.source;
+      }
+    });
+
+    if (type === 'Class') {
+      let nodeId: string = '';
+      this.nodes.map((node: any) => {
+        if (node.label === label) {
+          nodeId = node.id;
+        }
+      });
+      this.flyTo(label);
+      this.pushIntoCardStack(nodeId);
+    } else if (type === 'Relation') {
+      let sourceId: string = '';
+      this.nodes.map((node: any) => {
+        if (node.label === source) {
+          sourceId = node.id;
+        }
+      });
+      this.flyTo(source);
+      this.highlightEdge(sourceId);
+    }
+
+    this.handlePostSearchClick();
   }
 
   render() {
@@ -959,52 +1103,75 @@ export class Demo19 {
           <input
             id="search"
             class={this.isDemoStarted ? 'show-search' : 'hide-search'}
-            placeholder="Search"
+            onInput={e => this.handleInput(e)}
             onFocus={() => this.onSearchBoxFocus()}
             onBlur={() => this.onSearchBoxBlur()}
             ref={el => (this.searchBox = el as HTMLInputElement)}
+            placeholder="🔍 Search something.."
           ></input>
-          <ul id="search-results-list">
-            <li class="search-result-item">
-              <span class="bubble green-bubble">Class</span>
-              <br />
-              <span>
-                There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words
-                which don't look even slightly believable.
-              </span>
-            </li>
-            <li class="search-result-item">
-              <span class="bubble green-bubble">Relation</span>
-              <br />
-              <div class="search-relation-container">
-                <div class="class-name-container">
-                  <div class="class-symbol"></div>
-                  <span class="class-name">Class name 1</span>
-                </div>
-                <div class="relation-symbol-container">
-                  <div class="relation-line"></div>
-                  <span class="relation-name-container">Relation name</span>
-                  <div class="relation-line"></div>
-                </div>
-                <div class="class-name-container">
-                  <div class="class-symbol"></div>
-                  <span class="class-name">Class name 2</span>
-                </div>
-              </div>
-            </li>
-            <li class="search-result-item">
-              <div class="double-bubble-container">
-                <span class="bubble bubble-first grey-bubble">Class name</span>
-                <span class="bubble bubble-second green-bubble">Provocation</span>
-              </div>
-              <span>
-                There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words
-                which don't look even slightly believable.
-              </span>
-            </li>
-          </ul>
+          {this.results.length > 0 && (
+            <ul id="search-results-list">
+              {this.results.map((result: any) => (
+                <li class="search-result-item" onClick={() => this.handleSearchClick(result.label)}>
+                  {result.type === 'Class' && (
+                    <div>
+                      <span class="bubble green-bubble">{result.type}</span>
+                      &nbsp;
+                      <span>
+                        <strong>{result.label}</strong>
+                      </span>
+                      <br />
+                      <span>{result.description}</span>
+                      {result.provocation && (
+                        <div>
+                          <br />
+                          <div class="double-bubble-container">
+                            <span class="bubble bubble-first grey-bubble">{result.label}</span>
+                            <span class="bubble bubble-second green-bubble">Provocation</span>
+                          </div>
+                          <span>{result.provocation}</span>
+                        </div>
+                      )}
+                      {result.provocation && (
+                        <div>
+                          <br />
+                          <div class="double-bubble-container">
+                            <span class="bubble bubble-first grey-bubble">{result.label}</span>
+                            <span class="bubble bubble-second green-bubble">References</span>
+                          </div>
+                          <span>{result.references}</span>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                  {result.type === 'Relation' && (
+                    <div>
+                      <span class="bubble green-bubble">Relation</span>
+                      <br />
+                      <div class="search-relation-container">
+                        <div class="class-name-container">
+                          <div class="class-symbol"></div>
+                          <span class="class-name">{result.source}</span>
+                        </div>
+                        &nbsp; &nbsp;
+                        <div class="relation-symbol-container">
+                          <div class="relation-line"></div>
+                          <span class="relation-name-container">{result.label}</span>
+                          <div class="relation-line"></div>
+                        </div>
+                        &nbsp; &nbsp;
+                        <div class="class-name-container">
+                          <div class="class-symbol"></div>
+                          <span class="class-name">{result.target}</span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
-
         <div class="modal-content" ref={el => (this.modalContent = el as HTMLDivElement)}>
           <header>
             <l-row justifyContent="space-between" align="center">
