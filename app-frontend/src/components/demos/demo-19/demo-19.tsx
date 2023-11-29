@@ -22,7 +22,6 @@ export class Demo19 {
 
   @State() width = 0;
   @State() height = 0;
-
   @State() isModalVisible: boolean = false;
   @State() journey: string = 'selection';
   @State() modalStep: number = 0;
@@ -871,7 +870,7 @@ export class Demo19 {
   searchBox!: HTMLInputElement;
 
   onSearchBoxFocus() {
-    this.tl.to(this.searchBox, { width: '30%', duration: 0.25 });
+    this.tl.to(this.searchBox, { width: '40%', duration: 0.25 });
     this.tl.to(this.filterContainerEl, { opacity: 0, duration: 0.15 });
   }
 
@@ -928,15 +927,6 @@ export class Demo19 {
                 </div>
               )}
             </l-row>
-            {this.isMenuOpen && (
-              <input
-                id="search"
-                placeholder="Search"
-                onFocus={() => this.onSearchBoxFocus()}
-                onBlur={() => this.onSearchBoxBlur()}
-                ref={el => (this.searchBox = el as HTMLInputElement)}
-              ></input>
-            )}
           </l-row>
           <l-spacer value={1}></l-spacer>
           {this.isMenuContentVisible ? (
@@ -964,6 +954,56 @@ export class Demo19 {
             ''
           )}
         </nav>
+        <div id="search-container">
+          <input
+            id="search"
+            class={this.isDemoStarted ? 'show-search' : 'hide-search'}
+            placeholder="Search"
+            onFocus={() => this.onSearchBoxFocus()}
+            onBlur={() => this.onSearchBoxBlur()}
+            ref={el => (this.searchBox = el as HTMLInputElement)}
+          ></input>
+          <ul id="search-results-list">
+            <li class="search-result-item">
+              <span class="bubble green-bubble">Class</span>
+              <br />
+              <span>
+                There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words
+                which don't look even slightly believable.
+              </span>
+            </li>
+            <li class="search-result-item">
+              <span class="bubble green-bubble">Relation</span>
+              <br />
+              <div class="search-relation-container">
+                <div class="class-name-container">
+                  <div class="class-symbol"></div>
+                  <span class="class-name">Class name 1</span>
+                </div>
+                <div class="relation-symbol-container">
+                  <div class="relation-line"></div>
+                  <span class="relation-name-container">Relation name</span>
+                  <div class="relation-line"></div>
+                </div>
+                <div class="class-name-container">
+                  <div class="class-symbol"></div>
+                  <span class="class-name">Class name 2</span>
+                </div>
+              </div>
+            </li>
+            <li class="search-result-item">
+              <div class="double-bubble-container">
+                <span class="bubble bubble-first grey-bubble">Class name</span>
+                <span class="bubble bubble-second green-bubble">Provocation</span>
+              </div>
+              <span>
+                There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words
+                which don't look even slightly believable.
+              </span>
+            </li>
+          </ul>
+        </div>
+
         <div class="modal-content" ref={el => (this.modalContent = el as HTMLDivElement)}>
           <header>
             <l-row justifyContent="space-between" align="center">

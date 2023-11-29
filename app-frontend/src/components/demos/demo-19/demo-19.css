@@ -40,14 +40,13 @@
   border: 1px solid rgba(0, 0, 0, 0.1);
   right: 1em;
   z-index: 9999;
-  top: 1.5em;
+  top: 5em;
   border: 2px solid #08f26e;
 }
 
 .filter-container--exploration {
   height: 30px;
   overflow: hidden;
-  margin-top: 3em;
 }
 
 .filter-container--selection {
@@ -244,10 +243,49 @@ nav {
   color: white;
 }
 
+#search-container {
+  position: absolute;
+  right: 1.5vw;
+  top: 2em;
+  width: 50%;
+  box-sizing: border-box;
+}
+
 #search {
+  display: block;
   padding: 0.5em 1em;
   border: 1px solid black;
   border-radius: 2em;
+  width: 92.5%;
+}
+
+#search-results-list {
+  background: white;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border-radius: 1em;
+  border: 1px solid black;
+  padding: 1em;
+  margin-top: 0.5em;
+  max-height: 70vh;
+  overflow: scroll;
+}
+
+.search-result-item {
+  padding: 1em 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+.search-result-item:hover {
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.05);
+}
+.search-result-item:first-child {
+  padding-top: 0;
+}
+.search-result-item:last-child {
+  border-bottom: 0;
 }
 
 .menu-open {
@@ -268,4 +306,63 @@ nav {
 
 .menu__content--green {
   background: rgba(8, 242, 110, 1);
+}
+
+.show-search {
+  opacity: 1;
+}
+
+.hide-search {
+  opacity: 0;
+}
+
+.bubble {
+  font-size: 0.8em;
+  background: wheat;
+  padding: 0.25em 1em;
+  border-radius: 1em;
+}
+
+.green-bubble {
+  background: #08f26e;
+}
+
+.grey-bubble {
+  background: #dfe6e9;
+}
+
+.bubble-first {
+  position: relative;
+  border-radius: 1em;
+  z-index: 999;
+}
+
+.bubble-second {
+  padding-left: 1.5em;
+  border-radius: 0 1em 1em 0;
+  margin-left: -1em;
+}
+
+.search-relation-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.relation-name-container {
+  display: inline-block;
+  border: 1px solid black;
+  padding: 0.25em 0.5em;
+  border-radius: 1em;
+}
+
+.relation-line {
+  height: 1px;
+  width: 90px;
+  background: black;
+}
+
+.relation-symbol-container {
+  display: flex;
+  align-items: center;
 }
