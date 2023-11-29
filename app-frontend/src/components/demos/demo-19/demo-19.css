@@ -243,23 +243,22 @@ nav {
   color: white;
 }
 
-#search-container {
-  position: absolute;
-  right: 1.5vw;
-  top: 2em;
-  width: 50%;
-  box-sizing: border-box;
-}
-
 #search {
-  display: block;
+  position: absolute;
   padding: 0.5em 1em;
   border: 1px solid black;
   border-radius: 2em;
-  width: 92.5%;
+  width: 20%;
+  right: 1.5em;
+  top: 2em;
 }
 
 #search-results-list {
+  display: none;
+  width: 50%;
+  right: 1.5em;
+  top: 4em;
+  position: absolute;
   background: white;
   list-style-type: none;
   margin: 0;

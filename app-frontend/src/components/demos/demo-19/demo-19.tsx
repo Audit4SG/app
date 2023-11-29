@@ -15,6 +15,7 @@ export class Demo19 {
   el_Svg!: SVGElement;
   el_ToolTip!: HTMLDivElement;
   filterContainerEl!: HTMLDivElement;
+  searchContainerEl!: HTMLDivElement;
 
   private svg: any;
   private svgContent: any;
@@ -870,7 +871,7 @@ export class Demo19 {
   searchBox!: HTMLInputElement;
 
   onSearchBoxFocus() {
-    this.tl.to(this.searchBox, { width: '40%', duration: 0.25 });
+    this.tl.to(this.searchBox, { width: '50%', duration: 0.25 });
     this.tl.to(this.filterContainerEl, { opacity: 0, duration: 0.15 });
   }
 
@@ -954,7 +955,7 @@ export class Demo19 {
             ''
           )}
         </nav>
-        <div id="search-container">
+        <div id="search-container" ref={el => (this.searchContainerEl = el as HTMLDivElement)}>
           <input
             id="search"
             class={this.isDemoStarted ? 'show-search' : 'hide-search'}
