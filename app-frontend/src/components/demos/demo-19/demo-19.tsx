@@ -903,33 +903,31 @@ export class Demo19 {
       <Host>
         <nav>
           <l-row justifyContent="space-between" align="center">
-            <div>
-              <l-row align="center">
-                <button class={`menu-button ${this.isMenuOpen ? 'menu-close' : 'menu-open'}`} onClick={() => this.handleMenuButtonClick()}>
-                  {this.isMenuOpen ? <ph-x size="1.3em" color="white" weight="bold"></ph-x> : <ph-list size="1.3em" weight="bold"></ph-list>}
-                </button>
-                {this.isMenuOpen && (
-                  <div>
-                    &nbsp; &nbsp;
-                    <button class={`pill ${this.activeMenuButton === 'How to' && 'pill--highlight'}`} onClick={() => this.menuButtonClickHandler('How to')}>
-                      How to
-                    </button>
-                    &nbsp; &nbsp;
-                    <button class={`pill ${this.activeMenuButton === 'Export' && 'pill--highlight'}`} onClick={() => this.menuButtonClickHandler('Export')}>
-                      Export
-                    </button>
-                    &nbsp; &nbsp;
-                    <button class={`pill ${this.activeMenuButton === 'About' && 'pill--highlight'}`} onClick={() => this.menuButtonClickHandler('About')}>
-                      About
-                    </button>
-                    &nbsp; &nbsp;
-                    <button class={`pill ${this.activeMenuButton === 'Credits' && 'pill--highlight'}`} onClick={() => this.menuButtonClickHandler('Credits')}>
-                      Credits
-                    </button>
-                  </div>
-                )}
-              </l-row>
-            </div>
+            <l-row align="center">
+              <button class={`menu-button ${this.isMenuOpen ? 'menu-close' : 'menu-open'}`} onClick={() => this.handleMenuButtonClick()}>
+                {this.isMenuOpen ? <ph-x size="1.3em" color="white" weight="bold"></ph-x> : <ph-list size="1.3em" weight="bold"></ph-list>}
+              </button>
+              {this.isMenuOpen && (
+                <div>
+                  &nbsp; &nbsp;
+                  <button class={`pill ${this.activeMenuButton === 'How to' && 'pill--highlight'}`} onClick={() => this.menuButtonClickHandler('How to')}>
+                    How to
+                  </button>
+                  &nbsp; &nbsp;
+                  <button class={`pill ${this.activeMenuButton === 'Export' && 'pill--highlight'}`} onClick={() => this.menuButtonClickHandler('Export')}>
+                    Export
+                  </button>
+                  &nbsp; &nbsp;
+                  <button class={`pill ${this.activeMenuButton === 'About' && 'pill--highlight'}`} onClick={() => this.menuButtonClickHandler('About')}>
+                    About
+                  </button>
+                  &nbsp; &nbsp;
+                  <button class={`pill ${this.activeMenuButton === 'Credits' && 'pill--highlight'}`} onClick={() => this.menuButtonClickHandler('Credits')}>
+                    Credits
+                  </button>
+                </div>
+              )}
+            </l-row>
             {this.isMenuOpen && (
               <input
                 id="search"
