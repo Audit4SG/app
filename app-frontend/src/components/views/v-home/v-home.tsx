@@ -16,6 +16,15 @@ export class VHome {
         <ul>
           <li>
             <e-text>
+              <strong>D20. Export</strong>
+              <br />
+              Implements export, reading and edit
+            </e-text>
+            <l-spacer value={0.5}></l-spacer>
+            <stencil-route-link url="/demo-20-export">View Demo</stencil-route-link>
+          </li>
+          <li>
+            <e-text>
               <strong>D19. Search UI (OpenAI API)</strong>
               <br />
               Implements search in the audit interface
