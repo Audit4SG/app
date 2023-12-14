@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { RouterHistory } from "@stencil/router";
+import { MatchResults, RouterHistory } from "@stencil/router";
 export namespace Components {
     interface AppRoot {
         "history": RouterHistory;
@@ -58,6 +58,10 @@ export namespace Components {
     interface Demo19 {
     }
     interface Demo2 {
+    }
+    interface Demo20 {
+        "history": RouterHistory;
+        "match": MatchResults;
     }
     interface Demo3 {
     }
@@ -319,6 +323,12 @@ declare global {
         prototype: HTMLDemo2Element;
         new (): HTMLDemo2Element;
     };
+    interface HTMLDemo20Element extends Components.Demo20, HTMLStencilElement {
+    }
+    var HTMLDemo20Element: {
+        prototype: HTMLDemo20Element;
+        new (): HTMLDemo20Element;
+    };
     interface HTMLDemo3Element extends Components.Demo3, HTMLStencilElement {
     }
     var HTMLDemo3Element: {
@@ -507,6 +517,7 @@ declare global {
         "demo-18b": HTMLDemo18bElement;
         "demo-19": HTMLDemo19Element;
         "demo-2": HTMLDemo2Element;
+        "demo-20": HTMLDemo20Element;
         "demo-3": HTMLDemo3Element;
         "demo-4": HTMLDemo4Element;
         "demo-5": HTMLDemo5Element;
@@ -588,6 +599,10 @@ declare namespace LocalJSX {
     interface Demo19 {
     }
     interface Demo2 {
+    }
+    interface Demo20 {
+        "history"?: RouterHistory;
+        "match"?: MatchResults;
     }
     interface Demo3 {
     }
@@ -735,6 +750,7 @@ declare namespace LocalJSX {
         "demo-18b": Demo18b;
         "demo-19": Demo19;
         "demo-2": Demo2;
+        "demo-20": Demo20;
         "demo-3": Demo3;
         "demo-4": Demo4;
         "demo-5": Demo5;
@@ -793,6 +809,7 @@ declare module "@stencil/core" {
             "demo-18b": LocalJSX.Demo18b & JSXBase.HTMLAttributes<HTMLDemo18bElement>;
             "demo-19": LocalJSX.Demo19 & JSXBase.HTMLAttributes<HTMLDemo19Element>;
             "demo-2": LocalJSX.Demo2 & JSXBase.HTMLAttributes<HTMLDemo2Element>;
+            "demo-20": LocalJSX.Demo20 & JSXBase.HTMLAttributes<HTMLDemo20Element>;
             "demo-3": LocalJSX.Demo3 & JSXBase.HTMLAttributes<HTMLDemo3Element>;
             "demo-4": LocalJSX.Demo4 & JSXBase.HTMLAttributes<HTMLDemo4Element>;
             "demo-5": LocalJSX.Demo5 & JSXBase.HTMLAttributes<HTMLDemo5Element>;
