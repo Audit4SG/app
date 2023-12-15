@@ -65,12 +65,6 @@ export namespace Components {
     }
     interface Demo20Reading {
     }
-    interface Demo20aExport {
-    }
-    interface Demo20bReading {
-    }
-    interface Demo20cEdit {
-    }
     interface Demo3 {
     }
     interface Demo4 {
@@ -349,24 +343,6 @@ declare global {
         prototype: HTMLDemo20ReadingElement;
         new (): HTMLDemo20ReadingElement;
     };
-    interface HTMLDemo20aExportElement extends Components.Demo20aExport, HTMLStencilElement {
-    }
-    var HTMLDemo20aExportElement: {
-        prototype: HTMLDemo20aExportElement;
-        new (): HTMLDemo20aExportElement;
-    };
-    interface HTMLDemo20bReadingElement extends Components.Demo20bReading, HTMLStencilElement {
-    }
-    var HTMLDemo20bReadingElement: {
-        prototype: HTMLDemo20bReadingElement;
-        new (): HTMLDemo20bReadingElement;
-    };
-    interface HTMLDemo20cEditElement extends Components.Demo20cEdit, HTMLStencilElement {
-    }
-    var HTMLDemo20cEditElement: {
-        prototype: HTMLDemo20cEditElement;
-        new (): HTMLDemo20cEditElement;
-    };
     interface HTMLDemo3Element extends Components.Demo3, HTMLStencilElement {
     }
     var HTMLDemo3Element: {
@@ -558,9 +534,6 @@ declare global {
         "demo-20-edit": HTMLDemo20EditElement;
         "demo-20-export": HTMLDemo20ExportElement;
         "demo-20-reading": HTMLDemo20ReadingElement;
-        "demo-20a-export": HTMLDemo20aExportElement;
-        "demo-20b-reading": HTMLDemo20bReadingElement;
-        "demo-20c-edit": HTMLDemo20cEditElement;
         "demo-3": HTMLDemo3Element;
         "demo-4": HTMLDemo4Element;
         "demo-5": HTMLDemo5Element;
@@ -648,12 +621,6 @@ declare namespace LocalJSX {
     interface Demo20Export {
     }
     interface Demo20Reading {
-    }
-    interface Demo20aExport {
-    }
-    interface Demo20bReading {
-    }
-    interface Demo20cEdit {
     }
     interface Demo3 {
     }
@@ -804,9 +771,6 @@ declare namespace LocalJSX {
         "demo-20-edit": Demo20Edit;
         "demo-20-export": Demo20Export;
         "demo-20-reading": Demo20Reading;
-        "demo-20a-export": Demo20aExport;
-        "demo-20b-reading": Demo20bReading;
-        "demo-20c-edit": Demo20cEdit;
         "demo-3": Demo3;
         "demo-4": Demo4;
         "demo-5": Demo5;
@@ -868,9 +832,6 @@ declare module "@stencil/core" {
             "demo-20-edit": LocalJSX.Demo20Edit & JSXBase.HTMLAttributes<HTMLDemo20EditElement>;
             "demo-20-export": LocalJSX.Demo20Export & JSXBase.HTMLAttributes<HTMLDemo20ExportElement>;
             "demo-20-reading": LocalJSX.Demo20Reading & JSXBase.HTMLAttributes<HTMLDemo20ReadingElement>;
-            "demo-20a-export": LocalJSX.Demo20aExport & JSXBase.HTMLAttributes<HTMLDemo20aExportElement>;
-            "demo-20b-reading": LocalJSX.Demo20bReading & JSXBase.HTMLAttributes<HTMLDemo20bReadingElement>;
-            "demo-20c-edit": LocalJSX.Demo20cEdit & JSXBase.HTMLAttributes<HTMLDemo20cEditElement>;
             "demo-3": LocalJSX.Demo3 & JSXBase.HTMLAttributes<HTMLDemo3Element>;
             "demo-4": LocalJSX.Demo4 & JSXBase.HTMLAttributes<HTMLDemo4Element>;
             "demo-5": LocalJSX.Demo5 & JSXBase.HTMLAttributes<HTMLDemo5Element>;
