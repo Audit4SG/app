@@ -21,7 +21,7 @@ export class VHome {
               Implements export, reading and edit
             </e-text>
             <l-spacer value={0.5}></l-spacer>
-            <stencil-route-link url="/demo-20-export">View Demo</stencil-route-link>
+            <stencil-route-link url="/demo-20">View Demo</stencil-route-link>
           </li>
           <li>
             <e-text>
