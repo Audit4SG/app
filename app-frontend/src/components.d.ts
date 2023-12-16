@@ -59,10 +59,6 @@ export namespace Components {
     }
     interface Demo2 {
     }
-    interface Demo20Export {
-    }
-    interface Demo20Reading {
-    }
     interface Demo20a {
     }
     interface Demo20b {
@@ -327,18 +323,6 @@ declare global {
         prototype: HTMLDemo2Element;
         new (): HTMLDemo2Element;
     };
-    interface HTMLDemo20ExportElement extends Components.Demo20Export, HTMLStencilElement {
-    }
-    var HTMLDemo20ExportElement: {
-        prototype: HTMLDemo20ExportElement;
-        new (): HTMLDemo20ExportElement;
-    };
-    interface HTMLDemo20ReadingElement extends Components.Demo20Reading, HTMLStencilElement {
-    }
-    var HTMLDemo20ReadingElement: {
-        prototype: HTMLDemo20ReadingElement;
-        new (): HTMLDemo20ReadingElement;
-    };
     interface HTMLDemo20aElement extends Components.Demo20a, HTMLStencilElement {
     }
     var HTMLDemo20aElement: {
@@ -539,8 +523,6 @@ declare global {
         "demo-18b": HTMLDemo18bElement;
         "demo-19": HTMLDemo19Element;
         "demo-2": HTMLDemo2Element;
-        "demo-20-export": HTMLDemo20ExportElement;
-        "demo-20-reading": HTMLDemo20ReadingElement;
         "demo-20a": HTMLDemo20aElement;
         "demo-20b": HTMLDemo20bElement;
         "demo-3": HTMLDemo3Element;
@@ -624,10 +606,6 @@ declare namespace LocalJSX {
     interface Demo19 {
     }
     interface Demo2 {
-    }
-    interface Demo20Export {
-    }
-    interface Demo20Reading {
     }
     interface Demo20a {
     }
@@ -779,8 +757,6 @@ declare namespace LocalJSX {
         "demo-18b": Demo18b;
         "demo-19": Demo19;
         "demo-2": Demo2;
-        "demo-20-export": Demo20Export;
-        "demo-20-reading": Demo20Reading;
         "demo-20a": Demo20a;
         "demo-20b": Demo20b;
         "demo-3": Demo3;
@@ -841,8 +817,6 @@ declare module "@stencil/core" {
             "demo-18b": LocalJSX.Demo18b & JSXBase.HTMLAttributes<HTMLDemo18bElement>;
             "demo-19": LocalJSX.Demo19 & JSXBase.HTMLAttributes<HTMLDemo19Element>;
             "demo-2": LocalJSX.Demo2 & JSXBase.HTMLAttributes<HTMLDemo2Element>;
-            "demo-20-export": LocalJSX.Demo20Export & JSXBase.HTMLAttributes<HTMLDemo20ExportElement>;
-            "demo-20-reading": LocalJSX.Demo20Reading & JSXBase.HTMLAttributes<HTMLDemo20ReadingElement>;
             "demo-20a": LocalJSX.Demo20a & JSXBase.HTMLAttributes<HTMLDemo20aElement>;
             "demo-20b": LocalJSX.Demo20b & JSXBase.HTMLAttributes<HTMLDemo20bElement>;
             "demo-3": LocalJSX.Demo3 & JSXBase.HTMLAttributes<HTMLDemo3Element>;
