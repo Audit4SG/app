@@ -38,6 +38,7 @@ export class Demo20a {
   @State() tooltipDescription: string = '';
   @State() cardStack: any = [];
   @State() isLinkCopied: boolean = false;
+  @State() shareUrl: string = '';
 
   @Listen('buttonClick') buttonClick(e) {
     if (e.detail.action === 'Next') {
@@ -53,6 +54,7 @@ export class Demo20a {
       this.isModalVisible = false;
       this.generate_Graph();
     } else if (e.detail.action === 'copyLink') {
+      navigator.clipboard.writeText(this.shareUrl);
       this.isLinkCopied = true;
       setTimeout(() => {
         this.isLinkCopied = false;
@@ -140,6 +142,7 @@ export class Demo20a {
   componentWillLoad() {
     this.isModalVisible = true;
     this.initTypesenseClient();
+    console.log(this.shareUrl);
   }
 
   componentDidLoad() {
@@ -159,6 +162,7 @@ export class Demo20a {
       .then(async data => {
         this.process_Jsonld(JSON.parse(data.payload));
         state.sessionId = data.sessionId;
+        this.shareUrl = document.domain === 'localhost' ? `http://localhost:3334/reading/${state.sessionId}` : `https://app-api.audit4sg.org/reading/${state.sessionId}`;
       })
       .catch(error => {
         console.log(error);
@@ -685,7 +689,7 @@ export class Demo20a {
         </l-row>
         <l-spacer value={1}></l-spacer>
         <div class="shareable-link-container">
-          <e-text>{document.domain === 'localhost' ? `http://localhost:3334/reading/${state.sessionId}` : `https://app-api.audit4sg.org/reading/${state.sessionId}`}</e-text>
+          <e-text>{this.shareUrl}</e-text>
         </div>
         <l-row justifyContent="space-between">
           <div></div>
@@ -1050,7 +1054,6 @@ export class Demo20a {
         source = item.source;
       }
     });
-
     if (type === 'Class') {
       let nodeId: string = '';
       this.nodes.map((node: any) => {
@@ -1070,7 +1073,6 @@ export class Demo20a {
       this.flyTo(source);
       this.highlightEdge(sourceId);
     }
-
     this.handlePostSearchClick();
   }
 
@@ -1081,6 +1083,8 @@ export class Demo20a {
     }
     this.isExportModalOpen = true;
   }
+
+  copyContainer!: HTMLDivElement;
 
   render() {
     return (
