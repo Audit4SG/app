@@ -6,6 +6,7 @@ gsap.registerPlugin(ScrollToPlugin);
 import * as jsonld from 'jsonld';
 import * as d3 from 'd3';
 import { Client } from 'typesense';
+import { state } from '../../../global/script';
 
 interface LooseObject {
   [key: string]: any;
@@ -51,6 +52,11 @@ export class Demo20Export {
       this.isDemoStarted = true;
       this.isModalVisible = false;
       this.generate_Graph();
+    } else if (e.detail.action === 'copyLink') {
+      this.isLinkCopied = true;
+      setTimeout(() => {
+        this.isLinkCopied = false;
+      }, 1000);
     }
   }
 
@@ -152,6 +158,7 @@ export class Demo20Export {
       .then(response => response.json())
       .then(async data => {
         this.process_Jsonld(JSON.parse(data.payload));
+        state.sessionId = data.sessionId;
       })
       .catch(error => {
         console.log(error);
@@ -663,7 +670,7 @@ export class Demo20Export {
     if (name === 'hideTooltip') {
       this.hideTooltip();
     } else if (name === 'closeExportModal') {
-      this.activeMenuButton = '';
+      this.isExportModalOpen = false;
     }
   }
 
@@ -678,11 +685,7 @@ export class Demo20Export {
         </l-row>
         <l-spacer value={1}></l-spacer>
         <div class="shareable-link-container">
-          <e-text>
-            {document.domain === 'localhost'
-              ? 'http://localhost:3334/reading/c6c31ce7-fb34-405e-8bb0-df4a45809daf'
-              : 'https://app-api.audit4sg.org/reading/c6c31ce7-fb34-405e-8bb0-df4a45809daf'}
-          </e-text>
+          <e-text>{document.domain === 'localhost' ? `http://localhost:3334/reading/${state.sessionId}` : `https://app-api.audit4sg.org/reading/${state.sessionId}`}</e-text>
         </div>
         <l-row justifyContent="space-between">
           <div></div>
@@ -802,6 +805,7 @@ export class Demo20Export {
     let selected_Node = this.svg.select(`#${data.id.split('#')[1]}`);
     selected_Node.transition().duration(1000).style('filter', 'drop-shadow(0px 0px 50px rgb(8, 242, 110))').attr('r', 75);
   }
+
   nodeHoverUnhighlight(data) {
     let selected_Node = this.svg.select(`#${data.id.split('#')[1]}`);
     selected_Node.transition().duration(250).attr('r', 50);
@@ -1070,6 +1074,14 @@ export class Demo20Export {
     this.handlePostSearchClick();
   }
 
+  @State() isExportModalOpen: boolean = false;
+  openExportModal() {
+    if (this.cardStack.length === 0) {
+      return alert('There is nothing to export');
+    }
+    this.isExportModalOpen = true;
+  }
+
   render() {
     return (
       <Host>
@@ -1086,7 +1098,7 @@ export class Demo20Export {
                     How to
                   </button>
                   &nbsp; &nbsp;
-                  <button class={`pill ${this.activeMenuButton === 'Export' && 'pill--highlight'}`} onClick={() => this.menuButtonClickHandler('Export')}>
+                  <button class={`pill ${this.activeMenuButton === 'Export' && 'pill--highlight'}`} onClick={() => this.openExportModal()}>
                     Export
                   </button>
                   &nbsp; &nbsp;
@@ -1102,30 +1114,22 @@ export class Demo20Export {
             </l-row>
           </l-row>
           <l-spacer value={1}></l-spacer>
-          {this.isMenuContentVisible ? (
-            this.activeMenuButton === 'Export' ? (
-              // <div class="menu__content menu__content--green">
-              //   <e-text>Your selection has been downloaded as a pdf</e-text>
-              // </div>
-              <this.ExportModal></this.ExportModal>
-            ) : (
-              <div class="menu__content">
-                <l-row justifyContent="space-between" align="center">
-                  <e-text variant="heading">{this.activeMenuButton}</e-text>
-                  <button onClick={() => this.closeMenuContent()} class="control-button">
-                    <ph-x-circle size={this.iconSize} />
-                  </button>
-                </l-row>
-                <l-spacer value={1}></l-spacer>
-                <e-text>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                  pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-                </e-text>
-              </div>
-            )
-          ) : (
-            ''
+          {this.isExportModalOpen && <this.ExportModal></this.ExportModal>}
+          {this.isMenuContentVisible && (
+            <div class="menu__content">
+              <l-row justifyContent="space-between" align="center">
+                <e-text variant="heading">{this.activeMenuButton}</e-text>
+                <button onClick={() => this.closeMenuContent()} class="control-button">
+                  <ph-x-circle size={this.iconSize} />
+                </button>
+              </l-row>
+              <l-spacer value={1}></l-spacer>
+              <e-text>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+              </e-text>
+            </div>
           )}
         </nav>
         <div id="search-container" ref={el => (this.searchContainerEl = el as HTMLDivElement)}>
