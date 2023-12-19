@@ -151,8 +151,10 @@ export class Demo20a {
   private isEditMode: boolean = false;
   componentDidLoad() {
     this.fetch_ViewData();
-    if (this.history.location.state.cardStack) {
-      this.isEditMode = true;
+    if (this.history.location.state) {
+      if (this.history.location.state.cardStack) {
+        this.isEditMode = true;
+      }
     }
   }
 
@@ -187,7 +189,12 @@ export class Demo20a {
 
     if (this.isEditMode) {
       this.cardStack = [...this.history.location.state.cardStack];
+      this.journey = 'exploration';
+      this.width = window.innerWidth;
+      this.height = window.innerHeight;
       this.isDemoStarted = true;
+      this.isModalVisible = false;
+      this.generate_Graph();
     }
   }
 
