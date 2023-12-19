@@ -1,4 +1,4 @@
-import { Component, Host, FunctionalComponent, State, Listen, h } from '@stencil/core';
+import { Component, Prop, Host, FunctionalComponent, State, Listen, h } from '@stencil/core';
 import { gsap } from 'gsap';
 import { ScrollToPlugin } from 'gsap/all';
 gsap.registerPlugin(ScrollToPlugin);
@@ -7,6 +7,7 @@ import * as jsonld from 'jsonld';
 import * as d3 from 'd3';
 import { Client } from 'typesense';
 import { state } from '../../../global/script';
+import { RouterHistory, injectHistory } from '@stencil/router';
 
 interface LooseObject {
   [key: string]: any;
@@ -26,6 +27,8 @@ export class Demo20a {
   private svg: any;
   private svgContent: any;
   private svgGraph: any;
+
+  @Prop() history: RouterHistory;
 
   @State() width = 0;
   @State() height = 0;
@@ -145,8 +148,12 @@ export class Demo20a {
     console.log(this.shareUrl);
   }
 
+  private isEditMode: boolean = false;
   componentDidLoad() {
     this.fetch_ViewData();
+    if (this.history.location.state.cardStack) {
+      this.isEditMode = true;
+    }
   }
 
   async fetch_ViewData() {
@@ -177,6 +184,11 @@ export class Demo20a {
     this.generate_Links();
     this.generate_TopNodes();
     this.generate_ObjectLinks();
+
+    if (this.isEditMode) {
+      this.cardStack = [...this.history.location.state.cardStack];
+      this.isDemoStarted = true;
+    }
   }
 
   get_Classes() {
@@ -1319,3 +1331,5 @@ export class Demo20a {
     );
   }
 }
+
+injectHistory(Demo20a);

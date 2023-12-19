@@ -60,6 +60,7 @@ export namespace Components {
     interface Demo2 {
     }
     interface Demo20a {
+        "history": RouterHistory;
     }
     interface Demo20b {
         "history": RouterHistory;
@@ -610,6 +611,7 @@ declare namespace LocalJSX {
     interface Demo2 {
     }
     interface Demo20a {
+        "history"?: RouterHistory;
     }
     interface Demo20b {
         "history"?: RouterHistory;

@@ -1,5 +1,5 @@
 import { Component, State, Prop, Host, h } from '@stencil/core';
-import { RouterHistory, MatchResults } from '@stencil/router';
+import { RouterHistory, injectHistory, MatchResults } from '@stencil/router';
 import * as jsonld from 'jsonld';
 
 @Component({
@@ -150,6 +150,12 @@ export class Demo20b {
     this.cardStack = [...buff];
   }
 
+  handleEditButtonClick() {
+    this.history.push('/demo-20', {
+      cardStack: this.cardStack,
+    });
+  }
+
   render() {
     return (
       <Host>
@@ -157,7 +163,7 @@ export class Demo20b {
           <e-text>
             <strong>Audit summary</strong>
           </e-text>
-          <button>Edit</button>
+          <button onClick={() => this.handleEditButtonClick()}>Edit</button>
         </l-row>
         <br />
         <div class="card-gallery">
@@ -188,3 +194,5 @@ export class Demo20b {
     );
   }
 }
+
+injectHistory(Demo20b);
