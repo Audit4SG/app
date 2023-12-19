@@ -145,7 +145,6 @@ export class Demo20a {
   componentWillLoad() {
     this.isModalVisible = true;
     this.initTypesenseClient();
-    console.log(this.shareUrl);
   }
 
   private isEditMode: boolean = false;
@@ -154,6 +153,9 @@ export class Demo20a {
     if (this.history.location.state) {
       if (this.history.location.state.cardStack) {
         this.isEditMode = true;
+        this.journey = 'exploration';
+        this.isDemoStarted = true;
+        this.isModalVisible = false;
       }
     }
   }
@@ -189,11 +191,8 @@ export class Demo20a {
 
     if (this.isEditMode) {
       this.cardStack = [...this.history.location.state.cardStack];
-      this.journey = 'exploration';
       this.width = window.innerWidth;
       this.height = window.innerHeight;
-      this.isDemoStarted = true;
-      this.isModalVisible = false;
       this.generate_Graph();
     }
   }
