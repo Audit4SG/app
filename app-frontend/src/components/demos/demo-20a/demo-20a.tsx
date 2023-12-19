@@ -162,7 +162,8 @@ export class Demo20a {
       .then(async data => {
         this.process_Jsonld(JSON.parse(data.payload));
         state.sessionId = data.sessionId;
-        this.shareUrl = document.domain === 'localhost' ? `http://localhost:3334/reading/${state.sessionId}` : `https://app-api.audit4sg.org/reading/${state.sessionId}`;
+        this.shareUrl =
+          document.domain === 'localhost' ? `http://localhost:3333/demo-20-reading/${state.sessionId}` : `https://demos.audit4sg.org/demo-20-reading/${state.sessionId}`;
       })
       .catch(error => {
         console.log(error);

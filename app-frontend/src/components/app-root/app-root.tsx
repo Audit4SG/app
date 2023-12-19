@@ -49,7 +49,7 @@ export class AppRoot {
           <stencil-route url="/demo-18b" component="demo-18b" exact={true} />
           <stencil-route url="/demo-19" component="demo-19" exact={true} />
           <stencil-route url="/demo-20" component="demo-20a" exact={true} />
-          <stencil-route url="/demo-20-reading" component="demo-20b" exact={true} />
+          <stencil-route url="/demo-20-reading/:sessionId" component="demo-20b" exact={true} />
           <stencil-route url="/test" component="c-test" exact={true} />
           <stencil-route component="v-catch-all" />
         </stencil-route-switch>
