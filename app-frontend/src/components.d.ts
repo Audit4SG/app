@@ -69,14 +69,14 @@ export namespace Components {
     }
     interface PGallery {
     }
-    interface VAudit {
-    }
     interface VCatchAll {
         "history": RouterHistory;
     }
-    interface VHome {
+    interface VInit {
     }
-    interface VPaymentCancel {
+    interface VOntology {
+    }
+    interface VReading {
     }
 }
 declare global {
@@ -176,29 +176,29 @@ declare global {
         prototype: HTMLPGalleryElement;
         new (): HTMLPGalleryElement;
     };
-    interface HTMLVAuditElement extends Components.VAudit, HTMLStencilElement {
-    }
-    var HTMLVAuditElement: {
-        prototype: HTMLVAuditElement;
-        new (): HTMLVAuditElement;
-    };
     interface HTMLVCatchAllElement extends Components.VCatchAll, HTMLStencilElement {
     }
     var HTMLVCatchAllElement: {
         prototype: HTMLVCatchAllElement;
         new (): HTMLVCatchAllElement;
     };
-    interface HTMLVHomeElement extends Components.VHome, HTMLStencilElement {
+    interface HTMLVInitElement extends Components.VInit, HTMLStencilElement {
     }
-    var HTMLVHomeElement: {
-        prototype: HTMLVHomeElement;
-        new (): HTMLVHomeElement;
+    var HTMLVInitElement: {
+        prototype: HTMLVInitElement;
+        new (): HTMLVInitElement;
     };
-    interface HTMLVPaymentCancelElement extends Components.VPaymentCancel, HTMLStencilElement {
+    interface HTMLVOntologyElement extends Components.VOntology, HTMLStencilElement {
     }
-    var HTMLVPaymentCancelElement: {
-        prototype: HTMLVPaymentCancelElement;
-        new (): HTMLVPaymentCancelElement;
+    var HTMLVOntologyElement: {
+        prototype: HTMLVOntologyElement;
+        new (): HTMLVOntologyElement;
+    };
+    interface HTMLVReadingElement extends Components.VReading, HTMLStencilElement {
+    }
+    var HTMLVReadingElement: {
+        prototype: HTMLVReadingElement;
+        new (): HTMLVReadingElement;
     };
     interface HTMLElementTagNameMap {
         "app-root": HTMLAppRootElement;
@@ -217,10 +217,10 @@ declare global {
         "l-seperator": HTMLLSeperatorElement;
         "l-spacer": HTMLLSpacerElement;
         "p-gallery": HTMLPGalleryElement;
-        "v-audit": HTMLVAuditElement;
         "v-catch-all": HTMLVCatchAllElement;
-        "v-home": HTMLVHomeElement;
-        "v-payment-cancel": HTMLVPaymentCancelElement;
+        "v-init": HTMLVInitElement;
+        "v-ontology": HTMLVOntologyElement;
+        "v-reading": HTMLVReadingElement;
     }
 }
 declare namespace LocalJSX {
@@ -290,15 +290,14 @@ declare namespace LocalJSX {
     }
     interface PGallery {
     }
-    interface VAudit {
-    }
     interface VCatchAll {
         "history"?: RouterHistory;
     }
-    interface VHome {
+    interface VInit {
     }
-    interface VPaymentCancel {
-        "onEvent_RouteTo"?: (event: CustomEvent<any>) => void;
+    interface VOntology {
+    }
+    interface VReading {
     }
     interface IntrinsicElements {
         "app-root": AppRoot;
@@ -317,10 +316,10 @@ declare namespace LocalJSX {
         "l-seperator": LSeperator;
         "l-spacer": LSpacer;
         "p-gallery": PGallery;
-        "v-audit": VAudit;
         "v-catch-all": VCatchAll;
-        "v-home": VHome;
-        "v-payment-cancel": VPaymentCancel;
+        "v-init": VInit;
+        "v-ontology": VOntology;
+        "v-reading": VReading;
     }
 }
 export { LocalJSX as JSX };
@@ -343,10 +342,10 @@ declare module "@stencil/core" {
             "l-seperator": LocalJSX.LSeperator & JSXBase.HTMLAttributes<HTMLLSeperatorElement>;
             "l-spacer": LocalJSX.LSpacer & JSXBase.HTMLAttributes<HTMLLSpacerElement>;
             "p-gallery": LocalJSX.PGallery & JSXBase.HTMLAttributes<HTMLPGalleryElement>;
-            "v-audit": LocalJSX.VAudit & JSXBase.HTMLAttributes<HTMLVAuditElement>;
             "v-catch-all": LocalJSX.VCatchAll & JSXBase.HTMLAttributes<HTMLVCatchAllElement>;
-            "v-home": LocalJSX.VHome & JSXBase.HTMLAttributes<HTMLVHomeElement>;
-            "v-payment-cancel": LocalJSX.VPaymentCancel & JSXBase.HTMLAttributes<HTMLVPaymentCancelElement>;
+            "v-init": LocalJSX.VInit & JSXBase.HTMLAttributes<HTMLVInitElement>;
+            "v-ontology": LocalJSX.VOntology & JSXBase.HTMLAttributes<HTMLVOntologyElement>;
+            "v-reading": LocalJSX.VReading & JSXBase.HTMLAttributes<HTMLVReadingElement>;
         }
     }
 }

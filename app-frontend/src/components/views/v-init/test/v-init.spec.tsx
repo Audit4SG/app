@@ -1,18 +1,18 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { VPaymentCancel } from '../v-payment-cancel';
+import { VInit } from '../v-init';
 
-describe('v-payment-cancel', () => {
+describe('v-init', () => {
   it('renders', async () => {
     const page = await newSpecPage({
-      components: [VPaymentCancel],
-      html: `<v-payment-cancel></v-payment-cancel>`,
+      components: [VInit],
+      html: `<v-init></v-init>`,
     });
     expect(page.root).toEqualHtml(`
-      <v-payment-cancel>
+      <v-init>
         <mock:shadow-root>
           <slot></slot>
         </mock:shadow-root>
-      </v-payment-cancel>
+      </v-init>
     `);
   });
 });

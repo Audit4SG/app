@@ -2,8 +2,16 @@
 @import 'vars/vars.css';
 
 body {
-  font-size: var(--site__font-size--body);
-  color: var(--color__grey--dark);
-  font-family: 'Roboto', sans-serif;
-  line-height: var(--site__line-height);
+  font-size: var(--font__size--body);
+  font-family: var(--font__family--global);
+  line-height: var(--font__line-height--global);
+  color: var(--colour__grey--dark);
+  background: var(--colour__background--global);
+  margin: var(--layout__margin--global);
+}
+
+h1,
+h2,
+h3 {
+  font-family: KarlMedium, sans-serif;
 }

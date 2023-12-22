@@ -1,11 +1,11 @@
 import { newE2EPage } from '@stencil/core/testing';
 
-describe('v-audit', () => {
+describe('v-ontology', () => {
   it('renders', async () => {
     const page = await newE2EPage();
-    await page.setContent('<v-audit></v-audit>');
+    await page.setContent('<v-ontology></v-ontology>');
 
-    const element = await page.find('v-audit');
+    const element = await page.find('v-ontology');
     expect(element).toHaveClass('hydrated');
   });
 });

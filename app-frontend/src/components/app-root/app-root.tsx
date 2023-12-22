@@ -1,5 +1,6 @@
 import { Component, Prop, Listen, h } from '@stencil/core';
 import { injectHistory, RouterHistory } from '@stencil/router';
+import { state } from '../../global/script';
 
 @Component({
   tag: 'app-root',
@@ -19,8 +20,10 @@ export class AppRoot {
     return (
       <stencil-router>
         <stencil-route-switch scrollTopOffset={0}>
-          <stencil-route url="/" component="v-home" exact={true} />
-          <stencil-route url="/audit" component="v-audit" exact={true} />
+          <stencil-route url="/" component={!state.isInitialized ? 'v-init' : 'v-ontology'} exact={true} />
+          <stencil-route url="/init" component="v-init" exact={true} />
+          <stencil-route url="/ontology" component="v-ontology" exact={true} />
+          <stencil-route url="/reading/:sessionId" component="v-reading" exact={true} />
           <stencil-route component="v-catch-all" />
         </stencil-route-switch>
       </stencil-router>

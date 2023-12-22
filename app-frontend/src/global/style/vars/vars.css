@@ -1,36 +1,23 @@
+@font-face {
+  font-family: KarlRegular;
+  src: url('../../assets/typeface/KarlST_Regular.woff2');
+}
+
+@font-face {
+  font-family: KarlMedium;
+  src: url('../../assets/typeface/KarlST_Medium.woff2');
+}
+
 :root {
-  --site__font-size--body: 16px;
-  --site__font-size--display: 1.5em;
-  --site__font-size--heading: 1.25em;
-  --site__font-since__footnote: 0.8em;
+  --font__family--global: KarlRegular, sans-serif;
+  --font__line-height--global: 1.5;
+  --font__size--body: '16px';
 
-  --site__font-weight--display: 700;
-  --site__font-weight--heading: 500;
-  --site__font-weight--body: 400;
-  --site__padding: 1em;
-  --site__border-radius: 0.5em;
-  --site__line-height: 1.5;
+  --colour__background--global: #ffe7e5;
+  --colour__grey--dark: rgba(0, 0, 0, 0.87);
+  --colour__grey--medium: rgba(0, 0, 0, 0.6);
+  --colour__grey--light: rgba(0, 0, 0, 0.3);
+  --colour__grey--lightest: rgba(0, 0, 0, 0.1);
 
-  --color__site--background: #121212;
-  --color__grey--dark: rgba(0, 0, 0, 0.9);
-  --color__grey--medium: rgba(0, 0, 0, 0.6);
-  --color__grey--light: rgba(0, 0, 0, 0.3);
-  --color__grey--lightest: rgba(0, 0, 0, 0.1);
-  --color__blue--darkest: #04355b;
-  --color__blue--dark: #065c9f;
-  --color__blue--regular: #0984e3;
-  --color__blue--light: #53a9eb;
-  --color__blue--lightest: #e6f3fc;
-
-  --color__red--darkest: #561314;
-  --color__red--dark: #962222;
-  --color__red--regular: #d63031;
-  --color__red--light: #e68383;
-  --color__red--lightest: #fbeaea;
-
-  --color__green--darkest: #004a3b;
-  --color__green--dark: #008168;
-  --color__green--regular: #00b894;
-  --color__green--light: #80dcca;
-  --color__green--lightest: #e6f8f4;
+  --layout__margin--global: 1.5em 1em;
 }

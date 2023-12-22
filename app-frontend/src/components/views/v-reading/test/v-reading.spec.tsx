@@ -1,18 +1,18 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { VAudit } from '../v-audit';
+import { VReading } from '../v-reading';
 
-describe('v-audit', () => {
+describe('v-reading', () => {
   it('renders', async () => {
     const page = await newSpecPage({
-      components: [VAudit],
-      html: `<v-audit></v-audit>`,
+      components: [VReading],
+      html: `<v-reading></v-reading>`,
     });
     expect(page.root).toEqualHtml(`
-      <v-audit>
+      <v-reading>
         <mock:shadow-root>
           <slot></slot>
         </mock:shadow-root>
-      </v-audit>
+      </v-reading>
     `);
   });
 });

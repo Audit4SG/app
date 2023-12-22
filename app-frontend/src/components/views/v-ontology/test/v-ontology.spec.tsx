@@ -1,18 +1,18 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { VHome } from '../v-home';
+import { VOntology } from '../v-ontology';
 
-describe('v-home', () => {
+describe('v-ontology', () => {
   it('renders', async () => {
     const page = await newSpecPage({
-      components: [VHome],
-      html: `<v-home></v-home>`,
+      components: [VOntology],
+      html: `<v-ontology></v-ontology>`,
     });
     expect(page.root).toEqualHtml(`
-      <v-home>
+      <v-ontology>
         <mock:shadow-root>
           <slot></slot>
         </mock:shadow-root>
-      </v-home>
+      </v-ontology>
     `);
   });
 });
