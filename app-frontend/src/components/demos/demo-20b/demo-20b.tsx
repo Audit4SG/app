@@ -151,7 +151,7 @@ export class Demo20b {
   }
 
   handleEditButtonClick() {
-    this.history.push('/demo-20', {
+    this.history.push('/', {
       cardStack: this.cardStack,
     });
   }

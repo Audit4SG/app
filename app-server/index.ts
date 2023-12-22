@@ -1,6 +1,6 @@
 import app from "./app";
 import * as path from "path";
-const PORT = 2222;
+const PORT = 9999;
 
 (async () => {
   app.get("/*", (req, res) => {
