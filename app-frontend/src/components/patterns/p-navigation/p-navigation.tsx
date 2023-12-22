@@ -1,15 +1,15 @@
 import { Component, Host, h } from '@stencil/core';
 
 @Component({
-  tag: 'v-init',
-  styleUrl: 'v-init.css',
+  tag: 'p-navigation',
+  styleUrl: 'p-navigation.css',
   shadow: true,
 })
-export class VInit {
+export class PNavigation {
   render() {
     return (
       <Host>
-        <p-navigation></p-navigation>
+        <p>Navigation</p>
       </Host>
     );
   }

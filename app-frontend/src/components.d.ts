@@ -69,6 +69,8 @@ export namespace Components {
     }
     interface PGallery {
     }
+    interface PNavigation {
+    }
     interface VCatchAll {
         "history": RouterHistory;
     }
@@ -176,6 +178,12 @@ declare global {
         prototype: HTMLPGalleryElement;
         new (): HTMLPGalleryElement;
     };
+    interface HTMLPNavigationElement extends Components.PNavigation, HTMLStencilElement {
+    }
+    var HTMLPNavigationElement: {
+        prototype: HTMLPNavigationElement;
+        new (): HTMLPNavigationElement;
+    };
     interface HTMLVCatchAllElement extends Components.VCatchAll, HTMLStencilElement {
     }
     var HTMLVCatchAllElement: {
@@ -217,6 +225,7 @@ declare global {
         "l-seperator": HTMLLSeperatorElement;
         "l-spacer": HTMLLSpacerElement;
         "p-gallery": HTMLPGalleryElement;
+        "p-navigation": HTMLPNavigationElement;
         "v-catch-all": HTMLVCatchAllElement;
         "v-init": HTMLVInitElement;
         "v-ontology": HTMLVOntologyElement;
@@ -290,6 +299,8 @@ declare namespace LocalJSX {
     }
     interface PGallery {
     }
+    interface PNavigation {
+    }
     interface VCatchAll {
         "history"?: RouterHistory;
     }
@@ -316,6 +327,7 @@ declare namespace LocalJSX {
         "l-seperator": LSeperator;
         "l-spacer": LSpacer;
         "p-gallery": PGallery;
+        "p-navigation": PNavigation;
         "v-catch-all": VCatchAll;
         "v-init": VInit;
         "v-ontology": VOntology;
@@ -342,6 +354,7 @@ declare module "@stencil/core" {
             "l-seperator": LocalJSX.LSeperator & JSXBase.HTMLAttributes<HTMLLSeperatorElement>;
             "l-spacer": LocalJSX.LSpacer & JSXBase.HTMLAttributes<HTMLLSpacerElement>;
             "p-gallery": LocalJSX.PGallery & JSXBase.HTMLAttributes<HTMLPGalleryElement>;
+            "p-navigation": LocalJSX.PNavigation & JSXBase.HTMLAttributes<HTMLPNavigationElement>;
             "v-catch-all": LocalJSX.VCatchAll & JSXBase.HTMLAttributes<HTMLVCatchAllElement>;
             "v-init": LocalJSX.VInit & JSXBase.HTMLAttributes<HTMLVInitElement>;
             "v-ontology": LocalJSX.VOntology & JSXBase.HTMLAttributes<HTMLVOntologyElement>;
