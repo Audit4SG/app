@@ -21,64 +21,12 @@ export namespace Components {
     }
     interface CTest {
     }
-    interface Demo1 {
-    }
-    interface Demo10 {
-    }
-    interface Demo11 {
-    }
-    interface Demo12 {
-    }
-    interface Demo13 {
-    }
-    interface Demo13b {
-    }
-    interface Demo13c {
-    }
-    interface Demo13d {
-    }
-    interface Demo14 {
-    }
-    interface Demo15 {
-    }
-    interface Demo16 {
-    }
-    interface Demo17 {
-    }
-    interface Demo17b {
-    }
-    interface Demo17c {
-    }
-    interface Demo17d {
-    }
-    interface Demo18a {
-    }
-    interface Demo18b {
-    }
-    interface Demo19 {
-    }
-    interface Demo2 {
-    }
     interface Demo20a {
         "history": RouterHistory;
     }
     interface Demo20b {
         "history": RouterHistory;
         "match": MatchResults;
-    }
-    interface Demo3 {
-    }
-    interface Demo4 {
-    }
-    interface Demo5 {
-    }
-    interface Demo6 {
-    }
-    interface Demo7 {
-    }
-    interface Demo8 {
-    }
-    interface Demo9 {
     }
     interface EButton {
         "action": string;
@@ -212,120 +160,6 @@ declare global {
         prototype: HTMLCTestElement;
         new (): HTMLCTestElement;
     };
-    interface HTMLDemo1Element extends Components.Demo1, HTMLStencilElement {
-    }
-    var HTMLDemo1Element: {
-        prototype: HTMLDemo1Element;
-        new (): HTMLDemo1Element;
-    };
-    interface HTMLDemo10Element extends Components.Demo10, HTMLStencilElement {
-    }
-    var HTMLDemo10Element: {
-        prototype: HTMLDemo10Element;
-        new (): HTMLDemo10Element;
-    };
-    interface HTMLDemo11Element extends Components.Demo11, HTMLStencilElement {
-    }
-    var HTMLDemo11Element: {
-        prototype: HTMLDemo11Element;
-        new (): HTMLDemo11Element;
-    };
-    interface HTMLDemo12Element extends Components.Demo12, HTMLStencilElement {
-    }
-    var HTMLDemo12Element: {
-        prototype: HTMLDemo12Element;
-        new (): HTMLDemo12Element;
-    };
-    interface HTMLDemo13Element extends Components.Demo13, HTMLStencilElement {
-    }
-    var HTMLDemo13Element: {
-        prototype: HTMLDemo13Element;
-        new (): HTMLDemo13Element;
-    };
-    interface HTMLDemo13bElement extends Components.Demo13b, HTMLStencilElement {
-    }
-    var HTMLDemo13bElement: {
-        prototype: HTMLDemo13bElement;
-        new (): HTMLDemo13bElement;
-    };
-    interface HTMLDemo13cElement extends Components.Demo13c, HTMLStencilElement {
-    }
-    var HTMLDemo13cElement: {
-        prototype: HTMLDemo13cElement;
-        new (): HTMLDemo13cElement;
-    };
-    interface HTMLDemo13dElement extends Components.Demo13d, HTMLStencilElement {
-    }
-    var HTMLDemo13dElement: {
-        prototype: HTMLDemo13dElement;
-        new (): HTMLDemo13dElement;
-    };
-    interface HTMLDemo14Element extends Components.Demo14, HTMLStencilElement {
-    }
-    var HTMLDemo14Element: {
-        prototype: HTMLDemo14Element;
-        new (): HTMLDemo14Element;
-    };
-    interface HTMLDemo15Element extends Components.Demo15, HTMLStencilElement {
-    }
-    var HTMLDemo15Element: {
-        prototype: HTMLDemo15Element;
-        new (): HTMLDemo15Element;
-    };
-    interface HTMLDemo16Element extends Components.Demo16, HTMLStencilElement {
-    }
-    var HTMLDemo16Element: {
-        prototype: HTMLDemo16Element;
-        new (): HTMLDemo16Element;
-    };
-    interface HTMLDemo17Element extends Components.Demo17, HTMLStencilElement {
-    }
-    var HTMLDemo17Element: {
-        prototype: HTMLDemo17Element;
-        new (): HTMLDemo17Element;
-    };
-    interface HTMLDemo17bElement extends Components.Demo17b, HTMLStencilElement {
-    }
-    var HTMLDemo17bElement: {
-        prototype: HTMLDemo17bElement;
-        new (): HTMLDemo17bElement;
-    };
-    interface HTMLDemo17cElement extends Components.Demo17c, HTMLStencilElement {
-    }
-    var HTMLDemo17cElement: {
-        prototype: HTMLDemo17cElement;
-        new (): HTMLDemo17cElement;
-    };
-    interface HTMLDemo17dElement extends Components.Demo17d, HTMLStencilElement {
-    }
-    var HTMLDemo17dElement: {
-        prototype: HTMLDemo17dElement;
-        new (): HTMLDemo17dElement;
-    };
-    interface HTMLDemo18aElement extends Components.Demo18a, HTMLStencilElement {
-    }
-    var HTMLDemo18aElement: {
-        prototype: HTMLDemo18aElement;
-        new (): HTMLDemo18aElement;
-    };
-    interface HTMLDemo18bElement extends Components.Demo18b, HTMLStencilElement {
-    }
-    var HTMLDemo18bElement: {
-        prototype: HTMLDemo18bElement;
-        new (): HTMLDemo18bElement;
-    };
-    interface HTMLDemo19Element extends Components.Demo19, HTMLStencilElement {
-    }
-    var HTMLDemo19Element: {
-        prototype: HTMLDemo19Element;
-        new (): HTMLDemo19Element;
-    };
-    interface HTMLDemo2Element extends Components.Demo2, HTMLStencilElement {
-    }
-    var HTMLDemo2Element: {
-        prototype: HTMLDemo2Element;
-        new (): HTMLDemo2Element;
-    };
     interface HTMLDemo20aElement extends Components.Demo20a, HTMLStencilElement {
     }
     var HTMLDemo20aElement: {
@@ -337,48 +171,6 @@ declare global {
     var HTMLDemo20bElement: {
         prototype: HTMLDemo20bElement;
         new (): HTMLDemo20bElement;
-    };
-    interface HTMLDemo3Element extends Components.Demo3, HTMLStencilElement {
-    }
-    var HTMLDemo3Element: {
-        prototype: HTMLDemo3Element;
-        new (): HTMLDemo3Element;
-    };
-    interface HTMLDemo4Element extends Components.Demo4, HTMLStencilElement {
-    }
-    var HTMLDemo4Element: {
-        prototype: HTMLDemo4Element;
-        new (): HTMLDemo4Element;
-    };
-    interface HTMLDemo5Element extends Components.Demo5, HTMLStencilElement {
-    }
-    var HTMLDemo5Element: {
-        prototype: HTMLDemo5Element;
-        new (): HTMLDemo5Element;
-    };
-    interface HTMLDemo6Element extends Components.Demo6, HTMLStencilElement {
-    }
-    var HTMLDemo6Element: {
-        prototype: HTMLDemo6Element;
-        new (): HTMLDemo6Element;
-    };
-    interface HTMLDemo7Element extends Components.Demo7, HTMLStencilElement {
-    }
-    var HTMLDemo7Element: {
-        prototype: HTMLDemo7Element;
-        new (): HTMLDemo7Element;
-    };
-    interface HTMLDemo8Element extends Components.Demo8, HTMLStencilElement {
-    }
-    var HTMLDemo8Element: {
-        prototype: HTMLDemo8Element;
-        new (): HTMLDemo8Element;
-    };
-    interface HTMLDemo9Element extends Components.Demo9, HTMLStencilElement {
-    }
-    var HTMLDemo9Element: {
-        prototype: HTMLDemo9Element;
-        new (): HTMLDemo9Element;
     };
     interface HTMLEButtonElement extends Components.EButton, HTMLStencilElement {
     }
@@ -507,34 +299,8 @@ declare global {
         "c-page": HTMLCPageElement;
         "c-sidebar": HTMLCSidebarElement;
         "c-test": HTMLCTestElement;
-        "demo-1": HTMLDemo1Element;
-        "demo-10": HTMLDemo10Element;
-        "demo-11": HTMLDemo11Element;
-        "demo-12": HTMLDemo12Element;
-        "demo-13": HTMLDemo13Element;
-        "demo-13b": HTMLDemo13bElement;
-        "demo-13c": HTMLDemo13cElement;
-        "demo-13d": HTMLDemo13dElement;
-        "demo-14": HTMLDemo14Element;
-        "demo-15": HTMLDemo15Element;
-        "demo-16": HTMLDemo16Element;
-        "demo-17": HTMLDemo17Element;
-        "demo-17b": HTMLDemo17bElement;
-        "demo-17c": HTMLDemo17cElement;
-        "demo-17d": HTMLDemo17dElement;
-        "demo-18a": HTMLDemo18aElement;
-        "demo-18b": HTMLDemo18bElement;
-        "demo-19": HTMLDemo19Element;
-        "demo-2": HTMLDemo2Element;
         "demo-20a": HTMLDemo20aElement;
         "demo-20b": HTMLDemo20bElement;
-        "demo-3": HTMLDemo3Element;
-        "demo-4": HTMLDemo4Element;
-        "demo-5": HTMLDemo5Element;
-        "demo-6": HTMLDemo6Element;
-        "demo-7": HTMLDemo7Element;
-        "demo-8": HTMLDemo8Element;
-        "demo-9": HTMLDemo9Element;
         "e-button": HTMLEButtonElement;
         "e-input": HTMLEInputElement;
         "e-link": HTMLELinkElement;
@@ -572,64 +338,12 @@ declare namespace LocalJSX {
     }
     interface CTest {
     }
-    interface Demo1 {
-    }
-    interface Demo10 {
-    }
-    interface Demo11 {
-    }
-    interface Demo12 {
-    }
-    interface Demo13 {
-    }
-    interface Demo13b {
-    }
-    interface Demo13c {
-    }
-    interface Demo13d {
-    }
-    interface Demo14 {
-    }
-    interface Demo15 {
-    }
-    interface Demo16 {
-    }
-    interface Demo17 {
-    }
-    interface Demo17b {
-    }
-    interface Demo17c {
-    }
-    interface Demo17d {
-    }
-    interface Demo18a {
-    }
-    interface Demo18b {
-    }
-    interface Demo19 {
-    }
-    interface Demo2 {
-    }
     interface Demo20a {
         "history"?: RouterHistory;
     }
     interface Demo20b {
         "history"?: RouterHistory;
         "match"?: MatchResults;
-    }
-    interface Demo3 {
-    }
-    interface Demo4 {
-    }
-    interface Demo5 {
-    }
-    interface Demo6 {
-    }
-    interface Demo7 {
-    }
-    interface Demo8 {
-    }
-    interface Demo9 {
     }
     interface EButton {
         "action"?: string;
@@ -744,34 +458,8 @@ declare namespace LocalJSX {
         "c-page": CPage;
         "c-sidebar": CSidebar;
         "c-test": CTest;
-        "demo-1": Demo1;
-        "demo-10": Demo10;
-        "demo-11": Demo11;
-        "demo-12": Demo12;
-        "demo-13": Demo13;
-        "demo-13b": Demo13b;
-        "demo-13c": Demo13c;
-        "demo-13d": Demo13d;
-        "demo-14": Demo14;
-        "demo-15": Demo15;
-        "demo-16": Demo16;
-        "demo-17": Demo17;
-        "demo-17b": Demo17b;
-        "demo-17c": Demo17c;
-        "demo-17d": Demo17d;
-        "demo-18a": Demo18a;
-        "demo-18b": Demo18b;
-        "demo-19": Demo19;
-        "demo-2": Demo2;
         "demo-20a": Demo20a;
         "demo-20b": Demo20b;
-        "demo-3": Demo3;
-        "demo-4": Demo4;
-        "demo-5": Demo5;
-        "demo-6": Demo6;
-        "demo-7": Demo7;
-        "demo-8": Demo8;
-        "demo-9": Demo9;
         "e-button": EButton;
         "e-input": EInput;
         "e-link": ELink;
@@ -804,34 +492,8 @@ declare module "@stencil/core" {
             "c-page": LocalJSX.CPage & JSXBase.HTMLAttributes<HTMLCPageElement>;
             "c-sidebar": LocalJSX.CSidebar & JSXBase.HTMLAttributes<HTMLCSidebarElement>;
             "c-test": LocalJSX.CTest & JSXBase.HTMLAttributes<HTMLCTestElement>;
-            "demo-1": LocalJSX.Demo1 & JSXBase.HTMLAttributes<HTMLDemo1Element>;
-            "demo-10": LocalJSX.Demo10 & JSXBase.HTMLAttributes<HTMLDemo10Element>;
-            "demo-11": LocalJSX.Demo11 & JSXBase.HTMLAttributes<HTMLDemo11Element>;
-            "demo-12": LocalJSX.Demo12 & JSXBase.HTMLAttributes<HTMLDemo12Element>;
-            "demo-13": LocalJSX.Demo13 & JSXBase.HTMLAttributes<HTMLDemo13Element>;
-            "demo-13b": LocalJSX.Demo13b & JSXBase.HTMLAttributes<HTMLDemo13bElement>;
-            "demo-13c": LocalJSX.Demo13c & JSXBase.HTMLAttributes<HTMLDemo13cElement>;
-            "demo-13d": LocalJSX.Demo13d & JSXBase.HTMLAttributes<HTMLDemo13dElement>;
-            "demo-14": LocalJSX.Demo14 & JSXBase.HTMLAttributes<HTMLDemo14Element>;
-            "demo-15": LocalJSX.Demo15 & JSXBase.HTMLAttributes<HTMLDemo15Element>;
-            "demo-16": LocalJSX.Demo16 & JSXBase.HTMLAttributes<HTMLDemo16Element>;
-            "demo-17": LocalJSX.Demo17 & JSXBase.HTMLAttributes<HTMLDemo17Element>;
-            "demo-17b": LocalJSX.Demo17b & JSXBase.HTMLAttributes<HTMLDemo17bElement>;
-            "demo-17c": LocalJSX.Demo17c & JSXBase.HTMLAttributes<HTMLDemo17cElement>;
-            "demo-17d": LocalJSX.Demo17d & JSXBase.HTMLAttributes<HTMLDemo17dElement>;
-            "demo-18a": LocalJSX.Demo18a & JSXBase.HTMLAttributes<HTMLDemo18aElement>;
-            "demo-18b": LocalJSX.Demo18b & JSXBase.HTMLAttributes<HTMLDemo18bElement>;
-            "demo-19": LocalJSX.Demo19 & JSXBase.HTMLAttributes<HTMLDemo19Element>;
-            "demo-2": LocalJSX.Demo2 & JSXBase.HTMLAttributes<HTMLDemo2Element>;
             "demo-20a": LocalJSX.Demo20a & JSXBase.HTMLAttributes<HTMLDemo20aElement>;
             "demo-20b": LocalJSX.Demo20b & JSXBase.HTMLAttributes<HTMLDemo20bElement>;
-            "demo-3": LocalJSX.Demo3 & JSXBase.HTMLAttributes<HTMLDemo3Element>;
-            "demo-4": LocalJSX.Demo4 & JSXBase.HTMLAttributes<HTMLDemo4Element>;
-            "demo-5": LocalJSX.Demo5 & JSXBase.HTMLAttributes<HTMLDemo5Element>;
-            "demo-6": LocalJSX.Demo6 & JSXBase.HTMLAttributes<HTMLDemo6Element>;
-            "demo-7": LocalJSX.Demo7 & JSXBase.HTMLAttributes<HTMLDemo7Element>;
-            "demo-8": LocalJSX.Demo8 & JSXBase.HTMLAttributes<HTMLDemo8Element>;
-            "demo-9": LocalJSX.Demo9 & JSXBase.HTMLAttributes<HTMLDemo9Element>;
             "e-button": LocalJSX.EButton & JSXBase.HTMLAttributes<HTMLEButtonElement>;
             "e-input": LocalJSX.EInput & JSXBase.HTMLAttributes<HTMLEInputElement>;
             "e-link": LocalJSX.ELink & JSXBase.HTMLAttributes<HTMLELinkElement>;
