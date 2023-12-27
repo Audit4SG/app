@@ -1142,24 +1142,99 @@ export class Demo20a {
                 {this.isMenuOpen ? <ph-x size="1.3em" color="white" weight="bold"></ph-x> : <ph-list size="1.3em" weight="bold"></ph-list>}
               </button>
               {this.isMenuOpen && (
-                <div>
-                  &nbsp; &nbsp;
-                  <button class={`pill ${this.activeMenuButton === 'How to' && 'pill--highlight'}`} onClick={() => this.menuButtonClickHandler('How to')}>
-                    How to
-                  </button>
-                  &nbsp; &nbsp;
-                  <button class={`pill ${this.activeMenuButton === 'Export' && 'pill--highlight'}`} onClick={() => this.openExportModal()}>
-                    Export
-                  </button>
-                  &nbsp; &nbsp;
-                  <button class={`pill ${this.activeMenuButton === 'About' && 'pill--highlight'}`} onClick={() => this.menuButtonClickHandler('About')}>
-                    About
-                  </button>
-                  &nbsp; &nbsp;
-                  <button class={`pill ${this.activeMenuButton === 'Credits' && 'pill--highlight'}`} onClick={() => this.menuButtonClickHandler('Credits')}>
-                    Credits
-                  </button>
-                </div>
+                <l-row justifyContent="space-between" align="center">
+                  <div>
+                    &nbsp; &nbsp;
+                    <button class={`pill ${this.activeMenuButton === 'How to' && 'pill--highlight'}`} onClick={() => this.menuButtonClickHandler('How to')}>
+                      How to
+                    </button>
+                    &nbsp; &nbsp;
+                    <button class={`pill ${this.activeMenuButton === 'Export' && 'pill--highlight'}`} onClick={() => this.openExportModal()}>
+                      Export
+                    </button>
+                    &nbsp; &nbsp;
+                    <button class={`pill ${this.activeMenuButton === 'About' && 'pill--highlight'}`} onClick={() => this.menuButtonClickHandler('About')}>
+                      About
+                    </button>
+                    &nbsp; &nbsp;
+                    <button class={`pill ${this.activeMenuButton === 'Credits' && 'pill--highlight'}`} onClick={() => this.menuButtonClickHandler('Credits')}>
+                      Credits
+                    </button>
+                  </div>
+                  <div id="search-container" ref={el => (this.searchContainerEl = el as HTMLDivElement)}>
+                    <input
+                      id="search"
+                      class={this.isDemoStarted ? 'show-search' : 'hide-search'}
+                      onInput={e => this.handleInput(e)}
+                      onFocus={() => this.onSearchBoxFocus()}
+                      onBlur={() => this.onSearchBoxBlur()}
+                      ref={el => (this.searchBox = el as HTMLInputElement)}
+                      placeholder="🔍 Search something.."
+                    ></input>
+                    {this.results.length > 0 && (
+                      <ul id="search-results-list">
+                        {this.results.map((result: any) => (
+                          <li class="search-result-item" onClick={() => this.handleSearchClick(result.label)}>
+                            {result.type === 'Class' && (
+                              <div>
+                                <span class="bubble green-bubble">{result.type}</span>
+                                &nbsp;
+                                <span>
+                                  <strong>{result.label}</strong>
+                                </span>
+                                <br />
+                                <span>{result.description}</span>
+                                {result.provocation && (
+                                  <div>
+                                    <br />
+                                    <div class="double-bubble-container">
+                                      <span class="bubble bubble-first grey-bubble">{result.label}</span>
+                                      <span class="bubble bubble-second green-bubble">Provocation</span>
+                                    </div>
+                                    <span>{result.provocation}</span>
+                                  </div>
+                                )}
+                                {result.provocation && (
+                                  <div>
+                                    <br />
+                                    <div class="double-bubble-container">
+                                      <span class="bubble bubble-first grey-bubble">{result.label}</span>
+                                      <span class="bubble bubble-second green-bubble">References</span>
+                                    </div>
+                                    <span>{result.references}</span>
+                                  </div>
+                                )}
+                              </div>
+                            )}
+                            {result.type === 'Relation' && (
+                              <div>
+                                <span class="bubble green-bubble">Relation</span>
+                                <br />
+                                <div class="search-relation-container">
+                                  <div class="class-name-container">
+                                    <div class="class-symbol"></div>
+                                    <span class="class-name">{result.source}</span>
+                                  </div>
+                                  &nbsp; &nbsp;
+                                  <div class="relation-symbol-container">
+                                    <div class="relation-line"></div>
+                                    <span class="relation-name-container">{result.label}</span>
+                                    <div class="relation-line"></div>
+                                  </div>
+                                  &nbsp; &nbsp;
+                                  <div class="class-name-container">
+                                    <div class="class-symbol"></div>
+                                    <span class="class-name">{result.target}</span>
+                                  </div>
+                                </div>
+                              </div>
+                            )}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </l-row>
               )}
             </l-row>
           </l-row>
@@ -1182,79 +1257,7 @@ export class Demo20a {
             </div>
           )}
         </nav>
-        <div id="search-container" ref={el => (this.searchContainerEl = el as HTMLDivElement)}>
-          <input
-            id="search"
-            class={this.isDemoStarted ? 'show-search' : 'hide-search'}
-            onInput={e => this.handleInput(e)}
-            onFocus={() => this.onSearchBoxFocus()}
-            onBlur={() => this.onSearchBoxBlur()}
-            ref={el => (this.searchBox = el as HTMLInputElement)}
-            placeholder="🔍 Search something.."
-          ></input>
-          {this.results.length > 0 && (
-            <ul id="search-results-list">
-              {this.results.map((result: any) => (
-                <li class="search-result-item" onClick={() => this.handleSearchClick(result.label)}>
-                  {result.type === 'Class' && (
-                    <div>
-                      <span class="bubble green-bubble">{result.type}</span>
-                      &nbsp;
-                      <span>
-                        <strong>{result.label}</strong>
-                      </span>
-                      <br />
-                      <span>{result.description}</span>
-                      {result.provocation && (
-                        <div>
-                          <br />
-                          <div class="double-bubble-container">
-                            <span class="bubble bubble-first grey-bubble">{result.label}</span>
-                            <span class="bubble bubble-second green-bubble">Provocation</span>
-                          </div>
-                          <span>{result.provocation}</span>
-                        </div>
-                      )}
-                      {result.provocation && (
-                        <div>
-                          <br />
-                          <div class="double-bubble-container">
-                            <span class="bubble bubble-first grey-bubble">{result.label}</span>
-                            <span class="bubble bubble-second green-bubble">References</span>
-                          </div>
-                          <span>{result.references}</span>
-                        </div>
-                      )}
-                    </div>
-                  )}
-                  {result.type === 'Relation' && (
-                    <div>
-                      <span class="bubble green-bubble">Relation</span>
-                      <br />
-                      <div class="search-relation-container">
-                        <div class="class-name-container">
-                          <div class="class-symbol"></div>
-                          <span class="class-name">{result.source}</span>
-                        </div>
-                        &nbsp; &nbsp;
-                        <div class="relation-symbol-container">
-                          <div class="relation-line"></div>
-                          <span class="relation-name-container">{result.label}</span>
-                          <div class="relation-line"></div>
-                        </div>
-                        &nbsp; &nbsp;
-                        <div class="class-name-container">
-                          <div class="class-symbol"></div>
-                          <span class="class-name">{result.target}</span>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
+
         <div class="modal-content" ref={el => (this.modalContent = el as HTMLDivElement)}>
           <header>
             <l-row justifyContent="space-between" align="center">
