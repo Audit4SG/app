@@ -38,10 +38,12 @@ export class Demo20a {
   @State() isDemoStarted: boolean = false;
   @State() isStartButtonDisabled: boolean = false;
   @State() tooltipTitle: string = '';
-  @State() tooltipDescription: string = '';
+  @State() tooltipDefinition: string = '';
+  @State() tooltipProvocation: string = '';
   @State() cardStack: any = [];
   @State() isLinkCopied: boolean = false;
   @State() shareUrl: string = '';
+  @State() isTooltipInfoVisible: boolean = false;
 
   @Listen('buttonClick') buttonClick(e) {
     if (e.detail.action === 'Next') {
@@ -235,19 +237,19 @@ export class Demo20a {
       if (item['http://www.w3.org/2000/01/rdf-schema#description']) {
         description = item['http://www.w3.org/2000/01/rdf-schema#description'][0]['@value'];
       } else {
-        description = '(To be updated)';
+        description = '';
       }
 
       if (item['http://www.w3.org/2000/01/rdf-schema#provocation']) {
         provocation = item['http://www.w3.org/2000/01/rdf-schema#provocation'][0]['@value'];
       } else {
-        provocation = '(To be updated)';
+        provocation = '';
       }
 
       if (item['http://www.w3.org/2000/01/rdf-schema#references']) {
         references = item['http://www.w3.org/2000/01/rdf-schema#references'][0]['@value'];
       } else {
-        references = '(To be updated)';
+        references = '';
       }
 
       let obj = {
@@ -264,9 +266,12 @@ export class Demo20a {
 
   generate_Nodes() {
     this.class_Pure.map((item: any) => {
+      let splittedLabel = item.label.replace(/_/g, ' ');
+      splittedLabel = splittedLabel.charAt(0).toUpperCase() + splittedLabel.slice(1);
+
       let obj = {
         id: item.id,
-        label: item.label,
+        label: splittedLabel,
         description: item.description,
         provocation: item.provocation,
         references: item.references,
@@ -391,12 +396,12 @@ export class Demo20a {
       .attr('stroke-width', 10)
       .style('stroke', 'rgb(1, 30, 43)')
       .attr('fill', 'white')
-      .style('filter', 'drop-shadow(0px 15px 8px rgb(0 0 0 / 0.4))')
+      .style('filter', 'drop-shadow(4px 4px 4px rgb(0 0 0 / 0.25))')
       .call(dragDrop)
       .on('mouseenter', (event, data) => {
         this.nodeHoverHighlight(data);
         this.timeout = setTimeout(() => {
-          this.showTooltip(data.id.split('#')[1], data.description, event);
+          this.showTooltip(data.label, data.description, data.provocation, event);
         }, this.timeoutInMS);
       })
       .on('mouseout', (event, data) => {
@@ -664,7 +669,7 @@ export class Demo20a {
     let count = 0;
     let timeout = setInterval(() => {
       if (count % 2 === 0) {
-        selected_Node.attr('fill', 'yellow');
+        selected_Node.attr('fill', '#08f26e');
       } else {
         selected_Node.attr('fill', 'white');
       }
@@ -693,6 +698,8 @@ export class Demo20a {
       this.hideTooltip();
     } else if (name === 'closeExportModal') {
       this.isExportModalOpen = false;
+    } else if (name === 'toggleTooltipInfo') {
+      this.isTooltipInfoVisible = !this.isTooltipInfoVisible;
     }
   }
 
@@ -778,17 +785,30 @@ export class Demo20a {
     this.tl.to(this.filterContainerEl, { height: '30px', duration: 0.25 });
   }
 
+  toggleFilterContainer() {
+    this.isFilterContainerCollapsed = !this.isFilterContainerCollapsed;
+    if (this.isFilterContainerCollapsed) {
+      this.animateFilterContainerContraction();
+    } else {
+      this.animateFilterContainerExpansion();
+    }
+  }
+
   FilterContainer: FunctionalComponent = () => (
     <div
       class={`filter-container ${this.journey === 'exploration' ? 'filter-container--exploration' : 'filter-container--selection'}`}
       ref={el => (this.filterContainerEl = el as HTMLDivElement)}
     >
-      <l-row justifyContent="space-between" align="center">
-        <e-text variant="heading">Topics</e-text>
-        <e-link event={true} action="toggleTopicFilter">
+      <div class="topic-container-header">
+        <l-row justifyContent="space-between" align="center" onClick={() => this.toggleFilterContainer()}>
+          <e-text variant="heading">Topics</e-text>
+          {/* <e-link event={true} action="toggleTopicFilter">
           {this.isFilterContainerCollapsed ? <ph-caret-circle-down size={this.iconSize} /> : <ph-minus-circle size={this.iconSize} />}
-        </e-link>
-      </l-row>
+        </e-link> */}
+          {this.isFilterContainerCollapsed ? <ph-caret-circle-down size={this.iconSize} /> : <ph-minus-circle size={this.iconSize} />}
+        </l-row>
+      </div>
+
       <l-spacer value={0.5}></l-spacer>
       {this.topicOptions.map((topic: any) => (
         <l-row justifyContent="space-between">
@@ -811,9 +831,10 @@ export class Demo20a {
     return isSelected;
   }
 
-  showTooltip(tooltipTitle: string, tooltipDescription: string, event: any) {
+  showTooltip(tooltipTitle: string, tooltipDefinition: string, tooltipProvocation: string, event: any) {
     this.tooltipTitle = tooltipTitle;
-    this.tooltipDescription = tooltipDescription;
+    this.tooltipDefinition = tooltipDefinition;
+    this.tooltipProvocation = tooltipProvocation;
     this.el_ToolTip.style.display = 'block';
     this.el_ToolTip.style.top = `${event.pageY + 20}px`;
     this.el_ToolTip.style.left = `${event.pageX - 100}px`;
@@ -1138,9 +1159,11 @@ export class Demo20a {
         <nav>
           <l-row justifyContent="space-between" align="center">
             <l-row align="center">
-              <button class={`menu-button ${this.isMenuOpen ? 'menu-close' : 'menu-open'}`} onClick={() => this.handleMenuButtonClick()}>
-                {this.isMenuOpen ? <ph-x size="1.3em" color="white" weight="bold"></ph-x> : <ph-list size="1.3em" weight="bold"></ph-list>}
-              </button>
+              {this.isDemoStarted && (
+                <button class={`menu-button ${this.isMenuOpen ? 'menu-close' : 'menu-open'}`} onClick={() => this.handleMenuButtonClick()}>
+                  {this.isMenuOpen ? <ph-x size="1.3em" color="white" weight="bold"></ph-x> : <ph-list size="1.3em" weight="bold"></ph-list>}
+                </button>
+              )}
               {this.isMenuOpen && (
                 <l-row justifyContent="space-between" align="center">
                   <div>
@@ -1249,11 +1272,158 @@ export class Demo20a {
                 </button>
               </l-row>
               <l-spacer value={1}></l-spacer>
-              <e-text>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-              </e-text>
+              <div class="menu-content">
+                {this.activeMenuButton === 'About' && (
+                  <e-text>
+                    AI4SG is an exploratory tool that sees ethics as emergent. Its premise is that ethical relationships develop in relation. To audit the ethical claims of AI is
+                    to pay attention to those relations.
+                    <br />
+                    <br />
+                    AI4SG presents an incomplete ontology (knowledge graph) of entities and relations encircling AI systems. A user can interact with the ontology and build their
+                    own AI ethics auditing methodology using the provocations or definitions corresponding to each entity or relation in the ontology.
+                    <br />
+                    <br />
+                    The tool is meant to be exploratory. It is not a checklist. It may take longer and appear cumbersome, but it might help thoughts move in new directions. The
+                    tool aims to provoke and not solve. The auditing questions are provocations to open up not just the black box of AI algorithms but the black box of the network
+                    of relationships that constitute AI.
+                    <br />
+                    <br />
+                    Keep in mind: It’s a proof-of-concept (a pre-alpha release). An early intervention to interrupt the AI checklist mode of AI ethical auditing. We are still
+                    looking for ways to take this interruption forward.
+                    <br />
+                    <br />
+                    Do you have questions, suggestions, or feedback? Please write to us at <em>debarun[at]outlook.com</em> or <em>cheshtaarora[at]outlook.in</em>
+                    <br />
+                    <br />
+                    <strong>Github:</strong>
+                    <br />
+                    <e-link href="https://github.com/Audit4SG/app" target="_blank">
+                      https://github.com/Audit4SG/app
+                    </e-link>{' '}
+                    (Frontend)
+                    <br />
+                    <e-link href="https://github.com/Audit4SG/api" target="_blank">
+                      https://github.com/Audit4SG/api
+                    </e-link>{' '}
+                    (Backend)
+                    <br />
+                    <br />
+                    <strong>Zotero:</strong>
+                    <br />{' '}
+                    <e-link href="https://www.zotero.org/groups/5339489/relaieo/library" target="_blank">
+                      https://www.zotero.org/groups/5339489/relaieo/library
+                    </e-link>
+                    <br />
+                    <br />
+                    <strong>Relational AI Ethics Ontology (RelAIEO):</strong>
+                    <br />
+                    <e-link href="https://ontology.audit4sg.org" target="_blank">
+                      https://ontology.audit4sg.org
+                    </e-link>{' '}
+                    (To be updated)
+                  </e-text>
+                )}
+                {this.activeMenuButton === 'How to' && (
+                  <e-text>
+                    <ul id="list__how-to">
+                      <li>
+                        In the beginning you have two options. You can:
+                        <ul>
+                          <li>Start with some broad topics that interest, concern, or fascinate you. Mix and match at varying degrees of granularity.</li>
+                          <li>
+                            Or explore the range of concerns that we could think of and mix and match as per your approach or situation. Choose only one aspect or choose them all!{' '}
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        The web tool will throw you into a network that could be explored when exploring ethical concerns concerning artificial intelligence. As a user, you can
+                        determine which aspects are relevant for you and the system or organization you are investigating or exploring. You can also interrogate the fundamental
+                        ethical parameters and approaches that AI ethicists hold dear and sacrosanct. All is up for unpacking. If something does not make sense to you, let those
+                        aspects be. You can always come back to them later.
+                      </li>
+                      <li>
+                        If the network feels overwhelming, try using the search bar. You can drop in any word or phrase to see the closest possible semantic matches within the
+                        existing network of relationships. Note: <em>It uses OpenAI API for semantic processing to show the best and most relevant results</em>. It recommends both
+                        nodes (classes) and relationships (objects).{' '}
+                      </li>
+                      <li>
+                        Once you have stacked up the desired cards on the left you can save/export/share your customized methodology for future reference. You can come back to the
+                        web tool from the export to edit the methodology if you so wish at any point in time.{' '}
+                        <em>The export/share feature uses anonymized cookies and no personal information about the user is collected</em>.{' '}
+                      </li>
+                      <li>
+                        For more research-y people, cards also include references and quotes that inform the provocations. All references can be found in the Zotero library linked
+                        on the homepage and the About section.
+                      </li>
+                      <li>
+                        There is a node called “not listed”. Select it if your concerns are not covered within the existing network. The network of relationships is constructed on
+                        the “open world assumption” i.e., anything that is not represented and covered within the existing ontology can possibly exist.
+                      </li>
+                    </ul>
+                  </e-text>
+                )}
+                {this.activeMenuButton === 'Credits' && (
+                  <div>
+                    <div>
+                      <e-text>
+                        <strong>Cheshta Arora</strong>
+                      </e-text>
+                      <e-text>Researcher</e-text>
+                      <e-text>
+                        ORCID:{' '}
+                        <e-link href="https://orcid.org/0000-0003-2470-7783" target="_blank">
+                          https://orcid.org/0000-0003-2470-7783
+                        </e-link>{' '}
+                      </e-text>
+                    </div>
+                    <br />
+                    <div>
+                      <e-text>
+                        <strong>Debarun Sarkar</strong>
+                      </e-text>
+                      <e-text>Researcher</e-text>
+                      <e-text>
+                        ORCID:{' '}
+                        <e-link href="https://orcid.org/0000-0002-6873-4727" target="_blank">
+                          https://orcid.org/0000-0002-6873-4727
+                        </e-link>{' '}
+                      </e-text>
+                      <e-text>
+                        Website:{' '}
+                        <e-link href="https://debarun.noblogs.org" target="_blank">
+                          https://debarun.noblogs.org
+                        </e-link>{' '}
+                      </e-text>
+                    </div>
+                    <br />
+                    <div>
+                      <e-text>
+                        <strong>Rocco Donà</strong>
+                      </e-text>
+                      <e-text>Designer</e-text>
+                      <e-text>
+                        Website:{' '}
+                        <e-link href="https://rocco-dona.com" target="_blank">
+                          https://rocco-dona.com
+                        </e-link>{' '}
+                      </e-text>
+                    </div>
+                    <br />
+                    <div>
+                      <e-text>
+                        <strong>Tuhin Bhuyan</strong>
+                      </e-text>
+                      <e-text>Developer</e-text>
+                      <e-text>
+                        LinkedIn:{' '}
+                        <e-link href="https://www.linkedin.com/in/xtbhyn" target="_blank">
+                          https://www.linkedin.com/in/xtbhyn
+                        </e-link>{' '}
+                      </e-text>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           )}
         </nav>
@@ -1317,24 +1487,43 @@ export class Demo20a {
         <div id="tooltip" ref={el => (this.el_ToolTip = el as HTMLDivElement)}>
           <l-row justifyContent="space-between" align="center">
             <e-text variant="heading">{this.tooltipTitle}</e-text>
-            <button onClick={() => this.handleButtonClick('hideTooltip')} class="control-button">
-              <ph-x-circle size={this.iconSize} />
-            </button>
+            <l-row>
+              <button onClick={() => this.handleButtonClick('toggleTooltipInfo')} class="control-button">
+                {this.isTooltipInfoVisible ? <ph-info size={this.iconSize} weight="fill" /> : <ph-info size={this.iconSize} weight="regular" />}
+              </button>
+              <button onClick={() => this.handleButtonClick('hideTooltip')} class="control-button">
+                <ph-x-circle size={this.iconSize} />
+              </button>
+            </l-row>
           </l-row>
           <l-spacer value={0.5}></l-spacer>
-          <e-text>{this.tooltipDescription}</e-text>
-          <l-spacer value={0.5}></l-spacer>
-          <e-button>Read More</e-button>
+          {this.isTooltipInfoVisible && (
+            <div>
+              <em>
+                <e-text>{this.tooltipDefinition}</e-text>
+              </em>
+              <l-spacer value={1}></l-spacer>
+              <l-seperator></l-seperator>
+              <l-spacer value={1}></l-spacer>
+            </div>
+          )}
+          <e-text>{this.tooltipProvocation}</e-text>
+          {/* <e-text>{this.tooltipDefinition}</e-text> */}
+          {/* <l-spacer value={0.5}></l-spacer>
+          <e-button>Read More</e-button> */}
         </div>
         {this.isModalVisible && <this.Modal></this.Modal>}
         {this.isDemoStarted && <this.FilterContainer></this.FilterContainer>}
         {this.cardStack.length > 0 && this.isDemoStarted ? <this.LeftBar></this.LeftBar> : ''}
         <svg onClick={() => this.handleBodyClick()} width={this.width} height={this.height} ref={el => (this.el_Svg = el as SVGAElement)}></svg>
-        <footer>
-          <button class="query-button">
-            <ph-question size={this.iconSizeBig}></ph-question>
-          </button>
-        </footer>
+
+        {this.isDemoStarted && (
+          <footer>
+            <button class="query-button">
+              <ph-question size={this.iconSizeBig}></ph-question>
+            </button>
+          </footer>
+        )}
       </Host>
     );
   }
