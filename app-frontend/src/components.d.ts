@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { RouterHistory } from "@stencil/router";
+import { MatchResults, RouterHistory } from "@stencil/router";
 export namespace Components {
     interface AppRoot {
         "history": RouterHistory;
@@ -78,7 +78,12 @@ export namespace Components {
     }
     interface VOntology {
     }
+    interface VProto {
+        "history": RouterHistory;
+    }
     interface VReading {
+        "history": RouterHistory;
+        "match": MatchResults;
     }
 }
 declare global {
@@ -202,6 +207,12 @@ declare global {
         prototype: HTMLVOntologyElement;
         new (): HTMLVOntologyElement;
     };
+    interface HTMLVProtoElement extends Components.VProto, HTMLStencilElement {
+    }
+    var HTMLVProtoElement: {
+        prototype: HTMLVProtoElement;
+        new (): HTMLVProtoElement;
+    };
     interface HTMLVReadingElement extends Components.VReading, HTMLStencilElement {
     }
     var HTMLVReadingElement: {
@@ -229,6 +240,7 @@ declare global {
         "v-catch-all": HTMLVCatchAllElement;
         "v-init": HTMLVInitElement;
         "v-ontology": HTMLVOntologyElement;
+        "v-proto": HTMLVProtoElement;
         "v-reading": HTMLVReadingElement;
     }
 }
@@ -308,7 +320,12 @@ declare namespace LocalJSX {
     }
     interface VOntology {
     }
+    interface VProto {
+        "history"?: RouterHistory;
+    }
     interface VReading {
+        "history"?: RouterHistory;
+        "match"?: MatchResults;
     }
     interface IntrinsicElements {
         "app-root": AppRoot;
@@ -331,6 +348,7 @@ declare namespace LocalJSX {
         "v-catch-all": VCatchAll;
         "v-init": VInit;
         "v-ontology": VOntology;
+        "v-proto": VProto;
         "v-reading": VReading;
     }
 }
@@ -358,6 +376,7 @@ declare module "@stencil/core" {
             "v-catch-all": LocalJSX.VCatchAll & JSXBase.HTMLAttributes<HTMLVCatchAllElement>;
             "v-init": LocalJSX.VInit & JSXBase.HTMLAttributes<HTMLVInitElement>;
             "v-ontology": LocalJSX.VOntology & JSXBase.HTMLAttributes<HTMLVOntologyElement>;
+            "v-proto": LocalJSX.VProto & JSXBase.HTMLAttributes<HTMLVProtoElement>;
             "v-reading": LocalJSX.VReading & JSXBase.HTMLAttributes<HTMLVReadingElement>;
         }
     }

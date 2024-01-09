@@ -1,3 +1,25 @@
 :host {
   display: block;
+  margin: 2em 2em 6em 2em;
+}
+
+.card-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card-container {
+  width: 250px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 1em;
+  border-radius: 1em;
+}
+
+label {
+  font-size: 0.8em;
+}
+
+button:hover {
+  cursor: pointer;
 }

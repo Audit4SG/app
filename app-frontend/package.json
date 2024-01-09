@@ -2,7 +2,7 @@
   "name": "relaio_auditing_app",
   "private": true,
   "version": "0.0.1",
-  "description": "Auditing app for RelAiO",
+  "description": "RelAiO Audit App",
   "scripts": {
     "build": "stencil build",
     "start": "stencil build --dev --watch --serve",
@@ -25,6 +25,8 @@
     "@types/jsonld": "^1.5.9",
     "d3": "^7.8.5",
     "gsap": "^3.12.2",
-    "jsonld": "^8.2.0"
+    "jsonld": "^8.2.0",
+    "typesense": "^1.7.2",
+    "typesense-instantsearch-adapter": "^2.7.1"
   }
 }
