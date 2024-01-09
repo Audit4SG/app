@@ -1,7 +1,7 @@
 {
   "name": "RelAIEO_App_Server",
   "version": "0.0.1",
-  "description": "Serves RelAIEO app frontend",
+  "description": "Serves RelAIEO app",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon",
