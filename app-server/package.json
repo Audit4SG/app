@@ -1,13 +1,13 @@
 {
-  "name": "relaio_auditing_app-api",
+  "name": "RelAIEO_App_Server",
   "version": "0.0.1",
-  "description": "Auditing app api for RelAiO",
+  "description": "Serves RelAIEO app frontend",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon",
     "build": "tsc"
   },
-  "author": "Tuhin Bhuyan (Projckt)",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
