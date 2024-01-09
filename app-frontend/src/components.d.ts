@@ -10,9 +10,6 @@ export namespace Components {
     interface AppRoot {
         "history": RouterHistory;
     }
-    interface CBanner {
-        "theme": string;
-    }
     interface CCard {
     }
     interface CPage {
@@ -89,12 +86,6 @@ declare global {
     var HTMLAppRootElement: {
         prototype: HTMLAppRootElement;
         new (): HTMLAppRootElement;
-    };
-    interface HTMLCBannerElement extends Components.CBanner, HTMLStencilElement {
-    }
-    var HTMLCBannerElement: {
-        prototype: HTMLCBannerElement;
-        new (): HTMLCBannerElement;
     };
     interface HTMLCCardElement extends Components.CCard, HTMLStencilElement {
     }
@@ -212,7 +203,6 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "app-root": HTMLAppRootElement;
-        "c-banner": HTMLCBannerElement;
         "c-card": HTMLCCardElement;
         "c-page": HTMLCPageElement;
         "c-sidebar": HTMLCSidebarElement;
@@ -237,9 +227,6 @@ declare global {
 declare namespace LocalJSX {
     interface AppRoot {
         "history"?: RouterHistory;
-    }
-    interface CBanner {
-        "theme"?: string;
     }
     interface CCard {
     }
@@ -316,7 +303,6 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "app-root": AppRoot;
-        "c-banner": CBanner;
         "c-card": CCard;
         "c-page": CPage;
         "c-sidebar": CSidebar;
@@ -343,7 +329,6 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
-            "c-banner": LocalJSX.CBanner & JSXBase.HTMLAttributes<HTMLCBannerElement>;
             "c-card": LocalJSX.CCard & JSXBase.HTMLAttributes<HTMLCCardElement>;
             "c-page": LocalJSX.CPage & JSXBase.HTMLAttributes<HTMLCPageElement>;
             "c-sidebar": LocalJSX.CSidebar & JSXBase.HTMLAttributes<HTMLCSidebarElement>;

@@ -2,7 +2,7 @@
   "name": "RelAIEO_App",
   "private": true,
   "version": "0.0.1",
-  "description": "RelAIEO app for AI auditing",
+  "description": "RelAIEO - An ontology for AI auditing",
   "scripts": {
     "build": "stencil build",
     "start": "stencil build --dev --watch --serve",
