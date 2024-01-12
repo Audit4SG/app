@@ -32,6 +32,7 @@ export namespace Components {
         "variant": string;
     }
     interface EInput {
+        "action": string;
         "checked": boolean;
         "label": string;
         "name": string;
@@ -268,6 +269,7 @@ declare namespace LocalJSX {
         "variant"?: string;
     }
     interface EInput {
+        "action"?: string;
         "checked"?: boolean;
         "label"?: string;
         "name"?: string;

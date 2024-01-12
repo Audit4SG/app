@@ -10,12 +10,15 @@ interface LooseObject {
   shadow: true,
 })
 export class EInput {
+  inputEl!: HTMLInputElement;
+
   @Prop() label: string;
   @Prop() type: string;
   @Prop() name: string;
   @Prop() placeholder: string = 'Your text';
   @Prop() value: string;
   @Prop() checked: boolean = false;
+  @Prop() action: string = '';
 
   private styleObject_Textbox: LooseObject = {};
 
@@ -44,6 +47,7 @@ export class EInput {
     this.inputEventEmitter.emit({
       name: this.name,
       value: e.target.value.trim(),
+      isChecked: this.inputEl.checked,
     });
   }
 
@@ -62,7 +66,7 @@ export class EInput {
       return (
         <label class="container">
           {this.label}
-          <input id={this.name} type={this.type} name={this.name} value={this.value} checked={this.checked} onChange={e => this.onInput(e)} />
+          <input id={this.name} type={this.type} name={this.name} value={this.value} onChange={e => this.onInput(e)} ref={el => (this.inputEl = el as HTMLInputElement)} />
           <span class="checkmark"></span>
         </label>
       );

@@ -11,8 +11,10 @@ import { state } from '../../../global/script';
 export class VInit {
   @Prop() history: RouterHistory;
 
+  @State() isStartAuditDisabled: boolean = true;
   @State() wizardState: string = 'journeySelection';
   @State() topics: any;
+  @State() selectedTopics: any = [];
 
   @Listen('buttonClick') handleButtonClick(e) {
     if (e.detail.action === 'selectTopics') {
@@ -30,6 +32,13 @@ export class VInit {
   @Listen('inputEvent') handleInputEvent(e) {
     if (e.detail.name === 'journey') {
       state.journey = e.detail.value;
+    } else if (e.detail.name === 'topicSelection') {
+      console.log(`${e.detail.value}: ${e.detail.isChecked}`);
+      if (e.detail.isChecked) {
+        // Push into card stack
+      } else {
+        // Pop out of card stack
+      }
     }
   }
 
@@ -52,7 +61,7 @@ export class VInit {
       <l-spacer value={1}></l-spacer>
       <c-fadebox maxHeight="600px" overflow="scroll">
         {this.topics.map(topic => (
-          <e-input type="checkbox" name="topics" value={topic.value} label={topic.label}></e-input>
+          <e-input type="checkbox" name="topicSelection" value={topic.value} label={topic.label}></e-input>
         ))}
       </c-fadebox>
       <l-spacer value={1}></l-spacer>
@@ -60,7 +69,9 @@ export class VInit {
         <e-button variant="secondary" action="backToJourneySelection">
           Back
         </e-button>
-        <e-button action="startAuditing">Start Auditing</e-button>
+        <e-button action="startAuditing" disabled={this.isStartAuditDisabled}>
+          Start Auditing
+        </e-button>
       </div>
     </div>
   );
