@@ -18,20 +18,15 @@ button:disabled {
   background: var(--colour__green--default);
   color: var(--colour__blue--dark);
   border-radius: 2em;
+  border: 2px solid var(--colour__green--default);
 }
 
-.transparent--white {
-  outline: none;
-  border: none;
-  background: none;
-  color: rgba(255, 255, 255, 0.6);
-  padding: 0.3em 0.3em 0em 0.3em;
-  border-radius: 0.25em;
-  font-size: 1.25em;
-}
-.transparent--white:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.6);
+.secondary {
+  font-weight: 400;
+  padding: 0.3em 1.25em;
+  color: var(--colour__blue--dark);
+  border-radius: 2em;
+  border: 2px solid var(--colour__blue--dark);
 }
 
 /* BLOCK */

@@ -56,10 +56,12 @@ export class VInit {
         ))}
       </c-fadebox>
       <l-spacer value={1}></l-spacer>
-      <l-row justify="space-between">
-        <e-button action="backToJourneySelection">Back</e-button>
+      <div class="row">
+        <e-button variant="secondary" action="backToJourneySelection">
+          Back
+        </e-button>
         <e-button action="startAuditing">Start Auditing</e-button>
-      </l-row>
+      </div>
     </div>
   );
 
