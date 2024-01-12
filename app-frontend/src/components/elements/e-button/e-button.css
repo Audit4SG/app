@@ -1,7 +1,6 @@
 button {
   background: none;
   border: 0;
-  font-size: 0.9em;
 }
 
 button:hover {
@@ -14,17 +13,11 @@ button:disabled {
 
 /* VARIANT */
 .primary {
-  font-weight: 600;
-  padding: 0.5em 1em;
-  background: var(--color__blue--regular);
-  color: white;
-  border-radius: 0.25em;
-}
-.primary:hover {
-  background: var(--color__blue--dark);
-}
-.primary:active {
-  background: var(--color__blue--darkest);
+  font-weight: 400;
+  padding: 0.3em 1.25em;
+  background: var(--colour__green--default);
+  color: var(--colour__blue--dark);
+  border-radius: 2em;
 }
 
 .transparent--white {

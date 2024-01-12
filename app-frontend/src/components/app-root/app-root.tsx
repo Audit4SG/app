@@ -1,5 +1,6 @@
 import { Component, Prop, Listen, h } from '@stencil/core';
 import { injectHistory, RouterHistory } from '@stencil/router';
+import { fetchOntologyData, flattenJsonLd, generateClasses } from './helpers';
 import { state } from '../../global/script';
 
 @Component({
@@ -14,6 +15,17 @@ export class AppRoot {
     if (e.detail.action === 'route') {
       this.history.push(`${e.detail.value}`, {});
     }
+  }
+
+  async componentDidLoad() {
+    let { success, ontologyData } = await fetchOntologyData();
+
+    if (!success) {
+      return alert('❌ Could not fetch ontology data. Please contact the team');
+    }
+
+    let flattenedOntologyData: any = await flattenJsonLd(ontologyData);
+    let classes: any = generateClasses(flattenedOntologyData);
   }
 
   render() {

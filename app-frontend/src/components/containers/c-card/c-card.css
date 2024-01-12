@@ -1,7 +1,13 @@
-:host {
-  display: block;
-  border: 1px solid var(--color__grey--lightest);
-  border-radius: var(--site__border-radius);
-  padding: var(--site__padding);
+.card {
+  display: inline-block;
+  padding: var(--layout__padding--card);
   background: white;
+  border-radius: var(--layout__border-radius--global);
+  -webkit-box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.card--green {
+  border: 1px solid var(--colour__green--default);
 }

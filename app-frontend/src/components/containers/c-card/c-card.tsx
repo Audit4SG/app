@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, Prop, h } from '@stencil/core';
 
 @Component({
   tag: 'c-card',
@@ -6,13 +6,24 @@ import { Component, Host, h } from '@stencil/core';
   shadow: true,
 })
 export class CCard {
+  @Prop() theme: string = 'default';
+
+  private styleClasses: string = '';
+
+  componentWillLoad() {
+    this.styleClasses = 'card';
+    if (this.theme === 'green') {
+      this.styleClasses = `${this.styleClasses} card--green`;
+    } else {
+      this.styleClasses = `${this.styleClasses} card--grey`;
+    }
+  }
 
   render() {
     return (
-      <Host>
-        <slot></slot>
-      </Host>
+      <div class={this.styleClasses}>
+        <slot />
+      </div>
     );
   }
-
 }

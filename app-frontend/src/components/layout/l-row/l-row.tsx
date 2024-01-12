@@ -11,8 +11,9 @@ interface LooseObject {
 })
 export class LRow {
   @Prop() variant: string = '';
-  @Prop() justifyContent: string = '';
+  @Prop() justify: string = '';
   @Prop() align: string = 'center';
+  @Prop() direction: string = 'row';
 
   private styleObject: LooseObject = {};
 
@@ -23,7 +24,8 @@ export class LRow {
   generate_StyleObject() {
     this.styleObject.display = 'flex';
     this.styleObject.alignItems = this.align;
-    this.styleObject.justifyContent = this.justifyContent;
+    this.styleObject.justifyContent = this.justify;
+    this.styleObject.flexDirection = this.direction;
   }
 
   render() {

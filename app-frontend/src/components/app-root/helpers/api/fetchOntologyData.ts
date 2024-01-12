@@ -2,9 +2,9 @@ import { Vars } from '../../../../global/script';
 
 export const fetchOntologyData = async () => {
   let url: string = `${Vars.api.url}/${Vars.api.endpoints.getOntology}`;
-  console.log(url);
   let success: boolean = false;
-  let payload: any;
+  let ontologyData: any;
+  let sessionId: string = '';
 
   let options: any = {
     method: 'GET',
@@ -16,8 +16,8 @@ export const fetchOntologyData = async () => {
     .then(response => response.json())
     .then(data => {
       success = true;
-      payload = data.payload;
-      console.log(payload);
+      ontologyData = data.ontologyData;
+      sessionId = data.sessionId;
     })
     .catch(error => {
       console.log(error);
@@ -25,7 +25,8 @@ export const fetchOntologyData = async () => {
 
   let returnObj = {
     success: success,
-    payload: payload,
+    ontologyData: JSON.parse(ontologyData),
+    sessionId: sessionId,
   };
 
   return returnObj;

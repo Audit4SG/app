@@ -159,7 +159,7 @@ export class VReading {
   render() {
     return (
       <Host>
-        <l-row justifyContent="space-between">
+        <l-row justify="space-between">
           <e-text>
             <strong>Audit summary</strong>
           </e-text>

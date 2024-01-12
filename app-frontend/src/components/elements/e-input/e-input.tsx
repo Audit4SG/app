@@ -11,10 +11,10 @@ interface LooseObject {
 })
 export class EInput {
   @Event({
-    eventName: 'textInput',
+    eventName: 'inputEvent',
     bubbles: true,
   })
-  event_TextInput: EventEmitter;
+  inputEventEmitter: EventEmitter;
 
   @Prop() label: string;
   @Prop() type: string;
@@ -40,8 +40,15 @@ export class EInput {
     this.styleObject_Textbox.boxSizing = 'border-box';
   }
 
-  handle_AlphanumericInput(e) {
-    this.event_TextInput.emit({
+  handleAlphanumericInput(e) {
+    this.inputEventEmitter.emit({
+      name: this.name,
+      value: e.target.value.trim(),
+    });
+  }
+
+  handleRadioChange(e) {
+    this.inputEventEmitter.emit({
       name: this.name,
       value: e.target.value.trim(),
     });
@@ -49,12 +56,12 @@ export class EInput {
 
   render() {
     if (this.type === 'email' || this.type === 'number' || this.type === 'password' || this.type === 'text') {
-      return <input style={this.styleObject_Textbox} type={this.type} placeholder={this.placeholder} onInput={e => this.handle_AlphanumericInput(e)} />;
+      return <input style={this.styleObject_Textbox} type={this.type} placeholder={this.placeholder} onInput={e => this.handleAlphanumericInput(e)} />;
     } else if (this.type === 'radio') {
       return (
         <l-row>
-          <input id={this.name} type={this.type} name={this.name} value={this.value} checked={this.checked} />
-          <l-spacer variant="horizontal" value={0.15}></l-spacer>
+          <input id={this.name} type={this.type} name={this.name} value={this.value} checked={this.checked} onChange={e => this.handleRadioChange(e)} />
+          <l-spacer variant="horizontal" value={0.3}></l-spacer>
           <label htmlFor={this.name}>{this.label}</label>
         </l-row>
       );

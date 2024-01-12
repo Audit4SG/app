@@ -11,13 +11,17 @@
 :root {
   --font__family--global: KarlRegular, sans-serif;
   --font__line-height--global: 1.5;
-  --font__size--body: '16px';
+  --font__size--body: 18px;
 
   --colour__background--global: #ffe7e5;
+  --colour__blue--dark: #011e2b;
+  --colour__green--default: #08f26e;
   --colour__grey--dark: rgba(0, 0, 0, 0.87);
   --colour__grey--medium: rgba(0, 0, 0, 0.6);
   --colour__grey--light: rgba(0, 0, 0, 0.3);
   --colour__grey--lightest: rgba(0, 0, 0, 0.1);
 
   --layout__margin--global: 1.5em 1em;
+  --layout__padding--card: 0.75em 1.25em;
+  --layout__border-radius--global: 1em;
 }

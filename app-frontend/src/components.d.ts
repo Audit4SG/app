@@ -11,6 +11,7 @@ export namespace Components {
         "history": RouterHistory;
     }
     interface CCard {
+        "theme": string;
     }
     interface CPage {
     }
@@ -55,7 +56,8 @@ export namespace Components {
     }
     interface LRow {
         "align": string;
-        "justifyContent": string;
+        "direction": string;
+        "justify": string;
         "variant": string;
     }
     interface LSeperator {
@@ -229,6 +231,7 @@ declare namespace LocalJSX {
         "history"?: RouterHistory;
     }
     interface CCard {
+        "theme"?: string;
     }
     interface CPage {
     }
@@ -247,7 +250,7 @@ declare namespace LocalJSX {
         "checked"?: boolean;
         "label"?: string;
         "name"?: string;
-        "onTextInput"?: (event: CustomEvent<any>) => void;
+        "onInputEvent"?: (event: CustomEvent<any>) => void;
         "placeholder"?: string;
         "type"?: string;
         "value"?: string;
@@ -277,7 +280,8 @@ declare namespace LocalJSX {
     }
     interface LRow {
         "align"?: string;
-        "justifyContent"?: string;
+        "direction"?: string;
+        "justify"?: string;
         "variant"?: string;
     }
     interface LSeperator {

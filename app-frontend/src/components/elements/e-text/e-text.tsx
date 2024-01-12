@@ -20,23 +20,11 @@ export class EText {
   }
 
   render() {
-    if (this.variant === 'display') {
-      return (
-        <h1 class={this.styleClasses}>
-          <slot></slot>
-        </h1>
-      );
-    } else if (this.variant === 'heading') {
+    if (this.variant === 'heading') {
       return (
         <h2 class={this.styleClasses}>
           <slot />
         </h2>
-      );
-    } else if (this.variant === 'subHeading') {
-      return (
-        <h3 class={this.styleClasses}>
-          <slot />
-        </h3>
       );
     } else {
       return (
