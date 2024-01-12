@@ -2,7 +2,9 @@
 export { fetchOntologyData } from './api/fetchOntologyData';
 
 // Generators
-export { generateClasses } from './generators/generateClasses';
+export { generateNodes } from './generators/generateNodes';
+export { generateNodeRelations } from './generators/generateNodeRelations';
+export { generateTopics } from './generators/generateTopics';
 export { generateTitleCase } from './generators/generateTitleCase';
 
 // Processing

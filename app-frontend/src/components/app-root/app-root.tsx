@@ -1,7 +1,8 @@
 import { Component, Prop, Listen, h } from '@stencil/core';
 import { injectHistory, RouterHistory } from '@stencil/router';
-import { fetchOntologyData, flattenJsonLd, generateClasses } from './helpers';
+import { fetchOntologyData, flattenJsonLd, generateNodes, generateNodeRelations, generateTopics } from './helpers';
 import { state } from '../../global/script';
+import { generateObjectRelations } from './helpers/generators/generateObjectRelations';
 
 @Component({
   tag: 'app-root',
@@ -25,7 +26,15 @@ export class AppRoot {
     }
 
     let flattenedOntologyData: any = await flattenJsonLd(ontologyData);
-    let classes: any = generateClasses(flattenedOntologyData);
+    let nodes: any = generateNodes(flattenedOntologyData);
+    let nodeRelations: any = generateNodeRelations(nodes);
+    let objectRelations: any = generateObjectRelations(flattenedOntologyData);
+    let topics: any = generateTopics(nodes, nodeRelations);
+
+    state.nodes = JSON.stringify(nodes);
+    state.nodeRelations = JSON.stringify(nodeRelations);
+    state.objectRelations = JSON.stringify(objectRelations);
+    state.topics = JSON.stringify(topics);
   }
 
   render() {

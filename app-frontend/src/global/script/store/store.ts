@@ -1,9 +1,8 @@
 import { createStore } from '@stencil/store';
 
 export const { state } = createStore({
-  classes: '',
-  classRelations: '',
   nodes: '',
+  nodeRelations: '',
   objectRelations: '',
   topics: '',
   isInitialized: false,
