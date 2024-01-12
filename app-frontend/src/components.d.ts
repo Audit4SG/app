@@ -74,8 +74,10 @@ export namespace Components {
         "history": RouterHistory;
     }
     interface VInit {
+        "history": RouterHistory;
     }
     interface VOntology {
+        "history": RouterHistory;
     }
     interface VReading {
         "history": RouterHistory;
@@ -298,8 +300,10 @@ declare namespace LocalJSX {
         "history"?: RouterHistory;
     }
     interface VInit {
+        "history"?: RouterHistory;
     }
     interface VOntology {
+        "history"?: RouterHistory;
     }
     interface VReading {
         "history"?: RouterHistory;

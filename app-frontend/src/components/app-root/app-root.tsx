@@ -18,6 +18,14 @@ export class AppRoot {
     }
   }
 
+  private rootComponent: string = 'v-init';
+
+  componentWillLoad() {
+    if (state.isInitialized) {
+      this.rootComponent = 'v-ontology';
+    }
+  }
+
   async componentDidLoad() {
     let { success, ontologyData } = await fetchOntologyData();
 
@@ -41,7 +49,7 @@ export class AppRoot {
     return (
       <stencil-router>
         <stencil-route-switch scrollTopOffset={0}>
-          <stencil-route url="/" component={!state.isInitialized ? 'v-init' : 'v-ontology'} exact={true} />
+          <stencil-route url="/" component={`${this.rootComponent}`} exact={true} />
           <stencil-route url="/init" component="v-init" exact={true} />
           <stencil-route url="/ontology" component="v-ontology" exact={true} />
           <stencil-route url="/reading/:sessionId" component="v-reading" exact={true} />

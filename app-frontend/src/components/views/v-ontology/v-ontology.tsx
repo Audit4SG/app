@@ -1,4 +1,6 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, Prop, Host, h } from '@stencil/core';
+import { injectHistory, RouterHistory } from '@stencil/router';
+import { state } from '../../../global/script';
 
 @Component({
   tag: 'v-ontology',
@@ -6,6 +8,14 @@ import { Component, Host, h } from '@stencil/core';
   shadow: true,
 })
 export class VOntology {
+  @Prop() history: RouterHistory;
+
+  componentWillLoad() {
+    if (!state.isInitialized) {
+      this.history.push('/ontology', {});
+    }
+  }
+
   render() {
     return (
       <Host>
@@ -14,3 +24,5 @@ export class VOntology {
     );
   }
 }
+
+injectHistory(VOntology);

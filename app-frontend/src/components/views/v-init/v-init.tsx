@@ -1,4 +1,5 @@
-import { Component, FunctionalComponent, Listen, State, Host, h } from '@stencil/core';
+import { Component, Prop, FunctionalComponent, Listen, State, Host, h } from '@stencil/core';
+import { injectHistory, RouterHistory } from '@stencil/router';
 import { state } from '../../../global/script';
 
 @Component({
@@ -7,6 +8,17 @@ import { state } from '../../../global/script';
   shadow: true,
 })
 export class VInit {
+  @Prop() history: RouterHistory;
+
+  @Listen('buttonClick') handleButtonClick(e) {
+    if (e.detail.action === 'selectTopics') {
+      this.wizardState = 'topicSelection';
+    } else if (e.detail.action === 'startAuditing') {
+      state.isInitialized = true;
+      this.history.push('/ontology', {});
+    }
+  }
+
   @Listen('inputEvent') handleInputEvent(e) {
     if (e.detail.name === 'journey') {
       state.journey = e.detail.value;
@@ -23,12 +35,17 @@ export class VInit {
       <e-input type="radio" name="journey" value="exploration" checked={state.journey === 'exploration' ? true : false} label="I will explore all the topics"></e-input>
       <l-spacer value={0.5}></l-spacer>
       <l-row direction="row-reverse" justify="space-between">
-        <e-button>{state.journey === 'selection' ? 'Next' : 'Start Auditing'}</e-button>
+        <e-button action={state.journey === 'selection' ? 'selectTopics' : 'startAuditing'}>{state.journey === 'selection' ? 'Next' : 'Start Auditing'}</e-button>
       </l-row>
     </div>
   );
 
-  TopicSelection: FunctionalComponent = () => <div></div>;
+  TopicSelection: FunctionalComponent = () => (
+    <div>
+      <e-text variant="heading">Choose topics</e-text>
+      <l-spacer value={0.5}></l-spacer>
+    </div>
+  );
 
   render() {
     return (
@@ -41,3 +58,5 @@ export class VInit {
     );
   }
 }
+
+injectHistory(VInit);
