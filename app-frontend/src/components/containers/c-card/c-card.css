@@ -1,4 +1,5 @@
 .card {
+  width: 100%;
   display: inline-block;
   padding: var(--layout__padding--card);
   background: white;

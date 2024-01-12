@@ -4,3 +4,7 @@
   justify-content: space-around;
   align-items: center;
 }
+
+c-card {
+  width: 320px;
+}

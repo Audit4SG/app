@@ -10,12 +10,6 @@ interface LooseObject {
   shadow: true,
 })
 export class EInput {
-  @Event({
-    eventName: 'inputEvent',
-    bubbles: true,
-  })
-  inputEventEmitter: EventEmitter;
-
   @Prop() label: string;
   @Prop() type: string;
   @Prop() name: string;
@@ -24,6 +18,12 @@ export class EInput {
   @Prop() checked: boolean = false;
 
   private styleObject_Textbox: LooseObject = {};
+
+  @Event({
+    eventName: 'inputEvent',
+    bubbles: true,
+  })
+  inputEventEmitter: EventEmitter;
 
   componentWillLoad() {
     if (this.type === 'email' || this.type === 'number' || this.type === 'password' || this.type === 'text') {
@@ -40,14 +40,7 @@ export class EInput {
     this.styleObject_Textbox.boxSizing = 'border-box';
   }
 
-  handleAlphanumericInput(e) {
-    this.inputEventEmitter.emit({
-      name: this.name,
-      value: e.target.value.trim(),
-    });
-  }
-
-  handleRadioChange(e) {
+  onInput(e) {
     this.inputEventEmitter.emit({
       name: this.name,
       value: e.target.value.trim(),
@@ -56,14 +49,22 @@ export class EInput {
 
   render() {
     if (this.type === 'email' || this.type === 'number' || this.type === 'password' || this.type === 'text') {
-      return <input style={this.styleObject_Textbox} type={this.type} placeholder={this.placeholder} onInput={e => this.handleAlphanumericInput(e)} />;
+      return <input style={this.styleObject_Textbox} type={this.type} placeholder={this.placeholder} onInput={e => this.onInput(e)} />;
     } else if (this.type === 'radio') {
       return (
         <l-row>
-          <input id={this.name} type={this.type} name={this.name} value={this.value} checked={this.checked} onChange={e => this.handleRadioChange(e)} />
+          <input id={this.name} type={this.type} name={this.name} value={this.value} checked={this.checked} onChange={e => this.onInput(e)} />
           <l-spacer variant="horizontal" value={0.3}></l-spacer>
           <label htmlFor={this.name}>{this.label}</label>
         </l-row>
+      );
+    } else if (this.type === 'checkbox') {
+      return (
+        <label class="container">
+          {this.label}
+          <input id={this.name} type={this.type} name={this.name} value={this.value} checked={this.checked} onChange={e => this.onInput(e)} />
+          <span class="checkmark"></span>
+        </label>
       );
     }
   }

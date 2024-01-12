@@ -13,6 +13,12 @@ export namespace Components {
     interface CCard {
         "theme": string;
     }
+    interface CFadebox {
+        "fadeBottom": string;
+        "fadeTop": string;
+        "maxHeight": string;
+        "overflow": string;
+    }
     interface CPage {
     }
     interface CSidebar {
@@ -96,6 +102,12 @@ declare global {
     var HTMLCCardElement: {
         prototype: HTMLCCardElement;
         new (): HTMLCCardElement;
+    };
+    interface HTMLCFadeboxElement extends Components.CFadebox, HTMLStencilElement {
+    }
+    var HTMLCFadeboxElement: {
+        prototype: HTMLCFadeboxElement;
+        new (): HTMLCFadeboxElement;
     };
     interface HTMLCPageElement extends Components.CPage, HTMLStencilElement {
     }
@@ -208,6 +220,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "app-root": HTMLAppRootElement;
         "c-card": HTMLCCardElement;
+        "c-fadebox": HTMLCFadeboxElement;
         "c-page": HTMLCPageElement;
         "c-sidebar": HTMLCSidebarElement;
         "e-button": HTMLEButtonElement;
@@ -234,6 +247,12 @@ declare namespace LocalJSX {
     }
     interface CCard {
         "theme"?: string;
+    }
+    interface CFadebox {
+        "fadeBottom"?: string;
+        "fadeTop"?: string;
+        "maxHeight"?: string;
+        "overflow"?: string;
     }
     interface CPage {
     }
@@ -312,6 +331,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "app-root": AppRoot;
         "c-card": CCard;
+        "c-fadebox": CFadebox;
         "c-page": CPage;
         "c-sidebar": CSidebar;
         "e-button": EButton;
@@ -338,6 +358,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "c-card": LocalJSX.CCard & JSXBase.HTMLAttributes<HTMLCCardElement>;
+            "c-fadebox": LocalJSX.CFadebox & JSXBase.HTMLAttributes<HTMLCFadeboxElement>;
             "c-page": LocalJSX.CPage & JSXBase.HTMLAttributes<HTMLCPageElement>;
             "c-sidebar": LocalJSX.CSidebar & JSXBase.HTMLAttributes<HTMLCSidebarElement>;
             "e-button": LocalJSX.EButton & JSXBase.HTMLAttributes<HTMLEButtonElement>;
