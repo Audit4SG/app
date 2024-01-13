@@ -1,7 +1,7 @@
 import { Component, Prop, FunctionalComponent, Listen, State, Host, h } from '@stencil/core';
 import { injectHistory, RouterHistory } from '@stencil/router';
 import { generateTopics } from './helpers';
-import { pushIntoCardStack, popOutOfCardStack } from '../../../global/script/helpers';
+import { pushIntoCardStack, popOutOfCardStack, getLengthOfCardStack } from '../../../global/script/helpers';
 import { state } from '../../../global/script';
 
 @Component({
@@ -12,7 +12,7 @@ import { state } from '../../../global/script';
 export class VInit {
   @Prop() history: RouterHistory;
 
-  @State() isStartAuditDisabled: boolean = true;
+  @State() isCardStackEmpty: boolean = true;
   @State() wizardState: string = 'journeySelection';
   @State() topics: any;
   @State() selectedTopics: any = [];
@@ -39,7 +39,11 @@ export class VInit {
       } else {
         popOutOfCardStack(e.detail.value);
       }
-      console.log(JSON.parse(state.cardStack));
+      if (getLengthOfCardStack() > 0) {
+        this.isCardStackEmpty = false;
+      } else {
+        this.isCardStackEmpty = true;
+      }
     }
   }
 
@@ -70,7 +74,7 @@ export class VInit {
         <e-button variant="secondary" action="backToJourneySelection">
           Back
         </e-button>
-        <e-button action="startAuditing" disabled={this.isStartAuditDisabled}>
+        <e-button action="startAuditing" disabled={this.isCardStackEmpty}>
           Start Auditing
         </e-button>
       </div>
