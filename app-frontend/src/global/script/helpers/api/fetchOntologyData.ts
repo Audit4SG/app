@@ -1,4 +1,4 @@
-import { Vars } from '../../../../global/script';
+import { Vars } from '../..';
 
 export const fetchOntologyData = async () => {
   let url: string = `${Vars.api.url}/${Vars.api.endpoints.getOntology}`;

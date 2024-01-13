@@ -1,6 +1,7 @@
 import { Component, Prop, FunctionalComponent, Listen, State, Host, h } from '@stencil/core';
 import { injectHistory, RouterHistory } from '@stencil/router';
 import { generateTopics } from './helpers';
+import { pushIntoCardStack, popOutOfCardStack } from '../../../global/script/helpers';
 import { state } from '../../../global/script';
 
 @Component({
@@ -33,12 +34,12 @@ export class VInit {
     if (e.detail.name === 'journey') {
       state.journey = e.detail.value;
     } else if (e.detail.name === 'topicSelection') {
-      console.log(`${e.detail.value}: ${e.detail.isChecked}`);
       if (e.detail.isChecked) {
-        // Push into card stack
+        pushIntoCardStack(e.detail.value);
       } else {
-        // Pop out of card stack
+        popOutOfCardStack(e.detail.value);
       }
+      console.log(JSON.parse(state.cardStack));
     }
   }
 

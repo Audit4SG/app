@@ -47,7 +47,7 @@ export class EInput {
     this.inputEventEmitter.emit({
       name: this.name,
       value: e.target.value.trim(),
-      isChecked: this.inputEl.checked,
+      isChecked: this.inputEl ? this.inputEl.checked : undefined,
     });
   }
 

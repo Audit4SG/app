@@ -1,6 +1,3 @@
-// API
-export { fetchOntologyData } from './api/fetchOntologyData';
-
 // Generators
 export { generateNodes } from './generators/generateNodes';
 export { generateNodeRelations } from './generators/generateNodeRelations';

@@ -1,6 +1,7 @@
 import { Component, Prop, Listen, h } from '@stencil/core';
 import { injectHistory, RouterHistory } from '@stencil/router';
-import { fetchOntologyData, flattenJsonLd, generateNodes, generateNodeRelations, generateTopics } from './helpers';
+import { fetchOntologyData } from '../../global/script/helpers';
+import { flattenJsonLd, generateNodes, generateNodeRelations, generateTopics } from './helpers';
 import { state } from '../../global/script';
 import { generateObjectRelations } from './helpers/generators/generateObjectRelations';
 
