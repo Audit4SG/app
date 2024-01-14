@@ -41,11 +41,14 @@ export class VOntology {
   }
 
   componentDidLoad() {
-    this.nodes = JSON.parse(state.nodes);
-    this.nodeRelations = JSON.parse(state.nodeRelations);
+    if (state.nodes.length === 0 || state.nodeRelations.length === 0) {
+      return;
+    }
     if (state.cardStack.length > 0) {
       this.cardStack = JSON.parse(state.cardStack);
     }
+    this.nodes = JSON.parse(state.nodes);
+    this.nodeRelations = JSON.parse(state.nodeRelations);
     this.generateGraph();
   }
 
