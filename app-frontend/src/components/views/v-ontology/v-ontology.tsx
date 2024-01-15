@@ -54,9 +54,12 @@ export class VOntology {
 
   generateGraph() {
     gsap.to(window, { duration: 0.1, scrollTo: { y: this.svgHeight / 2, x: this.svgWidth / 2 } });
-    this.zoom = d3.zoom().on('zoom', (event: any) => {
-      this.graphContainer.attr('transform', event.transform);
-    });
+    this.zoom = d3
+      .zoom()
+      .on('zoom', (event: any) => {
+        this.graphContainer.attr('transform', event.transform);
+      })
+      .scaleExtent([0.03, 0.1]);
     this.svg = d3.select(this.svgEl).call(this.zoom);
     this.graphContainer = this.svg.append('g');
     this.graph = this.graphContainer.append('g');
@@ -257,12 +260,7 @@ export class VOntology {
     // } else if (this.journey === 'exploration') {
     //   this.isFilterContainerCollapsed = true;
     // }
-
-    // Manual correction of ontology
-    this.correctOntology();
   }
-
-  correctOntology() {}
 
   handleBodyClick() {}
 
