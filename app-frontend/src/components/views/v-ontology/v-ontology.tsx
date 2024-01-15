@@ -59,7 +59,7 @@ export class VOntology {
       .on('zoom', (event: any) => {
         this.graphContainer.attr('transform', event.transform);
       })
-      .scaleExtent([0.04, 0.1]);
+      .scaleExtent([0.04, 0.5]);
     this.svg = d3.select(this.svgEl).call(this.zoom);
     this.graphContainer = this.svg.append('g');
     this.graph = this.graphContainer.append('g');
