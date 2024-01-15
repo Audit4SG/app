@@ -105,7 +105,13 @@ export class VOntology {
         return `${link.source.split('#')[1]}-${link.target.split('#')[1]}`;
       })
       .attr('stroke-width', 5)
-      .attr('stroke', 'rgb(1, 30, 43)');
+      .attr('stroke', link => {
+        if (!link.isVisible) {
+          return 'none';
+        } else {
+          return 'rgb(1, 30, 43)';
+        }
+      });
 
     this.nodeElements = this.graph
       .append('g')
@@ -251,7 +257,12 @@ export class VOntology {
     // } else if (this.journey === 'exploration') {
     //   this.isFilterContainerCollapsed = true;
     // }
+
+    // Manual correction of ontology
+    this.correctOntology();
   }
+
+  correctOntology() {}
 
   handleBodyClick() {}
 

@@ -8,6 +8,7 @@ export const generateNodeRelations = (nodes: any, flattenedOntologyData: any) =>
           target: y.id,
           source: x.id,
           strength: 0.01,
+          isVisible: true,
         };
         nodeRelations.push(obj);
       }
@@ -33,13 +34,14 @@ export const generateNodeRelations = (nodes: any, flattenedOntologyData: any) =>
           source: domain,
           strength: 0.1,
           label: objectProperty,
+          isVisible: true,
         };
         nodeRelations.push(obj);
       }
     }
   });
 
-  //Manual nodeRelations
+  //Manual nodeRelations corrections
   let correctionObj1 = {
     target: 'http://www.ontology.audit4sg.org/RelAIEO#ai4sg',
     source: 'http://www.ontology.audit4sg.org/RelAIEO#not_listed',
@@ -47,15 +49,15 @@ export const generateNodeRelations = (nodes: any, flattenedOntologyData: any) =>
     isVisible: false,
   };
 
-  // let correctionObj2 = {
-  //   target: '',
-  //   source: '',
-  //   strength: 0.01,
-  //   isVisible: false,
-  // };
+  let correctionObj2 = {
+    target: 'http://www.ontology.audit4sg.org/RelAIEO#unintended_consequence',
+    source: 'http://www.ontology.audit4sg.org/RelAIEO#ai_system',
+    strength: 0.01,
+    isVisible: false,
+  };
 
   nodeRelations.push(correctionObj1);
-  // nodeRelations.push(correctionObj2);
+  nodeRelations.push(correctionObj2);
 
   return nodeRelations;
 };
