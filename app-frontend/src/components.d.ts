@@ -23,6 +23,12 @@ export namespace Components {
     }
     interface CSidebar {
     }
+    interface CStickyArea {
+        "bottom": string;
+        "left": string;
+        "right": string;
+        "top": string;
+    }
     interface EButton {
         "action": string;
         "active": boolean;
@@ -121,6 +127,12 @@ declare global {
     var HTMLCSidebarElement: {
         prototype: HTMLCSidebarElement;
         new (): HTMLCSidebarElement;
+    };
+    interface HTMLCStickyAreaElement extends Components.CStickyArea, HTMLStencilElement {
+    }
+    var HTMLCStickyAreaElement: {
+        prototype: HTMLCStickyAreaElement;
+        new (): HTMLCStickyAreaElement;
     };
     interface HTMLEButtonElement extends Components.EButton, HTMLStencilElement {
     }
@@ -224,6 +236,7 @@ declare global {
         "c-fadebox": HTMLCFadeboxElement;
         "c-page": HTMLCPageElement;
         "c-sidebar": HTMLCSidebarElement;
+        "c-sticky-area": HTMLCStickyAreaElement;
         "e-button": HTMLEButtonElement;
         "e-input": HTMLEInputElement;
         "e-link": HTMLELinkElement;
@@ -258,6 +271,12 @@ declare namespace LocalJSX {
     interface CPage {
     }
     interface CSidebar {
+    }
+    interface CStickyArea {
+        "bottom"?: string;
+        "left"?: string;
+        "right"?: string;
+        "top"?: string;
     }
     interface EButton {
         "action"?: string;
@@ -336,6 +355,7 @@ declare namespace LocalJSX {
         "c-fadebox": CFadebox;
         "c-page": CPage;
         "c-sidebar": CSidebar;
+        "c-sticky-area": CStickyArea;
         "e-button": EButton;
         "e-input": EInput;
         "e-link": ELink;
@@ -363,6 +383,7 @@ declare module "@stencil/core" {
             "c-fadebox": LocalJSX.CFadebox & JSXBase.HTMLAttributes<HTMLCFadeboxElement>;
             "c-page": LocalJSX.CPage & JSXBase.HTMLAttributes<HTMLCPageElement>;
             "c-sidebar": LocalJSX.CSidebar & JSXBase.HTMLAttributes<HTMLCSidebarElement>;
+            "c-sticky-area": LocalJSX.CStickyArea & JSXBase.HTMLAttributes<HTMLCStickyAreaElement>;
             "e-button": LocalJSX.EButton & JSXBase.HTMLAttributes<HTMLEButtonElement>;
             "e-input": LocalJSX.EInput & JSXBase.HTMLAttributes<HTMLEInputElement>;
             "e-link": LocalJSX.ELink & JSXBase.HTMLAttributes<HTMLELinkElement>;

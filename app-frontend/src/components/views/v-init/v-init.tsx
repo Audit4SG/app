@@ -88,6 +88,11 @@ export class VInit {
           {this.wizardState === 'journeySelection' && <this.JourneySelection></this.JourneySelection>}
           {this.wizardState === 'topicSelection' && <this.TopicSelection></this.TopicSelection>}
         </c-card>
+        <c-sticky-area bottom="1em" right="1em">
+          <e-link href="https://audit4sg.org" target="_blank">
+            <img src="../../../assets/icon/icon.png" width={75} />
+          </e-link>
+        </c-sticky-area>
       </Host>
     );
   }

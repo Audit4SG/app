@@ -267,7 +267,18 @@ export class VOntology {
   render() {
     return (
       <Host>
+        <c-sticky-area top="1em" left="1em">
+          <e-text>Menu</e-text>
+        </c-sticky-area>
+        <c-sticky-area top="1em" right="1em">
+          <e-text>Search</e-text>
+        </c-sticky-area>
         <svg height={this.svgHeight} width={this.svgWidth} ref={el => (this.svgEl = el as SVGElement)} onClick={() => this.handleBodyClick()}></svg>
+        <c-sticky-area bottom="1em" right="1em">
+          <e-link href="https://audit4sg.org" target="_blank">
+            <img src="../../../assets/icon/icon.png" width={75} />
+          </e-link>
+        </c-sticky-area>
       </Host>
     );
   }
