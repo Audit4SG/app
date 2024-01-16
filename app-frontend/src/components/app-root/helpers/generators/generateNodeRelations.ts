@@ -5,6 +5,7 @@ export const generateNodeRelations = (nodes: any, flattenedOntologyData: any) =>
     nodes.map((y: any) => {
       if (x.id === y.subClassOf) {
         let obj = {
+          type: 'nodeRelation',
           target: y.id,
           source: x.id,
           strength: 0.01,
@@ -30,6 +31,7 @@ export const generateNodeRelations = (nodes: any, flattenedOntologyData: any) =>
       }
       if (domain.length > 0 && range.length > 0) {
         let obj = {
+          type: 'objectRelation',
           target: range,
           source: domain,
           strength: 0.1,
@@ -43,6 +45,7 @@ export const generateNodeRelations = (nodes: any, flattenedOntologyData: any) =>
 
   //Manual nodeRelations corrections
   let correctionObj1 = {
+    type: 'nodeRelation',
     target: 'http://www.ontology.audit4sg.org/RelAIEO#ai4sg',
     source: 'http://www.ontology.audit4sg.org/RelAIEO#not_listed',
     strength: 0.01,
@@ -50,6 +53,7 @@ export const generateNodeRelations = (nodes: any, flattenedOntologyData: any) =>
   };
 
   let correctionObj2 = {
+    type: 'nodeRelation',
     target: 'http://www.ontology.audit4sg.org/RelAIEO#unintended_consequence',
     source: 'http://www.ontology.audit4sg.org/RelAIEO#ai_system',
     strength: 0.01,

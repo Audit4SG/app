@@ -9,7 +9,7 @@ export class PNavigation {
   render() {
     return (
       <Host>
-        <p>Navigation</p>
+        <e-text>Navigation</e-text>
       </Host>
     );
   }

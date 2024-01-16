@@ -4,7 +4,9 @@ export const generateTopics = (nodes: any, nodeRelations: any) => {
   nodes.map((node: any) => {
     nodeRelations.map((nodeRelation: any) => {
       if (node.id === nodeRelation.target) {
-        nodesWithParents.push(node);
+        if (nodeRelation.type === 'nodeRelation') {
+          nodesWithParents.push(node);
+        }
       }
     });
   });

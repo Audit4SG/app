@@ -268,7 +268,7 @@ export class VOntology {
     return (
       <Host>
         <c-sticky-area top="1em" left="1em">
-          <e-text>Menu</e-text>
+          <p-navigation></p-navigation>
         </c-sticky-area>
         <c-sticky-area top="1em" right="1em">
           <e-text>Search</e-text>
