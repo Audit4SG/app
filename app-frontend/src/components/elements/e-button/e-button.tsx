@@ -12,7 +12,9 @@ export class EButton {
   @Prop() size: string = 'default';
   @Prop() disabled: boolean = false;
   @Prop() active: boolean = false;
+  @Prop() theme: string;
 
+  @State() buttonTheme: string;
   @State() inAction: boolean = false;
 
   @Event({
@@ -21,10 +23,17 @@ export class EButton {
   })
   event_ButtonClick: EventEmitter;
 
-  @Watch('active') watch_ActionStatus(val_New: boolean, val_Old: boolean) {
-    if (val_New != val_Old) {
-      this.inAction = val_New;
+  @Watch('active') watchActionStatus(newVal: boolean, oldVal: boolean) {
+    if (newVal != oldVal) {
+      this.inAction = newVal;
     }
+  }
+
+  @Watch('theme') watchThemeStatus(newVal: string, oldVal: string) {
+    if (newVal != oldVal) {
+      this.buttonTheme = newVal;
+    }
+    this.generateStyleClasses();
   }
 
   private handle_ButtonClick(e) {
@@ -39,11 +48,15 @@ export class EButton {
 
   componentWillLoad() {
     this.inAction = this.active;
-    this.generate_StyleClasses();
+    this.generateStyleClasses();
   }
 
-  generate_StyleClasses() {
+  generateStyleClasses() {
     this.styleClasses = `${this.variant} ${this.size}`;
+    if (this.theme) {
+      this.buttonTheme = this.theme;
+      this.styleClasses = `${this.styleClasses} ${this.variant}--${this.buttonTheme}`;
+    }
   }
 
   Spinner: FunctionalComponent = () => (

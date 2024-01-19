@@ -34,6 +34,7 @@ export namespace Components {
         "active": boolean;
         "disabled": boolean;
         "size": string;
+        "theme": string;
         "value": any;
         "variant": string;
     }
@@ -284,6 +285,7 @@ declare namespace LocalJSX {
         "disabled"?: boolean;
         "onButtonClick"?: (event: CustomEvent<any>) => void;
         "size"?: string;
+        "theme"?: string;
         "value"?: any;
         "variant"?: string;
     }

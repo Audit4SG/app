@@ -46,7 +46,7 @@ export const generateNodeRelations = (nodes: any, flattenedOntologyData: any) =>
   //Manual nodeRelations corrections
   let correctionObj1 = {
     type: 'nodeRelation',
-    target: 'http://www.ontology.audit4sg.org/RelAIEO#ai4sg',
+    target: 'http://www.ontology.audit4sg.org/RelAIEO#ai_system',
     source: 'http://www.ontology.audit4sg.org/RelAIEO#not_listed',
     strength: 0.01,
     isVisible: false,
@@ -57,7 +57,8 @@ export const generateNodeRelations = (nodes: any, flattenedOntologyData: any) =>
     target: 'http://www.ontology.audit4sg.org/RelAIEO#unintended_consequence',
     source: 'http://www.ontology.audit4sg.org/RelAIEO#ai_system',
     strength: 0.01,
-    isVisible: false,
+    isVisible: true,
+    label: 'Has',
   };
 
   nodeRelations.push(correctionObj1);

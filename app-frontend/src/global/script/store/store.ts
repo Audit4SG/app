@@ -6,6 +6,7 @@ export const { state } = createStore({
   nodeRelations: '',
   topics: '',
   isInitialized: false,
+  isMenuOpen: false,
   journey: 'selection',
   sessionId: '',
 });
