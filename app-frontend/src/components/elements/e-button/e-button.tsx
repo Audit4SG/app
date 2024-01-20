@@ -12,7 +12,7 @@ export class EButton {
   @Prop() size: string = 'default';
   @Prop() disabled: boolean = false;
   @Prop() active: boolean = false;
-  @Prop() theme: string;
+  @Prop() theme: string = 'light';
 
   @State() buttonTheme: string;
   @State() inAction: boolean = false;

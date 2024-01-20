@@ -2,10 +2,19 @@
   position: relative;
 }
 
+.test-area {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.test-area::-webkit-scrollbar {
+  display: none;
+}
+
 .fade-area {
   position: absolute;
   width: 100%;
-  height: 1em;
+  height: 2em;
 }
 
 .fade-area__top {

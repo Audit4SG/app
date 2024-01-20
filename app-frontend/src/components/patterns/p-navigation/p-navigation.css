@@ -1,5 +1,38 @@
 :host {
+  display: block;
+}
+
+.menu-container__items {
   display: flex;
-  width: 380px;
   justify-content: space-between;
+  width: 420px;
+}
+
+.menu-container__content {
+  max-width: 400px;
+  max-height: 70vh;
+  overflow: auto;
+  background: white;
+  margin-top: 0.5em;
+  border-radius: var(--layout__border-radius--global);
+  padding: 1em 1.5em;
+  border: 1px solid var(--colour__blue--dark);
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.menu-container__content::-webkit-scrollbar {
+  display: none;
+}
+
+.transparent {
+  background: none;
+  padding: 0;
+}
+
+.share-url-container {
+  background-color: var(--colour__grey--lightest);
+  padding: var(--layout__padding--card);
+  border-radius: var(--layout__border-radius--global);
 }

@@ -1,5 +1,13 @@
 ul {
   margin: 0;
-  padding: 0;
-  list-style-type: none;
+  padding: 1em;
+  padding-top: 0;
+}
+
+.bullet__disc {
+  list-style-type: disc;
+}
+
+.bullet__circle {
+  list-style-type: circle;
 }

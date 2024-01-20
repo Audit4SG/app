@@ -27,7 +27,7 @@ export class AppRoot {
   }
 
   async componentDidLoad() {
-    let { success, ontologyData } = await fetchOntologyData();
+    let { success, ontologyData, sessionId } = await fetchOntologyData();
 
     if (!success) {
       return alert('❌ Could not fetch ontology data. Please contact the team');
@@ -41,6 +41,8 @@ export class AppRoot {
     state.nodes = JSON.stringify(nodes);
     state.nodeRelations = JSON.stringify(nodeRelations);
     state.topics = JSON.stringify(topics);
+    state.sessionId = sessionId;
+    state.shareUrl = document.domain === 'localhost' ? `http://localhost:3333/reading/${state.sessionId}` : `https://app.audit4sg.org/reading/${state.sessionId}`;
   }
 
   render() {

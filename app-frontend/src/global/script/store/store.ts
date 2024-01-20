@@ -7,6 +7,8 @@ export const { state } = createStore({
   topics: '',
   isInitialized: false,
   isMenuOpen: false,
+  activeMenuItem: '',
   journey: 'selection',
   sessionId: '',
+  shareUrl: '',
 });

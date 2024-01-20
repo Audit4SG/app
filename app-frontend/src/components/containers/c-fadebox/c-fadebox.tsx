@@ -33,7 +33,7 @@ export class CFadebox {
     return (
       <Host>
         <div class="fade-area fade-area__top"></div>
-        <div style={this.styleObject}>
+        <div class="test-area" style={this.styleObject}>
           <slot></slot>
         </div>
         <div class="fade-area fade-area__bottom"></div>

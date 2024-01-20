@@ -1,4 +1,4 @@
-import { Component, h } from '@stencil/core';
+import { Component, Prop, h } from '@stencil/core';
 
 @Component({
   tag: 'e-list',
@@ -6,9 +6,21 @@ import { Component, h } from '@stencil/core';
   shadow: true,
 })
 export class EList {
+  @Prop() bullet: string = 'disc';
+
+  private styleClasses: string = '';
+
+  componentWillLoad() {
+    this.generateStyleClasses();
+  }
+
+  generateStyleClasses() {
+    this.styleClasses = `bullet__${this.bullet}`;
+  }
+
   render() {
     return (
-      <ul>
+      <ul class={this.styleClasses}>
         <slot />
       </ul>
     );

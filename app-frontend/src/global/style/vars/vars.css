@@ -16,6 +16,7 @@
   --colour__background--global: #ffe7e5;
   --colour__blue--dark: #011e2b;
   --colour__green--default: #08f26e;
+  --color__green--dark: 'green';
   --colour__grey--dark: rgba(0, 0, 0, 0.87);
   --colour__grey--medium: rgba(0, 0, 0, 0.6);
   --colour__grey--light: rgba(0, 0, 0, 0.3);

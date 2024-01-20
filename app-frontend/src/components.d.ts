@@ -57,6 +57,7 @@ export namespace Components {
         "variant": string;
     }
     interface EList {
+        "bullet": string;
     }
     interface EListItem {
     }
@@ -310,6 +311,7 @@ declare namespace LocalJSX {
         "variant"?: string;
     }
     interface EList {
+        "bullet"?: string;
     }
     interface EListItem {
     }
