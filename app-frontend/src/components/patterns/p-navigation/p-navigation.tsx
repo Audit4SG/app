@@ -21,7 +21,7 @@ export class PNavigation {
       state.activeMenuItem = e.detail.value;
       if (state.activeMenuItem === 'howTo') {
         this.activeMenuLabel = 'How to';
-      } else if (state.activeMenuItem === 'export') {
+      } else if (state.activeMenuItem === 'share') {
         this.activeMenuLabel = 'Share your audit with this link';
       } else if (state.activeMenuItem === 'about') {
         this.activeMenuLabel = 'About';
@@ -90,7 +90,7 @@ export class PNavigation {
     </c-fadebox>
   );
 
-  ExportContent: FunctionalComponent = () => (
+  ShareContent: FunctionalComponent = () => (
     <div>
       {state.cardStack.length > 0 ? (
         <div>
@@ -249,8 +249,8 @@ export class PNavigation {
             </e-button>
           )}
           {state.isMenuOpen && (
-            <e-button action="selectMenuItem" variant="pill" value="export" theme={state.activeMenuItem === 'export' ? 'dark' : 'light'}>
-              Export
+            <e-button action="selectMenuItem" variant="pill" value="share" theme={state.activeMenuItem === 'share' ? 'dark' : 'light'}>
+              Share
             </e-button>
           )}
           {state.isMenuOpen && (
@@ -274,7 +274,7 @@ export class PNavigation {
             </l-row>
             <l-spacer value={1}></l-spacer>
             {state.activeMenuItem === 'howTo' && <this.HowToContent></this.HowToContent>}
-            {state.activeMenuItem === 'export' && <this.ExportContent></this.ExportContent>}
+            {state.activeMenuItem === 'share' && <this.ShareContent></this.ShareContent>}
             {state.activeMenuItem === 'about' && <this.AboutContent></this.AboutContent>}
             {state.activeMenuItem === 'credits' && <this.CreditsContent></this.CreditsContent>}
           </div>
