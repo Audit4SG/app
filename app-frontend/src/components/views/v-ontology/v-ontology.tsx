@@ -1,4 +1,4 @@
-import { Component, Listen, Prop, Host, h } from '@stencil/core';
+import { Component, Listen, Prop, State, Host, h } from '@stencil/core';
 import { gsap } from 'gsap';
 import { ScrollToPlugin } from 'gsap/all';
 import * as d3 from 'd3';
@@ -19,10 +19,14 @@ export class VOntology {
       state.isMenuOpen = true;
       state.activeMenuItem = 'howTo';
       state.activeMenuLabel = 'How to';
+    } else if (e.detail.action === 'closeToolTip') {
+      this.isTooltipVisible = false;
     }
   }
 
   @Prop() history: RouterHistory;
+
+  @State() isTooltipVisible: boolean = true;
 
   private svg: any;
   private graphContainer: any;
@@ -39,6 +43,9 @@ export class VOntology {
   private nodes: any;
   private nodeRelations: any;
   private zoom: any;
+
+  private timeout: any;
+  private timeoutInMS: number = 1000;
 
   componentWillLoad() {
     if (!state.isInitialized) {
@@ -141,19 +148,19 @@ export class VOntology {
       .style('filter', 'drop-shadow(0px 15px 8px rgb(0 0 0 / 0.4))')
       .call(dragDrop)
       .on('mouseenter', (event, data) => {
-        // this.nodeHoverHighlight(data);
-        // this.timeout = setTimeout(() => {
-        //   this.showTooltip(data.id.split('#')[1], data.description, event);
-        // }, this.timeoutInMS);
+        this.highlightNode(data);
+        this.timeout = setTimeout(() => {
+          // this.showTooltip(data.id.split('#')[1], data.description, event);
+        }, this.timeoutInMS);
       })
       .on('mouseout', (event, data) => {
         event.preventDefault();
-        // this.nodeHoverUnhighlight(data);
-        // clearTimeout(this.timeout);
+        this.unhighlightNode(data);
+        clearTimeout(this.timeout);
       })
       .on('dragstart', event => {
         event.preventDefault();
-        // clearTimeout(this.timeout);
+        clearTimeout(this.timeout);
       })
       .on('click', (event, data) => {
         event.preventDefault();
@@ -270,16 +277,34 @@ export class VOntology {
     // }
   }
 
+  highlightNode(data) {
+    let nodeForHighlight = this.svg.select(`#${data.id.split('#')[1]}`);
+    nodeForHighlight.transition().duration(1000).style('filter', 'drop-shadow(0px 0px 50px rgb(8, 242, 110))').attr('r', 75);
+  }
+
+  unhighlightNode(data) {
+    let nodeForUnhighlight = this.svg.select(`#${data.id.split('#')[1]}`);
+    nodeForUnhighlight
+      .transition()
+      .duration(500)
+      .attr('r', 50)
+      .end()
+      .then(() => {
+        nodeForUnhighlight.transition().duration(0).style('filter', 'drop-shadow(0px 15px 8px rgb(0 0 0 / 0.4))');
+      });
+  }
+
   handleBodyClick() {}
 
   render() {
     return (
       <Host>
+        {this.isTooltipVisible && <p-tooltip x={250} y={250} label="Label" provocation="This is a provocation" definition="This is a definition"></p-tooltip>}
         <c-sticky-area top="1em" left="1em">
           <p-navigation></p-navigation>
         </c-sticky-area>
         <c-sticky-area top="1em" right="1em">
-          <e-text>Search</e-text>
+          <p-search></p-search>
         </c-sticky-area>
         <svg height={this.svgHeight} width={this.svgWidth} ref={el => (this.svgEl = el as SVGElement)} onClick={() => this.handleBodyClick()}></svg>
         <c-sticky-area bottom="1em" right="1em">

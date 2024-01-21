@@ -7,3 +7,7 @@ header {
   background: orange;
   width: 100%;
 }
+
+.nodes:hover {
+  cursor: pointer;
+}

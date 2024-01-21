@@ -85,6 +85,15 @@ export namespace Components {
     }
     interface PNavigation {
     }
+    interface PSearch {
+    }
+    interface PTooltip {
+        "definition": string;
+        "label": string;
+        "provocation": string;
+        "x": number;
+        "y": number;
+    }
     interface VCatchAll {
         "history": RouterHistory;
     }
@@ -208,6 +217,18 @@ declare global {
         prototype: HTMLPNavigationElement;
         new (): HTMLPNavigationElement;
     };
+    interface HTMLPSearchElement extends Components.PSearch, HTMLStencilElement {
+    }
+    var HTMLPSearchElement: {
+        prototype: HTMLPSearchElement;
+        new (): HTMLPSearchElement;
+    };
+    interface HTMLPTooltipElement extends Components.PTooltip, HTMLStencilElement {
+    }
+    var HTMLPTooltipElement: {
+        prototype: HTMLPTooltipElement;
+        new (): HTMLPTooltipElement;
+    };
     interface HTMLVCatchAllElement extends Components.VCatchAll, HTMLStencilElement {
     }
     var HTMLVCatchAllElement: {
@@ -251,6 +272,8 @@ declare global {
         "l-spacer": HTMLLSpacerElement;
         "p-gallery": HTMLPGalleryElement;
         "p-navigation": HTMLPNavigationElement;
+        "p-search": HTMLPSearchElement;
+        "p-tooltip": HTMLPTooltipElement;
         "v-catch-all": HTMLVCatchAllElement;
         "v-init": HTMLVInitElement;
         "v-ontology": HTMLVOntologyElement;
@@ -340,6 +363,15 @@ declare namespace LocalJSX {
     }
     interface PNavigation {
     }
+    interface PSearch {
+    }
+    interface PTooltip {
+        "definition"?: string;
+        "label"?: string;
+        "provocation"?: string;
+        "x"?: number;
+        "y"?: number;
+    }
     interface VCatchAll {
         "history"?: RouterHistory;
     }
@@ -372,6 +404,8 @@ declare namespace LocalJSX {
         "l-spacer": LSpacer;
         "p-gallery": PGallery;
         "p-navigation": PNavigation;
+        "p-search": PSearch;
+        "p-tooltip": PTooltip;
         "v-catch-all": VCatchAll;
         "v-init": VInit;
         "v-ontology": VOntology;
@@ -400,6 +434,8 @@ declare module "@stencil/core" {
             "l-spacer": LocalJSX.LSpacer & JSXBase.HTMLAttributes<HTMLLSpacerElement>;
             "p-gallery": LocalJSX.PGallery & JSXBase.HTMLAttributes<HTMLPGalleryElement>;
             "p-navigation": LocalJSX.PNavigation & JSXBase.HTMLAttributes<HTMLPNavigationElement>;
+            "p-search": LocalJSX.PSearch & JSXBase.HTMLAttributes<HTMLPSearchElement>;
+            "p-tooltip": LocalJSX.PTooltip & JSXBase.HTMLAttributes<HTMLPTooltipElement>;
             "v-catch-all": LocalJSX.VCatchAll & JSXBase.HTMLAttributes<HTMLVCatchAllElement>;
             "v-init": LocalJSX.VInit & JSXBase.HTMLAttributes<HTMLVInitElement>;
             "v-ontology": LocalJSX.VOntology & JSXBase.HTMLAttributes<HTMLVOntologyElement>;
