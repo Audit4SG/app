@@ -26,7 +26,7 @@ export class VOntology {
 
   @Prop() history: RouterHistory;
 
-  @State() isTooltipVisible: boolean = true;
+  @State() isTooltipVisible: boolean = false;
 
   private svg: any;
   private graphContainer: any;
@@ -46,6 +46,12 @@ export class VOntology {
 
   private timeout: any;
   private timeoutInMS: number = 1000;
+
+  private tooltipLabel: string = '';
+  private tooltipDefinition: string = '';
+  private tooltipProvocation: string = '';
+  private tooltipX: number = 0;
+  private tooltipY: number = 0;
 
   componentWillLoad() {
     if (!state.isInitialized) {
@@ -150,7 +156,13 @@ export class VOntology {
       .on('mouseenter', (event, data) => {
         this.highlightNode(data);
         this.timeout = setTimeout(() => {
-          // this.showTooltip(data.id.split('#')[1], data.description, event);
+          this.isTooltipVisible = false;
+          this.tooltipLabel = data.label;
+          this.tooltipDefinition = data.description;
+          this.tooltipProvocation = data.provocation;
+          this.tooltipX = event.pageX - 100;
+          this.tooltipY = event.pageY - 100;
+          this.isTooltipVisible = true;
         }, this.timeoutInMS);
       })
       .on('mouseout', (event, data) => {
@@ -299,7 +311,9 @@ export class VOntology {
   render() {
     return (
       <Host>
-        {this.isTooltipVisible && <p-tooltip x={250} y={250} label="Label" provocation="This is a provocation" definition="This is a definition"></p-tooltip>}
+        {this.isTooltipVisible && (
+          <p-tooltip x={this.tooltipX} y={this.tooltipY} label={this.tooltipLabel} definition={this.tooltipDefinition} provocation={this.tooltipProvocation}></p-tooltip>
+        )}
         <c-sticky-area top="1em" left="1em">
           <p-navigation></p-navigation>
         </c-sticky-area>

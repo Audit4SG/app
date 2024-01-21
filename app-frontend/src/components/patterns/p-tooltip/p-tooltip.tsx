@@ -31,8 +31,8 @@ export class PTooltip {
   }
 
   generateStyleClasses() {
-    this.styleObject.top = `${this.x}px`;
-    this.styleObject.left = `${this.y}px`;
+    this.styleObject.left = `${this.x}px`;
+    this.styleObject.top = `${this.y}px`;
   }
 
   render() {
@@ -53,7 +53,7 @@ export class PTooltip {
         {this.isDefinitionVisible && (
           <div>
             <e-text>
-              <em>{this.definition.length > 0 ? this.definition : '(No definition available)'}</em>
+              <em>{this.definition}</em>
             </e-text>
             <l-spacer value={1}></l-spacer>
             <l-seperator></l-seperator>
