@@ -1,4 +1,4 @@
-import { Component, Prop, Host, h } from '@stencil/core';
+import { Component, Listen, Prop, Host, h } from '@stencil/core';
 import { gsap } from 'gsap';
 import { ScrollToPlugin } from 'gsap/all';
 import * as d3 from 'd3';
@@ -13,6 +13,14 @@ gsap.registerPlugin(ScrollToPlugin);
 })
 export class VOntology {
   svgEl!: SVGElement;
+
+  @Listen('buttonClick') handleButtonClick(e) {
+    if (e.detail.action === 'openHowTo') {
+      state.isMenuOpen = true;
+      state.activeMenuItem = 'howTo';
+      state.activeMenuLabel = 'How to';
+    }
+  }
 
   @Prop() history: RouterHistory;
 
@@ -278,6 +286,11 @@ export class VOntology {
           <e-link href="https://audit4sg.org" target="_blank">
             <img src="../../../assets/icon/icon.png" width={75} />
           </e-link>
+        </c-sticky-area>
+        <c-sticky-area bottom="1em" left="1em">
+          <e-button action="openHowTo" variant="question">
+            <ph-question size="2.25em" background="white"></ph-question>
+          </e-button>
         </c-sticky-area>
       </Host>
     );

@@ -20,13 +20,13 @@ export class PNavigation {
       }
       state.activeMenuItem = e.detail.value;
       if (state.activeMenuItem === 'howTo') {
-        this.activeMenuLabel = 'How to';
+        state.activeMenuLabel = 'How to';
       } else if (state.activeMenuItem === 'share') {
-        this.activeMenuLabel = 'Share your audit with this link';
+        state.activeMenuLabel = 'Share your audit with this link';
       } else if (state.activeMenuItem === 'about') {
-        this.activeMenuLabel = 'About';
+        state.activeMenuLabel = 'About';
       } else if (state.activeMenuItem === 'credits') {
-        this.activeMenuLabel = 'Credits';
+        state.activeMenuLabel = 'Credits';
       }
     } else if (e.detail.action === 'closeMenuItem') {
       state.activeMenuItem = '';
@@ -41,7 +41,6 @@ export class PNavigation {
     }
   }
 
-  @State() activeMenuLabel: string = '';
   @State() isLinkCopied: boolean = false;
 
   HowToContent: FunctionalComponent = () => (
@@ -267,7 +266,7 @@ export class PNavigation {
         {state.isMenuOpen && state.activeMenuItem.length > 0 && (
           <div class="menu-container__content">
             <l-row justify="space-between">
-              <e-text variant="heading__menu">{this.activeMenuLabel}</e-text>
+              <e-text variant="heading__menu">{state.activeMenuLabel}</e-text>
               <e-button variant="transparent" action="closeMenuItem">
                 <ph-x-circle size="1.5em" />
               </e-button>
