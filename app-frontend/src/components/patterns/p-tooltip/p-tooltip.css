@@ -4,7 +4,6 @@
   background: white;
   top: 0;
   left: 0;
-  width: 360px;
   padding: var(--layout__padding--card);
   border-radius: var(--layout__border-radius--global);
   border: 2px solid var(--colour__green--default);

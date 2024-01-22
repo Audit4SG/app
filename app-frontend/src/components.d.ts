@@ -81,7 +81,13 @@ export namespace Components {
         "value": number;
         "variant": string;
     }
+    interface PCardStack {
+    }
+    interface PCardStackItem {
+    }
     interface PGallery {
+    }
+    interface PModal {
     }
     interface PNavigation {
     }
@@ -205,11 +211,29 @@ declare global {
         prototype: HTMLLSpacerElement;
         new (): HTMLLSpacerElement;
     };
+    interface HTMLPCardStackElement extends Components.PCardStack, HTMLStencilElement {
+    }
+    var HTMLPCardStackElement: {
+        prototype: HTMLPCardStackElement;
+        new (): HTMLPCardStackElement;
+    };
+    interface HTMLPCardStackItemElement extends Components.PCardStackItem, HTMLStencilElement {
+    }
+    var HTMLPCardStackItemElement: {
+        prototype: HTMLPCardStackItemElement;
+        new (): HTMLPCardStackItemElement;
+    };
     interface HTMLPGalleryElement extends Components.PGallery, HTMLStencilElement {
     }
     var HTMLPGalleryElement: {
         prototype: HTMLPGalleryElement;
         new (): HTMLPGalleryElement;
+    };
+    interface HTMLPModalElement extends Components.PModal, HTMLStencilElement {
+    }
+    var HTMLPModalElement: {
+        prototype: HTMLPModalElement;
+        new (): HTMLPModalElement;
     };
     interface HTMLPNavigationElement extends Components.PNavigation, HTMLStencilElement {
     }
@@ -270,7 +294,10 @@ declare global {
         "l-row": HTMLLRowElement;
         "l-seperator": HTMLLSeperatorElement;
         "l-spacer": HTMLLSpacerElement;
+        "p-card-stack": HTMLPCardStackElement;
+        "p-card-stack-item": HTMLPCardStackItemElement;
         "p-gallery": HTMLPGalleryElement;
+        "p-modal": HTMLPModalElement;
         "p-navigation": HTMLPNavigationElement;
         "p-search": HTMLPSearchElement;
         "p-tooltip": HTMLPTooltipElement;
@@ -359,7 +386,13 @@ declare namespace LocalJSX {
         "value"?: number;
         "variant"?: string;
     }
+    interface PCardStack {
+    }
+    interface PCardStackItem {
+    }
     interface PGallery {
+    }
+    interface PModal {
     }
     interface PNavigation {
     }
@@ -402,7 +435,10 @@ declare namespace LocalJSX {
         "l-row": LRow;
         "l-seperator": LSeperator;
         "l-spacer": LSpacer;
+        "p-card-stack": PCardStack;
+        "p-card-stack-item": PCardStackItem;
         "p-gallery": PGallery;
+        "p-modal": PModal;
         "p-navigation": PNavigation;
         "p-search": PSearch;
         "p-tooltip": PTooltip;
@@ -432,7 +468,10 @@ declare module "@stencil/core" {
             "l-row": LocalJSX.LRow & JSXBase.HTMLAttributes<HTMLLRowElement>;
             "l-seperator": LocalJSX.LSeperator & JSXBase.HTMLAttributes<HTMLLSeperatorElement>;
             "l-spacer": LocalJSX.LSpacer & JSXBase.HTMLAttributes<HTMLLSpacerElement>;
+            "p-card-stack": LocalJSX.PCardStack & JSXBase.HTMLAttributes<HTMLPCardStackElement>;
+            "p-card-stack-item": LocalJSX.PCardStackItem & JSXBase.HTMLAttributes<HTMLPCardStackItemElement>;
             "p-gallery": LocalJSX.PGallery & JSXBase.HTMLAttributes<HTMLPGalleryElement>;
+            "p-modal": LocalJSX.PModal & JSXBase.HTMLAttributes<HTMLPModalElement>;
             "p-navigation": LocalJSX.PNavigation & JSXBase.HTMLAttributes<HTMLPNavigationElement>;
             "p-search": LocalJSX.PSearch & JSXBase.HTMLAttributes<HTMLPSearchElement>;
             "p-tooltip": LocalJSX.PTooltip & JSXBase.HTMLAttributes<HTMLPTooltipElement>;

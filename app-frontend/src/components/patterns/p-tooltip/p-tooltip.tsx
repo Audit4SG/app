@@ -25,14 +25,29 @@ export class PTooltip {
   @State() isDefinitionVisible: boolean = false;
 
   private styleObject: LooseObject = {};
+  private viewportHeight: number = window.innerHeight;
+  private viewportWidth: number = window.innerWidth;
+  private tooltipHeight: number = 200;
+  private tooltipWidth: number = 360;
 
   componentWillLoad() {
     this.generateStyleClasses();
   }
 
   generateStyleClasses() {
-    this.styleObject.left = `${this.x}px`;
-    this.styleObject.top = `${this.y}px`;
+    if (this.y + this.tooltipHeight >= this.viewportHeight) {
+      this.styleObject.top = `${this.y - this.tooltipHeight}px`;
+    } else {
+      this.styleObject.top = `${this.y + 10}px`;
+    }
+
+    if (this.x + this.tooltipWidth >= this.viewportWidth) {
+      this.styleObject.left = `${this.x - this.tooltipWidth}px`;
+    } else {
+      this.styleObject.left = `${this.x + 10}px`;
+    }
+
+    this.styleObject.width = `${this.tooltipWidth}px`;
   }
 
   render() {
@@ -50,17 +65,19 @@ export class PTooltip {
           </div>
         </l-row>
         <l-spacer value={0.5}></l-spacer>
-        {this.isDefinitionVisible && (
-          <div>
-            <e-text>
-              <em>{this.definition}</em>
-            </e-text>
-            <l-spacer value={1}></l-spacer>
-            <l-seperator></l-seperator>
-            <l-spacer value={1}></l-spacer>
-          </div>
-        )}
-        <e-text>{this.provocation}</e-text>
+        <c-fadebox maxHeight={`${this.tooltipHeight}px`} overflow="scroll">
+          {this.isDefinitionVisible && (
+            <div>
+              <e-text>
+                <em>{this.definition}</em>
+              </e-text>
+              <l-spacer value={1}></l-spacer>
+              <l-seperator></l-seperator>
+              <l-spacer value={1}></l-spacer>
+            </div>
+          )}
+          <e-text>{this.provocation}</e-text>
+        </c-fadebox>
       </Host>
     );
   }

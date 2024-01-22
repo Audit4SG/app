@@ -50,8 +50,8 @@ export class VOntology {
   private tooltipLabel: string = '';
   private tooltipDefinition: string = '';
   private tooltipProvocation: string = '';
-  private tooltipX: number = 0;
-  private tooltipY: number = 0;
+  private cursorX: number = 0;
+  private cursorY: number = 0;
 
   componentWillLoad() {
     if (!state.isInitialized) {
@@ -154,14 +154,14 @@ export class VOntology {
       .style('filter', 'drop-shadow(0px 15px 8px rgb(0 0 0 / 0.4))')
       .call(dragDrop)
       .on('mouseenter', (event, data) => {
+        this.isTooltipVisible = false;
         this.highlightNode(data);
         this.timeout = setTimeout(() => {
-          this.isTooltipVisible = false;
           this.tooltipLabel = data.label;
           this.tooltipDefinition = data.description;
           this.tooltipProvocation = data.provocation;
-          this.tooltipX = event.pageX - 100;
-          this.tooltipY = event.pageY - 100;
+          this.cursorX = event.pageX;
+          this.cursorY = event.pageY;
           this.isTooltipVisible = true;
         }, this.timeoutInMS);
       })
@@ -312,7 +312,7 @@ export class VOntology {
     return (
       <Host>
         {this.isTooltipVisible && (
-          <p-tooltip x={this.tooltipX} y={this.tooltipY} label={this.tooltipLabel} definition={this.tooltipDefinition} provocation={this.tooltipProvocation}></p-tooltip>
+          <p-tooltip x={this.cursorX} y={this.cursorY} label={this.tooltipLabel} definition={this.tooltipDefinition} provocation={this.tooltipProvocation}></p-tooltip>
         )}
         <c-sticky-area top="1em" left="1em">
           <p-navigation></p-navigation>
