@@ -82,8 +82,15 @@ export namespace Components {
         "variant": string;
     }
     interface PCardStack {
+        "item": string;
     }
     interface PCardStackItem {
+        "definition": string;
+        "label": string;
+        "nodeId": string;
+        "provocation": string;
+        "reference": string;
+        "variant": string;
     }
     interface PGallery {
     }
@@ -97,6 +104,7 @@ export namespace Components {
         "definition": string;
         "label": string;
         "provocation": string;
+        "reference": string;
         "x": number;
         "y": number;
     }
@@ -387,8 +395,15 @@ declare namespace LocalJSX {
         "variant"?: string;
     }
     interface PCardStack {
+        "item"?: string;
     }
     interface PCardStackItem {
+        "definition"?: string;
+        "label"?: string;
+        "nodeId"?: string;
+        "provocation"?: string;
+        "reference"?: string;
+        "variant"?: string;
     }
     interface PGallery {
     }
@@ -402,6 +417,7 @@ declare namespace LocalJSX {
         "definition"?: string;
         "label"?: string;
         "provocation"?: string;
+        "reference"?: string;
         "x"?: number;
         "y"?: number;
     }

@@ -21,10 +21,12 @@ export class PTooltip {
   @Prop() label: string = '';
   @Prop() provocation: string = '';
   @Prop() definition: string = '';
+  @Prop() reference: string = '';
 
   @State() isDefinitionVisible: boolean = false;
 
   private styleObject: LooseObject = {};
+  private tooltipControlIconSize: string = '1.5em';
   private viewportHeight: number = window.innerHeight;
   private viewportWidth: number = window.innerWidth;
   private tooltipHeight: number = 200;
@@ -57,10 +59,10 @@ export class PTooltip {
           <e-text variant="heading__menu">{this.label}</e-text>
           <div>
             <e-button variant="transparent" action="toggleDefinition">
-              <ph-info size="1.5em" color="#011E2B" weight={this.isDefinitionVisible ? 'fill' : 'regular'} />
+              <ph-info size={this.tooltipControlIconSize} color="#011E2B" weight={this.isDefinitionVisible ? 'fill' : 'regular'} />
             </e-button>
             <e-button variant="transparent" action="closeToolTip">
-              <ph-x-circle size="1.5em" />
+              <ph-x-circle size={this.tooltipControlIconSize} />
             </e-button>
           </div>
         </l-row>

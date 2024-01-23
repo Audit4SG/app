@@ -155,7 +155,7 @@ export class VOntology {
       .call(dragDrop)
       .on('mouseenter', (event, data) => {
         this.isTooltipVisible = false;
-        this.highlightNode(data);
+        this.highlightNodeOnMouseEnter(data);
         this.timeout = setTimeout(() => {
           this.tooltipLabel = data.label;
           this.tooltipDefinition = data.description;
@@ -167,7 +167,7 @@ export class VOntology {
       })
       .on('mouseout', (event, data) => {
         event.preventDefault();
-        this.unhighlightNode(data);
+        this.unhighlightNodeOnMouseOut(data);
         clearTimeout(this.timeout);
       })
       .on('dragstart', event => {
@@ -176,12 +176,15 @@ export class VOntology {
       })
       .on('click', (event, data) => {
         event.preventDefault();
-        // clearTimeout(this.timeout);
-        let selected_Node = this.svg.select(`#${data.id.split('#')[1]}`);
-        if (selected_Node.attr('fill') === 'white') {
+        clearTimeout(this.timeout);
+        let clickedNode = this.svg.select(`#${data.id.split('#')[1]}`);
+        if (clickedNode.attr('fill') === 'white') {
+          clickedNode.attr('fill', 'rgba(8, 242, 110, 1)');
           // this.highlightNode(data.id);
           // this.addToCardStack(data);
-        } else if (selected_Node.attr('fill') === 'rgba(8, 242, 110, 1)') {
+        } else if (clickedNode.attr('fill') === 'rgba(8, 242, 110, 1)') {
+          clickedNode.attr('fill', 'white');
+
           // this.unhilightNode(data.id);
           // this.removeFromCardStack(data);
         }
@@ -289,12 +292,12 @@ export class VOntology {
     // }
   }
 
-  highlightNode(data) {
+  highlightNodeOnMouseEnter(data) {
     let nodeForHighlight = this.svg.select(`#${data.id.split('#')[1]}`);
     nodeForHighlight.transition().duration(1000).style('filter', 'drop-shadow(0px 0px 50px rgb(8, 242, 110))').attr('r', 75);
   }
 
-  unhighlightNode(data) {
+  unhighlightNodeOnMouseOut(data) {
     let nodeForUnhighlight = this.svg.select(`#${data.id.split('#')[1]}`);
     nodeForUnhighlight
       .transition()
@@ -316,11 +319,14 @@ export class VOntology {
         )}
         <c-sticky-area top="1em" left="1em">
           <p-navigation></p-navigation>
+          <l-spacer value={1}></l-spacer>
+          <p-card-stack></p-card-stack>
         </c-sticky-area>
         <c-sticky-area top="1em" right="1em">
-          <p-search></p-search>
+          <e-text>Search</e-text>
+          <l-spacer value={1}></l-spacer>
+          <e-text>Topic list</e-text>
         </c-sticky-area>
-        <svg height={this.svgHeight} width={this.svgWidth} ref={el => (this.svgEl = el as SVGElement)} onClick={() => this.handleBodyClick()}></svg>
         <c-sticky-area bottom="1em" right="1em">
           <e-link href="https://audit4sg.org" target="_blank">
             <img src="../../../assets/icon/icon.png" width={75} />
@@ -331,6 +337,7 @@ export class VOntology {
             <ph-question size="2.25em" background="white"></ph-question>
           </e-button>
         </c-sticky-area>
+        <svg height={this.svgHeight} width={this.svgWidth} ref={el => (this.svgEl = el as SVGElement)} onClick={() => this.handleBodyClick()}></svg>
       </Host>
     );
   }
