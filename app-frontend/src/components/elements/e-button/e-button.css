@@ -21,6 +21,18 @@ button:disabled {
   border: 2px solid var(--colour__green--default);
 }
 
+.primary--dark {
+  color: white;
+  background: var(--colour__blue--dark);
+  border: 2px solid var(--colour__blue--dark);
+}
+
+.primary--grey {
+  background: var(--colour__grey--lightest);
+  border: 2px solid var(--colour__grey--lightest);
+  color: red;
+}
+
 .secondary {
   font-weight: 400;
   padding: 0.3em 1.25em;
@@ -44,10 +56,6 @@ button:disabled {
   background: var(--colour__blue--dark);
 }
 
-.in-action {
-  padding: 0.3em 0.8em;
-}
-
 .pill {
   border: 1px solid var(--colour__blue--dark);
   box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -65,7 +73,11 @@ button:disabled {
   color: white;
 }
 
-/* BLOCK */
+.in-action {
+  padding: 0.3em 0.8em;
+}
+
+/* SIZE */
 .wide {
   display: block;
   width: 100%;

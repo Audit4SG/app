@@ -34,3 +34,8 @@ a:active {
 .danger:active {
   color: var(--color__red--darkest);
 }
+
+.link__read-more {
+  color: var(--colour__blue--default);
+  font-size: 0.8em;
+}
