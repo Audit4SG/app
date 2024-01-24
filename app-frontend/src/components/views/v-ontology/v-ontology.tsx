@@ -180,12 +180,9 @@ export class VOntology {
         let clickedNode = this.svg.select(`#${data.id.split('#')[1]}`);
         if (clickedNode.attr('fill') === 'white') {
           clickedNode.attr('fill', 'rgba(8, 242, 110, 1)');
-          // this.highlightNode(data.id);
           // this.addToCardStack(data);
         } else if (clickedNode.attr('fill') === 'rgba(8, 242, 110, 1)') {
           clickedNode.attr('fill', 'white');
-
-          // this.unhilightNode(data.id);
           // this.removeFromCardStack(data);
         }
       });
