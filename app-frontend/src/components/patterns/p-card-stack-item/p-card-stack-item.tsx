@@ -84,6 +84,12 @@ export class PCardStackItem {
       gsap.to(this.definitionContainer, { height: '0px', duration: 0.25 });
       if (this.isCardExpanded) {
         this.hideDefinitionProvocationSeparator();
+      } else {
+        if (this.isExpandedReadingMode) {
+          this.disableExpandedReadingMode();
+          this.expandedReadingLabel = 'Read more';
+          this.isExpandedReadingMode = !this.isExpandedReadingMode;
+        }
       }
     }
     this.isDefinitionExpanded = !this.isDefinitionExpanded;
@@ -104,9 +110,11 @@ export class PCardStackItem {
       if (this.isDefinitionExpanded) {
         this.hideDefinitionProvocationSeparator();
       } else {
-        this.disableExpandedReadingMode();
-        this.expandedReadingLabel = 'Read more';
-        this.isExpandedReadingMode = !this.isExpandedReadingMode;
+        if (this.isExpandedReadingMode) {
+          this.disableExpandedReadingMode();
+          this.expandedReadingLabel = 'Read more';
+          this.isExpandedReadingMode = !this.isExpandedReadingMode;
+        }
       }
       if (this.isReferencesExpanded) {
         this.hideProvocationReferenceSeparator();

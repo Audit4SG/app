@@ -309,7 +309,9 @@ export class VOntology {
       });
   }
 
-  handleBodyClick() {}
+  handleClickOnSpace() {
+    this.isTooltipVisible = false;
+  }
 
   render() {
     return (
@@ -337,7 +339,7 @@ export class VOntology {
             <ph-question size="2.25em" background="white"></ph-question>
           </e-button>
         </c-sticky-area>
-        <svg height={this.svgHeight} width={this.svgWidth} ref={el => (this.svgEl = el as SVGElement)} onClick={() => this.handleBodyClick()}></svg>
+        <svg height={this.svgHeight} width={this.svgWidth} ref={el => (this.svgEl = el as SVGElement)} onClick={() => this.handleClickOnSpace()}></svg>
       </Host>
     );
   }

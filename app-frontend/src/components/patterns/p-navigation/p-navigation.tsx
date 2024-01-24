@@ -268,7 +268,7 @@ export class PNavigation {
             <l-row justify="space-between">
               <e-text variant="heading__menu">{state.activeMenuLabel}</e-text>
               <e-button variant="transparent" action="closeMenuItem">
-                <ph-x-circle size="1.5em" />
+                <ph-x-circle size="1.25em" />
               </e-button>
             </l-row>
             <l-spacer value={1}></l-spacer>

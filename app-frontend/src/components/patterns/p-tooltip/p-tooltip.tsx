@@ -26,7 +26,7 @@ export class PTooltip {
   @State() isDefinitionVisible: boolean = false;
 
   private styleObject: LooseObject = {};
-  private tooltipControlIconSize: string = '1.5em';
+  private tooltipControlIconSize: string = '1.25em';
   private viewportHeight: number = window.innerHeight;
   private viewportWidth: number = window.innerWidth;
   private tooltipHeight: number = 200;
