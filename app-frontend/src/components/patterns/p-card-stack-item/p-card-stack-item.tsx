@@ -15,21 +15,33 @@ export class PCardStackItem {
   separatorDefinitionProvocation!: HTMLDivElement;
   separatorProvocationReference!: HTMLDivElement;
 
+  @Listen('event_LinkClick') handleLinkClick(e) {
+    if (e.detail.action === 'toggleExpandedReadingMode') {
+      if (!this.isExpandedReadingMode) {
+        this.enableExpandedReadingMode();
+        this.expandedReadingLabel = 'Hide';
+      } else {
+        this.disableExpandedReadingMode();
+        this.expandedReadingLabel = 'Read more';
+      }
+      this.isExpandedReadingMode = !this.isExpandedReadingMode;
+    }
+  }
+
   @Listen('buttonClick') handleButtonClick(e) {
     if (e.detail.action === 'toggleDefinition') {
       this.toggleDefinition();
-    } else if (e.detail.action === 'toggleCardExpansion') {
-      this.toggleCardExpansion();
+    } else if (e.detail.action === 'toggleProvocation') {
+      this.toggleProvocation();
     } else if (e.detail.action === 'toggleReference') {
       this.toggleReference();
-    } else if (e.detail.action === 'deleteCard') {
     }
   }
 
   @State() isCardExpanded: boolean = true;
   @State() isDefinitionExpanded: boolean = false;
   @State() isReferencesExpanded: boolean = false;
-  @State() readMoreLinkLabel: string = 'Read more';
+  @State() expandedReadingLabel: string = 'Read more';
   @State() isExpandedReadingMode: boolean = false;
 
   @Prop() nodeId: string = '';
@@ -40,7 +52,7 @@ export class PCardStackItem {
   @Prop() reference: string = '';
 
   private tooltipControlIconSize: string = '1.25em';
-  private collapsedCardTextLength: number = 140;
+  private collapsedCardTextLength: number = 120;
 
   componentDidLoad() {
     this.initCardSection();
@@ -77,7 +89,7 @@ export class PCardStackItem {
     this.isDefinitionExpanded = !this.isDefinitionExpanded;
   }
 
-  toggleCardExpansion() {
+  toggleProvocation() {
     if (!this.isCardExpanded) {
       gsap.to(this.provocationContainer, { height: 'auto', duration: 0.25 });
       if (this.isDefinitionExpanded) {
@@ -91,6 +103,10 @@ export class PCardStackItem {
       gsap.to(this.provocationContainer, { height: '0px', duration: 0.25 });
       if (this.isDefinitionExpanded) {
         this.hideDefinitionProvocationSeparator();
+      } else {
+        this.disableExpandedReadingMode();
+        this.expandedReadingLabel = 'Read more';
+        this.isExpandedReadingMode = !this.isExpandedReadingMode;
       }
       if (this.isReferencesExpanded) {
         this.hideProvocationReferenceSeparator();
@@ -100,6 +116,18 @@ export class PCardStackItem {
   }
 
   toggleReference() {
+    if (!this.isReferencesExpanded) {
+      gsap.to(this.referenceContainer, { height: 'auto', duration: 0.25 });
+      if (this.isCardExpanded) {
+        this.showProvocationReferenceSeparator();
+      }
+    } else {
+      gsap.to(this.referenceContainer, { overflow: 'hidden', duration: 0 });
+      gsap.to(this.referenceContainer, { height: '0px', duration: 0.25 });
+      if (this.isCardExpanded) {
+        this.hideProvocationReferenceSeparator();
+      }
+    }
     this.isReferencesExpanded = !this.isReferencesExpanded;
   }
 
@@ -119,15 +147,23 @@ export class PCardStackItem {
     gsap.to(this.separatorProvocationReference, { height: '0px', opacity: 0, duration: 0.25 });
   }
 
+  enableExpandedReadingMode() {
+    gsap.to(this.cardStackItemContainer, { width: '540px', duration: 0.25 });
+  }
+
+  disableExpandedReadingMode() {
+    gsap.to(this.cardStackItemContainer, { width: '280px', duration: 0.25 });
+  }
+
   ReadingModeControl: FunctionalComponent = () => (
-    <e-link event={true} action="toggleReadMore" variant="readMore">
-      {this.readMoreLinkLabel}
+    <e-link event={true} action="toggleExpandedReadingMode" variant="readMore">
+      {this.expandedReadingLabel}
     </e-link>
   );
 
   render() {
     return (
-      <div class="card-stack-item__basic">
+      <div class="card-stack-item__basic" ref={el => (this.cardStackItemContainer = el as HTMLDivElement)}>
         <header>
           <l-row justify="space-between" align="center">
             <e-text variant="heading__menu">{this.label}</e-text>
@@ -135,7 +171,7 @@ export class PCardStackItem {
               <e-button variant="transparent" action="toggleDefinition">
                 <ph-info size={this.tooltipControlIconSize} color="#011E2B" weight={this.isDefinitionExpanded ? 'fill' : 'regular'} />
               </e-button>
-              <e-button variant="transparent" action="toggleCardExpansion">
+              <e-button variant="transparent" action="toggleProvocation">
                 {this.isCardExpanded ? <ph-minus-circle size={this.tooltipControlIconSize} /> : <ph-caret-circle-down size={this.tooltipControlIconSize} />}
               </e-button>
               <e-button variant="transparent" action="deleteCard">
@@ -144,60 +180,62 @@ export class PCardStackItem {
             </l-row>
           </l-row>
         </header>
-        <main>
-          <div ref={el => (this.definitionContainer = el as HTMLDivElement)}>
-            {this.definition.length > this.collapsedCardTextLength ? (
-              <div>
-                {this.isExpandedReadingMode ? (
-                  <e-text>
-                    <em>{this.definition}</em>
-                  </e-text>
-                ) : (
-                  <e-text>
-                    <em>{this.definition.substring(0, this.collapsedCardTextLength)}...</em>
-                  </e-text>
-                )}
-                <this.ReadingModeControl></this.ReadingModeControl>
-              </div>
-            ) : (
-              <e-text>
-                <em>{this.definition}</em>
-              </e-text>
-            )}
-          </div>
-          <div ref={el => (this.separatorDefinitionProvocation = el as HTMLDivElement)}>
+        <div ref={el => (this.definitionContainer = el as HTMLDivElement)}>
+          {this.definition.length > this.collapsedCardTextLength ? (
+            <div>
+              {this.isExpandedReadingMode ? (
+                <e-text>
+                  <em>{this.definition}</em>
+                </e-text>
+              ) : (
+                <e-text>
+                  <em>{this.definition.substring(0, this.collapsedCardTextLength)}...</em>
+                </e-text>
+              )}
+              <this.ReadingModeControl></this.ReadingModeControl>
+            </div>
+          ) : (
+            <e-text>
+              <em>{this.definition}</em>
+            </e-text>
+          )}
+        </div>
+        <div ref={el => (this.separatorDefinitionProvocation = el as HTMLDivElement)}>
+          <l-spacer value={0.5}></l-spacer>
+          <l-seperator></l-seperator>
+          <l-spacer value={0.5}></l-spacer>
+        </div>
+        <div ref={el => (this.provocationContainer = el as HTMLDivElement)}>
+          {this.provocation.length > this.collapsedCardTextLength ? (
+            <div>
+              {this.isExpandedReadingMode ? <e-text>{this.provocation}</e-text> : <e-text>{this.provocation.substring(0, this.collapsedCardTextLength)}...</e-text>}
+              <this.ReadingModeControl></this.ReadingModeControl>
+            </div>
+          ) : (
+            <e-text>{this.provocation}</e-text>
+          )}
+          <div ref={el => (this.separatorProvocationReference = el as HTMLDivElement)}>
             <l-spacer value={0.5}></l-spacer>
             <l-seperator></l-seperator>
             <l-spacer value={0.5}></l-spacer>
           </div>
-          <div ref={el => (this.provocationContainer = el as HTMLDivElement)}>
-            {this.provocation.length > this.collapsedCardTextLength ? (
+          <div ref={el => (this.referenceContainer = el as HTMLDivElement)}>
+            {this.reference.length > this.collapsedCardTextLength ? (
               <div>
-                {this.isExpandedReadingMode ? <e-text>{this.provocation}</e-text> : <e-text>{this.provocation.substring(0, this.collapsedCardTextLength)}...</e-text>}
+                {this.isExpandedReadingMode ? <e-text>{this.reference}</e-text> : <e-text>{this.reference.substring(0, this.collapsedCardTextLength)}...</e-text>}
                 <this.ReadingModeControl></this.ReadingModeControl>
               </div>
             ) : (
-              <e-text>{this.provocation}</e-text>
-            )}
-            <div ref={el => (this.separatorProvocationReference = el as HTMLDivElement)}>
-              <l-spacer value={0.5}></l-spacer>
-              <l-seperator></l-seperator>
-            </div>
-            <div ref={el => (this.referenceContainer = el as HTMLDivElement)}>
-              {this.reference.length > this.collapsedCardTextLength ? (
-                <div>{this.isExpandedReadingMode ? <e-text>{this.reference}</e-text> : <e-text>{this.reference.substring(0, this.collapsedCardTextLength)}...</e-text>}</div>
-              ) : (
-                <e-text>{this.provocation}</e-text>
-              )}
-            </div>
-            <l-spacer value={0.5}></l-spacer>
-            {this.reference && (
-              <e-button action="toggleReference" size="wide" theme={`${this.isReferencesExpanded ? 'grey' : 'dark'}`}>
-                {this.isReferencesExpanded ? 'Hide references' : 'Show references'}
-              </e-button>
+              <e-text>{this.reference}</e-text>
             )}
           </div>
-        </main>
+          <l-spacer value={0.5}></l-spacer>
+          {this.reference && (
+            <e-button action="toggleReference" size="wide" theme={`${this.isReferencesExpanded ? 'grey' : 'dark'}`}>
+              {this.isReferencesExpanded ? 'Hide references' : 'Show references'}
+            </e-button>
+          )}
+        </div>
       </div>
     );
   }
