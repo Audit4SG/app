@@ -21,6 +21,8 @@ export class VOntology {
       state.activeMenuLabel = 'How to';
     } else if (e.detail.action === 'closeToolTip') {
       this.isTooltipVisible = false;
+    } else if (e.detail.action === 'deleteCard') {
+      this.removeCardFromStack({ id: e.detail.value });
     }
   }
 
@@ -180,10 +182,8 @@ export class VOntology {
         clearTimeout(this.timeout);
         let clickedNode = this.svg.select(`#${data.id.split('#')[1]}`);
         if (clickedNode.attr('fill') === 'white') {
-          clickedNode.attr('fill', 'rgba(8, 242, 110, 1)');
           this.addCardToStack(data);
         } else if (clickedNode.attr('fill') === 'rgba(8, 242, 110, 1)') {
-          clickedNode.attr('fill', 'white');
           this.removeCardFromStack(data);
         }
       });
@@ -308,17 +308,33 @@ export class VOntology {
   }
 
   addCardToStack(data) {
-    console.log('');
-    console.log('Add card to stack');
-    console.log(data);
-    console.log('');
+    let clickedNode = this.svg.select(`#${data.id.split('#')[1]}`);
+    clickedNode.attr('fill', 'rgba(8, 242, 110, 1)');
+
+    let obj = {
+      id: data.id,
+      label: data.label,
+      definition: data.description,
+      provocation: data.provocation,
+      references: data.references,
+    };
+    this.cardStack.push(obj);
+    this.updateCardStackInStore();
   }
 
   removeCardFromStack(data) {
-    console.log('');
-    console.log('Remove card from stack');
-    console.log(data);
-    console.log('');
+    let clickedNode = this.svg.select(`#${data.id.split('#')[1]}`);
+    clickedNode.attr('fill', 'white');
+
+    this.cardStack = this.cardStack.filter(obj => {
+      return obj.id !== data.id;
+    });
+    this.updateCardStackInStore();
+  }
+
+  updateCardStackInStore() {
+    this.cardStack = [...this.cardStack];
+    state.cardStack = JSON.stringify(this.cardStack);
   }
 
   render() {
@@ -328,7 +344,7 @@ export class VOntology {
           <p-tooltip x={this.cursorX} y={this.cursorY} label={this.tooltipLabel} definition={this.tooltipDefinition} provocation={this.tooltipProvocation}></p-tooltip>
         )}
         <c-sticky-area top="1em" left="1em">
-          <p-navigation></p-navigation>
+          <p-navigation export={this.cardStack.length > 0 ? true : false}></p-navigation>
           <l-spacer value={1}></l-spacer>
           <p-card-stack data={this.cardStack}></p-card-stack>
         </c-sticky-area>

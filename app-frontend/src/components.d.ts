@@ -82,10 +82,11 @@ export namespace Components {
         "variant": string;
     }
     interface PCardStack {
-        "data": string;
+        "data": any;
     }
     interface PCardStackItem {
         "definition": string;
+        "expand": boolean;
         "label": string;
         "nodeId": string;
         "provocation": string;
@@ -396,10 +397,11 @@ declare namespace LocalJSX {
         "variant"?: string;
     }
     interface PCardStack {
-        "data"?: string;
+        "data"?: any;
     }
     interface PCardStackItem {
         "definition"?: string;
+        "expand"?: boolean;
         "label"?: string;
         "nodeId"?: string;
         "provocation"?: string;

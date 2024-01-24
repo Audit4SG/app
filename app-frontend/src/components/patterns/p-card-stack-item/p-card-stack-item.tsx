@@ -1,4 +1,4 @@
-import { Component, Prop, State, FunctionalComponent, Listen, h } from '@stencil/core';
+import { Component, Prop, State, FunctionalComponent, Listen, Watch, h } from '@stencil/core';
 import { gsap } from 'gsap';
 
 @Component({
@@ -50,12 +50,23 @@ export class PCardStackItem {
   @Prop() definition: string = '';
   @Prop() provocation: string = '';
   @Prop() reference: string = '';
+  @Prop() expand: boolean = true;
+
+  @Watch('expand') watchExpandProp(newVal: boolean, oldVal: boolean) {
+    if (!newVal && this.isCardExpanded) {
+      this.toggleProvocation();
+    }
+  }
 
   private tooltipControlIconSize: string = '1.25em';
   private collapsedCardTextLength: number = 120;
 
   componentDidLoad() {
     this.initCardSection();
+
+    if (!this.expand) {
+      this.toggleProvocation();
+    }
   }
 
   initCardSection() {
@@ -182,7 +193,7 @@ export class PCardStackItem {
               <e-button variant="transparent" action="toggleProvocation">
                 {this.isCardExpanded ? <ph-minus-circle size={this.tooltipControlIconSize} /> : <ph-caret-circle-down size={this.tooltipControlIconSize} />}
               </e-button>
-              <e-button variant="transparent" action="deleteCard">
+              <e-button variant="transparent" action="deleteCard" value={this.nodeId}>
                 <ph-x-circle size={this.tooltipControlIconSize} />
               </e-button>
             </l-row>

@@ -47,9 +47,8 @@ export class PNavigation {
   @State() isExportDisabled: boolean = true;
 
   @Watch('export') watchExportProp(newVal: boolean, oldVal: boolean) {
-    if (newVal != oldVal) {
-      this.isExportDisabled = newVal;
-    }
+    console.log(oldVal);
+    this.isExportDisabled = newVal;
   }
 
   HowToContent: FunctionalComponent = () => (

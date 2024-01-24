@@ -1,3 +1,50 @@
 :host {
   display: block;
 }
+
+.compact-list-container {
+  display: block;
+  background: white;
+  padding: var(--layout__padding--card);
+  border: 2px solid black;
+  border-radius: var(--layout__border-radius--global);
+  width: 250px;
+  height: 25px;
+  overflow: hidden;
+}
+
+.compact-list-container header {
+  margin-bottom: 1em;
+  max-width: 250px;
+}
+
+.highlight {
+  font-size: 0.8em;
+  background: var(--colour__green--default);
+  padding: 0.1em 0.5em;
+  border-radius: 0.5em;
+  color: var(--colour__blue--dark);
+}
+
+main {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
+  margin-top: 0.5em;
+  overflow-y: auto;
+  padding-top: 1.5em;
+}
+
+.column {
+  width: 48%;
+  max-height: 75vh;
+}
+
+main {
+  opacity: 0;
+}
+
+.download-button-container {
+  display: none;
+  opacity: 0;
+}
