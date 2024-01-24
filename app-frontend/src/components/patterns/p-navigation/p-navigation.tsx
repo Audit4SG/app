@@ -1,4 +1,4 @@
-import { Component, State, Listen, Host, h, FunctionalComponent } from '@stencil/core';
+import { Component, State, Prop, Listen, Host, Watch, h, FunctionalComponent } from '@stencil/core';
 import { state } from '../../../global/script';
 
 @Component({
@@ -41,7 +41,16 @@ export class PNavigation {
     }
   }
 
+  @Prop() export: boolean = false;
+
   @State() isLinkCopied: boolean = false;
+  @State() isExportDisabled: boolean = true;
+
+  @Watch('export') watchExportProp(newVal: boolean, oldVal: boolean) {
+    if (newVal != oldVal) {
+      this.isExportDisabled = newVal;
+    }
+  }
 
   HowToContent: FunctionalComponent = () => (
     <c-fadebox maxHeight="60vh" overflow="scroll">
@@ -89,26 +98,23 @@ export class PNavigation {
     </c-fadebox>
   );
 
-  ShareContent: FunctionalComponent = () => (
-    <div>
-      {state.cardStack.length > 0 ? (
-        <div>
-          <div class="share-url-container">
-            <e-text>{state.shareUrl}</e-text>
-          </div>
-          <l-spacer value={1}></l-spacer>
-          <l-row justify="space-between" align="center">
-            <e-button action="viewSelectionSummary" variant="secondary">
-              View Summary
-            </e-button>
-            {this.isLinkCopied ? <e-text theme="success">Link copied!</e-text> : <e-button action="copyShareableLink">Copy Link</e-button>}
-          </l-row>
+  ShareContent: FunctionalComponent = () =>
+    this.isExportDisabled ? (
+      <e-text>You have nothing to share. In order to share your audit, kindly select a few nodes.</e-text>
+    ) : (
+      <div>
+        <div class="share-url-container">
+          <e-text>{state.shareUrl}</e-text>
         </div>
-      ) : (
-        <e-text>You have nothing to share. In order to share your audit, kindly select a few nodes.</e-text>
-      )}
-    </div>
-  );
+        <l-spacer value={1}></l-spacer>
+        <l-row justify="space-between" align="center">
+          <e-button action="viewSelectionSummary" variant="secondary">
+            View Summary
+          </e-button>
+          {this.isLinkCopied ? <e-text theme="success">Link copied!</e-text> : <e-button action="copyShareableLink">Copy Link</e-button>}
+        </l-row>
+      </div>
+    );
 
   AboutContent: FunctionalComponent = () => (
     <c-fadebox maxHeight="60vh" overflow="scroll">

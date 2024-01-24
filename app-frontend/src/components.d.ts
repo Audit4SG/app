@@ -97,6 +97,7 @@ export namespace Components {
     interface PModal {
     }
     interface PNavigation {
+        "export": boolean;
     }
     interface PSearch {
     }
@@ -410,6 +411,7 @@ declare namespace LocalJSX {
     interface PModal {
     }
     interface PNavigation {
+        "export"?: boolean;
     }
     interface PSearch {
     }

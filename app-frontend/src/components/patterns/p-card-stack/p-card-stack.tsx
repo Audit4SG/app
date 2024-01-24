@@ -22,6 +22,9 @@ export class PCardStack {
   }
 
   generateCardStack() {
+    if (this.data.length === 0) {
+      return;
+    }
     this.cardStack = JSON.parse(this.data);
     this.cardStack = [...this.cardStack];
   }

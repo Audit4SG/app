@@ -27,6 +27,7 @@ export class VOntology {
   @Prop() history: RouterHistory;
 
   @State() isTooltipVisible: boolean = false;
+  @State() cardStack: any = [];
 
   private svg: any;
   private graphContainer: any;
@@ -39,7 +40,6 @@ export class VOntology {
 
   private svgHeight: number;
   private svgWidth: number;
-  private cardStack: any;
   private nodes: any;
   private nodeRelations: any;
   private zoom: any;
@@ -67,6 +67,7 @@ export class VOntology {
     }
     if (state.cardStack.length > 0) {
       this.cardStack = JSON.parse(state.cardStack);
+      this.cardStack = [...this.cardStack];
     }
     this.nodes = JSON.parse(state.nodes);
     this.nodeRelations = JSON.parse(state.nodeRelations);
@@ -180,10 +181,10 @@ export class VOntology {
         let clickedNode = this.svg.select(`#${data.id.split('#')[1]}`);
         if (clickedNode.attr('fill') === 'white') {
           clickedNode.attr('fill', 'rgba(8, 242, 110, 1)');
-          // this.addToCardStack(data);
+          this.addCardToStack(data);
         } else if (clickedNode.attr('fill') === 'rgba(8, 242, 110, 1)') {
           clickedNode.attr('fill', 'white');
-          // this.removeFromCardStack(data);
+          this.removeCardFromStack(data);
         }
       });
 
@@ -306,8 +307,18 @@ export class VOntology {
       });
   }
 
-  handleClickOnSpace() {
-    this.isTooltipVisible = false;
+  addCardToStack(data) {
+    console.log('');
+    console.log('Add card to stack');
+    console.log(data);
+    console.log('');
+  }
+
+  removeCardFromStack(data) {
+    console.log('');
+    console.log('Remove card from stack');
+    console.log(data);
+    console.log('');
   }
 
   render() {
@@ -319,7 +330,7 @@ export class VOntology {
         <c-sticky-area top="1em" left="1em">
           <p-navigation></p-navigation>
           <l-spacer value={1}></l-spacer>
-          <p-card-stack></p-card-stack>
+          <p-card-stack data={this.cardStack}></p-card-stack>
         </c-sticky-area>
         <c-sticky-area top="1em" right="1em">
           <e-text>Search</e-text>
@@ -336,7 +347,7 @@ export class VOntology {
             <ph-question size="2.25em" background="white"></ph-question>
           </e-button>
         </c-sticky-area>
-        <svg height={this.svgHeight} width={this.svgWidth} ref={el => (this.svgEl = el as SVGElement)} onClick={() => this.handleClickOnSpace()}></svg>
+        <svg height={this.svgHeight} width={this.svgWidth} ref={el => (this.svgEl = el as SVGElement)} onClick={() => (this.isTooltipVisible = false)}></svg>
       </Host>
     );
   }
