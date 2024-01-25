@@ -1,4 +1,4 @@
-import { Component, Event, Listen, EventEmitter, Prop, State, h } from '@stencil/core';
+import { Component, Event, Listen, FunctionalComponent, EventEmitter, Prop, State, h } from '@stencil/core';
 import { gsap } from 'gsap';
 
 @Component({
@@ -32,8 +32,8 @@ export class PCardCompact {
   @Prop() references: string;
 
   @State() isDefinitionExpanded: boolean = false;
-  @State() isQuestionExpanded: boolean = false;
-  @State() isReferenceExpanded: boolean = false;
+  @State() isProvocationExpanded: boolean = false;
+  @State() isReferencesExpanded: boolean = false;
 
   @Listen('event_LinkClick') handle_LinkClick(e) {
     if (e.detail.action === 'showModal') {
@@ -46,69 +46,66 @@ export class PCardCompact {
     }
   }
 
+  @Listen('buttonClick') handleButtonClick(e) {
+    if (e.detail.action === 'toggleDefinition') {
+      this.toggleDefinition();
+    } else if (e.detail.action === 'toggleProvocation') {
+      this.toggleProvocation();
+    } else if (e.detail.action === 'toggleReference') {
+      this.toggleReference();
+    }
+  }
+
   private tl: any = gsap.timeline();
 
-  handleButtonClick(name: string) {
-    if (name === 'deleteCard') {
-      this.deleteCardEventEmitter.emit({
-        id: this.nodeId,
-      });
-    } else if (name === 'toggleDefinition') {
-      this.isDefinitionExpanded = !this.isDefinitionExpanded;
-      if (this.isDefinitionExpanded) {
-        this.animateDefinitionExpansion();
-      } else {
-        this.animateDefinitionCollapse();
-      }
-    } else if (name === 'toggleQuestion') {
-      this.isQuestionExpanded = !this.isQuestionExpanded;
-      if (this.isQuestionExpanded) {
-        this.animateQuestionExpansion();
-      } else {
-        this.animateQuestionCollapse();
-      }
-    } else if (name === 'toggleReference') {
-      this.isReferenceExpanded = !this.isReferenceExpanded;
-      if (this.isReferenceExpanded) {
-        this.animateReferenceExpansion();
-      } else {
-        this.animateReferenceCollapse();
-      }
+  toggleDefinition() {
+    this.isDefinitionExpanded = !this.isDefinitionExpanded;
+    if (!this.isDefinitionExpanded) {
+      this.tl.to(this.definitionContainerEl, { overflow: 'hidden', duration: 0 });
+      this.tl.to(this.definitionContainerEl, { height: '0px', duration: 0.25 });
+    } else {
+      this.tl.to(this.definitionContainerEl, { height: 'auto', duration: 0.25 });
     }
+    this.toggleCardDepth();
+  }
 
-    if (this.isDefinitionExpanded || this.isQuestionExpanded || this.isReferenceExpanded) {
+  toggleProvocation() {
+    this.isProvocationExpanded = !this.isProvocationExpanded;
+    if (!this.isProvocationExpanded) {
+      this.tl.to([this.questionContainerEl, this.referenceButtonContainerEl], { overflow: 'hidden', duration: 0 });
+      this.tl.to([this.referenceButtonContainerEl, this.questionContainerEl], { height: '0px', duration: 0.25 });
+    } else {
+      this.tl.to([this.questionContainerEl, this.referenceButtonContainerEl], { height: 'auto', duration: 0.25 });
+    }
+    this.toggleCardDepth();
+  }
+
+  toggleReference() {
+    this.isReferencesExpanded = !this.isReferencesExpanded;
+    if (!this.isReferencesExpanded) {
+      this.tl.to(this.referenceContainerEl, { overflow: 'hidden', duration: 0 });
+      this.tl.to(this.referenceContainerEl, { height: '0px', duration: 0.25 });
+    } else {
+      this.tl.to(this.referenceContainerEl, { height: 'auto', duration: 0.25 });
+    }
+    this.toggleCardDepth();
+  }
+
+  toggleCardDepth() {
+    if (this.isDefinitionExpanded || this.isProvocationExpanded || this.isReferencesExpanded) {
       this.tl.to(this.compactCardContainerEl, { position: 'relative', zIndex: 999, background: '#eee', duration: 0.25 });
     } else {
       this.tl.to(this.compactCardContainerEl, { position: 'static', zIndex: 0, background: 'white', duration: 0.25 });
     }
   }
 
-  animateDefinitionExpansion() {
-    this.tl.to(this.definitionContainerEl, { height: 'auto', duration: 0.25 });
-  }
-  animateDefinitionCollapse() {
-    this.tl.to(this.definitionContainerEl, { overflow: 'hidden', duration: 0 });
-    this.tl.to(this.definitionContainerEl, { height: '0px', duration: 0.25 });
-  }
+  private thresholdLength: number = 120;
 
-  animateQuestionExpansion() {
-    this.tl.to([this.questionContainerEl, this.referenceButtonContainerEl], { height: 'auto', duration: 0.25 });
-  }
-  animateQuestionCollapse() {
-    this.tl.to([this.questionContainerEl, this.referenceButtonContainerEl], { overflow: 'hidden', duration: 0 });
-    this.tl.to([this.referenceButtonContainerEl, this.questionContainerEl], { height: '0px', duration: 0.25 });
-  }
-
-  animateReferenceExpansion() {
-    this.tl.to(this.referenceContainerEl, { height: 'auto', duration: 0.25 });
-  }
-  animateReferenceCollapse() {
-    this.tl.to(this.referenceContainerEl, { overflow: 'hidden', duration: 0 });
-    this.tl.to(this.referenceContainerEl, { height: '0px', duration: 0.25 });
-  }
-
-  private iconSize: string = '1.25em';
-  private thresholdLength: number = 140;
+  ModalReadingOption: FunctionalComponent = () => (
+    <e-link event={true} action="viewInModal" variant="readMore">
+      Read more
+    </e-link>
+  );
 
   render() {
     return (
@@ -119,70 +116,68 @@ export class PCardCompact {
           </div>
           <div class="header-item-2">
             <l-row>
-              <button onClick={() => this.handleButtonClick('toggleDefinition')} class="control-button">
-                {this.isDefinitionExpanded ? <ph-info size={this.iconSize} weight="fill" /> : <ph-info size={this.iconSize} weight="regular" />}
-              </button>
-              &nbsp;
-              <button onClick={() => this.handleButtonClick('toggleQuestion')} class="control-button">
-                {this.isQuestionExpanded ? <ph-minus-circle size={this.iconSize} /> : <ph-caret-circle-down size={this.iconSize} />}
-              </button>
-              &nbsp;
-              <button onClick={() => this.handleButtonClick('deleteCard')} class="control-button">
-                <ph-x-circle size={this.iconSize} />
-              </button>
+              <e-button variant="transparent" action="toggleDefinition">
+                {this.isDefinitionExpanded ? <ph-info size="1.25em" weight="fill" /> : <ph-info size="1.25em" weight="regular" />}
+              </e-button>
+              <e-button variant="transparent" action="toggleProvocation">
+                {this.isProvocationExpanded ? <ph-minus-circle size="1.25em" /> : <ph-caret-circle-down size="1.25em" />}
+              </e-button>
+              <e-button variant="transparent" action="deleteCard" value={this.nodeId}>
+                <ph-x-circle size="1.25em" />
+              </e-button>
             </l-row>
           </div>
         </header>
         <l-spacer value={0.5}></l-spacer>
         <div class="content-container" ref={el => (this.definitionContainerEl = el as HTMLDivElement)}>
           {this.description.length > this.thresholdLength ? (
-            <e-text>
-              <em>{this.description.substring(0, this.thresholdLength)}</em>
-              ...
-              <e-link event={true} action="showModal">
-                Read more
-              </e-link>
-            </e-text>
+            <div>
+              <e-text>
+                <em>{this.description.substring(0, this.thresholdLength)}</em>
+                ...
+              </e-text>
+              <this.ModalReadingOption></this.ModalReadingOption>
+            </div>
           ) : (
             <e-text>
               <em>{this.description}</em>
             </e-text>
           )}
-          {this.isQuestionExpanded && <div class="seperator"></div>}
+          {this.isProvocationExpanded && <div class="seperator"></div>}
         </div>
         <div class="content-container" ref={el => (this.questionContainerEl = el as HTMLDivElement)}>
           {this.provocation.length > this.thresholdLength ? (
-            <e-text>
-              {this.provocation.substring(0, this.thresholdLength)}
-              ...
-              <e-link event={true} action="showModal">
-                Read more
-              </e-link>
-            </e-text>
+            <div>
+              <e-text>
+                {this.provocation.substring(0, this.thresholdLength)}
+                ...
+              </e-text>
+              <this.ModalReadingOption></this.ModalReadingOption>
+            </div>
           ) : (
             <e-text>{this.provocation}</e-text>
           )}
-          {this.isReferenceExpanded && <div class="seperator"></div>}
+          {this.isReferencesExpanded && <div class="seperator"></div>}
         </div>
         <div class="content-container" ref={el => (this.referenceContainerEl = el as HTMLDivElement)}>
           {this.references.length > this.thresholdLength ? (
-            <e-text>
-              {this.references.substring(0, this.thresholdLength)}
-              ...
-              <e-link event={true} action="showModal">
-                Read more
-              </e-link>
-            </e-text>
+            <div>
+              <e-text>
+                {this.references.substring(0, this.thresholdLength)}
+                ...
+              </e-text>
+              <this.ModalReadingOption></this.ModalReadingOption>
+            </div>
           ) : (
             <e-text>{this.references}</e-text>
           )}
         </div>
-        {this.references.length > 0 && <l-spacer value={1}></l-spacer>}
+        {this.references.length > 0 && <l-spacer value={0.5}></l-spacer>}
         <div class="content-container" ref={el => (this.referenceButtonContainerEl = el as HTMLDivElement)}>
-          {this.references.length > 0 && this.isQuestionExpanded && (
-            <button class={this.isReferenceExpanded ? 'toggle-button hide-button' : 'toggle-button expand-button'} onClick={() => this.handleButtonClick('toggleReference')}>
-              {this.isReferenceExpanded ? 'Hide references' : 'Show references'}
-            </button>
+          {this.references.length > 0 && this.isProvocationExpanded && (
+            <e-button action="toggleReference" size="wide" theme={`${this.isReferencesExpanded ? 'grey' : 'dark'}`}>
+              {this.isReferencesExpanded ? 'Hide references' : 'Show references'}
+            </e-button>
           )}
         </div>
       </div>
