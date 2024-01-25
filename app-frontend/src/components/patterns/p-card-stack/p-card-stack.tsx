@@ -45,7 +45,7 @@ export class PCardStack {
 
   toggleCompactCardStack() {
     if (!this.isCompactCardStackExpanded) {
-      this.tl.to(this.compactCardStack, { width: '600px', height: 'auto', duration: 0.25 });
+      this.tl.to(this.compactCardStack, { width: '560px', height: 'auto', duration: 0.25 });
       // this.tl.to(this.downloadButtonContainer, { display: 'block', duration: 0 });
       // this.tl.to(this.downloadButtonContainer, { opacity: 1, duration: 0.25 });
       this.tl.to(this.mainList, { opacity: 1, duration: 0.25 });
@@ -53,7 +53,7 @@ export class PCardStack {
       this.tl.to(this.mainList, { opacity: 0, duration: 0.25 });
       //  this.tl.to(this.downloadButtonContainer, { opacity: 1, duration: 0.25 });
       //  this.tl.to(this.downloadButtonContainer, { display: 'none', duration: 0 });
-      this.tl.to(this.compactCardStack, { width: '250px', height: '32px', duration: 0.25 });
+      this.tl.to(this.compactCardStack, { width: '280px', height: '32px', duration: 0.25 });
     }
     this.isCompactCardStackExpanded = !this.isCompactCardStackExpanded;
   }
@@ -74,12 +74,19 @@ export class PCardStack {
     <div class="compact-list-container" ref={el => (this.compactCardStack = el as HTMLDivElement)}>
       <header>
         <l-row justify="space-between" align="center">
-          <l-row>
-            <e-text>Selected</e-text>
+          {/* <l-row>
+            <e-text>Audit Stack</e-text>
             &nbsp;&nbsp;
-            <e-button action="openAuditSummary">{this.cardStack.length} nodes</e-button>
-          </l-row>
-
+            <e-button action="openAuditSummary">
+              {this.isCompactCardStackExpanded && 'View summary of '}
+              {this.cardStack.length} nodes
+            </e-button>
+          </l-row> */}
+          <e-text>Audit Stack</e-text>
+          <e-button action="openAuditSummary">
+            {this.isCompactCardStackExpanded && 'View summary of '}
+            {this.cardStack.length} nodes
+          </e-button>
           <l-row justify="space-between" align="center">
             <e-button variant="transparent" action="toggleCompactCardStack">
               {this.isCompactCardStackExpanded ? <ph-minus-circle size="1.5em" /> : <ph-caret-circle-down size="1.5em" />}

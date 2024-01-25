@@ -23,6 +23,12 @@ export class VOntology {
       this.isTooltipVisible = false;
     } else if (e.detail.action === 'deleteCard') {
       this.removeCardFromStack({ id: e.detail.value });
+    } else if (e.detail.action === 'deleteAllCards') {
+      this.cardStack.map(card => {
+        this.removeCardFromStack({ id: card.id });
+      });
+      this.cardStack = [];
+      this.updateCardStackInStore();
     }
   }
 

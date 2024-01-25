@@ -22,7 +22,7 @@ export class PNavigation {
       if (state.activeMenuItem === 'howTo') {
         state.activeMenuLabel = 'How to';
       } else if (state.activeMenuItem === 'share') {
-        state.activeMenuLabel = 'Share your audit with this link';
+        state.activeMenuLabel = 'Share your audit stack with others';
       } else if (state.activeMenuItem === 'about') {
         state.activeMenuLabel = 'About';
       } else if (state.activeMenuItem === 'credits') {

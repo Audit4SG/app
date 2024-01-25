@@ -16,14 +16,14 @@
   padding: var(--layout__padding--card);
   border: 2px solid black;
   border-radius: var(--layout__border-radius--global);
-  width: 250px;
-  height: 25px;
+  width: 280px;
+  height: 30px;
   overflow: hidden;
 }
 
 .compact-list-container header {
   margin-bottom: 1em;
-  max-width: 250px;
+  /* max-width: 250px; */
 }
 
 .highlight {
