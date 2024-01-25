@@ -25,12 +25,14 @@ button:disabled {
   color: white;
   background: var(--colour__blue--dark);
   border: 2px solid var(--colour__blue--dark);
+  width: 280px;
 }
 
 .primary--grey {
   background: var(--colour__grey--lightest);
   border: 2px solid var(--colour__grey--lightest);
-  color: red;
+  color: var(--colour__blue--dark);
+  width: 280px;
 }
 
 .secondary {

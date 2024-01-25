@@ -250,7 +250,7 @@ export class PCardBasic {
           </div>
           <l-spacer value={0.5}></l-spacer>
           {this.reference && (
-            <e-button action="toggleReference" size="wide" theme={`${this.isReferencesExpanded ? 'grey' : 'dark'}`}>
+            <e-button action="toggleReference" theme={`${this.isReferencesExpanded ? 'grey' : 'dark'}`}>
               {this.isReferencesExpanded ? 'Hide references' : 'Show references'}
             </e-button>
           )}
