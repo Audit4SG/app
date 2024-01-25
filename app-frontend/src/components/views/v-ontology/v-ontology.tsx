@@ -49,7 +49,6 @@ export class VOntology {
           obj = node;
         }
       });
-      console.log(e.detail);
       if (e.detail.isChecked) {
         this.addCardToStack(obj);
       } else {
@@ -361,7 +360,6 @@ export class VOntology {
   addCardToStack(data) {
     let clickedNode = this.svg.select(`#${data.id.split('#')[1]}`);
     clickedNode.attr('fill', 'rgba(8, 242, 110, 1)');
-    console.log(clickedNode);
     let obj = {
       id: data.id,
       label: data.label,

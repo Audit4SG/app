@@ -1,4 +1,4 @@
-import { Component, State, Listen, Host, h } from '@stencil/core';
+import { Component, State, Listen, h } from '@stencil/core';
 import { state } from '../../../global/script';
 import { gsap } from 'gsap';
 

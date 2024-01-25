@@ -1,4 +1,4 @@
-import { Component, Prop, Host, Watch, h } from '@stencil/core';
+import { Component, Prop, Watch, h } from '@stencil/core';
 import { gsap } from 'gsap';
 
 @Component({

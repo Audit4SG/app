@@ -53,6 +53,7 @@ export class PCardBasic {
   @Prop() expand: boolean = true;
 
   @Watch('expand') watchExpandProp(newVal: boolean, oldVal: boolean) {
+    console.log(oldVal);
     if (!newVal && this.isCardExpanded) {
       this.toggleProvocation();
     }

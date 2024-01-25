@@ -25,8 +25,8 @@ export const generateNodes = (flattenedOntologyData: any) => {
     let references = '';
     let subClassOf: string = '';
 
-    if (unprocessedNode['http://www.w3.org/2000/01/rdf-schema#description']) {
-      description = unprocessedNode['http://www.w3.org/2000/01/rdf-schema#description'][0]['@value'];
+    if (unprocessedNode['http://www.w3.org/2000/01/rdf-schema#comment']) {
+      description = unprocessedNode['http://www.w3.org/2000/01/rdf-schema#comment'][0]['@value'];
     } else {
       description = '(To be updated)';
     }
