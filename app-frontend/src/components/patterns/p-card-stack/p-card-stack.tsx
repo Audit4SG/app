@@ -77,7 +77,7 @@ export class PCardStack {
       <header>
         <l-row justify="space-between" align="center">
           <e-text>Audit Stack</e-text>
-          <e-button action="openAuditSummary">
+          <e-button action="viewAuditSummary">
             {this.isCompactCardStackExpanded && 'View summary of '}
             {this.cardStack.length} nodes
           </e-button>

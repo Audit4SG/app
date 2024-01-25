@@ -36,19 +36,18 @@ export class PNavigation {
       setTimeout(() => {
         this.isLinkCopied = false;
       }, 1000);
-    } else if (e.detail.action === 'viewSelectionSummary') {
-      window.open(state.shareUrl);
     }
   }
 
-  @Prop() export: boolean = false;
+  @Prop() share: boolean = false;
 
   @State() isLinkCopied: boolean = false;
-  @State() isExportDisabled: boolean = true;
+  @State() isSharingEnabed: boolean = true;
 
   @Watch('export') watchExportProp(newVal: boolean, oldVal: boolean) {
-    console.log(oldVal);
-    this.isExportDisabled = newVal;
+    if (oldVal != newVal) {
+      this.isSharingEnabed = newVal;
+    }
   }
 
   HowToContent: FunctionalComponent = () => (
@@ -98,7 +97,7 @@ export class PNavigation {
   );
 
   ShareContent: FunctionalComponent = () =>
-    this.isExportDisabled ? (
+    !this.isSharingEnabed ? (
       <e-text>You have nothing to share. In order to share your audit, kindly select a few nodes.</e-text>
     ) : (
       <div>
@@ -107,7 +106,7 @@ export class PNavigation {
         </div>
         <l-spacer value={1}></l-spacer>
         <l-row justify="space-between" align="center">
-          <e-button action="viewSelectionSummary" variant="secondary">
+          <e-button action="viewAuditSummary" variant="secondary">
             View Summary
           </e-button>
           {this.isLinkCopied ? <e-text theme="success">Link copied!</e-text> : <e-button action="copyShareableLink">Copy Link</e-button>}

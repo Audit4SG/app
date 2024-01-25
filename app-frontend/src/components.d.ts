@@ -112,7 +112,7 @@ export namespace Components {
         "references": string;
     }
     interface PNavigation {
-        "export": boolean;
+        "share": boolean;
     }
     interface PSearch {
     }
@@ -136,6 +136,8 @@ export namespace Components {
     interface VReading {
         "history": RouterHistory;
         "match": MatchResults;
+    }
+    interface VSummary {
     }
 }
 declare global {
@@ -307,6 +309,12 @@ declare global {
         prototype: HTMLVReadingElement;
         new (): HTMLVReadingElement;
     };
+    interface HTMLVSummaryElement extends Components.VSummary, HTMLStencilElement {
+    }
+    var HTMLVSummaryElement: {
+        prototype: HTMLVSummaryElement;
+        new (): HTMLVSummaryElement;
+    };
     interface HTMLElementTagNameMap {
         "app-root": HTMLAppRootElement;
         "c-card": HTMLCCardElement;
@@ -336,6 +344,7 @@ declare global {
         "v-init": HTMLVInitElement;
         "v-ontology": HTMLVOntologyElement;
         "v-reading": HTMLVReadingElement;
+        "v-summary": HTMLVSummaryElement;
     }
 }
 declare namespace LocalJSX {
@@ -450,7 +459,7 @@ declare namespace LocalJSX {
         "references"?: string;
     }
     interface PNavigation {
-        "export"?: boolean;
+        "share"?: boolean;
     }
     interface PSearch {
     }
@@ -474,6 +483,8 @@ declare namespace LocalJSX {
     interface VReading {
         "history"?: RouterHistory;
         "match"?: MatchResults;
+    }
+    interface VSummary {
     }
     interface IntrinsicElements {
         "app-root": AppRoot;
@@ -504,6 +515,7 @@ declare namespace LocalJSX {
         "v-init": VInit;
         "v-ontology": VOntology;
         "v-reading": VReading;
+        "v-summary": VSummary;
     }
 }
 export { LocalJSX as JSX };
@@ -538,6 +550,7 @@ declare module "@stencil/core" {
             "v-init": LocalJSX.VInit & JSXBase.HTMLAttributes<HTMLVInitElement>;
             "v-ontology": LocalJSX.VOntology & JSXBase.HTMLAttributes<HTMLVOntologyElement>;
             "v-reading": LocalJSX.VReading & JSXBase.HTMLAttributes<HTMLVReadingElement>;
+            "v-summary": LocalJSX.VSummary & JSXBase.HTMLAttributes<HTMLVSummaryElement>;
         }
     }
 }

@@ -35,6 +35,8 @@ export class VOntology {
       this.modalProvocation = '';
       this.modalReferences = '';
       this.isModalOpen = false;
+    } else if (e.detail.action === 'viewAuditSummary') {
+      this.history.push('/summary');
     }
   }
 
@@ -370,7 +372,7 @@ export class VOntology {
           <p-tooltip x={this.cursorX} y={this.cursorY} label={this.tooltipLabel} definition={this.tooltipDefinition} provocation={this.tooltipProvocation}></p-tooltip>
         )}
         <c-sticky-area top="1em" left="1em" zIndex={9}>
-          <p-navigation export={this.cardStack.length > 0 ? true : false}></p-navigation>
+          <p-navigation share={this.cardStack.length > 0 ? true : false}></p-navigation>
           <l-spacer value={1}></l-spacer>
           <p-card-stack data={this.cardStack}></p-card-stack>
         </c-sticky-area>
