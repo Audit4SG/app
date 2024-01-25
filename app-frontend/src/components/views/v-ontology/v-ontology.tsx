@@ -40,6 +40,30 @@ export class VOntology {
     }
   }
 
+  @Listen('inputEvent') handleInputEvent(e) {
+    if (e.detail.name === 'topicSelection') {
+      let nodes: any = JSON.parse(state.nodes);
+      let obj: any;
+      nodes.map((node: any) => {
+        if (node.id === e.detail.value) {
+          obj = node;
+        }
+      });
+      console.log(e.detail);
+      if (e.detail.isChecked) {
+        this.addCardToStack(obj);
+      } else {
+        this.removeCardFromStack(obj);
+      }
+    }
+  }
+
+  @Listen('event_LinkClick') handleLinkClick(e) {
+    if (e.detail.action === 'flyTo') {
+      this.flyTo(e.detail.value.split('#')[1]);
+    }
+  }
+
   @Listen('openModal') openModalHandler(e) {
     this.modalLabel = e.detail.label;
     this.modalDefinition = e.detail.definition;
@@ -337,7 +361,7 @@ export class VOntology {
   addCardToStack(data) {
     let clickedNode = this.svg.select(`#${data.id.split('#')[1]}`);
     clickedNode.attr('fill', 'rgba(8, 242, 110, 1)');
-
+    console.log(clickedNode);
     let obj = {
       id: data.id,
       label: data.label,
@@ -352,7 +376,6 @@ export class VOntology {
   removeCardFromStack(data) {
     let clickedNode = this.svg.select(`#${data.id.split('#')[1]}`);
     clickedNode.attr('fill', 'white');
-
     this.cardStack = this.cardStack.filter(obj => {
       return obj.id !== data.id;
     });
@@ -362,6 +385,36 @@ export class VOntology {
   updateCardStackInStore() {
     this.cardStack = [...this.cardStack];
     state.cardStack = JSON.stringify(this.cardStack);
+  }
+
+  flyTo(topic: string) {
+    const selectedNode = this.svg.select(`#${topic}`);
+    const x = selectedNode._groups[0][0].getAttribute('cx');
+    const y = selectedNode._groups[0][0].getAttribute('cy');
+
+    this.zoom.scaleTo(d3.select(this.svgEl), 0.25);
+    this.zoom.translateTo(d3.select(this.svgEl), x, y);
+
+    let count = 0;
+    let timeout = setInterval(() => {
+      if (count % 2 === 0) {
+        selectedNode.attr('fill', '#08f26e');
+      } else {
+        selectedNode.attr('fill', 'white');
+      }
+      count = count + 1;
+      if (count > 3) {
+        clearTimeout(timeout);
+      }
+    }, 500);
+    setTimeout(() => {
+      this.cardStack.map(item => {
+        if (item.id === topic) {
+          let selectedTopicNode = this.svg.select(`#${topic.split('#')[1]}`);
+          selectedTopicNode.attr('fill', 'rgba(8, 242, 110, 1)');
+        }
+      });
+    }, 2000);
   }
 
   render() {
@@ -379,7 +432,7 @@ export class VOntology {
         <c-sticky-area top="1em" right="1em">
           <e-text>Search</e-text>
           <l-spacer value={1}></l-spacer>
-          <e-text>Topic list</e-text>
+          <p-topic-list></p-topic-list>
         </c-sticky-area>
         <c-sticky-area bottom="1em" right="1em">
           <e-link href="https://audit4sg.org" target="_blank">

@@ -1,6 +1,5 @@
 import { Component, Prop, FunctionalComponent, Listen, State, Host, h } from '@stencil/core';
 import { injectHistory, RouterHistory } from '@stencil/router';
-import { generateTopics } from './helpers';
 import { pushIntoCardStack, popOutOfCardStack, getLengthOfCardStack } from '../../../global/script/helpers';
 import { state } from '../../../global/script';
 
@@ -19,7 +18,7 @@ export class VInit {
 
   @Listen('buttonClick') handleButtonClick(e) {
     if (e.detail.action === 'selectTopics') {
-      this.topics = generateTopics(JSON.parse(state.nodes), JSON.parse(state.nodeRelations));
+      this.topics = JSON.parse(state.topics);
       this.topics = [...this.topics];
       this.wizardState = 'topicSelection';
     } else if (e.detail.action === 'backToJourneySelection') {

@@ -1,0 +1,18 @@
+:host {
+  display: block;
+  background: white;
+  padding: var(--layout__padding--card);
+  border-radius: var(--layout__border-radius--global);
+  border: 2px solid var(--colour__green--default);
+  -webkit-box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  /* width: 150px;
+  height: 25px;
+  overflow: hidden; */
+}
+
+main {
+  max-height: 75vh;
+  overflow: scroll;
+}

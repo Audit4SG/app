@@ -66,7 +66,15 @@ export class EInput {
       return (
         <label class="container">
           {this.label}
-          <input id={this.name} type={this.type} name={this.name} value={this.value} onChange={e => this.onInput(e)} ref={el => (this.inputEl = el as HTMLInputElement)} />
+          <input
+            id={this.name}
+            type={this.type}
+            name={this.name}
+            value={this.value}
+            checked={this.checked}
+            onChange={e => this.onInput(e)}
+            ref={el => (this.inputEl = el as HTMLInputElement)}
+          />
           <span class="checkmark"></span>
         </label>
       );
