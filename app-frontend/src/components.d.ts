@@ -98,14 +98,18 @@ export namespace Components {
         "provocation": string;
         "references": string;
     }
-    interface PCardModal {
-    }
     interface PCardStack {
         "data": any;
     }
     interface PGallery {
     }
     interface PModal {
+        "definition": string;
+        "label": string;
+        "nodeId": string;
+        "open": boolean;
+        "provocation": string;
+        "references": string;
     }
     interface PNavigation {
         "export": boolean;
@@ -243,12 +247,6 @@ declare global {
         prototype: HTMLPCardCompactElement;
         new (): HTMLPCardCompactElement;
     };
-    interface HTMLPCardModalElement extends Components.PCardModal, HTMLStencilElement {
-    }
-    var HTMLPCardModalElement: {
-        prototype: HTMLPCardModalElement;
-        new (): HTMLPCardModalElement;
-    };
     interface HTMLPCardStackElement extends Components.PCardStack, HTMLStencilElement {
     }
     var HTMLPCardStackElement: {
@@ -328,7 +326,6 @@ declare global {
         "l-spacer": HTMLLSpacerElement;
         "p-card-basic": HTMLPCardBasicElement;
         "p-card-compact": HTMLPCardCompactElement;
-        "p-card-modal": HTMLPCardModalElement;
         "p-card-stack": HTMLPCardStackElement;
         "p-gallery": HTMLPGalleryElement;
         "p-modal": HTMLPModalElement;
@@ -435,11 +432,9 @@ declare namespace LocalJSX {
         "label"?: string;
         "nodeId"?: string;
         "onDeleteCardEvent"?: (event: CustomEvent<any>) => void;
-        "onShowModal"?: (event: CustomEvent<any>) => void;
+        "onOpenModal"?: (event: CustomEvent<any>) => void;
         "provocation"?: string;
         "references"?: string;
-    }
-    interface PCardModal {
     }
     interface PCardStack {
         "data"?: any;
@@ -447,6 +442,12 @@ declare namespace LocalJSX {
     interface PGallery {
     }
     interface PModal {
+        "definition"?: string;
+        "label"?: string;
+        "nodeId"?: string;
+        "open"?: boolean;
+        "provocation"?: string;
+        "references"?: string;
     }
     interface PNavigation {
         "export"?: boolean;
@@ -493,7 +494,6 @@ declare namespace LocalJSX {
         "l-spacer": LSpacer;
         "p-card-basic": PCardBasic;
         "p-card-compact": PCardCompact;
-        "p-card-modal": PCardModal;
         "p-card-stack": PCardStack;
         "p-gallery": PGallery;
         "p-modal": PModal;
@@ -528,7 +528,6 @@ declare module "@stencil/core" {
             "l-spacer": LocalJSX.LSpacer & JSXBase.HTMLAttributes<HTMLLSpacerElement>;
             "p-card-basic": LocalJSX.PCardBasic & JSXBase.HTMLAttributes<HTMLPCardBasicElement>;
             "p-card-compact": LocalJSX.PCardCompact & JSXBase.HTMLAttributes<HTMLPCardCompactElement>;
-            "p-card-modal": LocalJSX.PCardModal & JSXBase.HTMLAttributes<HTMLPCardModalElement>;
             "p-card-stack": LocalJSX.PCardStack & JSXBase.HTMLAttributes<HTMLPCardStackElement>;
             "p-gallery": LocalJSX.PGallery & JSXBase.HTMLAttributes<HTMLPGalleryElement>;
             "p-modal": LocalJSX.PModal & JSXBase.HTMLAttributes<HTMLPModalElement>;

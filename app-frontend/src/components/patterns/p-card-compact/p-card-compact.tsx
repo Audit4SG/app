@@ -20,10 +20,10 @@ export class PCardCompact {
   deleteCardEventEmitter: EventEmitter;
 
   @Event({
-    eventName: 'showModal',
+    eventName: 'openModal',
     bubbles: true,
   })
-  event_showModal: EventEmitter;
+  openModal: EventEmitter;
 
   @Prop() nodeId: string;
   @Prop() label: string;
@@ -36,10 +36,10 @@ export class PCardCompact {
   @State() isReferencesExpanded: boolean = false;
 
   @Listen('event_LinkClick') handle_LinkClick(e) {
-    if (e.detail.action === 'showModal') {
-      this.event_showModal.emit({
+    if (e.detail.action === 'viewInModal') {
+      this.openModal.emit({
         label: this.label,
-        description: this.description,
+        definition: this.description,
         provocation: this.provocation,
         references: this.references,
       });

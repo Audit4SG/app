@@ -29,13 +29,32 @@ export class VOntology {
       });
       this.cardStack = [];
       this.updateCardStackInStore();
+    } else if (e.detail.action === 'closeModal') {
+      this.modalLabel = '';
+      this.modalDefinition = '';
+      this.modalProvocation = '';
+      this.modalReferences = '';
+      this.isModalOpen = false;
     }
+  }
+
+  @Listen('openModal') openModalHandler(e) {
+    this.modalLabel = e.detail.label;
+    this.modalDefinition = e.detail.definition;
+    this.modalProvocation = e.detail.provocation;
+    this.modalReferences = e.detail.references;
+    this.isModalOpen = true;
   }
 
   @Prop() history: RouterHistory;
 
   @State() isTooltipVisible: boolean = false;
   @State() cardStack: any = [];
+  @State() modalLabel: string = '';
+  @State() modalDefinition: string = '';
+  @State() modalProvocation: string = '';
+  @State() modalReferences: string = '';
+  @State() isModalOpen: boolean = false;
 
   private svg: any;
   private graphContainer: any;
@@ -346,6 +365,7 @@ export class VOntology {
   render() {
     return (
       <Host>
+        <p-modal open={this.isModalOpen} label={this.modalLabel} definition={this.modalDefinition} provocation={this.modalProvocation} references={this.modalReferences}></p-modal>
         {this.isTooltipVisible && (
           <p-tooltip x={this.cursorX} y={this.cursorY} label={this.tooltipLabel} definition={this.tooltipDefinition} provocation={this.tooltipProvocation}></p-tooltip>
         )}

@@ -14,6 +14,8 @@ export class PCardStack {
   @Listen('buttonClick') handleButtonClick(e) {
     if (e.detail.action === 'toggleCompactCardStack') {
       this.toggleCompactCardStack();
+    } else if (e.detail.action === 'deleteAllCards') {
+      this.isCompactCardStackExpanded = false;
     }
   }
 
@@ -74,14 +76,6 @@ export class PCardStack {
     <div class="compact-list-container" ref={el => (this.compactCardStack = el as HTMLDivElement)}>
       <header>
         <l-row justify="space-between" align="center">
-          {/* <l-row>
-            <e-text>Audit Stack</e-text>
-            &nbsp;&nbsp;
-            <e-button action="openAuditSummary">
-              {this.isCompactCardStackExpanded && 'View summary of '}
-              {this.cardStack.length} nodes
-            </e-button>
-          </l-row> */}
           <e-text>Audit Stack</e-text>
           <e-button action="openAuditSummary">
             {this.isCompactCardStackExpanded && 'View summary of '}
