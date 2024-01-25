@@ -1,11 +1,11 @@
 import { newE2EPage } from '@stencil/core/testing';
 
-describe('p-card-stack-item', () => {
+describe('p-card-compact', () => {
   it('renders', async () => {
     const page = await newE2EPage();
-    await page.setContent('<p-card-stack-item></p-card-stack-item>');
+    await page.setContent('<p-card-compact></p-card-compact>');
 
-    const element = await page.find('p-card-stack-item');
+    const element = await page.find('p-card-compact');
     expect(element).toHaveClass('hydrated');
   });
 });

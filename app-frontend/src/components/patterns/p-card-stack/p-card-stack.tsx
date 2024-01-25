@@ -60,23 +60,26 @@ export class PCardStack {
 
   BasicCardStack: FunctionalComponent = () =>
     this.cardStack.map(item => (
-      <p-card-stack-item
+      <p-card-basic
         nodeId={item.id}
         label={item.label}
         definition={item.definition}
         provocation={item.provocation}
         reference={item.references}
         expand={state.isMenuOpen || this.cardStack.length > 2 ? false : true}
-      ></p-card-stack-item>
+      ></p-card-basic>
     ));
 
   CompactCardStack: FunctionalComponent = () => (
     <div class="compact-list-container" ref={el => (this.compactCardStack = el as HTMLDivElement)}>
       <header>
         <l-row justify="space-between" align="center">
-          <e-text>
-            Selected <span class="highlight">{this.cardStack.length}</span>
-          </e-text>
+          <l-row>
+            <e-text>Selected</e-text>
+            &nbsp;&nbsp;
+            <e-button action="openAuditSummary">{this.cardStack.length} nodes</e-button>
+          </l-row>
+
           <l-row justify="space-between" align="center">
             <e-button variant="transparent" action="toggleCompactCardStack">
               {this.isCompactCardStackExpanded ? <ph-minus-circle size="1.5em" /> : <ph-caret-circle-down size="1.5em" />}
@@ -92,14 +95,7 @@ export class PCardStack {
           {this.cardStack.map(
             (item: any, index: any) =>
               index % 2 === 0 && (
-                <p-card-stack-item
-                  nodeId={item.id}
-                  label={item.label}
-                  definition={item.definition}
-                  provocation={item.provocation}
-                  reference={item.references}
-                  expand={false}
-                ></p-card-stack-item>
+                <p-card-compact nodeId={item.id} label={item.label} description={item.definition} provocation={item.provocation} references={item.references}></p-card-compact>
               ),
           )}
         </div>
@@ -107,14 +103,7 @@ export class PCardStack {
           {this.cardStack.map(
             (item: any, index: any) =>
               index % 2 != 0 && (
-                <p-card-stack-item
-                  nodeId={item.id}
-                  label={item.label}
-                  definition={item.definition}
-                  provocation={item.provocation}
-                  reference={item.references}
-                  expand={false}
-                ></p-card-stack-item>
+                <p-card-compact nodeId={item.id} label={item.label} description={item.definition} provocation={item.provocation} references={item.references}></p-card-compact>
               ),
           )}
         </div>

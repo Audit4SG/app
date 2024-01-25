@@ -2,11 +2,11 @@ import { Component, Prop, State, FunctionalComponent, Listen, Watch, h } from '@
 import { gsap } from 'gsap';
 
 @Component({
-  tag: 'p-card-stack-item',
-  styleUrl: 'p-card-stack-item.css',
+  tag: 'p-card-basic',
+  styleUrl: 'p-card-basic.css',
   shadow: true,
 })
-export class PCardStackItem {
+export class PCardBasic {
   cardStackItemContainer!: HTMLDivElement;
   definitionContainer!: HTMLDivElement;
   provocationContainer!: HTMLDivElement;
@@ -182,7 +182,7 @@ export class PCardStackItem {
 
   render() {
     return (
-      <div class="card-stack-item__basic" ref={el => (this.cardStackItemContainer = el as HTMLDivElement)}>
+      <div class="card__basic" ref={el => (this.cardStackItemContainer = el as HTMLDivElement)}>
         <header>
           <l-row justify="space-between" align="center">
             <e-text variant="heading__menu">{this.label}</e-text>

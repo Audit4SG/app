@@ -14,6 +14,7 @@ export class CStickyArea {
   @Prop() right: string;
   @Prop() bottom: string;
   @Prop() left: string;
+  @Prop() zIndex: number = 0;
 
   private styleObject: LooseObject = {};
 
@@ -24,6 +25,7 @@ export class CStickyArea {
   generateStyleObject() {
     this.styleObject.boxSizing = 'border-box';
     this.styleObject.position = 'fixed';
+    this.styleObject.zIndex = this.zIndex;
     if (this.top) {
       this.styleObject.top = this.top;
     }

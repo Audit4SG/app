@@ -1,4 +1,4 @@
-.card-stack-item__basic {
+.card__basic {
   display: block;
   background: white;
   padding: var(--layout__padding--card);

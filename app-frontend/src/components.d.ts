@@ -28,6 +28,7 @@ export namespace Components {
         "left": string;
         "right": string;
         "top": string;
+        "zIndex": number;
     }
     interface EButton {
         "action": string;
@@ -81,10 +82,7 @@ export namespace Components {
         "value": number;
         "variant": string;
     }
-    interface PCardStack {
-        "data": any;
-    }
-    interface PCardStackItem {
+    interface PCardBasic {
         "definition": string;
         "expand": boolean;
         "label": string;
@@ -92,6 +90,16 @@ export namespace Components {
         "provocation": string;
         "reference": string;
         "variant": string;
+    }
+    interface PCardCompact {
+        "description": string;
+        "label": string;
+        "nodeId": string;
+        "provocation": string;
+        "references": string;
+    }
+    interface PCardStack {
+        "data": any;
     }
     interface PGallery {
     }
@@ -221,17 +229,23 @@ declare global {
         prototype: HTMLLSpacerElement;
         new (): HTMLLSpacerElement;
     };
+    interface HTMLPCardBasicElement extends Components.PCardBasic, HTMLStencilElement {
+    }
+    var HTMLPCardBasicElement: {
+        prototype: HTMLPCardBasicElement;
+        new (): HTMLPCardBasicElement;
+    };
+    interface HTMLPCardCompactElement extends Components.PCardCompact, HTMLStencilElement {
+    }
+    var HTMLPCardCompactElement: {
+        prototype: HTMLPCardCompactElement;
+        new (): HTMLPCardCompactElement;
+    };
     interface HTMLPCardStackElement extends Components.PCardStack, HTMLStencilElement {
     }
     var HTMLPCardStackElement: {
         prototype: HTMLPCardStackElement;
         new (): HTMLPCardStackElement;
-    };
-    interface HTMLPCardStackItemElement extends Components.PCardStackItem, HTMLStencilElement {
-    }
-    var HTMLPCardStackItemElement: {
-        prototype: HTMLPCardStackItemElement;
-        new (): HTMLPCardStackItemElement;
     };
     interface HTMLPGalleryElement extends Components.PGallery, HTMLStencilElement {
     }
@@ -304,8 +318,9 @@ declare global {
         "l-row": HTMLLRowElement;
         "l-seperator": HTMLLSeperatorElement;
         "l-spacer": HTMLLSpacerElement;
+        "p-card-basic": HTMLPCardBasicElement;
+        "p-card-compact": HTMLPCardCompactElement;
         "p-card-stack": HTMLPCardStackElement;
-        "p-card-stack-item": HTMLPCardStackItemElement;
         "p-gallery": HTMLPGalleryElement;
         "p-modal": HTMLPModalElement;
         "p-navigation": HTMLPNavigationElement;
@@ -339,6 +354,7 @@ declare namespace LocalJSX {
         "left"?: string;
         "right"?: string;
         "top"?: string;
+        "zIndex"?: number;
     }
     interface EButton {
         "action"?: string;
@@ -396,10 +412,7 @@ declare namespace LocalJSX {
         "value"?: number;
         "variant"?: string;
     }
-    interface PCardStack {
-        "data"?: any;
-    }
-    interface PCardStackItem {
+    interface PCardBasic {
         "definition"?: string;
         "expand"?: boolean;
         "label"?: string;
@@ -407,6 +420,18 @@ declare namespace LocalJSX {
         "provocation"?: string;
         "reference"?: string;
         "variant"?: string;
+    }
+    interface PCardCompact {
+        "description"?: string;
+        "label"?: string;
+        "nodeId"?: string;
+        "onDeleteCardEvent"?: (event: CustomEvent<any>) => void;
+        "onShowModal"?: (event: CustomEvent<any>) => void;
+        "provocation"?: string;
+        "references"?: string;
+    }
+    interface PCardStack {
+        "data"?: any;
     }
     interface PGallery {
     }
@@ -455,8 +480,9 @@ declare namespace LocalJSX {
         "l-row": LRow;
         "l-seperator": LSeperator;
         "l-spacer": LSpacer;
+        "p-card-basic": PCardBasic;
+        "p-card-compact": PCardCompact;
         "p-card-stack": PCardStack;
-        "p-card-stack-item": PCardStackItem;
         "p-gallery": PGallery;
         "p-modal": PModal;
         "p-navigation": PNavigation;
@@ -488,8 +514,9 @@ declare module "@stencil/core" {
             "l-row": LocalJSX.LRow & JSXBase.HTMLAttributes<HTMLLRowElement>;
             "l-seperator": LocalJSX.LSeperator & JSXBase.HTMLAttributes<HTMLLSeperatorElement>;
             "l-spacer": LocalJSX.LSpacer & JSXBase.HTMLAttributes<HTMLLSpacerElement>;
+            "p-card-basic": LocalJSX.PCardBasic & JSXBase.HTMLAttributes<HTMLPCardBasicElement>;
+            "p-card-compact": LocalJSX.PCardCompact & JSXBase.HTMLAttributes<HTMLPCardCompactElement>;
             "p-card-stack": LocalJSX.PCardStack & JSXBase.HTMLAttributes<HTMLPCardStackElement>;
-            "p-card-stack-item": LocalJSX.PCardStackItem & JSXBase.HTMLAttributes<HTMLPCardStackItemElement>;
             "p-gallery": LocalJSX.PGallery & JSXBase.HTMLAttributes<HTMLPGalleryElement>;
             "p-modal": LocalJSX.PModal & JSXBase.HTMLAttributes<HTMLPModalElement>;
             "p-navigation": LocalJSX.PNavigation & JSXBase.HTMLAttributes<HTMLPNavigationElement>;

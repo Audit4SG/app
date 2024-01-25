@@ -1,5 +1,13 @@
 :host {
   display: block;
+  overflow: scroll;
+  max-height: calc(100vh - 4em);
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+:host::-webkit-scrollbar {
+  display: none;
 }
 
 .compact-list-container {
