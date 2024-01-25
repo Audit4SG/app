@@ -1,4 +1,4 @@
-:host {
+.topic-list-container {
   display: block;
   background: white;
   padding: var(--layout__padding--card);
