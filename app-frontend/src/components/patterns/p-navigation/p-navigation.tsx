@@ -42,11 +42,11 @@ export class PNavigation {
   @Prop() share: boolean = false;
 
   @State() isLinkCopied: boolean = false;
-  @State() isSharingEnabed: boolean = true;
+  @State() isSharingEnabled: boolean = false;
 
-  @Watch('export') watchExportProp(newVal: boolean, oldVal: boolean) {
+  @Watch('share') watchShareProp(newVal: boolean, oldVal: boolean) {
     if (oldVal != newVal) {
-      this.isSharingEnabed = newVal;
+      this.isSharingEnabled = newVal;
     }
   }
 
@@ -97,7 +97,7 @@ export class PNavigation {
   );
 
   ShareContent: FunctionalComponent = () =>
-    !this.isSharingEnabed ? (
+    !this.isSharingEnabled ? (
       <e-text>You have nothing to share. In order to share your audit, kindly select a few nodes.</e-text>
     ) : (
       <div>

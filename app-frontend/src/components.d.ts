@@ -138,6 +138,7 @@ export namespace Components {
         "match": MatchResults;
     }
     interface VSummary {
+        "history": RouterHistory;
     }
 }
 declare global {
@@ -485,6 +486,7 @@ declare namespace LocalJSX {
         "match"?: MatchResults;
     }
     interface VSummary {
+        "history"?: RouterHistory;
     }
     interface IntrinsicElements {
         "app-root": AppRoot;
