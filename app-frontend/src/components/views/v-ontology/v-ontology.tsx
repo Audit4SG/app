@@ -237,7 +237,7 @@ export class VOntology {
           this.highlightPathToNeighbours(data);
           this.addCardToStack(data);
         } else if (clickedNode.attr('fill') === 'rgba(8, 242, 110, 1)') {
-          this.unhighlightPathToNeighbours();
+          this.unhighlightPathToNeighbours(data);
           this.removeCardFromStack(data);
         }
       });
@@ -418,8 +418,11 @@ export class VOntology {
     });
   }
 
-  unhighlightPathToNeighbours() {
-    this.svg.selectAll('line').style('filter', 'drop-shadow(0px 0px 0px rgb(0, 0, 0))');
+  unhighlightPathToNeighbours(node: any) {
+    let neighbourRelationIds: any = this.getneighbourRelationIds(node.id);
+    neighbourRelationIds.map((neighbourRelationId: string) => {
+      this.svg.select(`#${neighbourRelationId}`).style('filter', 'drop-shadow(0px 0px 0px rgb(0, 0, 0))');
+    });
   }
 
   getneighbourRelationIds(nodeId: string) {

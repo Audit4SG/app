@@ -25,7 +25,6 @@ export class VSummary {
     }
     this.cardStack = JSON.parse(state.cardStack);
     this.cardStack = [...this.cardStack];
-    console.log(this.cardStack);
   }
 
   render() {
