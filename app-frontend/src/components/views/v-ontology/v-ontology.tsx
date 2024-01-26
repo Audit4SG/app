@@ -54,6 +54,7 @@ export class VOntology {
       } else {
         this.removeCardFromStack(obj);
       }
+      this.updateCardStackInStore();
     }
   }
 
@@ -427,9 +428,9 @@ export class VOntology {
           <l-spacer value={1}></l-spacer>
           <p-card-stack data={this.cardStack}></p-card-stack>
         </c-sticky-area>
-        <c-sticky-area top="1em" right="1em">
+        {/* <c-sticky-area top="1em" right="1em">
           <e-text>Search</e-text>
-        </c-sticky-area>
+        </c-sticky-area> */}
         <c-sticky-area top="3.5em" right="1em">
           <p-topic-list></p-topic-list>
         </c-sticky-area>

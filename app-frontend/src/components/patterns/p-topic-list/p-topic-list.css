@@ -7,9 +7,9 @@
   -webkit-box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
   -moz-box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
   box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  /* width: 150px;
+  width: 120px;
   height: 25px;
-  overflow: hidden; */
+  overflow: hidden;
 }
 
 main {

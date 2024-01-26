@@ -48,29 +48,28 @@ export class PCardStack {
   toggleCompactCardStack() {
     if (!this.isCompactCardStackExpanded) {
       this.tl.to(this.compactCardStack, { width: '560px', height: 'auto', duration: 0.25 });
-      // this.tl.to(this.downloadButtonContainer, { display: 'block', duration: 0 });
-      // this.tl.to(this.downloadButtonContainer, { opacity: 1, duration: 0.25 });
       this.tl.to(this.mainList, { opacity: 1, duration: 0.25 });
     } else {
       this.tl.to(this.mainList, { opacity: 0, duration: 0.25 });
-      //  this.tl.to(this.downloadButtonContainer, { opacity: 1, duration: 0.25 });
-      //  this.tl.to(this.downloadButtonContainer, { display: 'none', duration: 0 });
       this.tl.to(this.compactCardStack, { width: '280px', height: '32px', duration: 0.25 });
     }
     this.isCompactCardStackExpanded = !this.isCompactCardStackExpanded;
   }
 
-  BasicCardStack: FunctionalComponent = () =>
-    this.cardStack.map(item => (
-      <p-card-basic
-        nodeId={item.id}
-        label={item.label}
-        definition={item.definition}
-        provocation={item.provocation}
-        reference={item.references}
-        expand={state.isMenuOpen || this.cardStack.length > 2 ? false : true}
-      ></p-card-basic>
-    ));
+  BasicCardStack: FunctionalComponent = () => (
+    <div class="basic-list-container">
+      {this.cardStack.map(item => (
+        <p-card-basic
+          nodeId={item.id}
+          label={item.label}
+          definition={item.definition}
+          provocation={item.provocation}
+          reference={item.references}
+          expand={state.isMenuOpen || this.cardStack.length > 2 ? false : true}
+        ></p-card-basic>
+      ))}
+    </div>
+  );
 
   CompactCardStack: FunctionalComponent = () => (
     <div class="compact-list-container" ref={el => (this.compactCardStack = el as HTMLDivElement)}>

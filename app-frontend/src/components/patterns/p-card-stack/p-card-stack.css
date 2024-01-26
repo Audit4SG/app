@@ -10,6 +10,11 @@
   display: none;
 }
 
+.basic-list-container {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
 .compact-list-container {
   display: block;
   background: white;
