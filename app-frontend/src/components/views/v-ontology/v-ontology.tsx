@@ -124,6 +124,7 @@ export class VOntology {
     }
     this.nodes = JSON.parse(state.nodes);
     this.nodeRelations = JSON.parse(state.nodeRelations);
+    this.nodeRelations = [...this.nodeRelations];
     this.generateGraph();
   }
 
@@ -233,8 +234,10 @@ export class VOntology {
         clearTimeout(this.timeout);
         let clickedNode = this.svg.select(`#${data.id.split('#')[1]}`);
         if (clickedNode.attr('fill') === 'white') {
+          this.highlightPathToNeighbours(data);
           this.addCardToStack(data);
         } else if (clickedNode.attr('fill') === 'rgba(8, 242, 110, 1)') {
+          this.unhighlightPathToNeighbours();
           this.removeCardFromStack(data);
         }
       });
@@ -328,17 +331,9 @@ export class VOntology {
     });
 
     simulation.force('link').links(this.nodeRelations);
-    // this.highlightNodes();
-    // this.highlightEdges();
 
     const t = d3.zoomIdentity.translate(this.svgWidth / 2, this.svgHeight / 2).scale(0.075);
     d3.select(this.svgEl).transition().duration(2000).call(this.zoom.transform, t);
-
-    // if (this.journey === 'selection') {
-    //   this.isFilterContainerCollapsed = false;
-    // } else if (this.journey === 'exploration') {
-    //   this.isFilterContainerCollapsed = true;
-    // }
   }
 
   highlightNodeOnMouseEnter(data) {
@@ -414,6 +409,27 @@ export class VOntology {
         }
       });
     }, 2000);
+  }
+
+  highlightPathToNeighbours(node: any) {
+    let neighbourRelationIds: any = this.getneighbourRelationIds(node.id);
+    neighbourRelationIds.map((neighbourRelationId: string) => {
+      this.svg.select(`#${neighbourRelationId}`).style('filter', 'drop-shadow(0px 15px 15px rgb(8, 242, 110))');
+    });
+  }
+
+  unhighlightPathToNeighbours() {
+    this.svg.selectAll('line').style('filter', 'drop-shadow(0px 0px 0px rgb(0, 0, 0))');
+  }
+
+  getneighbourRelationIds(nodeId: string) {
+    let neighbourRelationIds: any = [];
+    this.nodeRelations.map((relation: any) => {
+      if (nodeId === relation.target.id || nodeId === relation.source.id) {
+        neighbourRelationIds.push(`${relation.source.id.split('#')[1]}-${relation.target.id.split('#')[1]}`);
+      }
+    });
+    return neighbourRelationIds;
   }
 
   render() {

@@ -44,18 +44,22 @@ export const generateNodeRelations = (nodes: any, flattenedOntologyData: any) =>
   });
 
   //Manual nodeRelations corrections
+  let target: string = 'http://www.ontology.audit4sg.org/RelAIEO#ai_system';
+  let source: string = 'http://www.ontology.audit4sg.org/RelAIEO#not_listed';
   let correctionObj1 = {
     type: 'nodeRelation',
-    target: 'http://www.ontology.audit4sg.org/RelAIEO#ai_system',
-    source: 'http://www.ontology.audit4sg.org/RelAIEO#not_listed',
+    target: target,
+    source: source,
     strength: 0.01,
     isVisible: false,
   };
 
+  target = 'http://www.ontology.audit4sg.org/RelAIEO#unintended_consequence';
+  source = 'http://www.ontology.audit4sg.org/RelAIEO#ai_system';
   let correctionObj2 = {
     type: 'nodeRelation',
-    target: 'http://www.ontology.audit4sg.org/RelAIEO#unintended_consequence',
-    source: 'http://www.ontology.audit4sg.org/RelAIEO#ai_system',
+    target: target,
+    source: source,
     strength: 0.01,
     isVisible: true,
     label: 'Has',
