@@ -15,4 +15,10 @@
 main {
   max-height: 75vh;
   overflow: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+main::-webkit-scrollbar {
+  display: none;
 }
