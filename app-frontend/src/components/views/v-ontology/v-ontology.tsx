@@ -429,7 +429,8 @@ export class VOntology {
         </c-sticky-area>
         <c-sticky-area top="1em" right="1em">
           <e-text>Search</e-text>
-          <l-spacer value={1}></l-spacer>
+        </c-sticky-area>
+        <c-sticky-area top="3.5em" right="1em">
           <p-topic-list></p-topic-list>
         </c-sticky-area>
         <c-sticky-area bottom="1em" right="1em">
