@@ -379,6 +379,7 @@ export class VOntology {
   updateCardStackInStore() {
     this.cardStack = [...this.cardStack];
     state.cardStack = JSON.stringify(this.cardStack);
+    this.saveCardStackToDB();
   }
 
   flyTo(topic: string) {
@@ -433,6 +434,34 @@ export class VOntology {
       }
     });
     return neighbourRelationIds;
+  }
+
+  async saveCardStackToDB() {
+    let url: string = document.domain === 'localhost' ? 'http://localhost:3334/save-card-stack' : 'https://app-api.audit4sg.org/save-card-stack';
+    let selectedCardIds: any = [];
+
+    this.cardStack.map((card: any) => {
+      selectedCardIds.push(card.id);
+    });
+
+    let options: any = {
+      method: 'POST',
+      body: JSON.stringify({ sessionId: state.sessionId, selectedCardIds: selectedCardIds }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    await fetch(url, options)
+      .then(response => response.json())
+      .then(async data => {
+        if (data.success) {
+          console.log('Card saved in DB');
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   render() {
