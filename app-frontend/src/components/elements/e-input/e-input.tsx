@@ -19,6 +19,7 @@ export class EInput {
   @Prop() value: string;
   @Prop() checked: boolean = false;
   @Prop() action: string = '';
+  @Prop() variant: string = '';
 
   private styleObject_Textbox: LooseObject = {};
 
@@ -32,7 +33,13 @@ export class EInput {
     if (this.type === 'email' || this.type === 'number' || this.type === 'password' || this.type === 'text') {
       this.generate_StyleObject_Textbox();
     }
+
+    if (this.variant === 'searchBox') {
+      this.generateSearchBoxStyleObject();
+    }
   }
+
+  generateSearchBoxStyleObject() {}
 
   generate_StyleObject_Textbox() {
     this.styleObject_Textbox.padding = '0.5em';

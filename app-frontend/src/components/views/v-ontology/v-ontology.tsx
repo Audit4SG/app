@@ -473,12 +473,12 @@ export class VOntology {
         )}
         <c-sticky-area top="1em" left="1em" zIndex={9}>
           <p-navigation share={this.cardStack.length > 0 ? true : false}></p-navigation>
-          <l-spacer value={1}></l-spacer>
+          <l-spacer value={0.5}></l-spacer>
           <p-card-stack data={this.cardStack}></p-card-stack>
         </c-sticky-area>
-        {/* <c-sticky-area top="1em" right="1em">
-          <e-text>Search</e-text>
-        </c-sticky-area> */}
+        <c-sticky-area top="1em" right="1em" zIndex={99}>
+          <p-search></p-search>
+        </c-sticky-area>
         <c-sticky-area top="3.5em" right="1em">
           <p-topic-list></p-topic-list>
         </c-sticky-area>

@@ -1,3 +1,144 @@
 :host {
   display: block;
 }
+
+input {
+  outline: none;
+  border: 0;
+  padding: 0.5em 1em;
+  border-radius: 2em;
+  border: 1px solid var(--colour__blue--dark);
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+#search-results-list {
+  /* display: none; */
+  width: 50%;
+  right: 1.5em;
+  top: 4em;
+  position: absolute;
+  background: white;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border-radius: 1em;
+  border: 1px solid black;
+  padding: 1em;
+  margin-top: 0.5em;
+  max-height: 70vh;
+  overflow: scroll;
+}
+
+.search-result-item {
+  padding: 1em 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+.search-result-item:hover {
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.05);
+}
+.search-result-item:first-child {
+  padding-top: 0;
+}
+.search-result-item:last-child {
+  border-bottom: 0;
+}
+
+.bubble {
+  font-size: 0.8em;
+  background: wheat;
+  padding: 0.25em 1em;
+  border-radius: 1em;
+}
+
+.green-bubble {
+  background: #08f26e;
+}
+
+.grey-bubble {
+  background: #dfe6e9;
+}
+
+.bubble-first {
+  position: relative;
+  border-radius: 1em;
+  z-index: 999;
+}
+
+.bubble-second {
+  padding-left: 1.5em;
+  border-radius: 0 1em 1em 0;
+  margin-left: -1em;
+}
+
+.green-bubble {
+  background: #08f26e;
+}
+
+.grey-bubble {
+  background: #dfe6e9;
+}
+
+.search-relation-container {
+  display: flex;
+  align-items: center;
+}
+
+.relation-symbol-container {
+  display: flex;
+  align-items: center;
+}
+
+.relation-line {
+  height: 1px;
+  width: 90px;
+  background: black;
+}
+
+.relation-name-container {
+  display: inline-block;
+  border: 1px solid black;
+  padding: 0.3em 1em;
+  border-radius: 1em;
+}
+
+.relation-line {
+  height: 1px;
+  width: 90px;
+  background: black;
+}
+
+.search-loader__container {
+  background: white;
+  border-radius: 1em;
+  /* padding: var(--layout__padding--card); */
+  padding: 1em;
+  z-index: 999;
+  border: 1px solid var(--colour__blue--dark);
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  margin-top: 0.75em;
+}
+
+.shine-line {
+  height: 10px;
+  width: 100%;
+  background-image: linear-gradient(90deg, #ddd 0px, #e8e8e8 40px, #ddd 80px);
+  background-size: 200%;
+  animation: shine-lines 1.6s infinite linear;
+  border-radius: 1em;
+}
+
+.shine-line--half {
+  width: 50%;
+}
+
+@keyframes shine-lines {
+  0% {
+    background-position: 100%;
+  }
+  40%,
+  100% {
+    background-position: 250%;
+  }
+}

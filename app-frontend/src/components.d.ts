@@ -47,6 +47,7 @@ export namespace Components {
         "placeholder": string;
         "type": string;
         "value": string;
+        "variant": string;
     }
     interface ELink {
         "action": string;
@@ -400,6 +401,7 @@ declare namespace LocalJSX {
         "placeholder"?: string;
         "type"?: string;
         "value"?: string;
+        "variant"?: string;
     }
     interface ELink {
         "action"?: string;

@@ -22,13 +22,16 @@ export class PTopicList {
 
   private tl: any = gsap.timeline();
 
-  componentDidLoad() {
+  componentWillLoad() {
     this.topics = JSON.parse(state.topics);
     this.topics = [...this.topics];
     if (state.cardStack.length > 0) {
       this.cardStack = JSON.parse(state.cardStack);
       this.cardStack = [...this.cardStack];
     }
+  }
+
+  componentDidLoad() {
     if (state.journey === 'selection') {
       this.isTopicListCollapsed = false;
       this.expandTopicList();
