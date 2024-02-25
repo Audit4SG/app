@@ -168,17 +168,17 @@ export class PSearch {
       <div class="shine-line"></div>
       <l-spacer value={1}></l-spacer>
       <div class="shine-line shine-line--half"></div>
-      <l-spacer></l-spacer>
+      <l-spacer value={1.5}></l-spacer>
       <l-seperator></l-seperator>
-      <l-spacer></l-spacer>
+      <l-spacer value={1.5}></l-spacer>
       <div class="shine-line"></div>
       <l-spacer value={1}></l-spacer>
       <div class="shine-line"></div>
       <l-spacer value={1}></l-spacer>
       <div class="shine-line shine-line--half"></div>
-      <l-spacer></l-spacer>
+      <l-spacer value={1.5}></l-spacer>
       <l-seperator></l-seperator>
-      <l-spacer></l-spacer>
+      <l-spacer value={1.5}></l-spacer>
       <div class="shine-line"></div>
       <l-spacer value={1}></l-spacer>
       <div class="shine-line"></div>
