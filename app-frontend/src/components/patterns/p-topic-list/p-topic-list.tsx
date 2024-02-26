@@ -60,7 +60,7 @@ export class PTopicList {
   collapseTopicList() {
     this.tl.to(this.listContainer, { overflow: 'hidden', duration: 0 });
     this.tl.to(this.listContainer, { height: '25px', duration: 0.25 });
-    this.tl.to(this.listContainer, { width: '120px', duration: 0.25 });
+    this.tl.to(this.listContainer, { width: '145px', duration: 0.25 });
   }
 
   expandTopicList() {
