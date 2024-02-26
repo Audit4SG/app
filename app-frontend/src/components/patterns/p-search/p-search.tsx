@@ -26,7 +26,6 @@ export class PSearch {
   onSearchInput(e) {
     clearTimeout(this.inputTimeout);
     this.searchString = e.target.value.trim();
-
     if (!this.searchString) {
       this.isSearchInitiated = false;
       this.clearSearchResults();
