@@ -28,5 +28,5 @@ export const generateTypesenseData = (nodes: any, flattenedOntologyData: any) =>
     }
   });
 
-  //   console.log(typesenseDataJsonArray);
+  console.log(typesenseDataJsonArray);
 };
