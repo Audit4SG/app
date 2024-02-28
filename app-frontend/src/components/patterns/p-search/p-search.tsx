@@ -2,10 +2,6 @@ import { Component, State, FunctionalComponent, Host, h } from '@stencil/core';
 import { Client } from 'typesense';
 import { gsap } from 'gsap';
 
-interface LooseObject {
-  [key: string]: any;
-}
-
 @Component({
   tag: 'p-search',
   styleUrl: 'p-search.css',
@@ -23,37 +19,8 @@ export class PSearch {
   @State() isSearchInitiated: boolean = false;
   @State() isSearchResulsAvailable: boolean = false;
 
-  onSearchInput(e) {
-    clearTimeout(this.inputTimeout);
-    this.searchString = e.target.value.trim();
-    if (!this.searchString) {
-      this.isSearchInitiated = false;
-      this.clearSearchResults();
-      console.log(this.isSearchInitiated);
-      return;
-    }
-
-    if (!this.isSearchInitiated) {
-      this.isSearchInitiated = true;
-      console.log(this.isSearchInitiated);
-    }
-
-    this.inputTimeout = setTimeout(() => {
-      // this.handleSearch();
-    }, 750);
-  }
-
-  onSearchFocus() {
-    this.tl.to(this.searchBox, { width: '400px', duration: 0.25 });
-  }
-
-  onSearchBlur() {
-    this.tl.to(this.searchBox, { width: 'auto', duration: 0.25 });
-  }
-
-  clearSearchResults() {
-    this.results = [];
-    this.results = [...this.results];
+  componentWillLoad() {
+    this.initTypesenseClient();
   }
 
   initTypesenseClient() {
@@ -73,13 +40,45 @@ export class PSearch {
     });
   }
 
+  handleSearchInput(e) {
+    clearTimeout(this.inputTimeout);
+    this.searchString = e.target.value.trim();
+    if (!this.searchString) {
+      this.isSearchInitiated = false;
+      this.clearSearchResults();
+      return;
+    }
+
+    if (!this.isSearchInitiated) {
+      this.isSearchInitiated = true;
+    }
+
+    this.inputTimeout = setTimeout(() => {
+      this.clearSearchResults();
+      this.handleSearch();
+    }, 750);
+  }
+
+  handleSearchFocus() {
+    this.tl.to(this.searchBox, { width: '400px', duration: 0.25 });
+  }
+
+  handleSearchBlur() {
+    this.tl.to(this.searchBox, { width: 'auto', duration: 0.25 });
+  }
+
+  clearSearchResults() {
+    this.results = [];
+    this.results = [...this.results];
+    this.isSearchResulsAvailable = false;
+  }
+
   handleSearch() {
     let searchParams = {
       q: this.searchString,
       query_by: 'label,type,description,provocation,references,embedding',
       prefix: false,
     };
-    this.clearSearchResults();
     this.typesenseClient
       .collections('relaio-openai-v2')
       .documents()
@@ -87,7 +86,7 @@ export class PSearch {
       .then(results => {
         let resultsRaw = results.hits;
         resultsRaw.map((result: any) => {
-          let obj: LooseObject = {
+          let obj: any = {
             type: result.document.type,
             label: result.document.label,
             description: result.document.description,
@@ -102,6 +101,8 @@ export class PSearch {
           this.results.push(obj);
         });
         this.results = [...this.results];
+        console.log(this.results);
+        this.isSearchResulsAvailable = true;
       });
   }
 
@@ -149,15 +150,10 @@ export class PSearch {
     //   this.flyTo(source);
     //   this.highlightEdge(sourceId);
     // }
-    this.handlePostSearchClick();
-  }
-
-  handlePostSearchClick() {
-    this.results = [];
-    this.results = [...this.results];
+    this.clearSearchResults();
     this.searchString = '';
     this.searchBox.value = '';
-    this.onSearchBlur();
+    this.handleSearchBlur();
   }
 
   SearchLoader: FunctionalComponent = () => (
@@ -254,14 +250,13 @@ export class PSearch {
       <Host>
         <input
           type="text"
-          onInput={e => this.onSearchInput(e)}
-          onFocus={() => this.onSearchFocus()}
-          onBlur={() => this.onSearchBlur()}
+          onInput={e => this.handleSearchInput(e)}
+          onFocus={() => this.handleSearchFocus()}
+          onBlur={() => this.handleSearchBlur()}
           placeholder="🔍 Search.."
           ref={el => (this.searchBox = el as HTMLInputElement)}
         ></input>
-        {this.isSearchInitiated ? <div>{this.isSearchResulsAvailable ? <this.SearchResults></this.SearchResults> : <this.SearchLoader></this.SearchLoader>} </div> : ''}
-        {/* {this.results.length > 0 && <this.SearchResults></this.SearchResults>} */}
+        {this.isSearchInitiated && <div>{this.isSearchResulsAvailable ? <this.SearchResults></this.SearchResults> : <this.SearchLoader></this.SearchLoader>} </div>}
       </Host>
     );
   }
