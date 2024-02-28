@@ -1,8 +1,8 @@
 import { Component, Prop, Listen, h } from '@stencil/core';
 import { injectHistory, RouterHistory } from '@stencil/router';
 import { fetchOntologyData } from '../../global/script/helpers';
-// import { flattenJsonLd, generateNodes, generateNodeRelations, generateTopics } from './helpers';
-import { flattenJsonLd, generateNodes, generateNodeRelations, generateTypesenseData, generateTopics } from './helpers';
+// import { flattenJsonLd, generateNodes, generateNodeRelations, generateTypesenseData, generateTopics } from './helpers';
+import { flattenJsonLd, generateNodes, generateNodeRelations, generateTopics } from './helpers';
 import { state } from '../../global/script';
 
 @Component({
@@ -46,7 +46,7 @@ export class AppRoot {
     state.shareUrl = document.domain === 'localhost' ? `http://localhost:3333/reading/${state.sessionId}` : `https://app.audit4sg.org/reading/${state.sessionId}`;
 
     // Generate Typesense data
-    generateTypesenseData(nodes, flattenedOntologyData);
+    // generateTypesenseData(nodes, flattenedOntologyData);
   }
 
   render() {
