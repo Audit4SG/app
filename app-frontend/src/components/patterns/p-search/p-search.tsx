@@ -35,6 +35,12 @@ export class PSearch {
   })
   searchContractionEvent: EventEmitter;
 
+  @Event({
+    eventName: 'searchItemClick',
+    bubbles: true,
+  })
+  searchItemClickEvent: EventEmitter;
+
   @Prop() expand: boolean = false;
 
   @State() results: any = [];
@@ -127,9 +133,11 @@ export class PSearch {
               references: result.document.references,
             };
             if (result.document.type === 'Relation') {
-              let { source, target } = this.findRelationSourceTarget(result.document.label);
+              let { source, sourceId, target, targetId } = this.findRelationSourceTarget(result.document.label);
               obj.source = source;
+              obj.sourceId = sourceId;
               obj.target = target;
+              obj.targetId = targetId;
             }
             this.results.push(obj);
           });
@@ -142,48 +150,34 @@ export class PSearch {
   }
 
   findRelationSourceTarget(label: string) {
-    let source: string;
-    let target: string;
+    let source: string = '';
+    let sourceId: string = '';
+    let target: string = '';
+    let targetId: string = '';
     this.links.map((link: any) => {
       if (link.label === label) {
         source = generateTitleCase(link.source.split('#')[1]);
+        sourceId = link.source.split('#')[1];
         target = generateTitleCase(link.target.split('#')[1]);
+        targetId = link.target.split('#')[1];
       }
     });
     return {
       source: source,
+      sourceId: sourceId,
       target: target,
+      targetId: targetId,
     };
   }
 
-  handleSearchClick(label: string) {
-    // let type: string = '';
-    // let source: string = '';
-    // this.results.map(item => {
-    //   if (label === item.label) {
-    //     type = item.type;
-    //     source = item.source;
-    //   }
-    // });
-    // if (type === 'Class') {
-    //   let nodeId: string = '';
-    //   this.nodes.map((node: any) => {
-    //     if (node.label === label) {
-    //       nodeId = node.id;
-    //     }
-    //   });
-    //   this.flyTo(label);
-    //   this.pushIntoCardStack(nodeId);
-    // } else if (type === 'Relation') {
-    //   let sourceId: string = '';
-    //   this.nodes.map((node: any) => {
-    //     if (node.label === source) {
-    //       sourceId = node.id;
-    //     }
-    //   });
-    //   this.flyTo(source);
-    //   this.highlightEdge(sourceId);
-    // }
+  handleSearchClick(label: string, type: string, sourceId: string, targetId: string) {
+    this.searchItemClickEvent.emit({
+      type: type,
+      label: label,
+      sourceId: sourceId,
+      targetId: targetId,
+    });
+
     this.clearSearchResults();
     this.searchString = '';
     this.searchBox.value = '';
@@ -219,7 +213,7 @@ export class PSearch {
   SearchResults: FunctionalComponent = () => (
     <ul id="search-results-list">
       {this.results.map((result: any) => (
-        <li class="search-result-item" onClick={() => this.handleSearchClick(result.label)}>
+        <li class="search-result-item" onClick={() => this.handleSearchClick(result.label, result.type, result.sourceId, result.targetId)}>
           {result.type === 'Class' && (
             <div>
               <span class="bubble green-bubble">{result.type}</span>

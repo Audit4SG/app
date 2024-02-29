@@ -478,6 +478,7 @@ declare namespace LocalJSX {
         "expand"?: boolean;
         "onSearchContraction"?: (event: CustomEvent<any>) => void;
         "onSearchExpansion"?: (event: CustomEvent<any>) => void;
+        "onSearchItemClick"?: (event: CustomEvent<any>) => void;
     }
     interface PTooltip {
         "definition"?: string;

@@ -80,6 +80,17 @@ export class VOntology {
     this.isSearchExpanded = false;
   }
 
+  @Listen('searchItemClick') handleSearchItemClick(e) {
+    let topic: string = '';
+    if (e.detail.type === 'Class') {
+      topic = this.getTopicFromLabel(e.detail.label);
+    } else if (e.detail.type === 'Relation') {
+      this.highlightRelationsWithNeighbours({ id: e.detail.sourceId });
+      topic = e.detail.sourceId;
+    }
+    this.flyTo(topic);
+  }
+
   @Prop() history: RouterHistory;
 
   @State() isTooltipVisible: boolean = false;
@@ -243,10 +254,10 @@ export class VOntology {
         clearTimeout(this.timeout);
         let clickedNode = this.svg.select(`#${data.id.split('#')[1]}`);
         if (clickedNode.attr('fill') === 'white') {
-          this.highlightPathToNeighbours(data);
+          this.highlightRelationsWithNeighbours(data);
           this.addCardToStack(data);
         } else if (clickedNode.attr('fill') === 'rgba(8, 242, 110, 1)') {
-          this.unhighlightPathToNeighbours(data);
+          this.unhighlightRelationsWithNeighbours(data);
           this.removeCardFromStack(data);
         }
       });
@@ -421,21 +432,21 @@ export class VOntology {
     }, 2000);
   }
 
-  highlightPathToNeighbours(node: any) {
-    let neighbourRelationIds: any = this.getneighbourRelationIds(node.id);
+  highlightRelationsWithNeighbours(node: any) {
+    let neighbourRelationIds: any = this.getNeighbourRelationIds(node.id);
     neighbourRelationIds.map((neighbourRelationId: string) => {
       this.svg.select(`#${neighbourRelationId}`).style('filter', 'drop-shadow(0px 15px 15px rgb(8, 242, 110))');
     });
   }
 
-  unhighlightPathToNeighbours(node: any) {
-    let neighbourRelationIds: any = this.getneighbourRelationIds(node.id);
+  unhighlightRelationsWithNeighbours(node: any) {
+    let neighbourRelationIds: any = this.getNeighbourRelationIds(node.id);
     neighbourRelationIds.map((neighbourRelationId: string) => {
       this.svg.select(`#${neighbourRelationId}`).style('filter', 'drop-shadow(0px 0px 0px rgb(0, 0, 0))');
     });
   }
 
-  getneighbourRelationIds(nodeId: string) {
+  getNeighbourRelationIds(nodeId: string) {
     let neighbourRelationIds: any = [];
     this.nodeRelations.map((relation: any) => {
       if (nodeId === relation.target.id || nodeId === relation.source.id) {
@@ -443,6 +454,16 @@ export class VOntology {
       }
     });
     return neighbourRelationIds;
+  }
+
+  getTopicFromLabel(label: string) {
+    let topic: string = '';
+    this.nodes.map((node: any) => {
+      if (label === node.label) {
+        topic = node.id.split('#')[1];
+      }
+    });
+    return topic;
   }
 
   async saveCardStackToDB() {
