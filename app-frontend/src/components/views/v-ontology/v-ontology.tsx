@@ -512,7 +512,7 @@ export class VOntology {
           <p-card-stack data={this.cardStack}></p-card-stack>
         </c-sticky-area>
         <c-sticky-area top="1em" right="1em" zIndex={99}>
-          <p-search expand={this.isSearchExpanded}></p-search>
+          {state.isMenuOpen && <p-search expand={this.isSearchExpanded}></p-search>}
         </c-sticky-area>
         <c-sticky-area top="3.5em" right="1em">
           <p-topic-list></p-topic-list>
