@@ -72,6 +72,14 @@ export class VOntology {
     this.isModalOpen = true;
   }
 
+  @Listen('searchExpansion') handleSearchExpansion() {
+    this.isSearchExpanded = true;
+  }
+
+  @Listen('searchContraction') handleSearchContraction() {
+    this.isSearchExpanded = false;
+  }
+
   @Prop() history: RouterHistory;
 
   @State() isTooltipVisible: boolean = false;
@@ -81,6 +89,7 @@ export class VOntology {
   @State() modalProvocation: string = '';
   @State() modalReferences: string = '';
   @State() isModalOpen: boolean = false;
+  @State() isSearchExpanded: boolean = false;
 
   private svg: any;
   private graphContainer: any;
@@ -464,6 +473,11 @@ export class VOntology {
       });
   }
 
+  handleSvgClick() {
+    this.isTooltipVisible = false;
+    this.isSearchExpanded = false;
+  }
+
   render() {
     return (
       <Host>
@@ -477,7 +491,7 @@ export class VOntology {
           <p-card-stack data={this.cardStack}></p-card-stack>
         </c-sticky-area>
         <c-sticky-area top="1em" right="1em" zIndex={99}>
-          <p-search></p-search>
+          <p-search expand={this.isSearchExpanded}></p-search>
         </c-sticky-area>
         <c-sticky-area top="3.5em" right="1em">
           <p-topic-list></p-topic-list>
@@ -492,7 +506,7 @@ export class VOntology {
             <ph-question size="2.25em" background="white"></ph-question>
           </e-button>
         </c-sticky-area>
-        <svg height={this.svgHeight} width={this.svgWidth} ref={el => (this.svgEl = el as SVGElement)} onClick={() => (this.isTooltipVisible = false)}></svg>
+        <svg height={this.svgHeight} width={this.svgWidth} ref={el => (this.svgEl = el as SVGElement)} onClick={() => this.handleSvgClick()}></svg>
       </Host>
     );
   }

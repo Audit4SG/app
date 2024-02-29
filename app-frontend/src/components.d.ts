@@ -116,6 +116,7 @@ export namespace Components {
         "share": boolean;
     }
     interface PSearch {
+        "expand": boolean;
     }
     interface PTooltip {
         "definition": string;
@@ -474,6 +475,9 @@ declare namespace LocalJSX {
         "share"?: boolean;
     }
     interface PSearch {
+        "expand"?: boolean;
+        "onSearchContraction"?: (event: CustomEvent<any>) => void;
+        "onSearchExpansion"?: (event: CustomEvent<any>) => void;
     }
     interface PTooltip {
         "definition"?: string;

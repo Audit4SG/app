@@ -1,6 +1,12 @@
-import { Component, State, FunctionalComponent, Host, h } from '@stencil/core';
+import { Component, Event, EventEmitter, Prop, State, FunctionalComponent, h, Watch } from '@stencil/core';
 import { Client } from 'typesense';
 import { gsap } from 'gsap';
+import { state } from '../../../global/script';
+import { generateTitleCase } from '../../app-root/helpers';
+
+interface LooseObject {
+  [key: string]: any;
+}
 
 @Component({
   tag: 'p-search',
@@ -8,19 +14,46 @@ import { gsap } from 'gsap';
   shadow: true,
 })
 export class PSearch {
+  searchContainer!: HTMLDivElement;
   searchBox!: HTMLInputElement;
 
   private tl: any = gsap.timeline();
   private searchString: string = '';
   private typesenseClient: any;
   private inputTimeout: any;
+  private links: any;
+
+  @Event({
+    eventName: 'searchExpansion',
+    bubbles: true,
+  })
+  searchExpansionEvent: EventEmitter;
+
+  @Event({
+    eventName: 'searchContraction',
+    bubbles: true,
+  })
+  searchContractionEvent: EventEmitter;
+
+  @Prop() expand: boolean = false;
 
   @State() results: any = [];
-  @State() isSearchInitiated: boolean = false;
-  @State() isSearchResulsAvailable: boolean = false;
+  @State() isSearchboxExpanded: boolean = false;
+  @State() isSearchResultsAvailable: boolean = true;
+
+  @Watch('expand') watchMinimise(newVal: boolean, oldVal: boolean) {
+    if (newVal != oldVal) {
+      if (!newVal) {
+        this.collapseSearch();
+      } else {
+        this.expandSearch();
+      }
+    }
+  }
 
   componentWillLoad() {
     this.initTypesenseClient();
+    this.links = JSON.parse(state.nodeRelations);
   }
 
   initTypesenseClient() {
@@ -43,79 +76,80 @@ export class PSearch {
   handleSearchInput(e) {
     clearTimeout(this.inputTimeout);
     this.searchString = e.target.value.trim();
+    this.clearSearchResults();
+
     if (!this.searchString) {
-      this.isSearchInitiated = false;
-      this.clearSearchResults();
-      return;
+      this.isSearchResultsAvailable = true;
+    } else {
+      this.inputTimeout = setTimeout(() => {
+        this.handleSearch();
+      }, 750);
     }
-
-    if (!this.isSearchInitiated) {
-      this.isSearchInitiated = true;
-    }
-
-    this.inputTimeout = setTimeout(() => {
-      this.clearSearchResults();
-      this.handleSearch();
-    }, 750);
   }
 
-  handleSearchFocus() {
-    this.tl.to(this.searchBox, { width: '400px', duration: 0.25 });
+  expandSearch() {
+    this.tl.to(this.searchContainer, { width: '600px', duration: 0.25 });
+    this.isSearchboxExpanded = true;
+    this.searchExpansionEvent.emit();
   }
 
-  handleSearchBlur() {
-    this.tl.to(this.searchBox, { width: 'auto', duration: 0.25 });
+  collapseSearch() {
+    this.isSearchboxExpanded = false;
+    this.tl.to(this.searchContainer, { width: '175px', duration: 0.25 });
+    this.searchContractionEvent.emit();
   }
 
   clearSearchResults() {
     this.results = [];
     this.results = [...this.results];
-    this.isSearchResulsAvailable = false;
   }
 
   handleSearch() {
+    this.isSearchResultsAvailable = false;
     let searchParams = {
       q: this.searchString,
       query_by: 'label,type,description,provocation,references,embedding',
       prefix: false,
     };
     this.typesenseClient
-      .collections('relaio-openai-v2')
+      .collections('relaio-openai-27feb2024')
       .documents()
       .search(searchParams)
       .then(results => {
         let resultsRaw = results.hits;
-        resultsRaw.map((result: any) => {
-          let obj: any = {
-            type: result.document.type,
-            label: result.document.label,
-            description: result.document.description,
-            provocation: result.document.provocation,
-            references: result.document.references,
-          };
-          if (result.document.type === 'Relation') {
-            let { source, target } = this.findRelationSourceTarget(result.document.label);
-            obj.source = source;
-            obj.target = target;
-          }
-          this.results.push(obj);
-        });
+        if (resultsRaw) {
+          resultsRaw.map((result: any) => {
+            let obj: LooseObject = {
+              type: result.document.type,
+              label: result.document.label,
+              description: result.document.description,
+              provocation: result.document.provocation,
+              references: result.document.references,
+            };
+            if (result.document.type === 'Relation') {
+              let { source, target } = this.findRelationSourceTarget(result.document.label);
+              obj.source = source;
+              obj.target = target;
+            }
+            this.results.push(obj);
+          });
+        } else {
+          this.results = [];
+        }
         this.results = [...this.results];
-        console.log(this.results);
-        this.isSearchResulsAvailable = true;
+        this.isSearchResultsAvailable = true;
       });
   }
 
   findRelationSourceTarget(label: string) {
     let source: string;
     let target: string;
-    // this.links.map((link: any) => {
-    //   if (link.label === label) {
-    //     source = link.source.label;
-    //     target = link.target.label;
-    //   }
-    // });
-
+    this.links.map((link: any) => {
+      if (link.label === label) {
+        source = generateTitleCase(link.source.split('#')[1]);
+        target = generateTitleCase(link.target.split('#')[1]);
+      }
+    });
     return {
       source: source,
       target: target,
@@ -153,7 +187,7 @@ export class PSearch {
     this.clearSearchResults();
     this.searchString = '';
     this.searchBox.value = '';
-    this.handleSearchBlur();
+    this.collapseSearch();
   }
 
   SearchLoader: FunctionalComponent = () => (
@@ -189,10 +223,11 @@ export class PSearch {
           {result.type === 'Class' && (
             <div>
               <span class="bubble green-bubble">{result.type}</span>
-              &nbsp;
+              &nbsp;&nbsp;
               <span>
                 <strong>{result.label}</strong>
               </span>
+              <br />
               <br />
               <span>{result.description}</span>
               {result.provocation && (
@@ -221,23 +256,20 @@ export class PSearch {
             <div>
               <span class="bubble green-bubble">Relation</span>
               <br />
-              <div class="search-relation-container">
-                <div>
-                  <div></div>
-                  <span>{result.source}</span>
+              <br />
+              <l-row justify="space-between">
+                <div class="relation-item">
+                  <e-text>{result.source}</e-text>
                 </div>
-                &nbsp; &nbsp;
                 <div class="relation-symbol-container">
                   <div class="relation-line"></div>
                   <span class="relation-name-container">{result.label}</span>
                   <div class="relation-line"></div>
                 </div>
-                &nbsp; &nbsp;
-                <div>
-                  <div></div>
-                  <span>{result.target}</span>
+                <div class="relation-item">
+                  <e-text>{result.target}</e-text>
                 </div>
-              </div>
+              </l-row>
             </div>
           )}
         </li>
@@ -247,17 +279,17 @@ export class PSearch {
 
   render() {
     return (
-      <Host>
+      <div id="search-container" ref={el => (this.searchContainer = el as HTMLInputElement)}>
         <input
           type="text"
           onInput={e => this.handleSearchInput(e)}
-          onFocus={() => this.handleSearchFocus()}
-          onBlur={() => this.handleSearchBlur()}
+          onFocus={() => this.expandSearch()}
           placeholder="🔍 Search.."
           ref={el => (this.searchBox = el as HTMLInputElement)}
         ></input>
-        {this.isSearchInitiated && <div>{this.isSearchResulsAvailable ? <this.SearchResults></this.SearchResults> : <this.SearchLoader></this.SearchLoader>} </div>}
-      </Host>
+        {this.isSearchboxExpanded &&
+          (this.isSearchResultsAvailable ? this.results.length > 0 && <this.SearchResults></this.SearchResults> : <this.SearchLoader></this.SearchLoader>)}
+      </div>
     );
   }
 }
