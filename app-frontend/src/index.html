@@ -22,8 +22,41 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
 
     <script type="module" src="https://unpkg.com/@phosphor-icons/webcomponents@2.0.5"></script>
+
+    <style type="text/css">
+      #mobile-blocker {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 9999;
+        background: var(--colour__background--global);
+        display: none;
+      }
+
+      #mobile-blocker__content {
+        width: 280px;
+      }
+
+      @media only screen and (max-width: 819px) {
+        #mobile-blocker {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+        }
+      }
+    </style>
   </head>
   <body>
+    <div id="mobile-blocker">
+      <div id="mobile-blocker__content">
+        <h1>Sorry..</h1>
+        <p>This webtool is <u>not optimised</u> for mobile viewing. Kindly access it from a laptop or PC</p>
+        <br />
+        <a href="https://audit4sg.org">Go to project website</a>
+      </div>
+    </div>
     <app-root></app-root>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
