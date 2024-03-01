@@ -117,13 +117,13 @@ export class PNavigation {
   AboutContent: FunctionalComponent = () => (
     <c-fadebox maxHeight="60vh" overflow="scroll">
       <e-text>
-        AI4SG is an exploratory tool that sees ethics as emergent. Its premise is that ethical relationships develop in relation. To audit the ethical claims of AI is to pay
+        Audit4SG is an exploratory tool that sees ethics as emergent. Its premise is that ethical relationships develop in relation. To audit the ethical claims of AI is to pay
         attention to those relations.
       </e-text>
       <l-spacer value={1.5}></l-spacer>
       <e-text>
-        AI4SG presents an incomplete ontology (knowledge graph) of entities and relations encircling AI systems. A user can interact with the ontology and build their own AI ethics
-        auditing methodology using the provocations or definitions corresponding to each entity or relation in the ontology.
+        Audit4SG presents an incomplete ontology (knowledge graph) of entities and relations encircling AI systems. A user can interact with the ontology and build their own AI
+        ethics auditing methodology using the provocations or definitions corresponding to each entity or relation in the ontology.
       </e-text>
       <l-spacer value={1.5}></l-spacer>
       <e-text>
