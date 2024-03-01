@@ -1,5 +1,4 @@
 import app from "./app";
-import * as path from "path";
 const PORT = 3333;
 
 (async () => {
