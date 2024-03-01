@@ -85,7 +85,7 @@ export class VOntology {
     if (e.detail.type === 'Class') {
       topic = this.getTopicFromLabel(e.detail.label);
     } else if (e.detail.type === 'Relation') {
-      this.highlightRelationsWithNeighbours({ id: e.detail.sourceId });
+      this.highlightRelation(e.detail.sourceId, e.detail.targetId);
       topic = e.detail.sourceId;
     }
     this.flyTo(topic);
@@ -210,6 +210,10 @@ export class VOntology {
         } else {
           return 'rgb(1, 30, 43)';
         }
+      })
+      .on('click', (event, data) => {
+        event.preventDefault();
+        this.unhighlightRelation(data.source.id.split('#')[1], data.target.id.split('#')[1]);
       });
 
     this.nodeElements = this.graph
@@ -430,6 +434,14 @@ export class VOntology {
         }
       });
     }, 2000);
+  }
+
+  highlightRelation(source: string, target: string) {
+    this.svg.select(`#${source}-${target}`).style('filter', 'drop-shadow(0px 15px 15px rgb(8, 242, 110))');
+  }
+
+  unhighlightRelation(source: string, target: string) {
+    this.svg.select(`#${source}-${target}`).style('filter', 'drop-shadow(0px 0px 0px rgb(0, 0, 0))');
   }
 
   highlightRelationsWithNeighbours(node: any) {
