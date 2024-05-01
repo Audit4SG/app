@@ -58,6 +58,7 @@ export class AppRoot {
           <stencil-route url="/ontology" component="v-ontology" exact={true} />
           <stencil-route url="/summary" component="v-summary" exact={true} />
           <stencil-route url="/reading/:sessionId" component="v-reading" exact={true} />
+          <stencil-route url="/18b9aa32-a458-47bb-9770-ff5743afe790" component="v-upload" exact={true} />
           <stencil-route component="v-catch-all" />
         </stencil-route-switch>
       </stencil-router>

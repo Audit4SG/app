@@ -144,6 +144,8 @@ export namespace Components {
     interface VSummary {
         "history": RouterHistory;
     }
+    interface VUpload {
+    }
 }
 declare global {
     interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {
@@ -326,6 +328,12 @@ declare global {
         prototype: HTMLVSummaryElement;
         new (): HTMLVSummaryElement;
     };
+    interface HTMLVUploadElement extends Components.VUpload, HTMLStencilElement {
+    }
+    var HTMLVUploadElement: {
+        prototype: HTMLVUploadElement;
+        new (): HTMLVUploadElement;
+    };
     interface HTMLElementTagNameMap {
         "app-root": HTMLAppRootElement;
         "c-card": HTMLCCardElement;
@@ -357,6 +365,7 @@ declare global {
         "v-ontology": HTMLVOntologyElement;
         "v-reading": HTMLVReadingElement;
         "v-summary": HTMLVSummaryElement;
+        "v-upload": HTMLVUploadElement;
     }
 }
 declare namespace LocalJSX {
@@ -506,6 +515,8 @@ declare namespace LocalJSX {
     interface VSummary {
         "history"?: RouterHistory;
     }
+    interface VUpload {
+    }
     interface IntrinsicElements {
         "app-root": AppRoot;
         "c-card": CCard;
@@ -537,6 +548,7 @@ declare namespace LocalJSX {
         "v-ontology": VOntology;
         "v-reading": VReading;
         "v-summary": VSummary;
+        "v-upload": VUpload;
     }
 }
 export { LocalJSX as JSX };
@@ -573,6 +585,7 @@ declare module "@stencil/core" {
             "v-ontology": LocalJSX.VOntology & JSXBase.HTMLAttributes<HTMLVOntologyElement>;
             "v-reading": LocalJSX.VReading & JSXBase.HTMLAttributes<HTMLVReadingElement>;
             "v-summary": LocalJSX.VSummary & JSXBase.HTMLAttributes<HTMLVSummaryElement>;
+            "v-upload": LocalJSX.VUpload & JSXBase.HTMLAttributes<HTMLVUploadElement>;
         }
     }
 }
