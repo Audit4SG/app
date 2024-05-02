@@ -53,16 +53,12 @@ export class VUpload {
     await fetch(url, options)
       .then(response => response.json())
       .then(async data => {
-        if (data.success) {
-          alert(`✅ ${data.message}`);
-          this.code = '';
-          this.file = '';
-          this.isUploadButtonDisabled = true;
-          this.codeInputBox.value = '';
-          this.uploadFileInput.value = '';
-        } else {
-          alert(`❌ ${data.message}`);
-        }
+        alert(data.message);
+        this.code = '';
+        this.file = '';
+        this.isUploadButtonDisabled = true;
+        this.codeInputBox.value = '';
+        this.uploadFileInput.value = '';
       })
       .catch(error => {
         console.log(`❌ ${error}`);
@@ -73,18 +69,19 @@ export class VUpload {
     return (
       <Host>
         <div>
-          <e-text>
-            <strong>Upload ontology</strong>
-          </e-text>
+          <e-text variant="heading">Upload ontology</e-text>
           <br />
           <e-text>1. Choose ontology file</e-text>
+          &nbsp; &nbsp; &nbsp;
           <input type="file" onChange={() => this.handleFileUpload()} ref={el => (this.uploadFileInput = el as HTMLInputElement)} />
           <br />
           <br />
           <e-text>2. Enter Code</e-text>
+          &nbsp; &nbsp; &nbsp;
           <input type="text" onInput={e => this.handleCodeInput(e)} placeholder="Code" ref={el => (this.codeInputBox = el as HTMLInputElement)}></input>
           <br />
           <br />
+          &nbsp; &nbsp; &nbsp;
           <e-button action="upload" disabled={this.isUploadButtonDisabled}>
             Upload
           </e-button>
